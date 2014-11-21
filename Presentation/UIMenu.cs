@@ -1,4 +1,8 @@
-﻿/// \class UIMenu
+﻿
+// Self note: I am in the middle of editting the menu structure.
+
+
+/// \class UIMenu
 /// 
 /// \brief Displays and handles user interface
 /// 
@@ -20,26 +24,39 @@
 ///         - Display Employee Set *DONE*
 ///             - Display all emplyees
 ///             - Search Employee(s)
+///                 (Search Employee(s))
+///                 - Search by first name
+///                 - Search by last name
+///                 - Search by SIN
+///                 (Display Matchinging Employee(s))
+///                 - Cancel
 ///             - Return to Manage Employees
-///         - Create a New Employee
+///         - Create a New Employee *DONE*
 ///             - Specify Employee Details
 ///             - Save
 ///             - Return to Manage Employees
-///         - Modify an Existing Employee
-///             - Search Employee(s)
-///                 - Select Employee
-///                     - Modify
-///                     - Save
-///                     - Return to Search Employee(s)
-///                 - Return to Search Employee(s)
-///             - Return to Manage Employees
+///         - Modify an Existing Employee *DONE*
+///             (Search Employee(s))
+///             - Search by first name
+///             - Search by last name
+///             - Search by SIN
+///             (Display Matchinging Employee(s))
+///              - Select Employee
+///                 (Modify Employee)
+///                 - Save
+///                 - Search another Employee
+///                 - Cancel
+///             - Cancel
 ///         - Remove an Existing Employee
-///             - Search Employee(s)
-///                 - Select Employee
-///                     - Confirmation Yes
-///                     - Confirmation No
-///                 - Return to Search Employee(s)
-///             - Return to Remove and Existing Employee
+///             (Search Employee(s))
+///             - Search by first name
+///             - Search by last name
+///             - Search by SIN
+///             (Display Matchinging Employee(s))
+///             - Select Employee
+///                 - Confirmation Yes
+///                 - Confirmation No
+///             - Cancel
 ///         - Return to Main Menu
 ///     - Exit EMS
 /// 
@@ -133,15 +150,29 @@ namespace Presentation
         }
 
         /**
-        * \brief Displays Create a New Employee Menu
+        * \brief Displays Modify an Existing Employee Menu
         *
         * \details <b>Details</b>
         *
-        * This method will display options available in Create a New Employee Menu, then take an user input to lead to different method.
+        * This method first  will display options available in Modify an Existing Employee Menu, then take an user input to lead to different method.
         * 
         * \param userInput - char - stores one key entry from user.
         */
-        private void createANewEmployeeMenu()
+        private void modifyAnExistingEmployeeMenu()
+        {
+            char userInput = '0';
+        }
+
+        /**
+        * \brief Displays Modify an Existing Employee Menu
+        *
+        * \details <b>Details</b>
+        *
+        * This method will display options available in Modify an Existing Employee Menu, then take an user input to lead to different method.
+        * 
+        * \param userInput - char - stores one key entry from user.
+        */
+        private void modifyAnExistingEmployeeMenu()
         {
             char userInput = '0';
         }
