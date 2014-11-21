@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>3a97ac7e-c54b-4cb9-af28-245877de04db</ProjectGuid>
+    <ProjectGuid>{352DE906-A3AC-464D-9708-5BAE929C6D0C}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Presentation</RootNamespace>
@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UIMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
