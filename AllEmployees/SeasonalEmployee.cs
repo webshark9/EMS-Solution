@@ -26,7 +26,7 @@ namespace AllEmployees
         float piecePay;
 
         /**
-        * \brief Sets the season attibute within the SeasonalEmployee class
+        * \brief Sets the season attribute within the SeasonalEmployee class
         *
         * \details <b>Details</b>
         *
@@ -96,7 +96,7 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Retreives the piecePay attribute from the SeasonalEmployee class
+        * \brief Retrieves the piecePay attribute from the SeasonalEmployee class
         *
         * \details <b>Details</b>
         *
