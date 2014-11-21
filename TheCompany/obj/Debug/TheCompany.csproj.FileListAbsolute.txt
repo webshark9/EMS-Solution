@@ -3,3 +3,8 @@ C:\Users\Willi\Desktop\EMS-Solution\TheCompany\bin\Debug\TheCompany.pdb
 C:\Users\Willi\Desktop\EMS-Solution\TheCompany\obj\Debug\TheCompany.csprojResolveAssemblyReference.cache
 C:\Users\Willi\Desktop\EMS-Solution\TheCompany\obj\Debug\TheCompany.dll
 C:\Users\Willi\Desktop\EMS-Solution\TheCompany\obj\Debug\TheCompany.pdb
+C:\Users\Willi\Documents\GitHub\EMS-Solution\TheCompany\bin\Debug\TheCompany.dll
+C:\Users\Willi\Documents\GitHub\EMS-Solution\TheCompany\bin\Debug\TheCompany.pdb
+C:\Users\Willi\Documents\GitHub\EMS-Solution\TheCompany\obj\Debug\TheCompany.csprojResolveAssemblyReference.cache
+C:\Users\Willi\Documents\GitHub\EMS-Solution\TheCompany\obj\Debug\TheCompany.dll
+C:\Users\Willi\Documents\GitHub\EMS-Solution\TheCompany\obj\Debug\TheCompany.pdb

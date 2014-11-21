@@ -28,7 +28,7 @@ namespace AllEmployees
         DateTime dateOfBirth;
 
         /**
-        * \brief Sets the firstName attibute within the Employee class
+        * \brief Sets the firstName attribute within the Employee class
         *
         * \details <b>Details</b>
         *
@@ -41,7 +41,7 @@ namespace AllEmployees
         * \param userInput - string - The desired employee first name given 
         * by the user.
         * 
-        * \return bool - Returns true if the attibute was set successfully.
+        * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
         public bool SetFirstName(string userInput)
@@ -54,7 +54,7 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Retreives the firstName attribute from the Employee class
+        * \brief Retrieves the firstName attribute from the Employee class
         *
         * \details <b>Details</b>
         *
@@ -80,12 +80,12 @@ namespace AllEmployees
         * a separate method to validate it. If the user input string is 
         * valid, then the method will set the lastName attribute within
         * the Employee class to the user input string. Returns a true 
-        * or false depending on weather or not the attribe was set successfully.
+        * or false depending on weather or not the attribute was set successfully.
         * 
         * \param userInput - string - The desired employee last name given 
         * by the user.
         * 
-        * \return bool - Returns true if the attibute was set successfully.
+        * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
         public bool SetLastName(string userInput)
@@ -98,7 +98,7 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Retreives the lastName attribute from the Employee class
+        * \brief Retrieves the lastName attribute from the Employee class
         *
         * \details <b>Details</b>
         *
@@ -124,12 +124,12 @@ namespace AllEmployees
         * a separate method to validate it. If the user input string is 
         * valid, then the method will set the socialInsuranceNumber attribute 
         * within the Employee class to the user input string. Returns a true 
-        * or false depending on weather or not the attribe was set successfully.
+        * or false depending on weather or not the attribute was set successfully.
         * 
         * \param userInput - string - The employee social insurance
         * number given by the user.
         * 
-        * \return bool - Returns true if the attibute was set successfully.
+        * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
         public bool SetSocialInsuranceNumber(string userInput)
@@ -142,7 +142,7 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Retreives the socialInsuranceNumber attribute from the Employee class
+        * \brief Retrieves the socialInsuranceNumber attribute from the Employee class
         *
         * \details <b>Details</b>
         *
@@ -168,12 +168,12 @@ namespace AllEmployees
         * a separate method to validate it. If the user input DateTime variable is 
         * valid, then the method will set the dateOfBirth attribute within the Employee class 
         * to the user input DateTime variable. Returns a true or false depending 
-        * on weather or not the attribe was set successfully.
+        * on weather or not the attribute was set successfully.
         * 
         * \param userInput - DateTime - The employee's date of birth
         * given by the user.
         * 
-        * \return bool - Returns true if the attibute was set successfully.
+        * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
         public bool SetDateOfBirth(DateTime userInput)
@@ -186,11 +186,11 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Retreives the dateOfBirth attribute from the Employee class
+        * \brief Retrieves the dateOfBirth attribute from the Employee class
         *
         * \details <b>Details</b>
         *
-        * This method will return the dateOfBirth attribute as a DateTime data tyoe
+        * This method will return the dateOfBirth attribute as a DateTime data type
         * to the calling method.
         * 
         * \param None

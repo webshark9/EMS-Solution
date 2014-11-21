@@ -27,7 +27,7 @@ namespace AllEmployees
         float fixedContractAmount;
 
         /**
-        * \brief Sets the contractStartDate attibute within the ContractEmployee class
+        * \brief Sets the contractStartDate attribute within the ContractEmployee class
         *
         * \details <b>Details</b>
         *
@@ -40,7 +40,7 @@ namespace AllEmployees
         * \param userInput - DateTime - The employee's contract start date
         * given by the user.
         * 
-        * \return bool - Returns true if the attibute was set successfully.
+        * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
         public bool SetContractStartDate(DateTime userInput)
@@ -53,7 +53,7 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Retreives the contractStartDate attribute from the ContractEmployee class
+        * \brief Retrieves the contractStartDate attribute from the ContractEmployee class
         *
         * \details <b>Details</b>
         *
@@ -71,7 +71,7 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Sets the contractStoptDate attibute within the ContractEmployee class
+        * \brief Sets the contractStoptDate attribute within the ContractEmployee class
         *
         * \details <b>Details</b>
         *
@@ -84,7 +84,7 @@ namespace AllEmployees
         * \param userInput - DateTime - The employee's contract stop date
         * given by the user.
         * 
-        * \return bool - Returns true if the attibute was set successfully.
+        * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
         public bool SetContractStopDate(DateTime userInput)
@@ -97,7 +97,7 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Retreives the contractStopDate attribute from the ContractEmployee class
+        * \brief Retrieves the contractStopDate attribute from the ContractEmployee class
         *
         * \details <b>Details</b>
         *
@@ -128,7 +128,7 @@ namespace AllEmployees
         * \param userInput - float - The employee contract pay amount
         *  given by the user.
         * 
-        * \return bool - Returns true if the attibute was set successfully.
+        * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
         public bool SetFixedContractAmount(float userInput)
@@ -141,7 +141,7 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Retreives the fixedContractAmount attribute from the ContractEmployee class
+        * \brief Retrieves the fixedContractAmount attribute from the ContractEmployee class
         *
         * \details <b>Details</b>
         *

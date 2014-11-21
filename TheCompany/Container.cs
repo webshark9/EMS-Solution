@@ -66,7 +66,7 @@ namespace TheCompany
         * \brief To modify an employee in the data base
         * \details <b>Details</b>
         *
-        * This method searches the data base for the first parameter, and if it finds it it then replaces it with the 
+        * This method searches the data base for the first parameter, and if it finds it the method then replaces it with the 
         * second parameter.
         * 
         * \param employeeToModify - object - the employee that is to be modified

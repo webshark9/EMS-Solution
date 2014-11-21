@@ -1,13 +1,13 @@
 ﻿/// \class FulltimeEmployee
 /// 
-/// \brief Contains fulltime employee information
+/// \brief Contains FulltimeEmployee information
 /// 
 /// File: FulltimeEmployee.cs
 /// Project: EMS Term Project
 /// First Version: Nov.13/2014
 ///
 /// This file contains the FulltimeEmployee child class which
-/// holds the information to be used in the fulltime employee
+/// holds the information to be used in the FulltimeEmployee
 /// model contained in the EMS Term Project.
 /// 
 /// \author Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
@@ -27,7 +27,7 @@ namespace AllEmployees
         float salary;
 
         /**
-        * \brief Sets the dateOfHire attibute within the FulltimeEmployee class
+        * \brief Sets the dateOfHire attribute within the FulltimeEmployee class
         *
         * \details <b>Details</b>
         *
@@ -40,7 +40,7 @@ namespace AllEmployees
         * \param userInput - DateTime - The employee's date of hire
         * given by the user.
         * 
-        * \return bool - Returns true if the attibute was set successfully.
+        * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
         public bool SetDateOfHire(DateTime userInput)
@@ -53,7 +53,7 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Retreives the dateOfHire attribute from the FulltimeEmployee class
+        * \brief Retrieves the dateOfHire attribute from the FulltimeEmployee class
         *
         * \details <b>Details</b>
         *
@@ -71,7 +71,7 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Sets the dateOfTermination attibute within the FulltimeEmployee class
+        * \brief Sets the dateOfTermination attribute within the FulltimeEmployee class
         *
         * \details <b>Details</b>
         *
@@ -84,7 +84,7 @@ namespace AllEmployees
         * \param userInput - DateTime - The employee's date of termination
         * given by the user.
         * 
-        * \return bool - Returns true if the attibute was set successfully.
+        * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
         public bool SetDateOfTermination(DateTime userInput)
@@ -97,7 +97,7 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Retreives the dateOfTermination attribute from the FulltimeEmployee class
+        * \brief Retrieves the dateOfTermination attribute from the FulltimeEmployee class
         *
         * \details <b>Details</b>
         *
@@ -128,7 +128,7 @@ namespace AllEmployees
         * \param userInput - float - The employee salary
         *  given by the user.
         * 
-        * \return bool - Returns true if the attibute was set successfully.
+        * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
         public bool SetSalary(float userInput)
@@ -141,7 +141,7 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Retreives the salary attribute from the FulltimeEmployee class
+        * \brief Retrieves the salary attribute from the FulltimeEmployee class
         *
         * \details <b>Details</b>
         *

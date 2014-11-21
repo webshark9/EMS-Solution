@@ -64,7 +64,7 @@ namespace Supporting
         *
         * This method checks to make sure the log file that is currently open is the log file for the
         * current day, if not it closes the one that is open and opens a new one. It then writes the 
-        * the date and time (in the format 'YYYY-MM-DD hh:mm:ss') as well as the string passed as a 
+        * the date and time (in the format 'YYYY-MM-DD HH:MM:SS') as well as the string passed as a 
         * parameter to the log file.
         * 
         * \param eventString - string - the string that the calling method would like to log

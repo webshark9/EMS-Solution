@@ -39,7 +39,7 @@ namespace AllEmployees
         * \param userInput - string - The season the employee will be employed in 
         * given by the user.
         * 
-        * \return bool - Returns true if the attibute was set successfully.
+        * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
         public bool SetSeason(string userInput)
@@ -52,7 +52,7 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Retreives the season attribute from the SeasonalEmployee class
+        * \brief Retrieves the season attribute from the SeasonalEmployee class
         *
         * \details <b>Details</b>
         *
@@ -83,7 +83,7 @@ namespace AllEmployees
         * \param userInput - float - The employee salary per job
         *  given by the user.
         * 
-        * \return bool - Returns true if the attibute was set successfully.
+        * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
         public bool SetPiecePay(float userInput)
