@@ -1,6 +1,6 @@
 ﻿/// \class FulltimeEmployee
 /// 
-/// \brief Contains FulltimeEmployee information
+/// \brief Contains full-time employee information
 /// 
 /// File: FulltimeEmployee.cs
 /// Project: EMS Term Project
@@ -27,13 +27,13 @@ namespace AllEmployees
         float salary;
 
         /**
-        * \brief Sets the dateOfHire attribute within the FulltimeEmployee class
+        * \brief Sets the <i>dateOfHire</i> attribute within the FulltimeEmployee class
         *
         * \details <b>Details</b>
         *
         * This method will take in a DateTime variable, given by the user, and call on
         * a separate method to validate it. If the user input DateTime variable is 
-        * valid, then the method will set the dateOfHire attribute within the FulltimeEmployee class 
+        * valid, then the method will set the <i>dateOfHire</i> attribute within the FulltimeEmployee class 
         * to the user input DateTime variable. Returns a true or false depending 
         * on weather or not the attribute was set successfully.
         * 
@@ -53,16 +53,16 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Retrieves the dateOfHire attribute from the FulltimeEmployee class
+        * \brief Retrieves the <i>dateOfHire</i> attribute from the FulltimeEmployee class
         *
         * \details <b>Details</b>
         *
-        * This method will return the dateOfHire attribute as a DateTime variable to the
+        * This method will return the <i>dateOfHire</i> attribute as a DateTime variable to the
         * calling method.
         * 
         * \param None
         * 
-        * \return DateTime - The currently set dateOfHire attribute within the 
+        * \return DateTime - The currently set <i>dateOfHire</i> attribute within the 
         * FulltimeEmployee class
         */
         public DateTime GetDateOfHire()
@@ -71,13 +71,13 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Sets the dateOfTermination attribute within the FulltimeEmployee class
+        * \brief Sets the <i>dateOfTermination</i> attribute within the FulltimeEmployee class
         *
         * \details <b>Details</b>
         *
         * This method will take in a DateTime variable, given by the user, and call on
         * a separate method to validate it. If the user input DateTime variable is 
-        * valid, then the method will set the dateOfTermination attribute within the FulltimeEmployee class 
+        * valid, then the method will set the <i>dateOfTermination</i> attribute within the FulltimeEmployee class 
         * to the user input DateTime variable. Returns a true or false depending 
         * on weather or not the attribute was set successfully.
         * 
@@ -97,16 +97,16 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Retrieves the dateOfTermination attribute from the FulltimeEmployee class
+        * \brief Retrieves the <i>dateOfTermination</i> attribute from the FulltimeEmployee class
         *
         * \details <b>Details</b>
         *
-        * This method will return the dateOfTermination attribute as a DateTime variable to the
+        * This method will return the <i>dateOfTermination</i> attribute as a DateTime variable to the
         * calling method.
         * 
         * \param None
         * 
-        * \return DateTime - The currently set dateOfTermination attribute within the 
+        * \return DateTime - The currently set <i>dateOfTermination</i> attribute within the 
         * FulltimeEmployee class
         */
         public DateTime GetDateOfTermination()
@@ -115,13 +115,13 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Sets the salary attribute within the FulltimeEmployee class 
+        * \brief Sets the <i>salary</i> attribute within the FulltimeEmployee class 
         *
         * \details <b>Details</b>
         *
         * This method will take in a floating integer from the user and call on
         * a separate method to validate it. If the user input floating integer is 
-        * valid, then the method will set the salary attribute 
+        * valid, then the method will set the <i>salary</i> attribute 
         * within the FulltimeEmployee class to the user input floating integer. Returns a true 
         * or false depending on weather or not the attribute was set successfully.
         * 
@@ -141,16 +141,16 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Retrieves the salary attribute from the FulltimeEmployee class
+        * \brief Retrieves the <i>salary</i> attribute from the FulltimeEmployee class
         *
         * \details <b>Details</b>
         *
-        * This method will return the salary attribute as a floating integer to the
+        * This method will return the <i>salary</i> attribute as a floating integer to the
         * calling method.
         * 
         * \param None
         * 
-        * \return float - The currently set salary attribute within the 
+        * \return float - The currently set <i>salary</i> attribute within the 
         * FulltimeEmployee class
         */
         public float GetSalary()

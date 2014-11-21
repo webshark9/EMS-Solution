@@ -1,6 +1,6 @@
 ﻿/// \class Employee
 /// 
-/// \brief Contains base employee information
+/// \brief Contains basic employee information
 /// 
 /// File: Employee.cs
 /// Project: EMS Term Project
@@ -28,13 +28,13 @@ namespace AllEmployees
         DateTime dateOfBirth;
 
         /**
-        * \brief Sets the firstName attribute within the Employee class
+        * \brief Sets the <i>firstName</i> attribute within the Employee class
         *
         * \details <b>Details</b>
         *
         * This method will take in a string of user input and call on
         * a separate method to validate it. If the user input string is 
-        * valid, then the method will set the firstName attribute within
+        * valid, then the method will set the <i>firstName</i> attribute within
         * the Employee class to the user input string. Returns a true 
         * or false depending on weather or not the attribute was set successfully.
         * 
@@ -54,16 +54,16 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Retrieves the firstName attribute from the Employee class
+        * \brief Retrieves the <i>firstName</i> attribute from the Employee class
         *
         * \details <b>Details</b>
         *
-        * This method will return the firstName attribute as a string to the
+        * This method will return the <i>firstName</i> attribute as a string to the
         * calling method.
         * 
         * \param None
         * 
-        * \return string - The currently set firstName attribute within the 
+        * \return string - The currently set <i>firstName</i> attribute within the 
         * Employee class
         */
         public string GetFirstName()
@@ -72,13 +72,13 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Sets the lastName attribute within the Employee class 
+        * \brief Sets the <i>lastName</i> attribute within the Employee class 
         *
         * \details <b>Details</b>
         *
         * This method will take in a string of user input and call on
         * a separate method to validate it. If the user input string is 
-        * valid, then the method will set the lastName attribute within
+        * valid, then the method will set the <i>lastName</i> attribute within
         * the Employee class to the user input string. Returns a true 
         * or false depending on weather or not the attribute was set successfully.
         * 
@@ -98,16 +98,16 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Retrieves the lastName attribute from the Employee class
+        * \brief Retrieves the <i>lastName</i> attribute from the Employee class
         *
         * \details <b>Details</b>
         *
-        * This method will return the lastName attribute as a string to the
+        * This method will return the </i>lastName</i> attribute as a string to the
         * calling method.
         * 
         * \param None
         * 
-        * \return string - The currently set lastName attribute within the 
+        * \return string - The currently set <i>lastName</i> attribute within the 
         * Employee class
         */
         public string GetLastName()
@@ -116,13 +116,13 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Sets the socialInsuranceNumber attribute within the Employee class 
+        * \brief Sets the <i>socialInsuranceNumber</i> attribute within the Employee class 
         *
         * \details <b>Details</b>
         *
         * This method will take in a string of user input and call on
         * a separate method to validate it. If the user input string is 
-        * valid, then the method will set the socialInsuranceNumber attribute 
+        * valid, then the method will set the <i>socialInsuranceNumber</i> attribute 
         * within the Employee class to the user input string. Returns a true 
         * or false depending on weather or not the attribute was set successfully.
         * 
@@ -142,16 +142,16 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Retrieves the socialInsuranceNumber attribute from the Employee class
+        * \brief Retrieves the <i>socialInsuranceNumber</i> attribute from the Employee class
         *
         * \details <b>Details</b>
         *
-        * This method will return the socialInsuranceNumber attribute as a string to the
+        * This method will return the <i>socialInsuranceNumber</i> attribute as a string to the
         * calling method.
         * 
         * \param None
         * 
-        * \return string - The currently set socialInsuranceNumber attribute within the 
+        * \return string - The currently set <i>socialInsuranceNumber</i> attribute within the 
         * Employee class
         */
         public string GetSocialInsuranceNumber()
@@ -160,13 +160,13 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Sets the dateOfBirth attribute within the Employee class 
+        * \brief Sets the <i>dateOfBirth</i> attribute within the Employee class 
         *
         * \details <b>Details</b>
         *
         * This method will take in a DateTime variable, given by the user, and call on
         * a separate method to validate it. If the user input DateTime variable is 
-        * valid, then the method will set the dateOfBirth attribute within the Employee class 
+        * valid, then the method will set the <i>dateOfBirth</i> attribute within the Employee class 
         * to the user input DateTime variable. Returns a true or false depending 
         * on weather or not the attribute was set successfully.
         * 
@@ -186,16 +186,16 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Retrieves the dateOfBirth attribute from the Employee class
+        * \brief Retrieves the <i>dateOfBirth</i> attribute from the Employee class
         *
         * \details <b>Details</b>
         *
-        * This method will return the dateOfBirth attribute as a DateTime data type
+        * This method will return the <i>dateOfBirth</i> attribute as a DateTime data type
         * to the calling method.
         * 
         * \param None
         * 
-        * \return DateTime - The currently set dateOfBirth attribute within the 
+        * \return DateTime - The currently set <i>dateOfBirth</i> attribute within the 
         * Employee class
         */
         public DateTime GetDateOfBirth()

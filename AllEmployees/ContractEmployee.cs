@@ -62,7 +62,7 @@ namespace AllEmployees
         * 
         * \param None
         * 
-        * \return DateTime - The currently set contractStartDate attribute within the 
+        * \return DateTime - The currently set <i>contractStartDate</i> attribute within the 
         * ContractEmployee class
         */
         public DateTime GetContractStartDate()
@@ -106,7 +106,7 @@ namespace AllEmployees
         * 
         * \param None
         * 
-        * \return DateTime - The currently set contractStopDate attribute within the 
+        * \return DateTime - The currently set <i>contractStopDate</i> attribute within the 
         * ContractEmployee class
         */
         public DateTime GetContractStopDate()
@@ -150,7 +150,7 @@ namespace AllEmployees
         * 
         * \param None
         * 
-        * \return float - The currently set fixedContractAmount attribute within the 
+        * \return float - The currently set <i>fixedContractAmount</i> attribute within the 
         * ContractEmployee class
         */
         public float GetFixedContractAmount()

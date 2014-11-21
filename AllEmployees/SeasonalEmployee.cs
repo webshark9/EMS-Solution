@@ -32,7 +32,7 @@ namespace AllEmployees
         *
         * This method will take in a string of user input and call on
         * a separate method to validate it. If the user input string is 
-        * valid, then the method will set the season attribute within
+        * valid, then the method will set the <i>season</i> attribute within
         * the SeasonalEmployee class to the user input string. Returns a true 
         * or false depending on weather or not the attribute was set successfully.
         * 
@@ -52,16 +52,16 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Retrieves the season attribute from the SeasonalEmployee class
+        * \brief Retrieves the <i>season</i> attribute from the SeasonalEmployee class
         *
         * \details <b>Details</b>
         *
-        * This method will return the season attribute as a DateTime variable to the
+        * This method will return the <i>season</i> attribute as a DateTime variable to the
         * calling method.
         * 
         * \param None
         * 
-        * \return DateTime - The currently set season attribute within the 
+        * \return DateTime - The currently set <i>season</i> attribute within the 
         * SeasonalEmployee class
         */
         public string GetSeason()
@@ -70,13 +70,13 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Sets the piecePay attribute within the SeasonalEmployee class 
+        * \brief Sets the <i>piecePay</i> attribute within the SeasonalEmployee class 
         *
         * \details <b>Details</b>
         *
         * This method will take in a floating integer from the user and call on
         * a separate method to validate it. If the user input floating integer is 
-        * valid, then the method will set the piecePay attribute 
+        * valid, then the method will set the <i>piecePay</i> attribute 
         * within the SeasonalEmployee class to the user input floating integer. Returns a true 
         * or false depending on weather or not the attribute was set successfully.
         * 
@@ -96,16 +96,16 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Retrieves the piecePay attribute from the SeasonalEmployee class
+        * \brief Retrieves the <i>piecePay</i> attribute from the SeasonalEmployee class
         *
         * \details <b>Details</b>
         *
-        * This method will return the piecePay attribute as a floating integer to the
+        * This method will return the <i>piecePay</i> attribute as a floating integer to the
         * calling method.
         * 
         * \param None
         * 
-        * \return float - The currently set piecePay attribute within the 
+        * \return float - The currently set <i>piecePay</i> attribute within the 
         * SeasonalEmployee class
         */
         public float GetPiecePay()
