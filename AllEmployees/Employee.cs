@@ -10,7 +10,7 @@
 /// holds the base information to be used in all of the
 /// other employee types contained in the EMS Term Project.
 /// 
-/// \author Matthew Thiessen, Willi Boldt, Ping Ueng, and Tylor McLaughlin
+/// \author Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
 
 using System;
 using System.Collections.Generic;
@@ -36,7 +36,7 @@ namespace AllEmployees
         * a separate method to validate it. If the user input string is 
         * valid, then the method will set the firstName attribute within
         * the Employee class to the user input string. Returns a true 
-        * or false depending on weather or not the attribe was set successfully.
+        * or false depending on weather or not the attribute was set successfully.
         * 
         * \param userInput - string - The desired employee first name given 
         * by the user.
