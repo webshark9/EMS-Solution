@@ -1,27 +1,31 @@
-﻿/// \mainpage EMS Project
+﻿/// \mainpage EMS Term Project
 ///
 ///
-/// <b>Program Introduction: </b>
+/// <b>Program Introduction:</b>
 ///  
-/// 
-///
+/// This program is an Employee Management System (EMS). It can keep track of a number of different
+/// employees and employee types for the use of the multinational Omnicorp Corporation 
 ///
 /// The major features of the program are:
 /// 
-/// - 
-/// -
-/// -
+/// - Adding employees
+/// - Modifying employees
+/// - Removing employees
+/// - Displaying the employees
+/// - Loading a database from a file
+/// - Saving the database to a file
 ///
 ///
 /// <hr>
 /// \section requirements Project Requirements
-/// Here is 
+/// Here are the full requirements for the program:
+/// REQUIREMENTS.doc
 /// 
 /// <hr>
-/// \section version Current version of the Dog Project :
+/// \section version Current version of the EMS Term Project :
 /// <ul>
 /// <li>\authors   <b>Matthew Thiessen</b>, <b>Willi Boldt</b>, <b>Ping Chang Ueng</b>, and <b>Tylor McLaughlin</b>
-/// <li>\version   1.00.00</li>
+/// <li>\version   1.0</li>
 /// <li>\date      November 14, 2014</li>
 /// <li>\warning   Unauthorized use of this product could result in serious fines and/or jail time. (JK)
 /// </ul>

@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-C:\Users\PC\Documents\GitHub\EMS-Solution\Presentation\bin\Debug\Presentation.exe.config
-=======
-C:\Users\Willi\Documents\GitHub\EMS-Solution\Presentation\bin\Debug\Presentation.exe.config
-C:\Users\Willi\Documents\GitHub\EMS-Solution\Presentation\bin\Debug\Presentation.exe
-C:\Users\Willi\Documents\GitHub\EMS-Solution\Presentation\bin\Debug\Presentation.pdb
 C:\Users\Willi\Documents\GitHub\EMS-Solution\Presentation\obj\Debug\Presentation.csprojResolveAssemblyReference.cache
-C:\Users\Willi\Documents\GitHub\EMS-Solution\Presentation\obj\Debug\Presentation.exe
+C:\Users\Willi\Documents\GitHub\EMS-Solution\Presentation\bin\Debug\Presentation.dll
+C:\Users\Willi\Documents\GitHub\EMS-Solution\Presentation\bin\Debug\Presentation.pdb
+C:\Users\Willi\Documents\GitHub\EMS-Solution\Presentation\obj\Debug\Presentation.dll
 C:\Users\Willi\Documents\GitHub\EMS-Solution\Presentation\obj\Debug\Presentation.pdb
->>>>>>> origin/master

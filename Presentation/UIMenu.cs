@@ -1,8 +1,4 @@
-﻿
-// Self note: I am in the middle of editting the menu structure.
-
-
-/// \class UIMenu
+﻿/// \class UIMenu
 /// 
 /// \brief Displays and handles user interface
 /// 
@@ -15,45 +11,44 @@
 /// 
 /// Menu map:
 /// 
-/// - Main Menu *DONE*
-///     - Manage DBase files *DONE*
+/// - Main Menu
+///     - Manage DBase files 
 ///         - Load EMS DBase from file
 ///         - Save Employee Set to EMS DBase file
 ///         - Return to Main Menu
-///     - Manage Employees *DONE*
-///         - Display Employee Set *DONE*
-///             - Display all emplyees
+///     - Manage Employees 
+///         - Display Employee Set 
+///             - Display all employees
 ///             - Search Employee(s)
-///                 (Search Employee(s))
 ///                 - Search by first name
 ///                 - Search by last name
 ///                 - Search by SIN
-///                     (Display Matchinging Employee(s))
+///                     (Display Matching Employee(s))
 ///                     - Return to Search Employee(s)
 ///                 - Return to Display Employee Set
 ///             - Return to Manage Employees
-///         - Create a New Employee *DONE*
+///         - Create a New Employee 
 ///             - Specify Employee Details
 ///             - Save
 ///             - Return to Manage Employees
-///         - Modify an Existing Employee *DONE*
+///         - Modify an Existing Employee 
 ///             (Search Employee(s))
 ///             - Search by first name
 ///             - Search by last name
 ///             - Search by SIN
-///                 (Display Matchinging Employee(s))
+///                 (Display Matching Employee(s))
 ///                 - Select Employee
 ///                     (Modify Employee)
 ///                     - Save
 ///                     - Cancel
 ///                 - Return to Search Employee(s)
 ///             - Return to Manage Employees
-///         - Remove an Existing Employee *DONE*
+///         - Remove an Existing Employee 
 ///             (Search Employee(s))
 ///             - Search by first name
 ///             - Search by last name
 ///             - Search by SIN
-///                 (Display Matchinging Employee(s))
+///                 (Display Matching Employee(s))
 ///                 - Select Employee
 ///                     - Confirmation Yes
 ///                     - Confirmation No
@@ -65,9 +60,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Presentation
 {
@@ -75,22 +68,22 @@ namespace Presentation
     {
 
         /**
-        * \method mainMenu
-        * 
-        * \brief Displays Main Menu
+        * \brief Displays the Main Menu
         *
         * \details <b>Details</b>
         *
-        * This method will display options available in main menu, then take an 
-         * user input to lead to different method.
-         *
-         * Available options:
-         * 
-         * Manage DBase Files
-         * Manage Employees
-         * Exit EMS
+        * This method will display options available in main menu, then get 
+        * user input to lead to different method.
+        *
+        * Available options:
         * 
-        * \param userInput - char - stores one key entry from user.
+        * Manage DBase Files
+        * Manage Employees
+        * Exit EMS
+        * 
+        * \param None
+        * 
+        * \return Nothing is returned
         */
         private void mainMenu()
         {
@@ -98,22 +91,23 @@ namespace Presentation
         }
 
         /**
-        * \method manageDBaseFilesMenu
-        * 
-        * \brief Displays Manage DBase Files Menu
+        * \brief Displays the Manage DBase Files Menu
         *
         * \details <b>Details</b>
         *
         * This method will display options available in Manage DBase Files Menu, 
-         * then take an user input to lead to different method.
-         * 
-         * Available options:
-         * 
-         * Load EMS DBase from file
-         * Save Employee Set to EMS DBase file
-         * Return to Main Menu
+        * then take an user input to lead to different methods.
         * 
-        * \param userInput - char - stores one key entry from user.
+        * Available options:
+        * 
+        * Load EMS DBase from file
+        * Save Employee Set to EMS DBase file
+        * Return to Main Menu
+        * 
+        * \param None
+        * 
+        * \return Nothing is returned
+        * 
         */
         private void manageDBaseFilesMenu()
         {
@@ -121,24 +115,25 @@ namespace Presentation
         }
 
         /**
-        * \method manageEmployeesMenu
-        * 
-        * \brief Displays Manage Employees Menu
+        * \brief Displays the Manage Employees Menu
         *
         * \details <b>Details</b>
         *
         * This method will display options available in Manage Employees Menu, then 
-         * take an user input to lead to different method.
-         * 
-         * Available options:
-         * 
-         * Display Employee Set
-         * Create a New Employee
-         * Modify an existing employee
-         * Removean existing employee
-         * Return to Main Menu
+        * take an user input to lead to different methods.
         * 
-        * \param userInput - char - stores one key entry from user.
+        * Available options:
+        * 
+        * Display Employee Set
+        * Create a New Employee
+        * Modify an existing employee
+        * Remove an existing employee
+        * Return to Main Menu
+        * 
+        * \param None
+        * 
+        * \return Nothing is returned
+        * 
         */
         private void manageEmployeesMenu()
         {
@@ -146,20 +141,23 @@ namespace Presentation
         }
 
         /**
-        * \brief Displays Display Employee Set Menu
+        * \brief Displays the Display Employee Set Menu
         *
         * \details <b>Details</b>
         *
         * This method will display options available in Display Employee Set Menu, 
-         * then take an user input to lead to different method.
-         * 
-         * Available options:
-         * 
-         * Display all employees
-         * Search specific employee
-         * Return to Manage Employees Menu
+        * then take an user input to lead to different methods.
         * 
-        * \param userInput - char - stores one key entry from user.
+        * Available options:
+        * 
+        * Display all employees
+        * Search specific employee
+        * Return to Manage Employees Menu
+        * 
+        * \param None
+        * 
+        * \return Nothing is returned
+        * 
         */
         private void displayEmployeeSetMenu()
         {
@@ -167,20 +165,23 @@ namespace Presentation
         }
 
         /**
-        * \brief Displays Create a New Employee Menu
+        * \brief Displays the Create a New Employee Menu
         *
         * \details <b>Details</b>
         *
         * This method will display options available in Create a New Employee Menu, 
-         * then take an user input to lead to different method.
-         * 
-         * Available options:
-         * 
-         * Specify employee detail
-         * Save
-         * Return to Manage Employee Menu
+        * then take an user input to lead to different methods.
         * 
-        * \param userInput - char - stores one key entry from user.
+        * Available options:
+        * 
+        * Specify employee detail
+        * Save
+        * Return to Manage Employee Menu
+        * 
+        * \param None
+        * 
+        * \return Nothing is returned
+        * 
         */
         private void createANewEmployeeMenu()
         {
@@ -188,21 +189,24 @@ namespace Presentation
         }
 
         /**
-        * \brief Displays Modify an Existing Employee Menu
+        * \brief Displays the Modify an Existing Employee Menu
         *
         * \details <b>Details</b>
         *
-        * This method first call searchEmployees method. Once an employee has been 
-         * selected, it will then display options available in Modify an Existing 
-         * Employee Menu, then take an user input to lead to different method.
-         * 
-         * Available options (after search):
-         * 
-         * Specify employee detail
-         * Save
-         * Return to Manage Employee Menu
-         * 
-        * \param userInput - char - stores one key entry from user.
+        * This method first calls the searchEmployees method. Once an employee has been 
+        * selected, it will then display the options available in Modify an Existing 
+        * Employee Menu, then get user input to lead to different methods.
+        * 
+        * Available options (after search):
+        * 
+        * Specify employee detail
+        * Save
+        * Return to Manage Employee Menu
+        * 
+        * \param None
+        * 
+        * \return Nothing is returned
+        * 
         */
         private void modifyAnExistingEmployeeMenu()
         {
@@ -210,20 +214,23 @@ namespace Presentation
         }
 
         /**
-        * \brief Displays Remove an Existing Employee Menu
+        * \brief Displays the Remove an Existing Employee Menu
         *
         * \details <b>Details</b>
         *
-        * This method will take user to searchEmployee method. Once an employee 
+        * This method will take the user to the searchEmployee method. Once an employee 
         * is selected, it will ask user with confirmation of whether the employee 
         * should be deleted.
-         * 
-         * Available options (after search) (for confirmation):
-         * 
-         * Yes
-         * No
         * 
-        * \param userInput - char - stores one key entry from user.
+        * Available options (after search) (for confirmation):
+        * 
+        * Yes
+        * No
+        * 
+        * \param None
+        * 
+        * \return Nothing is returned
+        * 
         */
         private void removeAnExistingEmployeeMenu()
         {
@@ -231,7 +238,7 @@ namespace Presentation
         }
 
         /**
-        * \brief This method handles the user interface portion of searching an employee
+        * \brief This method handles the user interface portion of searching for an employee
         *
         * \details <b>Details</b>
         *
@@ -241,8 +248,7 @@ namespace Presentation
         * employees will be displayed on the screen. The user will choose one of the 
         * displayed employee, and the record of that employee will be the return value.
         * 
-        * \param userInput - char - stores one key entry from user.
-        * \param employeeRecord - string - stores the record of an employee
+        * \param None
         * 
         * \return string - the employee record of the search result..
         */

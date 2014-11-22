@@ -22,8 +22,8 @@ namespace Supporting
     public class FileIO
     {
         private static string databaseName;///< string used to hold the name of the file to use as the database
-        private static StreamReader dbReader;///< stream used for reading the file
-        private static StreamWriter dbWriter;///< stream used for writing to the file
+        private static StreamReader dbReader;///< stream used for reading from the database file
+        private static StreamWriter dbWriter;///< stream used for writing to the database file
 
         /**
         * \brief To read the database file and validate the records
@@ -41,21 +41,19 @@ namespace Supporting
         */
         public static string[] OpenDBase(string dbName)
         {
-            string[] stringsRead = null;
-            string[] validRecords = null;
+            string[] stringsRead = null;// all of the lines read from the database file
+            string[] validRecords = null;// the VALID records read from the database file
 
             databaseName = dbName;// save the name of the database file in the 'databaseName' data member
-
-            
+           
             //File.Open(databaseName, FileMode.OpenOrCreate, FileAccess.ReadWrite);// open/create the database file for read/write access
-
 
             dbReader = new StreamReader(databaseName);
 
             while (dbReader.Peek() >= 0) 
-                {
-                    Console.WriteLine(readRecord());
-                }
+            {
+                Console.WriteLine(readRecord());
+            }
 
             return validRecords;
         }
@@ -64,17 +62,16 @@ namespace Supporting
         * \brief To close the database file by writing an array of strings to the database file
         * \details <b>Details</b>
         *
-        * This method will take in an array of strings and write them to the database file that is specified as 
-        * the second parameter. The number of records written as well as the number of valid and invalid records
-        * written will be logged.
+        * This method will take in an array of strings and write them to the database file that was specified when 
+        * a database file was opened (and the name was stored in the <i>databaseName</i> data member). The number 
+        * of records written as well as the number of valid and invalid records written will be logged.
         * 
-        * \param dbName - string - the full pathname of the database file
-        * \param stringsToWrite - string[] - the string array that contains the strings to write to the file
+        * \param stringsToWrite - string[] - a string array that holds the strings to write to the database file
         * 
         * \return Nothing is returned
         *
         */
-        public static void CloseDBase(string dbName, string[] stringsToWrite)
+        public static void CloseDBase(string[] stringsToWrite)
         {
             
         }
@@ -87,10 +84,10 @@ namespace Supporting
         * 
         * \param None
         * 
-        * \return The line read as a string
+        * \return Returns the line that was read as a string
         *
         */
-        public static string readRecord()
+        private static string readRecord()
         {
             //string[] records = null;
 
@@ -109,28 +106,18 @@ namespace Supporting
         * \param record - string - the string that the calling method would like to write to the
         * database file
         * 
-        * \return A string <i>record</i> which will hold the line read or be empty ("") if the
+        * \return Returns a string <i>record</i> which will hold the line read or be empty ("") if the
         * read failed
         *
         */
-        public static bool writeRecord(string record)
+        private static bool writeRecord(string record)
         {
             bool writeSuccessful = false;
 
 
-
-            
-
-
             return writeSuccessful;
-        }
-
-
-      
+        }   
 
     }
-
-
-
 
 }
