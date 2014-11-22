@@ -1,16 +1,4 @@
-﻿/// \class Logging
-/// 
-/// \brief Contains the Logging class that deals with logging events that occur in other classes
-/// 
-/// File: Logging.cs
-/// Project: EMS Term Project
-/// First Version: Nov.13/2014
-///
-/// This file contains the Logging class which is responsible for creating/opening a log file for
-/// the current day and logging events that occur in other classes
-/// 
-/// \author Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
-
+﻿
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,6 +7,18 @@ using System.IO;
 
 namespace Supporting
 {
+    /// \class Logging
+    /// 
+    /// \brief Allows other classes to log events to a file
+    /// 
+    /// File: Logging.cs \n
+    /// Project: EMS Term Project \n
+    /// First Version: Nov.13/2014 \n
+    ///
+    /// This class is responsible for creating/opening a log file for
+    /// the current day and logging events that occur in other classes
+    /// 
+    /// \authors Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
     class Logging
     {
         private static StreamWriter logFileWriter;///< the stream used to write to the log file

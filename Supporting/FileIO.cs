@@ -1,15 +1,12 @@
-﻿/// \class FileIO
+﻿/// \namespace Supporting
 /// 
-/// \brief Contains the FileIO class that deals with the database file
+/// \brief Contains the FileIO class as well as the Logging class
 /// 
-/// File: FileIO.cs
-/// Project: EMS Term Project
-/// First Version: Nov.17/2014
-///
-/// This file contains the FileIO class which can open a database file, read 
-/// from/write to it, and close the file.
+/// File: FileIO.cs and Logging.cs \n
+/// Project: EMS Term Project \n
+/// First Version: Nov.17/2014 \n
 /// 
-/// \author Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
+/// \authors Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
 
 using System;
 using System.Collections;
@@ -19,6 +16,18 @@ using System.IO;
 
 namespace Supporting
 {
+    /// \class FileIO
+    /// 
+    /// \brief Provides access to the database file
+    /// 
+    /// File: FileIO.cs \n
+    /// Project: EMS Term Project \n
+    /// First Version: Nov.17/2014 \n
+    ///
+    /// This class can open a database file, read 
+    /// from/write to it, and close the file.
+    /// 
+    /// \authors Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
     public class FileIO
     {
         private static string databaseName;///< string used to hold the name of the file to use as the database
@@ -52,7 +61,7 @@ namespace Supporting
 
             while (dbReader.Peek() >= 0) 
             {
-                Console.WriteLine(readRecord());
+                Console.WriteLine(ReadRecord());
             }
 
             return validRecords;
@@ -87,7 +96,7 @@ namespace Supporting
         * \return Returns the line that was read as a string
         *
         */
-        private static string readRecord()
+        private static string ReadRecord()
         {
             //string[] records = null;
 
@@ -110,7 +119,7 @@ namespace Supporting
         * read failed
         *
         */
-        private static bool writeRecord(string record)
+        private static bool WriteRecord(string record)
         {
             bool writeSuccessful = false;
 
