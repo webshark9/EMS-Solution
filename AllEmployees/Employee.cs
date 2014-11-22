@@ -1,16 +1,12 @@
-﻿/// \class Employee
+﻿/// \namespace AllEmployees
 /// 
-/// \brief Contains basic employee information
+/// \brief Contains the following classes: Employee, ContractEmployee, FulltimeEmployee, ParttimeEmployee, and SeasonalEmployee
 /// 
-/// File: Employee.cs
-/// Project: EMS Term Project
-/// First Version: Nov.13/2014
-///
-/// This file contains the Employee parent class which
-/// holds the base information to be used in all of the
-/// other employee types contained in the EMS Term Project.
+/// File: Employee.cs, ContractEmployee.cs, FulltimeEmployee.cs, ParttimeEmployee.cs, and SeasonalEmployee.cs \n
+/// Project: EMS Term Project \n
+/// First Version: Nov.13/2014 \n
 /// 
-/// \author Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
+/// \authors Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
 
 using System;
 using System.Collections.Generic;
@@ -20,12 +16,25 @@ using System.Threading.Tasks;
 
 namespace AllEmployees
 {
+    /// \class Employee
+    /// 
+    /// \brief Contains basic employee information
+    /// 
+    /// File: Employee.cs
+    /// Project: EMS Term Project
+    /// First Version: Nov.13/2014
+    ///
+    /// This file contains the Employee parent class which
+    /// holds the base information to be used in all of the
+    /// other employee types contained in the EMS Term Project.
+    /// 
+    /// \authors Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
     public class Employee
     {
-        string firstName;
-        string lastName;
-        string socialInsuranceNumber;
-        DateTime dateOfBirth;
+        string firstName;///< string used to hold the employees first name
+        string lastName;///< string used to hold the employees last name
+        string socialInsuranceNumber;///< string used to hold the employees SIN
+        DateTime dateOfBirth;///< used to hold the employees date of birth
 
         /**
         * \brief Validates the firstName attribute within the Employee class
@@ -33,8 +42,8 @@ namespace AllEmployees
         * \details <b>Details</b>
         *
         * This method will take in a string of user input representing the desired
-        * employee first name and check weather or not it is a
-        * valid season. Returns a true or false depending on weather or not the 
+        * employee first name and check whether or not it is a
+        * valid season. Returns a true or false depending on whether or not the 
         * attribute is valid.
         * 
         * \param firstName - string - The employee's first name 
@@ -58,8 +67,8 @@ namespace AllEmployees
         * \details <b>Details</b>
         *
         * This method will take in a string of user input representing the desired
-        * employee last name and check weather or not it is a
-        * valid season. Returns a true or false depending on weather or not the 
+        * employee last name and check whether or not it is a
+        * valid season. Returns a true or false depending on whether or not the 
         * attribute is valid.
         * 
         * \param lastName - string - The employee's last name 
@@ -83,8 +92,8 @@ namespace AllEmployees
         * \details <b>Details</b>
         *
         * This method will take in a string of user input representing the desired
-        * employee social insurance number and check weather or not it is a
-        * valid season. Returns a true or false depending on weather or not the 
+        * employee social insurance number and check whether or not it is a
+        * valid season. Returns a true or false depending on whether or not the 
         * attribute is valid.
         * 
         * \param socialInsuranceNumber - string - The employee's social insurance
@@ -108,8 +117,8 @@ namespace AllEmployees
         * \details <b>Details</b>
         *
         * This method will take in a dateOfBirth variable representing the 
-        * employee's date of birth and check weather or not it is a
-        * valid entry. Returns a true or false depending on weather or not the 
+        * employee's date of birth and check whether or not it is a
+        * valid entry. Returns a true or false depending on whether or not the 
         * attribute is valid.
         * 
         * \param dateOfBirth - DateTime - The employee's date of birth 
@@ -136,7 +145,7 @@ namespace AllEmployees
         * a separate method to validate it. If the user input string is 
         * valid, then the method will set the <i>firstName</i> attribute within
         * the Employee class to the user input string. Returns a true 
-        * or false depending on weather or not the attribute was set successfully.
+        * or false depending on whether or not the attribute was set successfully.
         * 
         * \param userInput - string - The desired employee first name given 
         * by the user.
@@ -180,7 +189,7 @@ namespace AllEmployees
         * a separate method to validate it. If the user input string is 
         * valid, then the method will set the <i>lastName</i> attribute within
         * the Employee class to the user input string. Returns a true 
-        * or false depending on weather or not the attribute was set successfully.
+        * or false depending on whether or not the attribute was set successfully.
         * 
         * \param userInput - string - The desired employee last name given 
         * by the user.
@@ -202,7 +211,7 @@ namespace AllEmployees
         *
         * \details <b>Details</b>
         *
-        * This method will return the </i>lastName</i> attribute as a string to the
+        * This method will return the <i>lastName</i> attribute as a string to the
         * calling method.
         * 
         * \param None
@@ -224,7 +233,7 @@ namespace AllEmployees
         * a separate method to validate it. If the user input string is 
         * valid, then the method will set the <i>socialInsuranceNumber</i> attribute 
         * within the Employee class to the user input string. Returns a true 
-        * or false depending on weather or not the attribute was set successfully.
+        * or false depending on whether or not the attribute was set successfully.
         * 
         * \param userInput - string - The employee social insurance
         * number given by the user.
@@ -268,7 +277,7 @@ namespace AllEmployees
         * a separate method to validate it. If the user input DateTime variable is 
         * valid, then the method will set the <i>dateOfBirth</i> attribute within the Employee class 
         * to the user input DateTime variable. Returns a true or false depending 
-        * on weather or not the attribute was set successfully.
+        * on whether or not the attribute was set successfully.
         * 
         * \param userInput - DateTime - The employee's date of birth
         * given by the user.

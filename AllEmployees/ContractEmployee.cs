@@ -1,17 +1,4 @@
-﻿/// \class ContractEmployee
-/// 
-/// \brief Contains contract employee information
-/// 
-/// File: ContractEmployee.cs
-/// Project: EMS Term Project
-/// First Version: Nov.13/2014
-///
-/// This file contains the ContractEmployee child class which
-/// holds the information to be used in the contract employee
-/// model contained in the EMS Term Project.
-/// 
-/// \author Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
-
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,11 +7,24 @@ using System.Threading.Tasks;
 
 namespace AllEmployees
 {
+    /// \class ContractEmployee
+    /// 
+    /// \brief Contains contract employee information
+    /// 
+    /// File: ContractEmployee.cs
+    /// Project: EMS Term Project
+    /// First Version: Nov.13/2014
+    ///
+    /// This file contains the ContractEmployee child class which
+    /// holds the information to be used in the contract employee
+    /// model contained in the EMS Term Project.
+    /// 
+    /// \authors Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
     public class ContractEmployee : Employee
     {
-        DateTime contractStartDate;
-        DateTime contractStopDate;
-        float fixedContractAmount;
+        DateTime contractStartDate;///< used to hold the date the contract started
+        DateTime contractStopDate;///< used to hold the date the contract ended
+        float fixedContractAmount;///< used to hold the contract amount
 
         /**
         * \brief Sets the contractStartDate attribute within the ContractEmployee class
@@ -32,8 +32,8 @@ namespace AllEmployees
         * \details <b>Details</b>
         *
         * This method will take in a DateTime variable representing the 
-        * employee's contract starting date and check weather or not it is a
-        * valid entry. Returns a true or false depending on weather or not the 
+        * employee's contract starting date and check whether or not it is a
+        * valid entry. Returns a true or false depending on whether or not the 
         * attribute is valid.
         * 
         * \param contractStartDate - DateTime - The employee's contract starting date 
@@ -57,8 +57,8 @@ namespace AllEmployees
         * \details <b>Details</b>
         *
         * This method will take in a DateTime variable representing the 
-        * employee's contract ending date and check weather or not it is a
-        * valid entry. Returns a true or false depending on weather or not the 
+        * employee's contract ending date and check whether or not it is a
+        * valid entry. Returns a true or false depending on whether or not the 
         * attribute is valid.
         * 
         * \param contractStopDate - DateTime - The employee's contract ending date 
@@ -82,8 +82,8 @@ namespace AllEmployees
         * \details <b>Details</b>
         *
         * This method will take in a floating integer representing the 
-        * employee's contract wage and check weather or not it is a
-        * valid entry. Returns a true or false depending on weather or not the 
+        * employee's contract wage and check whether or not it is a
+        * valid entry. Returns a true or false depending on whether or not the 
         * attribute is valid.
         * 
         * \param fixedContractAmount - float - The amount of money the employee will make
@@ -110,7 +110,7 @@ namespace AllEmployees
         * a separate method to validate it. If the user input DateTime variable is 
         * valid, then the method will set the contractStartDate attribute within the ContractEmployee class 
         * to the user input DateTime variable. Returns a true or false depending 
-        * on weather or not the attribute was set successfully.
+        * on whether or not the attribute was set successfully.
         * 
         * \param userInput - DateTime - The employee's contract start date
         * given by the user.
@@ -154,7 +154,7 @@ namespace AllEmployees
         * a separate method to validate it. If the user input DateTime variable is 
         * valid, then the method will set the contractStoptDate attribute within the ContractEmployee class 
         * to the user input DateTime variable. Returns a true or false depending 
-        * on weather or not the attribute was set successfully.
+        * on whether or not the attribute was set successfully.
         * 
         * \param userInput - DateTime - The employee's contract stop date
         * given by the user.
@@ -198,7 +198,7 @@ namespace AllEmployees
         * a separate method to validate it. If the user input floating integer is 
         * valid, then the method will set the fixedContractAmount attribute 
         * within the ContractEmployee class to the user input floating integer. Returns a true 
-        * or false depending on weather or not the attribute was set successfully.
+        * or false depending on whether or not the attribute was set successfully.
         * 
         * \param userInput - float - The employee contract pay amount
         *  given by the user.

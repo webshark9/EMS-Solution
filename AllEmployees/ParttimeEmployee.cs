@@ -1,17 +1,4 @@
-﻿/// \class ParttimeEmployee
-/// 
-/// \brief Contains part-time employee information
-/// 
-/// File: ParttimeEmployee.cs
-/// Project: EMS Term Project
-/// First Version: Nov.13/2014
-///
-/// This file contains the ParttimeEmployee child class which
-/// holds the information to be used in the ParttimeEmployee
-/// model contained in the EMS Term Project.
-/// 
-/// \author Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
-
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,11 +7,24 @@ using System.Threading.Tasks;
 
 namespace AllEmployees
 {
+    /// \class ParttimeEmployee
+    /// 
+    /// \brief Contains part-time employee information
+    /// 
+    /// File: ParttimeEmployee.cs
+    /// Project: EMS Term Project
+    /// First Version: Nov.13/2014
+    ///
+    /// This file contains the ParttimeEmployee child class which
+    /// holds the information to be used in the ParttimeEmployee
+    /// model contained in the EMS Term Project.
+    /// 
+    /// \authors Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
     public class ParttimeEmployee : Employee
     {
-        DateTime dateOfHire;
-        DateTime dateOfTermination;
-        float hourlyRate;
+        DateTime dateOfHire;///< used to hold the date the employee started working at the company
+        DateTime dateOfTermination;///< used to hold the date the employee stopped working at the company
+        float hourlyRate;///< used to hold the hourly pay for the employee
 
         /**
         * \brief Sets the dateOfHire attribute within the ParttimeEmployee class
@@ -32,8 +32,8 @@ namespace AllEmployees
         * \details <b>Details</b>
         *
         * This method will take in a DateTime variable representing the 
-        * employee's date of hire and check weather or not it is a
-        * valid entry. Returns a true or false depending on weather or not the 
+        * employee's date of hire and check whether or not it is a
+        * valid entry. Returns a true or false depending on whether or not the 
         * attribute is valid.
         * 
         * \param dateOfHire - DateTime - The date the employee was hired 
@@ -57,8 +57,8 @@ namespace AllEmployees
         * \details <b>Details</b>
         *
         * This method will take in a DateTime variable representing the 
-        * employee's date of termination and check weather or not it is a
-        * valid entry. Returns a true or false depending on weather or not the 
+        * employee's date of termination and check whether or not it is a
+        * valid entry. Returns a true or false depending on whether or not the 
         * attribute is valid.
         * 
         * \param dateOfTermination - DateTime - The date the employee was terminated/fired 
@@ -82,8 +82,8 @@ namespace AllEmployees
         * \details <b>Details</b>
         *
         * This method will take in a floating integer representing the 
-        * employee's hourly wage and check weather or not it is a
-        * valid entry. Returns a true or false depending on weather or not the 
+        * employee's hourly wage and check whether or not it is a
+        * valid entry. Returns a true or false depending on whether or not the 
         * attribute is valid.
         * 
         * \param hourlyRate - float - The amount of money the employee makes per
@@ -110,7 +110,7 @@ namespace AllEmployees
         * a separate method to validate it. If the user input DateTime variable is 
         * valid, then the method will set the <i>dateOfHire</i> attribute within the ParttimeEmployee class 
         * to the user input DateTime variable. Returns a true or false depending 
-        * on weather or not the attribute was set successfully.
+        * on whether or not the attribute was set successfully.
         * 
         * \param userInput - DateTime - The employee's date of hire
         * given by the user.
@@ -154,7 +154,7 @@ namespace AllEmployees
         * a separate method to validate it. If the user input DateTime variable is 
         * valid, then the method will set the <i>dateOfTermination</i> attribute within the ParttimeEmployee class 
         * to the user input DateTime variable. Returns a true or false depending 
-        * on weather or not the attribute was set successfully.
+        * on whether or not the attribute was set successfully.
         * 
         * \param userInput - DateTime - The employee's date of termination
         * given by the user.
@@ -198,7 +198,7 @@ namespace AllEmployees
         * a separate method to validate it. If the user input floating integer is 
         * valid, then the method will set the <i>hourlyRate</i> attribute 
         * within the ParttimeEmployee class to the user input floating integer. Returns a true 
-        * or false depending on weather or not the attribute was set successfully.
+        * or false depending on whether or not the attribute was set successfully.
         * 
         * \param userInput - float - The employee salary rate per hour
         *  given by the user.

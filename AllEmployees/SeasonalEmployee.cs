@@ -1,17 +1,4 @@
-﻿/// \class SeasonalEmployee
-/// 
-/// \brief Contains seasonal employee information
-/// 
-/// File: SeasonalEmployee.cs
-/// Project: EMS Term Project
-/// First Version: Nov.13/2014
-///
-/// This file contains the SeasonalEmployee child class which
-/// holds the information to be used in the seasonal employee
-/// model contained in the EMS Term Project.
-/// 
-/// \author Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
-
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +7,23 @@ using System.Threading.Tasks;
 
 namespace AllEmployees
 {
+    /// \class SeasonalEmployee
+    /// 
+    /// \brief Contains seasonal employee information
+    /// 
+    /// File: SeasonalEmployee.cs
+    /// Project: EMS Term Project
+    /// First Version: Nov.13/2014
+    ///
+    /// This file contains the SeasonalEmployee child class which
+    /// holds the information to be used in the seasonal employee
+    /// model contained in the EMS Term Project.
+    /// 
+    /// \authors Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
     public class SeasonalEmployee : Employee
     {
-        string season;
-        float piecePay;
+        string season;///< used to hold the season the employee is working or did work
+        float piecePay;///< used to hold the amount the employee is paid for a piece of work
 
         /**
         * \brief Validates the season attribute within the SeasonalEmployee class
@@ -31,8 +31,8 @@ namespace AllEmployees
         * \details <b>Details</b>
         *
         * This method will take in a string of user input representing the desired
-        * season the employee will be working and check weather or not it is a
-        * valid season. Returns a true or false depending on weather or not the 
+        * season the employee will be working and check whether or not it is a
+        * valid season. Returns a true or false depending on whether or not the 
         * attribute is valid.
         * 
         * \param season - string - The season the employee will be employed in 
@@ -56,8 +56,8 @@ namespace AllEmployees
         * \details <b>Details</b>
         *
         * This method will take in a floating integer representing the desired
-        * piece pay the employee will receive and check weather or not it is a
-        * valid entry. Returns a true or false depending on weather or not the 
+        * piece pay the employee will receive and check whether or not it is a
+        * valid entry. Returns a true or false depending on whether or not the 
         * attribute is valid.
         * 
         * \param piecePay - float - The piece pay the employee will recieve 
@@ -84,7 +84,7 @@ namespace AllEmployees
         * a separate method to validate it. If the user input string is 
         * valid, then the method will set the <i>season</i> attribute within
         * the SeasonalEmployee class to the user input string. Returns a true 
-        * or false depending on weather or not the attribute was set successfully.
+        * or false depending on whether or not the attribute was set successfully.
         * 
         * \param userInput - string - The season the employee will be employed in 
         * given by the user.
@@ -128,7 +128,7 @@ namespace AllEmployees
         * a separate method to validate it. If the user input floating integer is 
         * valid, then the method will set the <i>piecePay</i> attribute 
         * within the SeasonalEmployee class to the user input floating integer. Returns a true 
-        * or false depending on weather or not the attribute was set successfully.
+        * or false depending on whether or not the attribute was set successfully.
         * 
         * \param userInput - float - The employee salary per job
         *  given by the user.
