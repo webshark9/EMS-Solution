@@ -10,7 +10,7 @@
 /// holds the information to be used in the contract employee
 /// model contained in the EMS Term Project.
 /// 
-/// \author Matthew Thiessen, Willi Boldt, Ping Ueng, and Tylor McLaughlin
+/// \author Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
 
 using System;
 using System.Collections.Generic;
@@ -26,11 +26,136 @@ namespace AllEmployees
         DateTime contractStopDate;
         float fixedContractAmount;
 
-        public bool SetContractStartDate(DateTime userInput);
-        public DateTime GetContractStartDate();
-        public bool SetContractStopDate(DateTime userInput);
-        public DateTime GetContractSatartDate();
-        public bool SetFixedContractAmount(float userInput);
-        public float GetFixedContractAmount();
+        /**
+        * \brief Sets the contractStartDate attribute within the ContractEmployee class
+        *
+        * \details <b>Details</b>
+        *
+        * This method will take in a DateTime variable, given by the user, and call on
+        * a separate method to validate it. If the user input DateTime variable is 
+        * valid, then the method will set the contractStartDate attribute within the ContractEmployee class 
+        * to the user input DateTime variable. Returns a true or false depending 
+        * on weather or not the attribute was set successfully.
+        * 
+        * \param userInput - DateTime - The employee's contract start date
+        * given by the user.
+        * 
+        * \return bool - Returns true if the attribute was set successfully.
+        * Returns false if the attribute was not set successfully.
+        */
+        public bool SetContractStartDate(DateTime userInput)
+        {
+            bool setStatus = false;
+
+
+
+            return setStatus;
+        }
+
+        /**
+        * \brief Retrieves the contractStartDate attribute from the ContractEmployee class
+        *
+        * \details <b>Details</b>
+        *
+        * This method will return the contractStartDate attribute as a DateTime variable to the
+        * calling method.
+        * 
+        * \param None
+        * 
+        * \return DateTime - The currently set <i>contractStartDate</i> attribute within the 
+        * ContractEmployee class
+        */
+        public DateTime GetContractStartDate()
+        {
+            return contractStartDate;
+        }
+
+        /**
+        * \brief Sets the contractStoptDate attribute within the ContractEmployee class
+        *
+        * \details <b>Details</b>
+        *
+        * This method will take in a DateTime variable, given by the user, and call on
+        * a separate method to validate it. If the user input DateTime variable is 
+        * valid, then the method will set the contractStoptDate attribute within the ContractEmployee class 
+        * to the user input DateTime variable. Returns a true or false depending 
+        * on weather or not the attribute was set successfully.
+        * 
+        * \param userInput - DateTime - The employee's contract stop date
+        * given by the user.
+        * 
+        * \return bool - Returns true if the attribute was set successfully.
+        * Returns false if the attribute was not set successfully.
+        */
+        public bool SetContractStopDate(DateTime userInput)
+        {
+            bool setStatus = false;
+
+
+
+            return setStatus;
+        }
+
+        /**
+        * \brief Retrieves the contractStopDate attribute from the ContractEmployee class
+        *
+        * \details <b>Details</b>
+        *
+        * This method will return the contractStopDate attribute as a DateTime variable to the
+        * calling method.
+        * 
+        * \param None
+        * 
+        * \return DateTime - The currently set <i>contractStopDate</i> attribute within the 
+        * ContractEmployee class
+        */
+        public DateTime GetContractStopDate()
+        {
+            return contractStopDate;
+        }
+
+        /**
+        * \brief Sets the fixedContractAmount attribute within the ContractEmployee class 
+        *
+        * \details <b>Details</b>
+        *
+        * This method will take in a floating integer from the user and call on
+        * a separate method to validate it. If the user input floating integer is 
+        * valid, then the method will set the fixedContractAmount attribute 
+        * within the ContractEmployee class to the user input floating integer. Returns a true 
+        * or false depending on weather or not the attribute was set successfully.
+        * 
+        * \param userInput - float - The employee contract pay amount
+        *  given by the user.
+        * 
+        * \return bool - Returns true if the attribute was set successfully.
+        * Returns false if the attribute was not set successfully.
+        */
+        public bool SetFixedContractAmount(float userInput)
+        {
+            bool setStatus = false;
+
+
+
+            return setStatus;
+        }
+
+        /**
+        * \brief Retrieves the fixedContractAmount attribute from the ContractEmployee class
+        *
+        * \details <b>Details</b>
+        *
+        * This method will return the fixedContractAmount attribute as a floating integer to the
+        * calling method.
+        * 
+        * \param None
+        * 
+        * \return float - The currently set <i>fixedContractAmount</i> attribute within the 
+        * ContractEmployee class
+        */
+        public float GetFixedContractAmount()
+        {
+            return fixedContractAmount;
+        }
     }
 }
