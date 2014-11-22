@@ -31,6 +31,81 @@ namespace AllEmployees
         *
         * \details <b>Details</b>
         *
+        * This method will take in a DateTime variable representing the 
+        * employee's contract starting date and check weather or not it is a
+        * valid entry. Returns a true or false depending on weather or not the 
+        * attribute is valid.
+        * 
+        * \param contractStartDate - DateTime - The employee's contract starting date 
+        * given by the user.
+        * 
+        * \return bool - Returns true if the attribute is valid.
+        * Returns false if the attribute is not valid.
+        */
+        private bool validateContractStartDate(DateTime contractStartDate)
+        {
+            bool validateStatus = false;
+
+
+
+            return validateStatus;
+        }
+
+        /**
+        * \brief Sets the contractStopDate attribute within the ContractEmployee class
+        *
+        * \details <b>Details</b>
+        *
+        * This method will take in a DateTime variable representing the 
+        * employee's contract ending date and check weather or not it is a
+        * valid entry. Returns a true or false depending on weather or not the 
+        * attribute is valid.
+        * 
+        * \param contractStopDate - DateTime - The employee's contract ending date 
+        * given by the user.
+        * 
+        * \return bool - Returns true if the attribute is valid.
+        * Returns false if the attribute is not valid.
+        */
+        private bool validateContractStopDate(DateTime contractStopDate)
+        {
+            bool validateStatus = false;
+
+
+
+            return validateStatus;
+        }
+
+        /**
+        * \brief Sets the salary fixedContractAmount within the ContractEmployee class
+        *
+        * \details <b>Details</b>
+        *
+        * This method will take in a floating integer representing the 
+        * employee's contract wage and check weather or not it is a
+        * valid entry. Returns a true or false depending on weather or not the 
+        * attribute is valid.
+        * 
+        * \param fixedContractAmount - float - The amount of money the employee will make
+        * for the given contract given by the user.
+        * 
+        * \return bool - Returns true if the attribute is valid.
+        * Returns false if the attribute is not valid.
+        */
+        private bool validatefixedContractAmount(float fixedContractAmount)
+        {
+            bool validateStatus = false;
+
+
+
+            return validateStatus;
+        }
+
+        /**
+        * \brief Sets the contractStartDate attribute within the ContractEmployee class
+        *
+        * \details <b>Details</b>
+        *
         * This method will take in a DateTime variable, given by the user, and call on
         * a separate method to validate it. If the user input DateTime variable is 
         * valid, then the method will set the contractStartDate attribute within the ContractEmployee class 

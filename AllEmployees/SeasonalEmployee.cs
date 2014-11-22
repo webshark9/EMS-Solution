@@ -26,6 +26,56 @@ namespace AllEmployees
         float piecePay;
 
         /**
+        * \brief Validates the season attribute within the SeasonalEmployee class
+        *
+        * \details <b>Details</b>
+        *
+        * This method will take in a string of user input representing the desired
+        * season the employee will be working and check weather or not it is a
+        * valid season. Returns a true or false depending on weather or not the 
+        * attribute is valid.
+        * 
+        * \param season - string - The season the employee will be employed in 
+        * given by the user.
+        * 
+        * \return bool - Returns true if the attribute is valid.
+        * Returns false if the attribute is not valid.
+        */
+        private bool validateSeason(string season)
+        {
+            bool validateStatus = false;
+
+
+
+            return validateStatus;
+        }
+
+        /**
+        * \brief Validates the piecePay attribute within the SeasonalEmployee class
+        *
+        * \details <b>Details</b>
+        *
+        * This method will take in a floating integer representing the desired
+        * piece pay the employee will receive and check weather or not it is a
+        * valid entry. Returns a true or false depending on weather or not the 
+        * attribute is valid.
+        * 
+        * \param piecePay - float - The piece pay the employee will recieve 
+        * given by the user.
+        * 
+        * \return bool - Returns true if the attribute is valid.
+        * Returns false if the attribute is not valid.
+        */
+        private bool validatePiecePay(float piecePay)
+        {
+            bool validateStatus = false;
+
+
+
+            return validateStatus;
+        }
+
+        /**
         * \brief Sets the season attribute within the SeasonalEmployee class
         *
         * \details <b>Details</b>

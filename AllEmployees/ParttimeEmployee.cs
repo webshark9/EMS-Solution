@@ -27,6 +27,81 @@ namespace AllEmployees
         float hourlyRate;
 
         /**
+        * \brief Sets the dateOfHire attribute within the ParttimeEmployee class
+        *
+        * \details <b>Details</b>
+        *
+        * This method will take in a DateTime variable representing the 
+        * employee's date of hire and check weather or not it is a
+        * valid entry. Returns a true or false depending on weather or not the 
+        * attribute is valid.
+        * 
+        * \param dateOfHire - DateTime - The date the employee was hired 
+        * given by the user.
+        * 
+        * \return bool - Returns true if the attribute is valid.
+        * Returns false if the attribute is not valid.
+        */
+        private bool validateDateOfHire(DateTime dateOfHire)
+        {
+            bool validateStatus = false;
+
+
+
+            return validateStatus;
+        }
+
+        /**
+        * \brief Sets the dateOfTermination attribute within the ParttimeEmployee class
+        *
+        * \details <b>Details</b>
+        *
+        * This method will take in a DateTime variable representing the 
+        * employee's date of termination and check weather or not it is a
+        * valid entry. Returns a true or false depending on weather or not the 
+        * attribute is valid.
+        * 
+        * \param dateOfTermination - DateTime - The date the employee was terminated/fired 
+        * given by the user.
+        * 
+        * \return bool - Returns true if the attribute is valid.
+        * Returns false if the attribute is not valid.
+        */
+        private bool validateDateOfTermination(DateTime dateOfTermination)
+        {
+            bool validateStatus = false;
+
+
+
+            return validateStatus;
+        }
+
+        /**
+        * \brief Sets the hourlyRate attribute within the ParttimeEmployee class
+        *
+        * \details <b>Details</b>
+        *
+        * This method will take in a floating integer representing the 
+        * employee's hourly wage and check weather or not it is a
+        * valid entry. Returns a true or false depending on weather or not the 
+        * attribute is valid.
+        * 
+        * \param hourlyRate - float - The amount of money the employee makes per
+        * hour given by the user.
+        * 
+        * \return bool - Returns true if the attribute is valid.
+        * Returns false if the attribute is not valid.
+        */
+        private bool validateHourlyRate(float hourlyRate)
+        {
+            bool validateStatus = false;
+
+
+
+            return validateStatus;
+        }
+
+        /**
         * \brief Sets the <i>dateOfHire</i> attribute within the ParttimeEmployee class
         *
         * \details <b>Details</b>

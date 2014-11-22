@@ -28,6 +28,106 @@ namespace AllEmployees
         DateTime dateOfBirth;
 
         /**
+        * \brief Validates the firstName attribute within the Employee class
+        *
+        * \details <b>Details</b>
+        *
+        * This method will take in a string of user input representing the desired
+        * employee first name and check weather or not it is a
+        * valid season. Returns a true or false depending on weather or not the 
+        * attribute is valid.
+        * 
+        * \param firstName - string - The employee's first name 
+        * given by the user.
+        * 
+        * \return bool - Returns true if the attribute is valid.
+        * Returns false if the attribute is not valid.
+        */
+        private bool validateFirstName(string firstName)
+        {
+            bool validateStatus = false;
+
+
+
+            return validateStatus;
+        }
+
+        /**
+        * \brief Validates the lastName attribute within the Employee class
+        *
+        * \details <b>Details</b>
+        *
+        * This method will take in a string of user input representing the desired
+        * employee last name and check weather or not it is a
+        * valid season. Returns a true or false depending on weather or not the 
+        * attribute is valid.
+        * 
+        * \param lastName - string - The employee's last name 
+        * given by the user.
+        * 
+        * \return bool - Returns true if the attribute is valid.
+        * Returns false if the attribute is not valid.
+        */
+        private bool validateLastName(string lastName)
+        {
+            bool validateStatus = false;
+
+
+
+            return validateStatus;
+        }
+
+        /**
+        * \brief Validates the socialInsuranceNumber attribute within the Employee class
+        *
+        * \details <b>Details</b>
+        *
+        * This method will take in a string of user input representing the desired
+        * employee social insurance number and check weather or not it is a
+        * valid season. Returns a true or false depending on weather or not the 
+        * attribute is valid.
+        * 
+        * \param socialInsuranceNumber - string - The employee's social insurance
+        * number given by the user.
+        * 
+        * \return bool - Returns true if the attribute is valid.
+        * Returns false if the attribute is not valid.
+        */
+        private bool validateSocialInsuranceNumber(string socialInsuranceNumber)
+        {
+            bool validateStatus = false;
+
+
+
+            return validateStatus;
+        }
+
+        /**
+        * \brief Sets the dateOfBirth attribute within the Employee class
+        *
+        * \details <b>Details</b>
+        *
+        * This method will take in a dateOfBirth variable representing the 
+        * employee's date of birth and check weather or not it is a
+        * valid entry. Returns a true or false depending on weather or not the 
+        * attribute is valid.
+        * 
+        * \param dateOfBirth - DateTime - The employee's date of birth 
+        * given by the user.
+        * 
+        * \return bool - Returns true if the attribute is valid.
+        * Returns false if the attribute is not valid.
+        */
+        private bool validateDateOfBirth(DateTime dateOfBirth)
+        {
+            bool validateStatus = false;
+
+
+
+            return validateStatus;
+        }
+
+        /**
         * \brief Sets the <i>firstName</i> attribute within the Employee class
         *
         * \details <b>Details</b>
