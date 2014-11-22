@@ -3,8 +3,8 @@
 ///
 /// <b>Program Introduction:</b>
 ///  
-/// This program is an Employee Management System (EMS). It can keep track of a number of different
-/// employees and employee types for the use of the multinational Omnicorp Corporation 
+/// This program is an Employee-Management-System (EMS). It can keep track of a number of different
+/// employees and employee types for the use of the multinational Omnicorp Corporation.
 ///
 /// The major features of the program are:
 /// 
@@ -18,8 +18,8 @@
 ///
 /// <hr>
 /// \section requirements Project Requirements
-/// Here are the full requirements for the program:
-/// REQUIREMENTS.doc
+/// For a full list of requirements for the program please refer to the 'EMS Term Project Document F2014' document 
+/// provided on eConestoga by Russ Foubert.
 /// 
 /// <hr>
 /// \section version Current version of the EMS Term Project :

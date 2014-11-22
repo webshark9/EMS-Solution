@@ -1,62 +1,12 @@
-﻿/// \class UIMenu
+﻿/// \namespace Presentation
 /// 
-/// \brief Displays and handles user interface
+/// \brief Contains the UIMenu class
 /// 
-/// File: UIMenu.cs
-/// Project: EMS Term Project
-/// First Version: Nov.20/2014
-///
-/// This file contains UI class which allows user to navigate through multiple 
-/// options to access different functionalities of the program.
+/// File: UIMenu.cs \n
+/// Project: EMS Term Project \n
+/// First Version: Nov.20/2014 \n
 /// 
-/// Menu map:
-/// 
-/// - Main Menu
-///     - Manage DBase files 
-///         - Load EMS DBase from file
-///         - Save Employee Set to EMS DBase file
-///         - Return to Main Menu
-///     - Manage Employees 
-///         - Display Employee Set 
-///             - Display all employees
-///             - Search Employee(s)
-///                 - Search by first name
-///                 - Search by last name
-///                 - Search by SIN
-///                     (Display Matching Employee(s))
-///                     - Return to Search Employee(s)
-///                 - Return to Display Employee Set
-///             - Return to Manage Employees
-///         - Create a New Employee 
-///             - Specify Employee Details
-///             - Save
-///             - Return to Manage Employees
-///         - Modify an Existing Employee 
-///             (Search Employee(s))
-///             - Search by first name
-///             - Search by last name
-///             - Search by SIN
-///                 (Display Matching Employee(s))
-///                 - Select Employee
-///                     (Modify Employee)
-///                     - Save
-///                     - Cancel
-///                 - Return to Search Employee(s)
-///             - Return to Manage Employees
-///         - Remove an Existing Employee 
-///             (Search Employee(s))
-///             - Search by first name
-///             - Search by last name
-///             - Search by SIN
-///                 (Display Matching Employee(s))
-///                 - Select Employee
-///                     - Confirmation Yes
-///                     - Confirmation No
-///             - Return to Manage Employees
-///         - Return to Main Menu
-///     - Exit EMS
-/// 
-/// \author Matthew Thiessen, Willi Boldt, Ping Ueng, and Tylor McLaughlin
+/// \authors Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
 
 using System;
 using System.Collections.Generic;
@@ -64,6 +14,65 @@ using System.Text;
 
 namespace Presentation
 {
+    /// \class UIMenu
+    /// 
+    /// \brief Displays and handles user interface
+    /// 
+    /// File: UIMenu.cs \n
+    /// Project: EMS Term Project \n
+    /// First Version: Nov.20/2014 \n
+    ///
+    /// This file contains UI class which allows user to navigate through multiple 
+    /// options to access different functionalities of the program.
+    /// 
+    /// Menu map:
+    /// 
+    /// - Main Menu
+    ///     - Manage DBase files 
+    ///         - Load EMS DBase from file
+    ///         - Save Employee Set to EMS DBase file
+    ///         - Return to Main Menu
+    ///     - Manage Employees 
+    ///         - Display Employee Set 
+    ///             - Display all employees
+    ///             - Search Employee(s)
+    ///                 - Search by first name
+    ///                 - Search by last name
+    ///                 - Search by SIN
+    ///                     (Display Matching Employee(s))
+    ///                     - Return to Search Employee(s)
+    ///                 - Return to Display Employee Set
+    ///             - Return to Manage Employees
+    ///         - Create a New Employee 
+    ///             - Specify Employee Details
+    ///             - Save
+    ///             - Return to Manage Employees
+    ///         - Modify an Existing Employee 
+    ///             (Search Employee(s))
+    ///             - Search by first name
+    ///             - Search by last name
+    ///             - Search by SIN
+    ///                 (Display Matching Employee(s))
+    ///                 - Select Employee
+    ///                     (Modify Employee)
+    ///                     - Save
+    ///                     - Cancel
+    ///                 - Return to Search Employee(s)
+    ///             - Return to Manage Employees
+    ///         - Remove an Existing Employee 
+    ///             (Search Employee(s))
+    ///             - Search by first name
+    ///             - Search by last name
+    ///             - Search by SIN
+    ///                 (Display Matching Employee(s))
+    ///                 - Select Employee
+    ///                     - Confirmation Yes
+    ///                     - Confirmation No
+    ///             - Return to Manage Employees
+    ///         - Return to Main Menu
+    ///     - Exit EMS
+    /// 
+    /// \authors Matthew Thiessen, Willi Boldt, Ping Ueng, and Tylor McLaughlin
     public class UIMenu
     {
 
@@ -85,7 +94,7 @@ namespace Presentation
         * 
         * \return Nothing is returned
         */
-        private void mainMenu()
+        private void MainMenu()
         {
             char userInput = '0';
         }
@@ -109,7 +118,7 @@ namespace Presentation
         * \return Nothing is returned
         * 
         */
-        private void manageDBaseFilesMenu()
+        private void ManageDBaseFilesMenu()
         {
             char userInput = '0';
         }
@@ -135,7 +144,7 @@ namespace Presentation
         * \return Nothing is returned
         * 
         */
-        private void manageEmployeesMenu()
+        private void ManageEmployeesMenu()
         {
             char userInput = '0';
         }
@@ -159,7 +168,7 @@ namespace Presentation
         * \return Nothing is returned
         * 
         */
-        private void displayEmployeeSetMenu()
+        private void DisplayEmployeeSetMenu()
         {
             char userInput = '0';
         }
@@ -183,7 +192,7 @@ namespace Presentation
         * \return Nothing is returned
         * 
         */
-        private void createANewEmployeeMenu()
+        private void CreateANewEmployeeMenu()
         {
             char userInput = '0';
         }
@@ -208,7 +217,7 @@ namespace Presentation
         * \return Nothing is returned
         * 
         */
-        private void modifyAnExistingEmployeeMenu()
+        private void ModifyAnExistingEmployeeMenu()
         {
             char userInput = '0';
         }
@@ -232,7 +241,7 @@ namespace Presentation
         * \return Nothing is returned
         * 
         */
-        private void removeAnExistingEmployeeMenu()
+        private void RemoveAnExistingEmployeeMenu()
         {
             char userInput = '0';
         }
@@ -252,7 +261,7 @@ namespace Presentation
         * 
         * \return string - the employee record of the search result..
         */
-        private string searchEmployee()
+        private string SearchEmployee()
         {
             char userInput = '0';
             string employeeRecord = "";

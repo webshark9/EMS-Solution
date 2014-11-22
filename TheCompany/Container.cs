@@ -1,15 +1,12 @@
-﻿/// \class Container
+﻿/// \namespace TheCompany
 /// 
-/// \brief Contains the Container class which stores the employees
+/// \brief Contains the Container class
 /// 
-/// File: Container.cs
-/// Project: EMS Term Project
-/// First Version: Nov.13/2014
-///
-/// This file contains the Container class which is responsible for storing the employees as well 
-/// as allowing employees to be added, removed, modified, and accessed.
+/// File: Container.cs \n
+/// Project: EMS Term Project \n
+/// First Version: Nov.13/2014 \n
 /// 
-/// \author Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
+/// \authors Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
 
 using System;
 using System.Collections;
@@ -18,6 +15,19 @@ using System.Text;
 
 namespace TheCompany
 {
+    /// \class Container
+    /// 
+    /// \brief Stores Employee objects (acts as a virtual database)
+    /// 
+    /// File: Container.cs \n
+    /// Project: EMS Term Project \n
+    /// First Version: Nov.13/2014 \n
+    ///
+    /// This class is responsible for storing the employees as well 
+    /// as allowing employees to be added, removed, modified, and accessed.
+    /// 
+    /// \authors Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
+
     public class Container
     {
         private ArrayList virtualDB;///< our container for storing all of our employees
@@ -75,7 +85,7 @@ namespace TheCompany
         * \return A bool <i>modifySuccessful</i> which will be 'true' if the employee was modified successfully and 'false' otherwise
         *
         */
-        public bool modifyEmployee(object employeeToModify, object newEmployee)
+        public bool ModifyEmployee(object employeeToModify, object newEmployee)
         {
             bool modifySuccessful = false;
 
