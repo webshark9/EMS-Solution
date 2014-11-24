@@ -42,7 +42,7 @@ namespace AllEmployees
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool validateContractStartDate(DateTime contractStartDate)
+        private bool ValidateContractStartDate(DateTime contractStartDate)
         {
             bool validateStatus = false;
 
@@ -67,7 +67,7 @@ namespace AllEmployees
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool validateContractStopDate(DateTime contractStopDate)
+        private bool ValidateContractStopDate(DateTime contractStopDate)
         {
             bool validateStatus = false;
 
@@ -92,7 +92,7 @@ namespace AllEmployees
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool validatefixedContractAmount(float fixedContractAmount)
+        private bool ValidatefixedContractAmount(float fixedContractAmount)
         {
             bool validateStatus = false;
 

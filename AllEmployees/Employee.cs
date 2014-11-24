@@ -52,7 +52,7 @@ namespace AllEmployees
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool validateFirstName(string firstName)
+        private bool ValidateFirstName(string firstName)
         {
             bool validateStatus = false;
 
@@ -77,7 +77,7 @@ namespace AllEmployees
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool validateLastName(string lastName)
+        private bool ValidateLastName(string lastName)
         {
             bool validateStatus = false;
 
@@ -102,7 +102,7 @@ namespace AllEmployees
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool validateSocialInsuranceNumber(string socialInsuranceNumber)
+        private bool ValidateSocialInsuranceNumber(string socialInsuranceNumber)
         {
             bool validateStatus = false;
 
@@ -127,7 +127,7 @@ namespace AllEmployees
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool validateDateOfBirth(DateTime dateOfBirth)
+        private bool ValidateDateOfBirth(DateTime dateOfBirth)
         {
             bool validateStatus = false;
 
@@ -157,7 +157,11 @@ namespace AllEmployees
         {
             bool setStatus = false;
             
-
+            if(ValidateFirstName(userInput))
+            {
+                setStatus = true;
+                firstName = userInput;
+            }
 
             return setStatus;
         }
@@ -201,7 +205,11 @@ namespace AllEmployees
         {
             bool setStatus = false;
 
-
+            if(ValidateLastName(userInput))
+            {
+                setStatus = true;
+                lastName = userInput;
+            }
 
             return setStatus;
         }
@@ -245,7 +253,11 @@ namespace AllEmployees
         {
             bool setStatus = false;
 
-
+            if(ValidateSocialInsuranceNumber(userInput))
+            {
+                setStatus = true;
+                socialInsuranceNumber = userInput;
+            }
 
             return setStatus;
         }
@@ -288,8 +300,13 @@ namespace AllEmployees
         public bool SetDateOfBirth(DateTime userInput)
         {
             bool setStatus = false;
+            
 
-
+            if(ValidateDateOfBirth(userInput))
+            {
+                setStatus = true;
+                dateOfBirth = userInput;
+            }
 
             return setStatus;
         }

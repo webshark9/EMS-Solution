@@ -41,7 +41,7 @@ namespace AllEmployees
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool validateSeason(string season)
+        private bool ValidateSeason(string season)
         {
             bool validateStatus = false;
 
@@ -66,7 +66,7 @@ namespace AllEmployees
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool validatePiecePay(float piecePay)
+        private bool ValidatePiecePay(float piecePay)
         {
             bool validateStatus = false;
 
