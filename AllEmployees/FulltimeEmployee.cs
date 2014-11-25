@@ -106,19 +106,20 @@ namespace AllEmployees
         *
         * \details <b>Details</b>
         *
-        * This method will take in a DateTime variable, given by the user, and call on
-        * a separate method to validate it. If the user input DateTime variable is 
-        * valid, then the method will set the <i>dateOfHire</i> attribute within the FulltimeEmployee class 
-        * to the user input DateTime variable. Returns a true or false depending 
-        * on whether or not the attribute was set successfully.
+        * This method will take in a string of user input, convert it
+        * to a DateTime variable, making sure it is valid format, and call on
+        * a separate method to validate it. If the DateTime Variable is 
+        * valid, then the method will set the <i>dateOfHire</i> attribute within
+        * the FulltimeEmployee class to the user input DateTime. Returns a true 
+        * or false depending on whether or not the attribute was set successfully.
         * 
-        * \param userInput - DateTime - The employee's date of hire
-        * given by the user.
+        * \param userInput - string - The employee's date of hire given 
+        * by the user.
         * 
         * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
-        public bool SetDateOfHire(DateTime userInput)
+        public bool SetDateOfHire(string userInput)
         {
             bool setStatus = false;
 
@@ -150,19 +151,20 @@ namespace AllEmployees
         *
         * \details <b>Details</b>
         *
-        * This method will take in a DateTime variable, given by the user, and call on
-        * a separate method to validate it. If the user input DateTime variable is 
-        * valid, then the method will set the <i>dateOfTermination</i> attribute within the FulltimeEmployee class 
-        * to the user input DateTime variable. Returns a true or false depending 
-        * on whether or not the attribute was set successfully.
+        * This method will take in a string of user input, convert it
+        * to a DateTime variable, making sure it is valid format, and call on
+        * a separate method to validate it. If the DateTime Variable is 
+        * valid, then the method will set the <i>dateOfTermination</i> attribute within
+        * the FulltimeEmployee class to the user input DateTime. Returns a true 
+        * or false depending on whether or not the attribute was set successfully.
         * 
-        * \param userInput - DateTime - The employee's date of termination
-        * given by the user.
+        * \param userInput - string - The employee's date of termination given 
+        * by the user.
         * 
         * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
-        public bool SetDateOfTermination(DateTime userInput)
+        public bool SetDateOfTermination(string userInput)
         {
             bool setStatus = false;
 
@@ -190,23 +192,24 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Sets the <i>salary</i> attribute within the FulltimeEmployee class 
+        * \brief Sets the salary attribute within the FulltimeEmployee class
         *
         * \details <b>Details</b>
         *
-        * This method will take in a floating integer from the user and call on
-        * a separate method to validate it. If the user input floating integer is 
-        * valid, then the method will set the <i>salary</i> attribute 
-        * within the FulltimeEmployee class to the user input floating integer. Returns a true 
+        * This method will take in a string of user input, convert it
+        * to a floating integer, making sure it is valid format, and call on
+        * a separate method to validate it. If the user input string is 
+        * valid, then the method will set the <i>salary</i> attribute within
+        * the FulltimeEmployee class to the user input floating integer. Returns a true 
         * or false depending on whether or not the attribute was set successfully.
         * 
-        * \param userInput - float - The employee salary
+        * \param userInput - string - The employee salary
         *  given by the user.
         * 
         * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
-        public bool SetSalary(float userInput)
+        public bool SetSalary(string userInput)
         {
             bool setStatus = false;
 

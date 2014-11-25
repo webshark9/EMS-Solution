@@ -281,33 +281,40 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Sets the <i>dateOfBirth</i> attribute within the Employee class 
+        * \brief Sets the <i>dateOfBirth</i> attribute within the Employee class
         *
         * \details <b>Details</b>
         *
-        * This method will take in a DateTime variable, given by the user, and call on
-        * a separate method to validate it. If the user input DateTime variable is 
-        * valid, then the method will set the <i>dateOfBirth</i> attribute within the Employee class 
-        * to the user input DateTime variable. Returns a true or false depending 
-        * on whether or not the attribute was set successfully.
+        * This method will take in a string of user input, convert it
+        * to a DateTime variable, making sure it is valid format, and call on
+        * a separate method to validate it. If the DateTime Variable is 
+        * valid, then the method will set the <i>dateOfBirth</i> attribute within
+        * the ParttimeEmployee class to the user input DateTime. Returns a true 
+        * or false depending on whether or not the attribute was set successfully.
         * 
-        * \param userInput - DateTime - The employee's date of birth
-        * given by the user.
+        * \param userInput - string - The employee's date of bith given 
+        * by the user.
         * 
         * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
-        public bool SetDateOfBirth(DateTime userInput)
+        public bool SetDateOfBirth(string userInput)
         {
             bool setStatus = false;
-            
+            DateTime userInputDateTime;
 
-            if(ValidateDateOfBirth(userInput))
+            if (DateTime.TryParse(userInput, out userInputDateTime))
             {
-                setStatus = true;
-                dateOfBirth = userInput;
+                if (ValidateDateOfBirth(userInputDateTime))
+                {
+                    setStatus = true;
+                    dateOfBirth = userInputDateTime;
+                }
             }
-
+            else
+            {
+                //error statment
+            }
             return setStatus;
         }
 

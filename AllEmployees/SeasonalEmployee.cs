@@ -46,7 +46,7 @@ namespace AllEmployees
             bool validateStatus = false;
 
 
-
+            
             return validateStatus;
         }
 
@@ -96,7 +96,11 @@ namespace AllEmployees
         {
             bool setStatus = false;
 
-
+            if(ValidateSeason(userInput))
+            {
+                setStatus = true;
+                season = userInput;
+            }
 
             return setStatus;
         }
@@ -120,27 +124,36 @@ namespace AllEmployees
         }
 
         /**
-        * \brief Sets the <i>piecePay</i> attribute within the SeasonalEmployee class 
+        * \brief Sets the piecePay attribute within the SeasonalEmployee class
         *
         * \details <b>Details</b>
         *
-        * This method will take in a floating integer from the user and call on
-        * a separate method to validate it. If the user input floating integer is 
-        * valid, then the method will set the <i>piecePay</i> attribute 
-        * within the SeasonalEmployee class to the user input floating integer. Returns a true 
+        * This method will take in a string of user input, convert it
+        * to a floating integer, making sure it is valid format, and call on
+        * a separate method to validate it. If the user input string is 
+        * valid, then the method will set the <i>piecePay</i> attribute within
+        * the SeasonalEmployee class to the user input floating integer. Returns a true 
         * or false depending on whether or not the attribute was set successfully.
         * 
-        * \param userInput - float - The employee salary per job
+        * \param userInput - string - The employee salary per job
         *  given by the user.
         * 
         * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
-        public bool SetPiecePay(float userInput)
+        public bool SetPiecePay(string userInput)
         {
             bool setStatus = false;
+            float userInputFloat = 0;
 
-
+            if ()
+            {
+                if (ValidatePiecePay(userInput))
+                {
+                    setStatus = true;
+                    piecePay = userInput;
+                }
+            }
 
             return setStatus;
         }
