@@ -48,6 +48,12 @@
     <None Include="App.config" />
     <None Include="DOxygenMainPage.dox" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Presentation\Presentation.csproj">
+      <Project>{ab26da6a-41d0-4301-9d75-e1ad614fbcdb}</Project>
+      <Name>Presentation</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

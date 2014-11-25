@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Presentation;
 
 namespace EMS_Solution
 {
@@ -42,7 +43,9 @@ namespace EMS_Solution
         */
         static void Main(string[] args)
         {
+            UIMenu menu = new UIMenu();
 
+            menu.MainMenu();
         }
     }
 }

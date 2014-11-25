@@ -18,9 +18,6 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Object;
-// using System.Console;
-using System.String;
 
 namespace Presentation
 {
@@ -107,9 +104,36 @@ namespace Presentation
 
         // string sampleDataMember; ///< this is the commenting style for class data member.
 
-        private void MainMenu()
+        public void MainMenu()
         {
-            char userInput = '0';
+            ConsoleKeyInfo userInput;
+            bool exit = false;
+
+            while (exit == false)
+            {
+                Console.Clear();
+                Console.WriteLine("MAIN MENU:");
+                Console.WriteLine("\t1. Manage Data Base Files");
+                Console.WriteLine("\t2. Save Employee Set To EMS Data Base File");
+                Console.WriteLine("\t9. Exit EMS");
+
+                userInput = Console.ReadKey();
+
+                switch (userInput.KeyChar)
+                {
+                    case '1':
+                        ManageDBaseFilesMenu();
+                        break;
+
+                    case '2':
+                        ManageEmployeesMenu();
+                        break;
+
+                    case '9':
+                        exit = true;
+                        break;
+                }
+            }
         }
 
         /**
@@ -133,7 +157,34 @@ namespace Presentation
         */
         private void ManageDBaseFilesMenu()
         {
-            char userInput = '0';
+            ConsoleKeyInfo userInput;
+            bool back = false;
+
+            while(back == false)
+            {
+                Console.Clear();
+                Console.WriteLine("FILE MANAGEMENT MENU:");
+                Console.WriteLine("\t1. Load EMS Data Base From File");
+                Console.WriteLine("\t2. Save EMployee Set To EMS Data Base File");
+                Console.WriteLine("\t9. Return To Main Menu");
+
+                userInput = Console.ReadKey();
+
+                switch(userInput.KeyChar)
+                {
+                    case '1':
+
+                        break;
+
+                    case '2':
+
+                        break;
+
+                    case '9':
+                        back = true;
+                        break;
+                }
+            }
         }
 
         /**
@@ -159,7 +210,45 @@ namespace Presentation
         */
         private void ManageEmployeesMenu()
         {
-            char userInput = '0';
+            ConsoleKeyInfo userInput;
+            bool back = false;
+
+            while(back == false)
+            {
+                Console.Clear();
+                Console.WriteLine("EMPLOYEE MANAGMENT MENU:");
+                Console.WriteLine("\t1. Display Employee Set");
+                Console.WriteLine("\t2. Create A New Employee");
+                Console.WriteLine("\t3. Modify An Existing Employee");
+                Console.WriteLine("\t4. Remove An Existing Employee");
+                Console.WriteLine("\t9. Return To Main Menu");
+
+                userInput = Console.ReadKey();
+
+                switch(userInput.KeyChar)
+                {
+                    case '1':
+                        DisplayEmployeeSetMenu();
+                        break;
+
+                    case '2':
+                        CreateANewEmployeeMenu();
+                        break;
+
+                    case '3':
+                        ModifyAnExistingEmployeeMenu();
+                        break;
+
+                    case '4':
+                        RemoveAnExistingEmployeeMenu();
+                        break;
+
+                    case '9':
+                        back = true;
+                        break;
+                }
+            }
+
         }
 
         /**
@@ -280,7 +369,6 @@ namespace Presentation
             string employeeRecord = "";
 
             return employeeRecord;
-
         }
 
         public static void printErrorMessage(string errorMessage)

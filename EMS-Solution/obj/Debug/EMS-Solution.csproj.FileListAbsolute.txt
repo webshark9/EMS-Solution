@@ -16,3 +16,5 @@ G:\Visual Studio 2013\Projects\EMS-Solution\EMS-Solution\obj\Debug\EMS-Solution.
 G:\Visual Studio 2013\Projects\EMS-Solution\EMS-Solution\bin\Debug\EMS-Solution.exe
 G:\Visual Studio 2013\Projects\EMS-Solution\EMS-Solution\bin\Debug\EMS-Solution.pdb
 G:\Visual Studio 2013\Projects\EMS-Solution\EMS-Solution\obj\Debug\EMS-Solution.csprojResolveAssemblyReference.cache
+C:\Users\Matthew\Documents\Visual Studio 2013\Projects\EMS-Solution\EMS-Solution\bin\Debug\Presentation.dll
+C:\Users\Matthew\Documents\Visual Studio 2013\Projects\EMS-Solution\EMS-Solution\bin\Debug\Presentation.pdb
