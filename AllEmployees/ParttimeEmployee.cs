@@ -236,11 +236,19 @@ namespace AllEmployees
         public bool SetHourlyRate(string userInput)
         {
             bool setStatus = false;
+            float userInputFloat = 0;
 
-            if(ValidateHourlyRate(userInput))
+            if (float.TryParse(userInput, out userInputFloat))
             {
-                setStatus = true;
-                hourlyRate = userInput;
+                if (ValidateHourlyRate(userInputFloat))
+                {
+                    setStatus = true;
+                    hourlyRate = userInputFloat;
+                }
+            }
+            else
+            {
+                //error statment
             }
 
             return setStatus;

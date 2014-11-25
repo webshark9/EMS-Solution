@@ -146,15 +146,18 @@ namespace AllEmployees
             bool setStatus = false;
             float userInputFloat = 0;
 
-            if ()
+            if (float.TryParse(userInput, out userInputFloat))
             {
-                if (ValidatePiecePay(userInput))
+                if (ValidatePiecePay(userInputFloat))
                 {
                     setStatus = true;
-                    piecePay = userInput;
+                    piecePay = userInputFloat;
                 }
             }
-
+            else
+            {
+                //error statment
+            }
             return setStatus;
         }
 

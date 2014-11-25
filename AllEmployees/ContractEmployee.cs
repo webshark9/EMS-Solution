@@ -122,7 +122,20 @@ namespace AllEmployees
         public bool SetContractStartDate(string userInput)
         {
             bool setStatus = false;
+            DateTime userInputDateTime;
 
+            if(DateTime.TryParse(userInput, out userInputDateTime))
+            {
+                if(ValidateContractStartDate(userInputDateTime))
+                {
+                    setStatus = true;
+                    contractStartDate = userInputDateTime;
+                }
+            }
+            else
+            {
+                //error statment
+            }
 
 
             return setStatus;
@@ -167,8 +180,20 @@ namespace AllEmployees
         public bool SetContractStopDate(string userInput)
         {
             bool setStatus = false;
+            DateTime userInputDateTime;
 
-
+            if(DateTime.TryParse(userInput, out userInputDateTime))
+            {
+                if(ValidateContractStopDate(userInputDateTime))
+                {
+                    setStatus = true;
+                    contractStopDate = userInputDateTime;
+                }
+            }
+            else
+            {
+                //error statment
+            }
 
             return setStatus;
         }
@@ -212,8 +237,20 @@ namespace AllEmployees
         public bool SetFixedContractAmount(string userInput)
         {
             bool setStatus = false;
+            float userInputFloat = 0;
 
-
+            if(float.TryParse(userInput, out userInputFloat))
+            {
+                if(ValidatefixedContractAmount(userInputFloat))
+                {
+                    setStatus = true;
+                    fixedContractAmount = userInputFloat;
+                }
+            }
+            else 
+            { 
+                //error statment
+            }
 
             return setStatus;
         }

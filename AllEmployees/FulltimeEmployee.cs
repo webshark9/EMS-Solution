@@ -122,8 +122,20 @@ namespace AllEmployees
         public bool SetDateOfHire(string userInput)
         {
             bool setStatus = false;
+            DateTime userInputDateTime;
 
-
+            if(DateTime.TryParse(userInput, out userInputDateTime))
+            {
+                if (ValidateDateOfHire(userInputDateTime))
+                {
+                    setStatus = true;
+                    dateOfHire = userInputDateTime;
+                }
+            }
+            else
+            {
+                //error statement
+            }
 
             return setStatus;
         }
@@ -167,8 +179,20 @@ namespace AllEmployees
         public bool SetDateOfTermination(string userInput)
         {
             bool setStatus = false;
+            DateTime userInputDateTime;
 
-
+            if (DateTime.TryParse(userInput, out userInputDateTime))
+            {
+                if (ValidateDateOfTermination(userInputDateTime))
+                {
+                    setStatus = true;
+                    dateOfTermination = userInputDateTime;
+                }
+            }
+            else
+            {
+                //error statement
+            }
 
             return setStatus;
         }
@@ -212,7 +236,20 @@ namespace AllEmployees
         public bool SetSalary(string userInput)
         {
             bool setStatus = false;
+            float userInputFloat = 0;
 
+            if(float.TryParse(userInput, out userInputFloat))
+            {
+                if(ValidateSalary(userInputFloat))
+                {
+                    setStatus = true;
+                    salary = userInputFloat;
+                }
+            }
+            else
+            {
+                //error statment
+            }
 
 
             return setStatus;
