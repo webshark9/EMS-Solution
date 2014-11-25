@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Presentation;
 
 namespace AllEmployees
 {
@@ -156,7 +157,7 @@ namespace AllEmployees
             }
             else
             {
-                //error statment
+                UIMenu.printErrorMessage("\"Piece Pay\" is not formatted correctly\nPlease be sure to use the format\n$\"00.00\"     ex.$56.78\n\n");
             }
             return setStatus;
         }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Presentation;
 
 namespace AllEmployees
 {
@@ -134,7 +135,7 @@ namespace AllEmployees
             }
             else
             {
-                //error statment
+                UIMenu.printErrorMessage("\"Contract Start Date\" is not formatted correctly\nPlease be sure to use the format\ndd/mm/yyyy     ex.29/08/2012\n\n");
             }
 
 
@@ -192,7 +193,7 @@ namespace AllEmployees
             }
             else
             {
-                //error statment
+                UIMenu.printErrorMessage("\"Contract Stop Date\" is not formatted correctly\nPlease be sure to use the format\ndd/mm/yyyy     ex.29/08/2012\n\n");
             }
 
             return setStatus;
@@ -248,8 +249,8 @@ namespace AllEmployees
                 }
             }
             else 
-            { 
-                //error statment
+            {
+                UIMenu.printErrorMessage("\"Fixed Contract Amount\" is not formatted correctly\nPlease be sure to use the format\n$\"00.00\"     ex.$56.78\n\n");
             }
 
             return setStatus;

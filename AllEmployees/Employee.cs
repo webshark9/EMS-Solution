@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Presentation;
 
 namespace AllEmployees
 {
@@ -313,7 +314,7 @@ namespace AllEmployees
             }
             else
             {
-                //error statment
+                UIMenu.printErrorMessage("\"Date Of Birth\" is not formatted correctly\nPlease be sure to use the format\ndd/mm/yyyy     ex.29/08/2012\n\n");
             }
             return setStatus;
         }
