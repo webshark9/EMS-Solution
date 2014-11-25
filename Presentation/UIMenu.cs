@@ -8,9 +8,19 @@
 /// 
 /// \authors Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
 
+// Self Note:
+// - Give user the feedback for anything that happened.
+// - ANYTHING displayed on the screen is done by presentation. Need more classes.
+// - Make testing harness reuseable
+// - Create a static method(?) for printing error messages
+// - Test plan document will be part of the test harness
+
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Object;
+// using System.Console;
+using System.String;
 
 namespace Presentation
 {
@@ -94,6 +104,9 @@ namespace Presentation
         * 
         * \return Nothing is returned
         */
+
+        // string sampleDataMember; ///< this is the commenting style for class data member.
+
         private void MainMenu()
         {
             char userInput = '0';
@@ -268,6 +281,11 @@ namespace Presentation
 
             return employeeRecord;
 
+        }
+
+        public static void printErrorMessage(string errorMessage)
+        {
+            Console.WriteLine(errorMessage);
         }
 
     }
