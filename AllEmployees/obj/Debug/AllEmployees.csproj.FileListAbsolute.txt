@@ -4,3 +4,5 @@ C:\Users\Willi\Documents\GitHub\EMS-Solution\AllEmployees\bin\Debug\AllEmployees
 C:\Users\Willi\Documents\GitHub\EMS-Solution\AllEmployees\obj\Debug\AllEmployees.csprojResolveAssemblyReference.cache
 C:\Users\Willi\Documents\GitHub\EMS-Solution\AllEmployees\obj\Debug\AllEmployees.dll
 C:\Users\Willi\Documents\GitHub\EMS-Solution\AllEmployees\obj\Debug\AllEmployees.pdb
+C:\Users\Willi\Documents\GitHub\EMS-Solution\AllEmployees\bin\Debug\Presentation.dll
+C:\Users\Willi\Documents\GitHub\EMS-Solution\AllEmployees\bin\Debug\Presentation.pdb

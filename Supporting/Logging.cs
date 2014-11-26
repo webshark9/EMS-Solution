@@ -37,7 +37,12 @@ namespace Supporting
         */
         public static void OpenLogFile()
         {
+            string fileName = "";
+            lastDate = DateTime.Today;
 
+            fileName += lastDate.ToString() + "_EMS_Log_File";
+
+            logFileWriter = new StreamWriter(fileName, true);
         }
 
 
@@ -77,12 +82,16 @@ namespace Supporting
         {
             bool logSuccessful = false;
 
+            if (lastDate != DateTime.Today)// check if we are going to write the same log file as our last write or if we need to create a new log file
+            {
+                // need to open a new log file
+                CloseLogFile();
+                OpenLogFile();
+                
 
+            }
 
-            // if new day
-            // CloseLogFile
-            // OpenLogFile
-
+            logFileWriter.WriteLine("test " + eventString);
 
             return logSuccessful;
         }

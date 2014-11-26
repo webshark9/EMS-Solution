@@ -50,8 +50,13 @@ namespace Supporting
         */
         public static string[] OpenDBase(string dbName)
         {
-            string[] stringsRead = null;// all of the lines read from the database file
+            List<string> stringsRead = new List<string>();// all of the lines read from the database file
             string[] validRecords = null;// the VALID records read from the database file
+            string tmp = "";
+            int counter = 0;// used to index the validRecords array
+            int numRecordsWritten = 0;// the total number of records read
+            int numValidRecords = 0;// the number of valid records read
+            int numInvalidRecords = 0;// the number of invalid records read
 
             databaseName = dbName;// save the name of the database file in the 'databaseName' data member
            
@@ -60,8 +65,19 @@ namespace Supporting
             dbReader = new StreamReader(databaseName);
 
             while (dbReader.Peek() >= 0) 
+            {          
+                tmp = ReadRecord();
+                Console.WriteLine(tmp);
+                stringsRead.Add(tmp);
+            }
+
+            // validate records and remove ones that are invalid
+
+            validRecords = new string[stringsRead.Count];
+
+            foreach(string record in stringsRead)
             {
-                Console.WriteLine(ReadRecord());
+                validRecords[counter] = record;
             }
 
             return validRecords;
@@ -82,7 +98,19 @@ namespace Supporting
         */
         public static void CloseDBase(string[] stringsToWrite)
         {
-            
+            int numRecordsWritten = 0;// the total number of records written
+            int numValidRecords = 0;// the number of valid records read
+            int numInvalidRecords = 0;// the number of invalid records read
+
+            dbWriter = new StreamWriter(databaseName);
+
+            foreach( string record in stringsToWrite)
+            {
+                WriteRecord(record);
+                ++numRecordsWritten;
+
+            }
+
         }
 
         /**
@@ -123,6 +151,7 @@ namespace Supporting
         {
             bool writeSuccessful = false;
 
+            dbWriter.WriteLine(record);
 
             return writeSuccessful;
         }   
