@@ -85,6 +85,8 @@ namespace Supporting
             bool logSuccessful = false;
             string logString = "";// the string that gets written to the log file
 
+            // makes sure 'eventString' isn't empty or just whitespace
+
             if ((lastDate == null) || (lastDate != DateTime.Today))// check if we are going to write the same log file as our last write or if we need to create a new log file
             {
                 // need to open a new log file
@@ -92,7 +94,12 @@ namespace Supporting
                 OpenLogFile();
                 
             }
+            else if (logFileWriter == null)// make sure we have a valid log file open
+            {
+                OpenLogFile();
+            }
 
+            // construct the log string
             logString = lastDate.Year.ToString() + "-" + lastDate.Month.ToString() + "-" + lastDate.Day.ToString();// add the YYYY-MM-DD
             logString += " " + lastDate.Hour.ToString() + ":" + lastDate.Minute.ToString() + ":" + lastDate.Second.ToString();// add the HH:MM:SS
             logString += " " + eventString;

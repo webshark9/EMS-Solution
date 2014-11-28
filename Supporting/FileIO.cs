@@ -30,7 +30,7 @@ namespace Supporting
     /// \authors Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
     public class FileIO
     {
-        private static string databaseName;///< string used to hold the name of the file to use as the database
+        private static string databaseName = "EMS_DB_FILE.txt";///< string used to hold the name of the file to use as the database
         private static StreamReader dbReader;///< stream used for reading from the database file
         private static StreamWriter dbWriter;///< stream used for writing to the database file
 
