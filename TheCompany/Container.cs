@@ -115,5 +115,32 @@ namespace TheCompany
             return virtualDB[0];
         }
 
+        /**
+        * \brief To return an employee in the data base using an index
+        * \details <b>Details</b>
+        *
+        * This method checks if the parameter is valid and if so it returns the employee object requested, if
+        * the parameter was invalid it returns <i>null</i>. The main purpose of this method is to help test the 
+        * NextEmployee() method.
+        * 
+        * \param employeeIndex - int - the index for the <i>virtualDB</i> data member the calling method would like.
+        * 
+        * \return An object that will be a member of the <i>virtualDB</i> data member or <i>null</i> if the index was invalid. 
+        *
+        */
+        public object GetEmployee(int employeeIndex)
+        {
+            if( (employeeIndex >= 0) && (employeeIndex < virtualDB.Count))
+            {
+                return virtualDB[employeeIndex];
+            }
+            else 
+            {
+                return null;
+            }
+            
+        }
+
+
     }
 }
