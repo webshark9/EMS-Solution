@@ -37,14 +37,14 @@ namespace Supporting
         */
         public static void OpenLogFile()
         {
-            string fileName = "";
+            string fileName = "ems.";
             lastDate = DateTime.Today;
 
-            //fileName += lastDate.ToString() + "_EMS_Log_File";
-            fileName += lastDate.Year.ToString() + "-" + lastDate.Month.ToString() + "-" + lastDate.Day.ToString() + "_EMS_Log_File";
-
+            fileName += lastDate.Year.ToString() + "-" + lastDate.Month.ToString() + "-" + lastDate.Day.ToString() + ".log.txt";
 
             logFileWriter = new StreamWriter(fileName, true);
+
+            logFileWriter.AutoFlush = true;// have the streamWriter automatically print to the file
         }
 
 
@@ -106,13 +106,23 @@ namespace Supporting
 
             try
             {
-
                 logFileWriter.WriteLine(logString);
                 logSuccessful = true;
             }
-            catch(Exception e)
+            catch(Exception)
             {
-                // display in console
+                // try to do the log again
+                CloseLogFile();
+                OpenLogFile();
+                try
+                {
+                    logFileWriter.WriteLine(logString);
+                    logSuccessful = true;
+                }
+                catch (Exception)
+                {
+                    // do nothing (user doesn't want to know about the log file
+                }
             }
 
             return logSuccessful;

@@ -44,11 +44,13 @@ namespace Supporting
         * array of valid records will then be returned.
         * 
         * \param dbName - string - the full pathname of the database file
+        * \param errorMessage - string - a string that is passed as a reference and is used to hold an error message if 
+        *        an error occurs
         * 
         * \return An array of strings <i>validRecords</i> that will hold all of the valid records read in the database file
         *
         */
-        public static string[] OpenDBase(string dbName)
+        public static string[] OpenDBase(string dbName, ref string errorMessage)
         {
             List<string> stringsRead = new List<string>();// all of the lines read from the database file
             string[] validRecords = null;// the VALID records read from the database file
@@ -92,12 +94,16 @@ namespace Supporting
         * of records written as well as the number of valid and invalid records written will be logged.
         * 
         * \param stringsToWrite - string[] - a string array that holds the strings to write to the database file
+        * \param errorMessage - string - a string that is passed as a reference and is used to hold an error message if 
+        *        an error occurs
         * 
-        * \return Nothing is returned
+        * \return A bool <i>noErrors</i> that is used to tell if there was a problem. If it is false then the string 
+        *         <i>errorMessage</i> can be checked to see what went wrong.
         *
         */
-        public static void CloseDBase(string[] stringsToWrite)
+        public static bool CloseDBase(string[] stringsToWrite, ref string errorMessage)
         {
+            bool noErrors = true;
             int numRecordsWritten = 0;// the total number of records written
             int numValidRecords = 0;// the number of valid records read
             int numInvalidRecords = 0;// the number of invalid records read
@@ -111,6 +117,7 @@ namespace Supporting
 
             }
 
+            return noErrors;
         }
 
         /**
@@ -152,6 +159,7 @@ namespace Supporting
             bool writeSuccessful = false;
 
             dbWriter.WriteLine(record);
+            dbWriter.Flush();// actually write the data to the file
 
             return writeSuccessful;
         }   
