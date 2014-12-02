@@ -8,3 +8,8 @@ C:\Users\Matthew\Documents\Visual Studio 2013\Projects\EMS-Solution\Presentation
 C:\Users\Matthew\Documents\Visual Studio 2013\Projects\EMS-Solution\Presentation\obj\Debug\Presentation.pdb
 C:\Users\Matthew\Documents\Visual Studio 2013\Projects\EMS-Solution\Presentation\bin\Debug\Presentation.dll
 C:\Users\Matthew\Documents\Visual Studio 2013\Projects\EMS-Solution\Presentation\bin\Debug\Presentation.pdb
+C:\Users\PC\OneDrive\GitHub\EMS-Solution\Presentation\bin\Debug\Presentation.dll
+C:\Users\PC\OneDrive\GitHub\EMS-Solution\Presentation\bin\Debug\Presentation.pdb
+C:\Users\PC\OneDrive\GitHub\EMS-Solution\Presentation\obj\Debug\Presentation.csprojResolveAssemblyReference.cache
+C:\Users\PC\OneDrive\GitHub\EMS-Solution\Presentation\obj\Debug\Presentation.dll
+C:\Users\PC\OneDrive\GitHub\EMS-Solution\Presentation\obj\Debug\Presentation.pdb

@@ -18,6 +18,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using AllEmployees;
+
 
 namespace Presentation
 {
@@ -113,9 +115,10 @@ namespace Presentation
             {
                 Console.Clear();
                 Console.WriteLine("MAIN MENU:");
+                Console.WriteLine("\n");
                 Console.WriteLine("\t1. Manage Data Base Files");
-                Console.WriteLine("\t2. Save Employee Set To EMS Data Base File");
-                Console.WriteLine("\t9. Exit EMS");
+                Console.WriteLine("\t2. Manage Employees");
+                Console.WriteLine("\t9. Save and Exit EMS");
 
                 userInput = Console.ReadKey();
 
@@ -130,6 +133,7 @@ namespace Presentation
                         break;
 
                     case '9':
+                        SaveAndExitProgram();
                         exit = true;
                         break;
                 }
@@ -164,6 +168,7 @@ namespace Presentation
             {
                 Console.Clear();
                 Console.WriteLine("FILE MANAGEMENT MENU:");
+                Console.WriteLine("\n");
                 Console.WriteLine("\t1. Load EMS Data Base From File");
                 Console.WriteLine("\t2. Save EMployee Set To EMS Data Base File");
                 Console.WriteLine("\t9. Return To Main Menu");
@@ -217,6 +222,7 @@ namespace Presentation
             {
                 Console.Clear();
                 Console.WriteLine("EMPLOYEE MANAGMENT MENU:");
+                Console.WriteLine("\n");
                 Console.WriteLine("\t1. Display Employee Set");
                 Console.WriteLine("\t2. Create A New Employee");
                 Console.WriteLine("\t3. Modify An Existing Employee");
@@ -272,7 +278,35 @@ namespace Presentation
         */
         private void DisplayEmployeeSetMenu()
         {
-            char userInput = '0';
+            ConsoleKeyInfo userInput;
+            bool back = false;
+
+            while (back == false)
+            {
+                Console.Clear();
+                Console.WriteLine("DISPLAY EMPLOYEE SET:");
+                Console.WriteLine("\n");
+                Console.WriteLine("\t1. Display All Employees");
+                Console.WriteLine("\t2. Search Specific Employee");
+                Console.WriteLine("\t9. Return To Employee Management Menu");
+
+                userInput = Console.ReadKey();
+
+                switch (userInput.KeyChar)
+                {
+                    case '1':
+                        DisplayAllEmployees();
+                        break;
+
+                    case '2':
+                        SearchEmployeeMenu();
+                        break;
+
+                    case '9':
+                        back = true;
+                        break;
+                }
+            }
         }
 
         /**
@@ -281,12 +315,14 @@ namespace Presentation
         * \details <b>Details</b>
         *
         * This method will display options available in Create a New Employee Menu, 
-        * then take an user input to lead to different methods.
+        * then take an user input to lead to employee creation of different employee types.
         * 
         * Available options:
         * 
-        * Specify employee detail
-        * Save
+        * Full Time Employee
+         * Part Time Employee
+         * Contract Emplployee
+         * Seasonal Employee
         * Return to Manage Employee Menu
         * 
         * \param None
@@ -296,7 +332,605 @@ namespace Presentation
         */
         private void CreateANewEmployeeMenu()
         {
-            char userInput = '0';
+            ConsoleKeyInfo userInput;
+            bool back = false;
+
+            while (back == false)
+            {
+                Console.Clear();
+                Console.WriteLine("Create a New Employee:");
+                Console.WriteLine("\n");
+                Console.WriteLine("Create Employee Type:");
+                Console.WriteLine("\n");
+                Console.WriteLine("\t1. Full Time Employee");
+                Console.WriteLine("\t2. Part Time Employee");
+                Console.WriteLine("\t3. Contract Employee");
+                Console.WriteLine("\t4. Seasonal Employee");
+                Console.WriteLine("\t9. Return To Employee Management Menu");
+
+                userInput = Console.ReadKey();
+
+                switch (userInput.KeyChar)
+                {
+                    case '1':
+                        CreateFullTimeEmployee();
+                        break;
+
+                    case '2':
+                        CreatePartTimeEmployee();
+                        break;
+
+                    case '3':
+                        CreateContractEmployee();
+                        break;
+
+                    case '4':
+                        CreatePartTimeEmployee();
+                        break;
+
+                    case '9':
+                        back = true;
+                        break;
+                }
+            }
+        }
+
+
+        /**
+        * \brief UI of full time employee creation
+        *
+        * \details <b>Details</b>
+        *
+        * This method will give user the option to enter each element of a full time 
+         * employee. The elements that have been entered will also be displayed. 
+         * User can choose to save the employee data in this menu.
+        * 
+        * Available options:
+        * 
+        * First Name
+         * Last Name
+         * SIN
+         * Date of Birth
+         * Date of Hire
+         * Date of Termination
+         * Salary
+         * Save and Return to Manage Employee Menu
+        * Return to Manage Employee Menu Without Saving
+        * 
+        * \param None
+        * 
+        * \return Nothing is returned
+        * 
+        */
+        private void CreateFullTimeEmployee()
+        {
+            ConsoleKeyInfo userInput;
+            bool back = false;
+
+            while (back == false)
+            {
+                Console.Clear();
+                Console.WriteLine("Create a Full Time Employee:");
+                Console.WriteLine("\n");
+                Console.WriteLine("Current Info:");
+                Console.WriteLine("First Name: {0}", Employee.GetFirstName());
+                Console.WriteLine("Last Name: {0}", Employee.GetFirstName());
+                Console.WriteLine("SIN: {0}", Employee.GetFirstName());
+                Console.WriteLine("Date of Birth: {0}", Employee.GetFirstName());
+                Console.WriteLine("Date of Hire: {0}", Employee.GetFirstName());
+                Console.WriteLine("Date of Termination: {0}", Employee.GetFirstName());
+                Console.WriteLine("Salary: {0}", Employee.GetFirstName());
+                Console.WriteLine("\n");
+                Console.WriteLine("Edit Info:");
+                Console.WriteLine("\t1. Edit First Name");
+                Console.WriteLine("\t2. Edit Last Name");
+                Console.WriteLine("\t3. Edit SIN");
+                Console.WriteLine("\t4. Edit Date of Birth");
+                Console.WriteLine("\t5. Edit Date of Hire");
+                Console.WriteLine("\t6. Edit Date of Termination");
+                Console.WriteLine("\t7. Edit Salary");
+                Console.WriteLine("\t9. Return To Employee Management Menu");
+
+                userInput = Console.ReadKey();
+
+                switch (userInput.KeyChar)
+                {
+                    case '1':
+                        CreateFullTimeEmployee();
+                        break;
+
+                    case '2':
+                        CreatePartTimeEmployee();
+                        break;
+
+                    case '3':
+                        CreateContractEmployee();
+                        break;
+
+                    case '4':
+                        CreatePartTimeEmployee();
+                        break;
+
+                    case '5':
+                        CreateFullTimeEmployee();
+                        break;
+
+                    case '6':
+                        CreatePartTimeEmployee();
+                        break;
+
+                    case '7':
+                        CreateContractEmployee();
+                        break;
+
+                    case '9':
+                        back = true;
+                        break;
+                }
+            }
+        }
+
+        /**
+        * \brief UI of part time employee creation
+        *
+        * \details <b>Details</b>
+        *
+        * This method will give user the option to enter each element of a part time 
+         * employee. The elements that have been entered will also be displayed. 
+         * User can choose to save the employee data in this menu.
+        * 
+        * Available options:
+        * 
+        * First Name
+         * Last Name
+         * SIN
+         * Date of Birth
+         * Date of Hire
+         * Date of Termination
+         * Hourly Rate
+         * Save and Return to Manage Employee Menu
+        * Return to Manage Employee Menu Without Saving
+        * 
+        * \param None
+        * 
+        * \return Nothing is returned
+        * 
+        */
+        private void CreatePartTimeEmployee()
+        {
+
+        }
+
+        /**
+        * \brief UI of contract employee creation
+        *
+        * \details <b>Details</b>
+        *
+        * This method will give user the option to enter each element of a contract 
+         * employee. The elements that have been entered will also be displayed. 
+         * User can choose to save the employee data in this menu.
+        * 
+        * Available options:
+        * 
+        * Corporation Name
+         * Business Number
+         * Date of Incorporation
+         * Contract Start Date
+         * Contract Stop Date
+         * Fixed Contract Amount
+         * Save and Return to Manage Employee Menu
+        * Return to Manage Employee Menu Without Saving
+        * 
+        * \param None
+        * 
+        * \return Nothing is returned
+        * 
+        */
+        private void CreateContractEmployee()
+        {
+
+        }
+
+        /**
+        * \brief UI of seasonal employee creation
+        *
+        * \details <b>Details</b>
+        *
+        * This method will give user the option to enter each element of a seasonal 
+         * employee. The elements that have been entered will also be displayed. 
+         * User can choose to save the employee data in this menu.
+        * 
+        * Available options:
+        * 
+        * First Name
+         * Last Name
+         * SIN
+         * Season
+         * Piece Pay
+         * Save and Return to Manage Employee Menu
+        * Return to Manage Employee Menu Without Saving
+        * 
+        * \param None
+        * 
+        * \return Nothing is returned
+        * 
+        */
+        private void CreateSeasonalEmployee()
+        {
+
+        }
+
+        /**
+         * \brief UI of enter first name
+         *
+         * \details <b>Details</b>
+         *
+         * This method allows user to enter first name of employee
+         * 
+         * Available Option:
+         * 
+         * 9. Cancel
+         * 
+         * \param None
+         * 
+         * \return Nothing is returned
+         * 
+         */
+        private void EnterFirstName()
+        {
+
+        }
+
+        /**
+         * \brief UI of choosing season for seaonal employee creation
+         *
+         * \details <b>Details</b>
+         *
+         * This method allows user to choose one of the four seaon for 
+         * setting seasonal employee's seasonal attribute.
+         * 
+         * Available options:
+         * 
+         * Spring
+         * Summer
+         * Fall
+         * Winter
+         * 
+         * \param None
+         * 
+         * \return Nothing is returned
+         * 
+         */
+        private void EnterLastName()
+        {
+
+        }
+
+        /**
+         * \brief UI of choosing season for seaonal employee creation
+         *
+         * \details <b>Details</b>
+         *
+         * This method allows user to choose one of the four seaon for 
+         * setting seasonal employee's seasonal attribute.
+         * 
+         * Available options:
+         * 
+         * Spring
+         * Summer
+         * Fall
+         * Winter
+         * 
+         * \param None
+         * 
+         * \return Nothing is returned
+         * 
+         */
+        private void EnterSIN()
+        {
+
+        }
+
+        /**
+         * \brief UI of choosing season for seaonal employee creation
+         *
+         * \details <b>Details</b>
+         *
+         * This method allows user to choose one of the four seaon for 
+         * setting seasonal employee's seasonal attribute.
+         * 
+         * Available options:
+         * 
+         * Spring
+         * Summer
+         * Fall
+         * Winter
+         * 
+         * \param None
+         * 
+         * \return Nothing is returned
+         * 
+         */
+        private void EnterDateOfBirth()
+        {
+
+        }
+
+        /**
+         * \brief UI of choosing season for seaonal employee creation
+         *
+         * \details <b>Details</b>
+         *
+         * This method allows user to choose one of the four seaon for 
+         * setting seasonal employee's seasonal attribute.
+         * 
+         * Available options:
+         * 
+         * Spring
+         * Summer
+         * Fall
+         * Winter
+         * 
+         * \param None
+         * 
+         * \return Nothing is returned
+         * 
+         */
+        private void EnterDateOfHire()
+        {
+
+        }
+
+        /**
+         * \brief UI of choosing season for seaonal employee creation
+         *
+         * \details <b>Details</b>
+         *
+         * This method allows user to choose one of the four seaon for 
+         * setting seasonal employee's seasonal attribute.
+         * 
+         * Available options:
+         * 
+         * Spring
+         * Summer
+         * Fall
+         * Winter
+         * 
+         * \param None
+         * 
+         * \return Nothing is returned
+         * 
+         */
+        private void EnterDateOfTermination()
+        {
+
+        }
+
+        /**
+         * \brief UI of choosing season for seaonal employee creation
+         *
+         * \details <b>Details</b>
+         *
+         * This method allows user to choose one of the four seaon for 
+         * setting seasonal employee's seasonal attribute.
+         * 
+         * Available options:
+         * 
+         * Spring
+         * Summer
+         * Fall
+         * Winter
+         * 
+         * \param None
+         * 
+         * \return Nothing is returned
+         * 
+         */
+        private void EnterSalary()
+        {
+
+        }
+
+        /**
+         * \brief UI of choosing season for seaonal employee creation
+         *
+         * \details <b>Details</b>
+         *
+         * This method allows user to choose one of the four seaon for 
+         * setting seasonal employee's seasonal attribute.
+         * 
+         * Available options:
+         * 
+         * Spring
+         * Summer
+         * Fall
+         * Winter
+         * 
+         * \param None
+         * 
+         * \return Nothing is returned
+         * 
+         */
+        private void EnterHourlyRate()
+        {
+
+        }
+
+        /**
+         * \brief UI of choosing season for seaonal employee creation
+         *
+         * \details <b>Details</b>
+         *
+         * This method allows user to choose one of the four seaon for 
+         * setting seasonal employee's seasonal attribute.
+         * 
+         * Available options:
+         * 
+         * Spring
+         * Summer
+         * Fall
+         * Winter
+         * 
+         * \param None
+         * 
+         * \return Nothing is returned
+         * 
+         */
+        private void EnterContractStartDate()
+        {
+
+        }
+
+        /**
+         * \brief UI of choosing season for seaonal employee creation
+         *
+         * \details <b>Details</b>
+         *
+         * This method allows user to choose one of the four seaon for 
+         * setting seasonal employee's seasonal attribute.
+         * 
+         * Available options:
+         * 
+         * Spring
+         * Summer
+         * Fall
+         * Winter
+         * 
+         * \param None
+         * 
+         * \return Nothing is returned
+         * 
+         */
+        private void EnterContractStopDate()
+        {
+
+        }
+
+        /**
+         * \brief UI of choosing season for seaonal employee creation
+         *
+         * \details <b>Details</b>
+         *
+         * This method allows user to choose one of the four seaon for 
+         * setting seasonal employee's seasonal attribute.
+         * 
+         * Available options:
+         * 
+         * Spring
+         * Summer
+         * Fall
+         * Winter
+         * 
+         * \param None
+         * 
+         * \return Nothing is returned
+         * 
+         */
+        private void EnterFixedContractAmount()
+        {
+
+        }
+
+        /**
+         * \brief UI of choosing season for seaonal employee creation
+         *
+         * \details <b>Details</b>
+         *
+         * This method allows user to choose one of the four seaon for 
+         * setting seasonal employee's seasonal attribute.
+         * 
+         * Available options:
+         * 
+         * Spring
+         * Summer
+         * Fall
+         * Winter
+         * 
+         * \param None
+         * 
+         * \return Nothing is returned
+         * 
+         */
+        private void EnterBusinessNumber()
+        {
+
+        }
+
+        /**
+         * \brief UI of choosing season for seaonal employee creation
+         *
+         * \details <b>Details</b>
+         *
+         * This method allows user to choose one of the four seaon for 
+         * setting seasonal employee's seasonal attribute.
+         * 
+         * Available options:
+         * 
+         * Spring
+         * Summer
+         * Fall
+         * Winter
+         * 
+         * \param None
+         * 
+         * \return Nothing is returned
+         * 
+         */
+        private void EnterDateOfIncorporation()
+        {
+
+        }
+
+        /**
+         * \brief UI of choosing season for seaonal employee creation
+         *
+         * \details <b>Details</b>
+         *
+         * This method allows user to choose one of the four seaon for 
+         * setting seasonal employee's seasonal attribute.
+         * 
+         * Available options:
+         * 
+         * Spring
+         * Summer
+         * Fall
+         * Winter
+         * 
+         * \param None
+         * 
+         * \return Nothing is returned
+         * 
+         */
+        private void EnterPiecePay()
+        {
+
+        }
+
+        /**
+         * \brief UI of choosing season for seaonal employee creation
+         *
+         * \details <b>Details</b>
+         *
+         * This method allows user to choose one of the four seaon for 
+         * setting seasonal employee's seasonal attribute.
+         * 
+         * Available options:
+         * 
+         * Spring
+         * Summer
+         * Fall
+         * Winter
+         * 
+         * \param None
+         * 
+         * \return Nothing is returned
+         * 
+         */
+        private string ChooseSeason()
+        {
+            string season = "";
+
+            return season;
         }
 
         /**
@@ -363,13 +997,94 @@ namespace Presentation
         * 
         * \return string - the employee record of the search result..
         */
-        private string SearchEmployee()
+        private string SearchEmployeeMenu()
         {
             char userInput = '0';
             string employeeRecord = "";
 
             return employeeRecord;
         }
+
+        private void DisplayAllEmployees()
+        {
+
+        }
+
+        
+        private void SearchFirstNameUI()
+        {
+    
+        }
+
+        private void SearchLastNameUI()
+        {
+        
+        }
+
+        private void LoadFromFileUI()
+        {
+
+        }
+
+        private void SaveToFileUI()
+        {
+
+        }
+
+        private void SpecifyEmployeeDetailsUI()
+        {
+
+        }
+
+        private void SpecifyFirstNameUI()
+        {
+
+        }
+
+        private void SpecifyLastNameUI()
+        {
+
+        }
+
+        private void SpecifySINUI()
+        {
+
+        }
+
+        private void SaveEmployeeUI()
+        {
+
+        }
+
+        private void ModifyEmployeeUI()
+        {
+
+        }
+
+        private void DeleteConfirmationUI()
+        {
+
+        }
+
+        private void SaveAndExitProgram()
+        {
+            Console.Clear();
+        }
+
+        private string TakeUserInputOption()
+        {
+            string userInput = "";
+            return userInput;
+        }
+
+        private string TakeUserInputSentence()
+        {
+            string userInput = "";
+            return userInput;
+        }
+
+
+
 
         public static void printErrorMessage(string errorMessage)
         {

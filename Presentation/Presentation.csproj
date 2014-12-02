@@ -38,6 +38,12 @@
     <Compile Include="UIMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AllEmployees\AllEmployees.csproj">
+      <Project>{2f8832ab-3a9b-4fa3-8964-d0ae498ae2ed}</Project>
+      <Name>AllEmployees</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
