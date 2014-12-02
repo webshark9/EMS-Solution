@@ -38,53 +38,40 @@ namespace AllEmployees
         DateTime dateOfBirth;///< used to hold the employees date of birth
 
         /**
-        * \brief Validates the firstName attribute within the Employee class
+        * \brief Validates the first/lastName attribute within the Employee class
         *
         * \details <b>Details</b>
         *
         * This method will take in a string of user input representing the desired
-        * employee first name and check whether or not it is a
-        * valid season. Returns a true or false depending on whether or not the 
+        * employee first/last name and check whether or not it is a
+        * valid name. Returns a true or false depending on whether or not the 
         * attribute is valid.
         * 
-        * \param firstName - string - The employee's first name 
+        * \param firstName - string - The employee's first/last name 
         * given by the user.
+        * 
+        * \param errorMessage - string - The error message container 
+        * which is passed as a reference from the calling method
         * 
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool ValidateFirstName(string firstName)
+        private bool ValidateName(string name, ref string errorMessage)
         {
             bool validateStatus = true;
 
+            for (int i = 0; i < name.Length; i++)
+            {
+                if(!Char.IsLetter(name[i]))
+                {
+                    if(name[i] != '\'' || name[i] != '-')
+                    {
 
+                    }
+                }
+            }
 
-            return validateStatus;
-        }
-
-        /**
-        * \brief Validates the lastName attribute within the Employee class
-        *
-        * \details <b>Details</b>
-        *
-        * This method will take in a string of user input representing the desired
-        * employee last name and check whether or not it is a
-        * valid season. Returns a true or false depending on whether or not the 
-        * attribute is valid.
-        * 
-        * \param lastName - string - The employee's last name 
-        * given by the user.
-        * 
-        * \return bool - Returns true if the attribute is valid.
-        * Returns false if the attribute is not valid.
-        */
-        private bool ValidateLastName(string lastName)
-        {
-            bool validateStatus = true;
-
-
-
-            return validateStatus;
+                return validateStatus;
         }
 
         /**
@@ -94,16 +81,19 @@ namespace AllEmployees
         *
         * This method will take in a string of user input representing the desired
         * employee social insurance number and check whether or not it is a
-        * valid season. Returns a true or false depending on whether or not the 
+        * valid social insurance number. Returns a true or false depending on whether or not the 
         * attribute is valid.
         * 
         * \param socialInsuranceNumber - string - The employee's social insurance
         * number given by the user.
         * 
+        * \param errorMessage - string - The error message container 
+        * which is passed as a reference from the calling method
+        * 
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool ValidateSocialInsuranceNumber(string socialInsuranceNumber)
+        private bool ValidateSocialInsuranceNumber(string socialInsuranceNumber, ref string errorMessage)
         {
             bool validateStatus = true;
 
@@ -125,10 +115,13 @@ namespace AllEmployees
         * \param dateOfBirth - DateTime - The employee's date of birth 
         * given by the user.
         * 
+        * \param errorMessage - string - The error message container 
+        * which is passed as a reference from the calling method
+        * 
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool ValidateDateOfBirth(DateTime dateOfBirth)
+        private bool ValidateDateOfBirth(DateTime dateOfBirth, ref string errorMessage)
         {
             bool validateStatus = true;
 
@@ -151,14 +144,17 @@ namespace AllEmployees
         * \param userInput - string - The desired employee first name given 
         * by the user.
         * 
+        * \param errorMessage - string - The error message container 
+        * which is passed as a reference from the calling method
+        *
         * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
-        public bool SetFirstName(string userInput)
+        public bool SetFirstName(string userInput, ref string errorMessage)
         {
             bool setStatus = false;
             
-            if(ValidateFirstName(userInput))
+            if(ValidateName(userInput, ref errorMessage))
             {
                 setStatus = true;
                 firstName = userInput;
@@ -199,14 +195,17 @@ namespace AllEmployees
         * \param userInput - string - The desired employee last name given 
         * by the user.
         * 
+        * \param errorMessage - string - The error message container 
+        * which is passed as a reference from the calling method
+        * 
         * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
-        public bool SetLastName(string userInput)
+        public bool SetLastName(string userInput, ref string errorMessage)
         {
             bool setStatus = false;
 
-            if(ValidateLastName(userInput))
+            if(ValidateName(userInput, ref errorMessage))
             {
                 setStatus = true;
                 lastName = userInput;
@@ -247,14 +246,17 @@ namespace AllEmployees
         * \param userInput - string - The employee social insurance
         * number given by the user.
         * 
+        * \param errorMessage - string - The error message container 
+        * which is passed as a reference from the calling method
+        * 
         * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
-        public bool SetSocialInsuranceNumber(string userInput)
+        public bool SetSocialInsuranceNumber(string userInput, ref string errorMessage)
         {
             bool setStatus = false;
 
-            if(ValidateSocialInsuranceNumber(userInput))
+            if(ValidateSocialInsuranceNumber(userInput, ref errorMessage))
             {
                 setStatus = true;
                 socialInsuranceNumber = userInput;
@@ -296,17 +298,20 @@ namespace AllEmployees
         * \param userInput - string - The employee's date of bith given 
         * by the user.
         * 
+        * \param errorMessage - string - The error message container 
+        * which is passed as a reference from the calling method
+        * 
         * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
-        public bool SetDateOfBirth(string userInput)
+        public bool SetDateOfBirth(string userInput, ref string errorMessage)
         {
             bool setStatus = false;
             DateTime userInputDateTime;
 
             if (DateTime.TryParse(userInput, out userInputDateTime))
             {
-                if (ValidateDateOfBirth(userInputDateTime))
+                if (ValidateDateOfBirth(userInputDateTime, ref errorMessage))
                 {
                     setStatus = true;
                     dateOfBirth = userInputDateTime;
@@ -314,7 +319,7 @@ namespace AllEmployees
             }
             else
             {
-                UIMenu.printErrorMessage("\"Date Of Birth\" is not formatted correctly\nPlease be sure to use the format\ndd/mm/yyyy     ex.29/08/2012\n\n");
+                //UIMenu.printErrorMessage("\"Date Of Birth\" is not formatted correctly\nPlease be sure to use the format\ndd/mm/yyyy     ex.29/08/2012\n\n");
             }
             return setStatus;
         }

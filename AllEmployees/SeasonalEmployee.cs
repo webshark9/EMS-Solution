@@ -39,10 +39,13 @@ namespace AllEmployees
         * \param season - string - The season the employee will be employed in 
         * given by the user.
         * 
+        * \param errorMessage - string - The error message container 
+        * which is passed as a reference from the calling method
+        * 
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool ValidateSeason(string season)
+        private bool ValidateSeason(string season, ref string errorMessage)
         {
             bool validateStatus = true;
 
@@ -64,10 +67,13 @@ namespace AllEmployees
         * \param piecePay - float - The piece pay the employee will recieve 
         * given by the user.
         * 
+        * \param errorMessage - string - The error message container 
+        * which is passed as a reference from the calling method
+        * 
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool ValidatePiecePay(float piecePay)
+        private bool ValidatePiecePay(float piecePay, ref string errorMessage)
         {
             bool validateStatus = true;
 
@@ -90,14 +96,17 @@ namespace AllEmployees
         * \param userInput - string - The season the employee will be employed in 
         * given by the user.
         * 
+        * \param errorMessage - string - The error message container 
+        * which is passed as a reference from the calling method
+        * 
         * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
-        public bool SetSeason(string userInput)
+        public bool SetSeason(string userInput, ref string errorMessage)
         {
             bool setStatus = false;
 
-            if(ValidateSeason(userInput))
+            if(ValidateSeason(userInput, ref errorMessage))
             {
                 setStatus = true;
                 season = userInput;
@@ -139,17 +148,20 @@ namespace AllEmployees
         * \param userInput - string - The employee salary per job
         *  given by the user.
         * 
+        * \param errorMessage - string - The error message container 
+        * which is passed as a reference from the calling method
+        * 
         * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
-        public bool SetPiecePay(string userInput)
+        public bool SetPiecePay(string userInput, ref string errorMessage)
         {
             bool setStatus = false;
             float userInputFloat = 0;
 
             if (float.TryParse(userInput, out userInputFloat))
             {
-                if (ValidatePiecePay(userInputFloat))
+                if (ValidatePiecePay(userInputFloat, ref errorMessage))
                 {
                     setStatus = true;
                     piecePay = userInputFloat;
@@ -157,7 +169,7 @@ namespace AllEmployees
             }
             else
             {
-                UIMenu.printErrorMessage("\"Piece Pay\" is not formatted correctly\nPlease be sure to use the format\n$\"00.00\"     ex.$56.78\n\n");
+                //UIMenu.printErrorMessage("\"Piece Pay\" is not formatted correctly\nPlease be sure to use the format\n$\"00.00\"     ex.$56.78\n\n");
             }
             return setStatus;
         }

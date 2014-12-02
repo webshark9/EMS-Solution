@@ -40,10 +40,13 @@ namespace AllEmployees
         * \param dateOfHire - DateTime - The date the employee was hired 
         * given by the user.
         * 
+        * \param errorMessage - string - The error message container 
+        * which is passed as a reference from the calling method
+        * 
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool ValidateDateOfHire(DateTime dateOfHire)
+        private bool ValidateDateOfHire(DateTime dateOfHire, ref string errorMessage)
         {
             bool validateStatus = true;
 
@@ -65,10 +68,13 @@ namespace AllEmployees
         * \param dateOfTermination - DateTime - The date the employee was terminated/fired 
         * given by the user.
         * 
+        * \param errorMessage - string - The error message container 
+        * which is passed as a reference from the calling method
+        * 
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool ValidateDateOfTermination(DateTime dateOfTermination)
+        private bool ValidateDateOfTermination(DateTime dateOfTermination, ref string errorMessage)
         {
             bool validateStatus = true;
 
@@ -90,10 +96,13 @@ namespace AllEmployees
         * \param salary - float - The amount of money the employee makes
         * given by the user.
         * 
+        * \param errorMessage - string - The error message container 
+        * which is passed as a reference from the calling method
+        * 
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool ValidateSalary(float salary)
+        private bool ValidateSalary(float salary, ref string errorMessage)
         {
             bool validateStatus = true;
 
@@ -117,17 +126,20 @@ namespace AllEmployees
         * \param userInput - string - The employee's date of hire given 
         * by the user.
         * 
+        * \param errorMessage - string - The error message container 
+        * which is passed as a reference from the calling method
+        * 
         * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
-        public bool SetDateOfHire(string userInput)
+        public bool SetDateOfHire(string userInput, ref string errorMessage)
         {
             bool setStatus = false;
             DateTime userInputDateTime;
 
             if(DateTime.TryParse(userInput, out userInputDateTime))
             {
-                if (ValidateDateOfHire(userInputDateTime))
+                if (ValidateDateOfHire(userInputDateTime, ref errorMessage))
                 {
                     setStatus = true;
                     dateOfHire = userInputDateTime;
@@ -135,7 +147,7 @@ namespace AllEmployees
             }
             else
             {
-                UIMenu.printErrorMessage("\"Date Of Hire\" is not formatted correctly\nPlease be sure to use the format\ndd/mm/yyyy     ex.29/08/2012\n\n");
+                //UIMenu.printErrorMessage("\"Date Of Hire\" is not formatted correctly\nPlease be sure to use the format\ndd/mm/yyyy     ex.29/08/2012\n\n");
             }
 
             return setStatus;
@@ -174,17 +186,20 @@ namespace AllEmployees
         * \param userInput - string - The employee's date of termination given 
         * by the user.
         * 
+        * \param errorMessage - string - The error message container 
+        * which is passed as a reference from the calling method
+        * 
         * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
-        public bool SetDateOfTermination(string userInput)
+        public bool SetDateOfTermination(string userInput, ref string errorMessage)
         {
             bool setStatus = false;
             DateTime userInputDateTime;
 
             if (DateTime.TryParse(userInput, out userInputDateTime))
             {
-                if (ValidateDateOfTermination(userInputDateTime))
+                if (ValidateDateOfTermination(userInputDateTime, ref errorMessage))
                 {
                     setStatus = true;
                     dateOfTermination = userInputDateTime;
@@ -192,7 +207,7 @@ namespace AllEmployees
             }
             else
             {
-                UIMenu.printErrorMessage("\"Date Of Termination\" is not formatted correctly\nPlease be sure to use the format\ndd/mm/yyyy     ex.29/08/2012\n\n");
+                //UIMenu.printErrorMessage("\"Date Of Termination\" is not formatted correctly\nPlease be sure to use the format\ndd/mm/yyyy     ex.29/08/2012\n\n");
             }
 
             return setStatus;
@@ -231,17 +246,20 @@ namespace AllEmployees
         * \param userInput - string - The employee salary
         *  given by the user.
         * 
+        * \param errorMessage - string - The error message container 
+        * which is passed as a reference from the calling method
+        * 
         * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
-        public bool SetSalary(string userInput)
+        public bool SetSalary(string userInput, ref string errorMessage)
         {
             bool setStatus = false;
             float userInputFloat = 0;
 
             if(float.TryParse(userInput, out userInputFloat))
             {
-                if(ValidateSalary(userInputFloat))
+                if(ValidateSalary(userInputFloat, ref errorMessage))
                 {
                     setStatus = true;
                     salary = userInputFloat;
@@ -249,7 +267,7 @@ namespace AllEmployees
             }
             else
             {
-                UIMenu.printErrorMessage("\"Salary\" is not formatted correctly\nPlease be sure to use the format\n$\"00.00\"     ex.$56.78\n\n");
+                //UIMenu.printErrorMessage("\"Salary\" is not formatted correctly\nPlease be sure to use the format\n$\"00.00\"     ex.$56.78\n\n");
             }
 
 

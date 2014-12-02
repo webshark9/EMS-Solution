@@ -40,10 +40,13 @@ namespace AllEmployees
         * \param contractStartDate - DateTime - The employee's contract starting date 
         * given by the user.
         * 
+        * \param errorMessage - string - The error message container 
+        * which is passed as a reference from the calling method
+        * 
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool ValidateContractStartDate(DateTime contractStartDate)
+        private bool ValidateContractStartDate(DateTime contractStartDate, ref string errorMessage)
         {
             bool validateStatus = true;
 
@@ -65,10 +68,13 @@ namespace AllEmployees
         * \param contractStopDate - DateTime - The employee's contract ending date 
         * given by the user.
         * 
+        * \param errorMessage - string - The error message container 
+        * which is passed as a reference from the calling method
+        * 
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool ValidateContractStopDate(DateTime contractStopDate)
+        private bool ValidateContractStopDate(DateTime contractStopDate, ref string errorMessage)
         {
             bool validateStatus = true;
 
@@ -90,10 +96,13 @@ namespace AllEmployees
         * \param fixedContractAmount - float - The amount of money the employee will make
         * for the given contract given by the user.
         * 
+        * \param errorMessage - string - The error message container 
+        * which is passed as a reference from the calling method
+        * 
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool ValidatefixedContractAmount(float fixedContractAmount)
+        private bool ValidatefixedContractAmount(float fixedContractAmount, ref string errorMessage)
         {
             bool validateStatus = false;
 
@@ -117,17 +126,20 @@ namespace AllEmployees
         * \param userInput - string - The employee's contract start date given 
         * by the user.
         * 
+        * \param errorMessage - string - The error message container 
+        * which is passed as a reference from the calling method
+        * 
         * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
-        public bool SetContractStartDate(string userInput)
+        public bool SetContractStartDate(string userInput, ref string errorMessage)
         {
             bool setStatus = false;
             DateTime userInputDateTime;
 
             if(DateTime.TryParse(userInput, out userInputDateTime))
             {
-                if(ValidateContractStartDate(userInputDateTime))
+                if(ValidateContractStartDate(userInputDateTime, ref errorMessage))
                 {
                     setStatus = true;
                     contractStartDate = userInputDateTime;
@@ -135,7 +147,7 @@ namespace AllEmployees
             }
             else
             {
-                UIMenu.printErrorMessage("\"Contract Start Date\" is not formatted correctly\nPlease be sure to use the format\ndd/mm/yyyy     ex.29/08/2012\n\n");
+                //UIMenu.printErrorMessage("\"Contract Start Date\" is not formatted correctly\nPlease be sure to use the format\ndd/mm/yyyy     ex.29/08/2012\n\n");
             }
 
 
@@ -175,17 +187,20 @@ namespace AllEmployees
         * \param userInput - string - The employee's contract stop date given 
         * by the user.
         * 
+        * \param errorMessage - string - The error message container 
+        * which is passed as a reference from the calling method
+        * 
         * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
-        public bool SetContractStopDate(string userInput)
+        public bool SetContractStopDate(string userInput, ref string errorMessage)
         {
             bool setStatus = false;
             DateTime userInputDateTime;
 
             if(DateTime.TryParse(userInput, out userInputDateTime))
             {
-                if(ValidateContractStopDate(userInputDateTime))
+                if(ValidateContractStopDate(userInputDateTime, ref errorMessage))
                 {
                     setStatus = true;
                     contractStopDate = userInputDateTime;
@@ -193,7 +208,7 @@ namespace AllEmployees
             }
             else
             {
-                UIMenu.printErrorMessage("\"Contract Stop Date\" is not formatted correctly\nPlease be sure to use the format\ndd/mm/yyyy     ex.29/08/2012\n\n");
+                //UIMenu.printErrorMessage("\"Contract Stop Date\" is not formatted correctly\nPlease be sure to use the format\ndd/mm/yyyy     ex.29/08/2012\n\n");
             }
 
             return setStatus;
@@ -232,17 +247,20 @@ namespace AllEmployees
         * \param userInput - string - The employee contract pay amount
         *  given by the user.
         * 
+        * \param errorMessage - string - The error message container 
+        * which is passed as a reference from the calling method
+        * 
         * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
-        public bool SetFixedContractAmount(string userInput)
+        public bool SetFixedContractAmount(string userInput, ref string errorMessage)
         {
             bool setStatus = false;
             float userInputFloat = 0;
 
             if(float.TryParse(userInput, out userInputFloat))
             {
-                if(ValidatefixedContractAmount(userInputFloat))
+                if(ValidatefixedContractAmount(userInputFloat, ref errorMessage))
                 {
                     setStatus = true;
                     fixedContractAmount = userInputFloat;
@@ -250,7 +268,7 @@ namespace AllEmployees
             }
             else 
             {
-                UIMenu.printErrorMessage("\"Fixed Contract Amount\" is not formatted correctly\nPlease be sure to use the format\n$\"00.00\"     ex.$56.78\n\n");
+                //UIMenu.printErrorMessage("\"Fixed Contract Amount\" is not formatted correctly\nPlease be sure to use the format\n$\"00.00\"     ex.$56.78\n\n");
             }
 
             return setStatus;
