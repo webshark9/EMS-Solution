@@ -45,7 +45,7 @@ namespace AllEmployees
         */
         private bool ValidateDateOfHire(DateTime dateOfHire)
         {
-            bool validateStatus = false;
+            bool validateStatus = true;
 
 
 
@@ -70,7 +70,7 @@ namespace AllEmployees
         */
         private bool ValidateDateOfTermination(DateTime dateOfTermination)
         {
-            bool validateStatus = false;
+            bool validateStatus = true;
 
 
 
@@ -95,7 +95,7 @@ namespace AllEmployees
         */
         private bool ValidateHourlyRate(float hourlyRate)
         {
-            bool validateStatus = false;
+            bool validateStatus = true;
 
 
 

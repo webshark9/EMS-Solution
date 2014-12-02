@@ -44,7 +44,7 @@ namespace AllEmployees
         */
         private bool ValidateSeason(string season)
         {
-            bool validateStatus = false;
+            bool validateStatus = true;
 
 
             
@@ -69,7 +69,7 @@ namespace AllEmployees
         */
         private bool ValidatePiecePay(float piecePay)
         {
-            bool validateStatus = false;
+            bool validateStatus = true;
 
 
 

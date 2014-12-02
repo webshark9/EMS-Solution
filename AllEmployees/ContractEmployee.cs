@@ -45,7 +45,7 @@ namespace AllEmployees
         */
         private bool ValidateContractStartDate(DateTime contractStartDate)
         {
-            bool validateStatus = false;
+            bool validateStatus = true;
 
 
 
@@ -70,7 +70,7 @@ namespace AllEmployees
         */
         private bool ValidateContractStopDate(DateTime contractStopDate)
         {
-            bool validateStatus = false;
+            bool validateStatus = true;
 
 
 

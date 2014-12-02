@@ -55,7 +55,7 @@ namespace AllEmployees
         */
         private bool ValidateFirstName(string firstName)
         {
-            bool validateStatus = false;
+            bool validateStatus = true;
 
 
 
@@ -80,7 +80,7 @@ namespace AllEmployees
         */
         private bool ValidateLastName(string lastName)
         {
-            bool validateStatus = false;
+            bool validateStatus = true;
 
 
 
@@ -105,7 +105,7 @@ namespace AllEmployees
         */
         private bool ValidateSocialInsuranceNumber(string socialInsuranceNumber)
         {
-            bool validateStatus = false;
+            bool validateStatus = true;
 
 
 
@@ -130,7 +130,7 @@ namespace AllEmployees
         */
         private bool ValidateDateOfBirth(DateTime dateOfBirth)
         {
-            bool validateStatus = false;
+            bool validateStatus = true;
 
 
 
