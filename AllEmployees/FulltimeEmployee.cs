@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Presentation;
 
 namespace AllEmployees
 {
@@ -49,13 +48,12 @@ namespace AllEmployees
         private bool ValidateDateOfHire(DateTime dateOfHire, ref string errorMessage)
         {
             bool validateStatus = true;
-            int ageRequirement = 16;
             errorMessage = "";
 
-            if ((DateTime.Today.Year - dateOfHire.Year) < ageRequirement)
+            if (dateOfHire > DateTime.Today)
             {
                 validateStatus = false;
-                errorMessage = "Please Be Sure The Employee Is Older Than 16 Years Old\n";
+                errorMessage = "Please Be Sure The Date Of Hire Does Not Exceed The Present Day\n";
             }
 
             return validateStatus;
@@ -83,8 +81,13 @@ namespace AllEmployees
         private bool ValidateDateOfTermination(DateTime dateOfTermination, ref string errorMessage)
         {
             bool validateStatus = true;
+            errorMessage = "";
 
-
+            if (dateOfTermination > DateTime.Today || dateOfTermination < dateOfHire)
+            {
+                validateStatus = false;
+                errorMessage = "Please Be Sure The Date Of Termination Does Not Exceed The Present Day\nOr Precede The Date Of Hire\n";
+            }
 
             return validateStatus;
         }

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Presentation;
 
 namespace AllEmployees
 {
@@ -49,8 +48,13 @@ namespace AllEmployees
         private bool ValidateContractStartDate(DateTime contractStartDate, ref string errorMessage)
         {
             bool validateStatus = true;
+            errorMessage = "";
 
-
+            if (contractStartDate > DateTime.Today)
+            {
+                validateStatus = false;
+                errorMessage = "Please Be Sure The Contract Start Date Does Not Exceed The Present Day\n";
+            }
 
             return validateStatus;
         }
@@ -77,8 +81,13 @@ namespace AllEmployees
         private bool ValidateContractStopDate(DateTime contractStopDate, ref string errorMessage)
         {
             bool validateStatus = true;
+            errorMessage = "";
 
-
+            if (contractStopDate > DateTime.Today || contractStopDate < contractStartDate)
+            {
+                validateStatus = false;
+                errorMessage = "Please Be Sure The Contract Stop Date Does Not Exceed The Present Day\nOr Precede The Contract Start Date\n";
+            }
 
             return validateStatus;
         }

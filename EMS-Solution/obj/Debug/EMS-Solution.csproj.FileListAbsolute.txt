@@ -23,3 +23,8 @@ C:\Users\Willi\Documents\GitHub\EMS-Solution\EMS-Solution\bin\Debug\Presentation
 C:\Users\Matthew\Desktop\EMS-Solution\EMS-Solution\bin\Debug\EMS-Solution.exe.config
 C:\Users\Matthew\Desktop\EMS-Solution\EMS-Solution\obj\Debug\EMS-Solution.exe
 C:\Users\Matthew\Desktop\EMS-Solution\EMS-Solution\obj\Debug\EMS-Solution.pdb
+C:\Users\Matthew\Desktop\EMS-Solution\EMS-Solution\bin\Debug\EMS-Solution.exe
+C:\Users\Matthew\Desktop\EMS-Solution\EMS-Solution\bin\Debug\EMS-Solution.pdb
+C:\Users\Matthew\Desktop\EMS-Solution\EMS-Solution\bin\Debug\Presentation.dll
+C:\Users\Matthew\Desktop\EMS-Solution\EMS-Solution\bin\Debug\Presentation.pdb
+C:\Users\Matthew\Desktop\EMS-Solution\EMS-Solution\obj\Debug\EMS-Solution.csprojResolveAssemblyReference.cache
