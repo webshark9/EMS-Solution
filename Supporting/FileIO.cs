@@ -69,17 +69,23 @@ namespace Supporting
             while (dbReader.Peek() >= 0) 
             {          
                 tmp = ReadRecord();
-                Console.WriteLine(tmp);
-                stringsRead.Add(tmp);
+                stringsRead.Add(tmp);// add the string read from the file to the List container
             }
 
             // validate records and remove ones that are invalid
 
-            validRecords = new string[stringsRead.Count];
+            validRecords = new string[stringsRead.Count];// want 'validRecords' to hold all of the valid records read, which is what 'stringsRead' know holds
 
+
+            /* Maybe we could pass the container object as a parameter and for each string call
+             * a method that attempts to add the employee; if it fails the entry was invalid
+             */
+
+
+            // add the valid records in 'stringsRead' to 'validRecords'
             foreach(string record in stringsRead)
             {
-                validRecords[counter] = record;
+                validRecords[counter++] = record;
             }
 
             return validRecords;
