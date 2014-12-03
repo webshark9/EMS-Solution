@@ -49,8 +49,14 @@ namespace AllEmployees
         private bool ValidateDateOfHire(DateTime dateOfHire, ref string errorMessage)
         {
             bool validateStatus = true;
+            int ageRequirement = 16;
+            errorMessage = "";
 
-
+            if ((DateTime.Today.Year - dateOfHire.Year) < ageRequirement)
+            {
+                validateStatus = false;
+                errorMessage = "Please Be Sure The Employee Is Older Than 16 Years Old\n";
+            }
 
             return validateStatus;
         }
@@ -207,7 +213,7 @@ namespace AllEmployees
             }
             else
             {
-                //UIMenu.printErrorMessage("\"Date Of Termination\" is not formatted correctly\nPlease be sure to use the format\ndd/mm/yyyy     ex.29/08/2012\n\n");
+                errorMessage = userInput + " Is Not A Valid Format Fot A Date.\n\nPlease Enter Dates In The Following Format\nyyyy-mm-dd     ex. 2012-08-29\n";
             }
 
             return setStatus;
@@ -267,7 +273,7 @@ namespace AllEmployees
             }
             else
             {
-                //UIMenu.printErrorMessage("\"Salary\" is not formatted correctly\nPlease be sure to use the format\n$\"00.00\"     ex.$56.78\n\n");
+                errorMessage = userInput + " Is Not A Valid Format Fot A Date.\n\nPlease Enter Dates In The Following Format\nyyyy-mm-dd     ex. 2012-08-29\n";
             }
 
 

@@ -59,19 +59,30 @@ namespace AllEmployees
         private bool ValidateName(string name, ref string errorMessage)
         {
             bool validateStatus = true;
+            errorMessage = "Invalid Characters Found:\n";
 
             for (int i = 0; i < name.Length; i++)
             {
                 if(!Char.IsLetter(name[i]))
                 {
-                    if(name[i] != '\'' || name[i] != '-')
+                    if(name[i] != '\'' && name[i] != '-')
                     {
-
+                        errorMessage += name[i] + " ";
+                        validateStatus = false;
                     }
+                }
+
+                if(validateStatus == false)
+                {
+                    errorMessage += "\n\nPlease Be Sure To Only Enter:\nA-Z\na-z\n-\n'";
+                }
+                else
+                {
+                    errorMessage = "";
                 }
             }
 
-                return validateStatus;
+            return validateStatus;
         }
 
         /**
@@ -124,8 +135,14 @@ namespace AllEmployees
         private bool ValidateDateOfBirth(DateTime dateOfBirth, ref string errorMessage)
         {
             bool validateStatus = true;
+            int ageRequirement = 16;
+            errorMessage = "";
 
-
+            if((DateTime.Today.Year - dateOfBirth.Year) < ageRequirement)
+            {
+                validateStatus = false;
+                errorMessage = "Please Be Sure The Employee Is Older Than 16 Years Old\n";
+            }
 
             return validateStatus;
         }
@@ -308,6 +325,7 @@ namespace AllEmployees
         {
             bool setStatus = false;
             DateTime userInputDateTime;
+            errorMessage = "";
 
             if (DateTime.TryParse(userInput, out userInputDateTime))
             {
@@ -319,7 +337,7 @@ namespace AllEmployees
             }
             else
             {
-                //UIMenu.printErrorMessage("\"Date Of Birth\" is not formatted correctly\nPlease be sure to use the format\ndd/mm/yyyy     ex.29/08/2012\n\n");
+                errorMessage = userInput + " Is Not A Valid Format Fot A Date.\n\nPlease Enter Dates In The Following Format\nyyyy-mm-dd     ex. 2012-08-29\n";
             }
             return setStatus;
         }

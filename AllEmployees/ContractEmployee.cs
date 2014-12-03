@@ -147,7 +147,7 @@ namespace AllEmployees
             }
             else
             {
-                //UIMenu.printErrorMessage("\"Contract Start Date\" is not formatted correctly\nPlease be sure to use the format\ndd/mm/yyyy     ex.29/08/2012\n\n");
+                errorMessage = userInput + " Is Not A Valid Format Fot A Date.\n\nPlease Enter Dates In The Following Format\nyyyy-mm-dd     ex. 2012-08-29\n";
             }
 
 
@@ -208,7 +208,7 @@ namespace AllEmployees
             }
             else
             {
-                //UIMenu.printErrorMessage("\"Contract Stop Date\" is not formatted correctly\nPlease be sure to use the format\ndd/mm/yyyy     ex.29/08/2012\n\n");
+                errorMessage = userInput + " Is Not A Valid Format Fot A Date.\n\nPlease Enter Dates In The Following Format\nyyyy-mm-dd     ex. 2012-08-29\n";
             }
 
             return setStatus;
