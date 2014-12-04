@@ -12,3 +12,4 @@ C:\Users\Matthew\Desktop\EMS-Solution\Supporting\obj\Debug\Supporting.dll
 C:\Users\Matthew\Desktop\EMS-Solution\Supporting\obj\Debug\Supporting.pdb
 C:\Users\Matthew\Desktop\EMS-Solution\Supporting\bin\Debug\Supporting.dll
 C:\Users\Matthew\Desktop\EMS-Solution\Supporting\bin\Debug\Supporting.pdb
+C:\Users\Matthew\Desktop\EMS-Solution\Supporting\obj\Debug\Supporting.csprojResolveAssemblyReference.cache

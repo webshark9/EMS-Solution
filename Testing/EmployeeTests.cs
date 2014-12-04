@@ -55,7 +55,7 @@ namespace Testing
         [TestMethod]
         public void Valid_SIN_Test_One()
         {
-            string testInput = "768942161";
+            string testInput = "333333334";
             string unusedString = "";
             Employee employeeObj = new Employee();
             bool expected = true;
@@ -78,7 +78,7 @@ namespace Testing
         [TestMethod]
         public void Valid_SIN_Test_Two()
         {
-            string testInput = "459017364";
+            string testInput = "534302922";
             string unusedString = "";
             Employee employeeObj = new Employee();
             bool expected = true;

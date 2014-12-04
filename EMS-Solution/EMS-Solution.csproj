@@ -49,6 +49,10 @@
     <None Include="DOxygenMainPage.dox" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AllEmployees\AllEmployees.csproj">
+      <Project>{2f8832ab-3a9b-4fa3-8964-d0ae498ae2ed}</Project>
+      <Name>AllEmployees</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Presentation\Presentation.csproj">
       <Project>{ab26da6a-41d0-4301-9d75-e1ad614fbcdb}</Project>
       <Name>Presentation</Name>

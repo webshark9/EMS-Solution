@@ -101,40 +101,70 @@ namespace Supporting
         public static bool ValidateSocialInsuranceNumber(string socialInsuranceNumber, ref string errorMessage)
         {
             bool validateStatus = true;
+            string sinValNumTwoStr = "";
+            int checkSum = 0;
             int sinNumLength = 9;
             int[] sinNumInt = new int[9];
             int sinValNumOne = 0;
             int sinValNumTwo = 0;
+            int roundedUpInt = 0;
             errorMessage = "Invalid Characters Found:\n";
 
             if(socialInsuranceNumber.Length == sinNumLength)
             {
-                for(int i = 0; i > socialInsuranceNumber.Length; i++)
+                for(int i = 0; i < socialInsuranceNumber.Length; i++)
                 {
-                    if (!Char.IsLetter(socialInsuranceNumber[i]))
+                    if (!Char.IsDigit(socialInsuranceNumber[i]))
                     {
                         errorMessage += socialInsuranceNumber[i] + " ";
                         validateStatus = false;
                     }
                     else
                     {
-                        sinNumInt[i] = Convert.ToInt32(socialInsuranceNumber[i]);
+                        sinNumInt[i] = (Convert.ToInt32(socialInsuranceNumber[i]) - 48);
                     }
                 }
 
                 if(validateStatus)
                 {
-                    for(int i = 0; i <= 6;)
+                    //add up all the numbers in the odd placeholders
+                    for(int i = 0; i <= 6; i++)
                     {
                         sinValNumOne += sinNumInt[i];
 
-                        i += 2;//need to add up all the numbers in the odd placeholders
+                        i++;
                     }
 
-                    for(int i = 1; i <= 7;)
+                    //add up all the numbers in the even placeholders
+                    for(int i = 1; i <= 7; i++)
                     {
-                        
+                        sinValNumTwoStr += Convert.ToString((sinNumInt[i] * 2));
+                        i++;
                     }
+
+                    for(int i = 0; i < sinValNumTwoStr.Length; i++)
+                    {
+                        sinValNumTwo += (Convert.ToInt32(sinValNumTwoStr[i]) - 48);
+                    }
+
+                    sinValNumOne += sinValNumTwo;
+                    roundedUpInt = sinValNumOne;
+
+                    while ((roundedUpInt % 10) != 0)
+                    {
+                        roundedUpInt++;
+                    }
+
+                    checkSum = (Convert.ToInt32(socialInsuranceNumber[8]) - 48);
+                    if(checkSum != (roundedUpInt - sinValNumOne))
+                    {
+                        validateStatus = false;
+                        errorMessage = "Invalid SIN. Please Be Sure To Enter A Valid SIN.";
+                    }
+                }
+                else
+                {
+                    errorMessage += "\n\nPlease Be Sure To Only Enter:\n0-9";
                 }
             }
             else
@@ -143,11 +173,7 @@ namespace Supporting
                 validateStatus = false;
             }
 
-            if (validateStatus == false)
-            {
-                errorMessage += "\n\nPlease Be Sure To Only Enter:\n0-9";
-            }
-            else
+            if (validateStatus)
             {
                 errorMessage = "";
             }
@@ -213,7 +239,7 @@ namespace Supporting
             bool validateStatus = true;
             errorMessage = "";
 
-            if (dateOfHire > DateTime.Today)
+            if (dateOfHire > DateTime.Today)//////////////////////////////////fix
             {
                 validateStatus = false;
                 errorMessage = "Please Be Sure The Date Of Hire Does Not Exceed The Present Day\n";
@@ -277,8 +303,13 @@ namespace Supporting
         public static bool ValidateSalary(float salary, ref string errorMessage)
         {
             bool validateStatus = true;
+            float salaryMinimum = 0;
 
-
+            if(salary < salaryMinimum)
+            {
+                validateStatus = false;
+                errorMessage = "Please Be Sure To Enter A Non-Negative Salary.\n";
+            }
 
             return validateStatus;
         }
@@ -371,8 +402,13 @@ namespace Supporting
         public static bool ValidatefixedContractAmount(float fixedContractAmount, ref string errorMessage)
         {
             bool validateStatus = false;
+            float amountMinimum = 0;
 
-
+            if (fixedContractAmount < amountMinimum)
+            {
+                validateStatus = false;
+                errorMessage = "Please Be Sure To Enter A Non-Negative Amount.\n";
+            }
 
             return validateStatus;
         }
@@ -399,8 +435,13 @@ namespace Supporting
         public static bool ValidateHourlyRate(float hourlyRate, ref string errorMessage)
         {
             bool validateStatus = true;
+            float rateMinimum = 0;
 
-
+            if (hourlyRate < rateMinimum)
+            {
+                validateStatus = false;
+                errorMessage = "Please Be Sure To Enter A Non-Negative Rate.\n";
+            }
 
             return validateStatus;
         }
@@ -427,8 +468,13 @@ namespace Supporting
         public static bool ValidateSeason(string season, ref string errorMessage)
         {
             bool validateStatus = true;
+            season.ToLower();
 
-
+            if(season != "summer" && season != "fall" && season != "winter" && season != "spring")
+            {
+                validateStatus = false;
+                errorMessage = "Please Enter A Valid Season.\n";
+            }
 
             return validateStatus;
         }
@@ -455,8 +501,13 @@ namespace Supporting
         public static bool ValidatePiecePay(float piecePay, ref string errorMessage)
         {
             bool validateStatus = true;
+            float payMinimum = 0;
 
-
+            if (piecePay < payMinimum)
+            {
+                validateStatus = false;
+                errorMessage = "Please Be Sure To Enter A Non-Negative Pay Amount.\n";
+            }
 
             return validateStatus;
         }
