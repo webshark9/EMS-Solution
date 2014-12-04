@@ -1,9 +1,19 @@
-﻿
+﻿/// \namespace AllEmployees
+/// 
+/// \brief Contains the following classes: Employee, ContractEmployee, FulltimeEmployee, ParttimeEmployee, and SeasonalEmployee
+/// 
+/// File: Employee.cs, ContractEmployee.cs, FulltimeEmployee.cs, ParttimeEmployee.cs, and SeasonalEmployee.cs \n
+/// Project: EMS Term Project \n
+/// First Version: Nov.13/2014 \n
+/// 
+/// \authors Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Supporting;
 
 namespace AllEmployees
 {
@@ -25,61 +35,7 @@ namespace AllEmployees
         string season;///< used to hold the season the employee is working or did work
         float piecePay;///< used to hold the amount the employee is paid for a piece of work
 
-        /**
-        * \brief Validates the season attribute within the SeasonalEmployee class
-        *
-        * \details <b>Details</b>
-        *
-        * This method will take in a string of user input representing the desired
-        * season the employee will be working and check whether or not it is a
-        * valid season. Returns a true or false depending on whether or not the 
-        * attribute is valid.
-        * 
-        * \param season - string - The season the employee will be employed in 
-        * given by the user.
-        * 
-        * \param errorMessage - string - The error message container 
-        * which is passed as a reference from the calling method
-        * 
-        * \return bool - Returns true if the attribute is valid.
-        * Returns false if the attribute is not valid.
-        */
-        private bool ValidateSeason(string season, ref string errorMessage)
-        {
-            bool validateStatus = true;
-
-
-            
-            return validateStatus;
-        }
-
-        /**
-        * \brief Validates the piecePay attribute within the SeasonalEmployee class
-        *
-        * \details <b>Details</b>
-        *
-        * This method will take in a floating integer representing the desired
-        * piece pay the employee will receive and check whether or not it is a
-        * valid entry. Returns a true or false depending on whether or not the 
-        * attribute is valid.
-        * 
-        * \param piecePay - float - The piece pay the employee will recieve 
-        * given by the user.
-        * 
-        * \param errorMessage - string - The error message container 
-        * which is passed as a reference from the calling method
-        * 
-        * \return bool - Returns true if the attribute is valid.
-        * Returns false if the attribute is not valid.
-        */
-        private bool ValidatePiecePay(float piecePay, ref string errorMessage)
-        {
-            bool validateStatus = true;
-
-
-
-            return validateStatus;
-        }
+        
 
         /**
         * \brief Sets the season attribute within the SeasonalEmployee class
@@ -105,7 +61,7 @@ namespace AllEmployees
         {
             bool setStatus = false;
 
-            if(ValidateSeason(userInput, ref errorMessage))
+            if (Validation.ValidateSeason(userInput, ref errorMessage))
             {
                 setStatus = true;
                 season = userInput;
@@ -160,7 +116,7 @@ namespace AllEmployees
 
             if (float.TryParse(userInput, out userInputFloat))
             {
-                if (ValidatePiecePay(userInputFloat, ref errorMessage))
+                if (Validation.ValidatePiecePay(userInputFloat, ref errorMessage))
                 {
                     setStatus = true;
                     piecePay = userInputFloat;

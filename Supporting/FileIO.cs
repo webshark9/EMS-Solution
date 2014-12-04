@@ -1,8 +1,8 @@
 ﻿/// \namespace Supporting
 /// 
-/// \brief Contains the FileIO class as well as the Logging class
+/// \brief Contains the FileIO class, Logging class, and the Validation class
 /// 
-/// File: FileIO.cs and Logging.cs \n
+/// File: FileIO.cs, Logging.cs, and Validation.cs \n
 /// Project: EMS Term Project \n
 /// First Version: Nov.17/2014 \n
 /// 

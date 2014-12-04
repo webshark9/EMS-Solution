@@ -1,9 +1,19 @@
-﻿
+﻿/// \namespace AllEmployees
+/// 
+/// \brief Contains the following classes: Employee, ContractEmployee, FulltimeEmployee, ParttimeEmployee, and SeasonalEmployee
+/// 
+/// File: Employee.cs, ContractEmployee.cs, FulltimeEmployee.cs, ParttimeEmployee.cs, and SeasonalEmployee.cs \n
+/// Project: EMS Term Project \n
+/// First Version: Nov.13/2014 \n
+/// 
+/// \authors Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Supporting;
 
 namespace AllEmployees
 {
@@ -26,99 +36,7 @@ namespace AllEmployees
         DateTime contractStopDate;///< used to hold the date the contract ended
         float fixedContractAmount;///< used to hold the contract amount
 
-        /**
-        * \brief Sets the contractStartDate attribute within the ContractEmployee class
-        *
-        * \details <b>Details</b>
-        *
-        * This method will take in a DateTime variable representing the 
-        * employee's contract starting date and check whether or not it is a
-        * valid entry. Returns a true or false depending on whether or not the 
-        * attribute is valid.
-        * 
-        * \param contractStartDate - DateTime - The employee's contract starting date 
-        * given by the user.
-        * 
-        * \param errorMessage - string - The error message container 
-        * which is passed as a reference from the calling method
-        * 
-        * \return bool - Returns true if the attribute is valid.
-        * Returns false if the attribute is not valid.
-        */
-        private bool ValidateContractStartDate(DateTime contractStartDate, ref string errorMessage)
-        {
-            bool validateStatus = true;
-            errorMessage = "";
-
-            if (contractStartDate > DateTime.Today)
-            {
-                validateStatus = false;
-                errorMessage = "Please Be Sure The Contract Start Date Does Not Exceed The Present Day\n";
-            }
-
-            return validateStatus;
-        }
-
-        /**
-        * \brief Sets the contractStopDate attribute within the ContractEmployee class
-        *
-        * \details <b>Details</b>
-        *
-        * This method will take in a DateTime variable representing the 
-        * employee's contract ending date and check whether or not it is a
-        * valid entry. Returns a true or false depending on whether or not the 
-        * attribute is valid.
-        * 
-        * \param contractStopDate - DateTime - The employee's contract ending date 
-        * given by the user.
-        * 
-        * \param errorMessage - string - The error message container 
-        * which is passed as a reference from the calling method
-        * 
-        * \return bool - Returns true if the attribute is valid.
-        * Returns false if the attribute is not valid.
-        */
-        private bool ValidateContractStopDate(DateTime contractStopDate, ref string errorMessage)
-        {
-            bool validateStatus = true;
-            errorMessage = "";
-
-            if (contractStopDate > DateTime.Today || contractStopDate < contractStartDate)
-            {
-                validateStatus = false;
-                errorMessage = "Please Be Sure The Contract Stop Date Does Not Exceed The Present Day\nOr Precede The Contract Start Date\n";
-            }
-
-            return validateStatus;
-        }
-
-        /**
-        * \brief Sets the salary fixedContractAmount within the ContractEmployee class
-        *
-        * \details <b>Details</b>
-        *
-        * This method will take in a floating integer representing the 
-        * employee's contract wage and check whether or not it is a
-        * valid entry. Returns a true or false depending on whether or not the 
-        * attribute is valid.
-        * 
-        * \param fixedContractAmount - float - The amount of money the employee will make
-        * for the given contract given by the user.
-        * 
-        * \param errorMessage - string - The error message container 
-        * which is passed as a reference from the calling method
-        * 
-        * \return bool - Returns true if the attribute is valid.
-        * Returns false if the attribute is not valid.
-        */
-        private bool ValidatefixedContractAmount(float fixedContractAmount, ref string errorMessage)
-        {
-            bool validateStatus = false;
-
-
-
-            return validateStatus;
-        }
+        
 
         /**
         * \brief Sets the <i>contractStartDate</i> attribute within the ContractEmployee class
@@ -148,7 +66,7 @@ namespace AllEmployees
 
             if(DateTime.TryParse(userInput, out userInputDateTime))
             {
-                if(ValidateContractStartDate(userInputDateTime, ref errorMessage))
+                if (Validation.ValidateContractStartDate(userInputDateTime, ref errorMessage))
                 {
                     setStatus = true;
                     contractStartDate = userInputDateTime;
@@ -209,7 +127,7 @@ namespace AllEmployees
 
             if(DateTime.TryParse(userInput, out userInputDateTime))
             {
-                if(ValidateContractStopDate(userInputDateTime, ref errorMessage))
+                if (Validation.ValidateContractStopDate(userInputDateTime, ref errorMessage))
                 {
                     setStatus = true;
                     contractStopDate = userInputDateTime;
@@ -269,7 +187,7 @@ namespace AllEmployees
 
             if(float.TryParse(userInput, out userInputFloat))
             {
-                if(ValidatefixedContractAmount(userInputFloat, ref errorMessage))
+                if (Validation.ValidatefixedContractAmount(userInputFloat, ref errorMessage))
                 {
                     setStatus = true;
                     fixedContractAmount = userInputFloat;

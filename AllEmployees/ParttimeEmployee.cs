@@ -1,9 +1,19 @@
-﻿
+﻿/// \namespace AllEmployees
+/// 
+/// \brief Contains the following classes: Employee, ContractEmployee, FulltimeEmployee, ParttimeEmployee, and SeasonalEmployee
+/// 
+/// File: Employee.cs, ContractEmployee.cs, FulltimeEmployee.cs, ParttimeEmployee.cs, and SeasonalEmployee.cs \n
+/// Project: EMS Term Project \n
+/// First Version: Nov.13/2014 \n
+/// 
+/// \authors Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Supporting;
 
 namespace AllEmployees
 {
@@ -26,89 +36,7 @@ namespace AllEmployees
         DateTime dateOfTermination;///< used to hold the date the employee stopped working at the company
         float hourlyRate;///< used to hold the hourly pay for the employee
 
-        /**
-        * \brief Sets the dateOfHire attribute within the ParttimeEmployee class
-        *
-        * \details <b>Details</b>
-        *
-        * This method will take in a DateTime variable representing the 
-        * employee's date of hire and check whether or not it is a
-        * valid entry. Returns a true or false depending on whether or not the 
-        * attribute is valid.
-        * 
-        * \param dateOfHire - DateTime - The date the employee was hired 
-        * given by the user.
-        * 
-        * \param errorMessage - string - The error message container 
-        * which is passed as a reference from the calling method
-        * 
-        * \return bool - Returns true if the attribute is valid.
-        * Returns false if the attribute is not valid.
-        */
-        private bool ValidateDateOfHire(DateTime dateOfHire, ref string errorMessage)
-        {
-            bool validateStatus = true;
-
-
-
-            return validateStatus;
-        }
-
-        /**
-        * \brief Sets the dateOfTermination attribute within the ParttimeEmployee class
-        *
-        * \details <b>Details</b>
-        *
-        * This method will take in a DateTime variable representing the 
-        * employee's date of termination and check whether or not it is a
-        * valid entry. Returns a true or false depending on whether or not the 
-        * attribute is valid.
-        * 
-        * \param dateOfTermination - DateTime - The date the employee was terminated/fired 
-        * given by the user.
-        * 
-        * \param errorMessage - string - The error message container 
-        * which is passed as a reference from the calling method
-        * 
-        * \return bool - Returns true if the attribute is valid.
-        * Returns false if the attribute is not valid.
-        */
-        private bool ValidateDateOfTermination(DateTime dateOfTermination, ref string errorMessage)
-        {
-            bool validateStatus = true;
-
-
-
-            return validateStatus;
-        }
-
-        /**
-        * \brief Sets the hourlyRate attribute within the ParttimeEmployee class
-        *
-        * \details <b>Details</b>
-        *
-        * This method will take in a floating integer representing the 
-        * employee's hourly wage and check whether or not it is a
-        * valid entry. Returns a true or false depending on whether or not the 
-        * attribute is valid.
-        * 
-        * \param hourlyRate - float - The amount of money the employee makes per
-        * hour given by the user.
-        * 
-        * \param errorMessage - string - The error message container 
-        * which is passed as a reference from the calling method
-        * 
-        * \return bool - Returns true if the attribute is valid.
-        * Returns false if the attribute is not valid.
-        */
-        private bool ValidateHourlyRate(float hourlyRate, ref string errorMessage)
-        {
-            bool validateStatus = true;
-
-
-
-            return validateStatus;
-        }
+        
 
         /**
         * \brief Sets the <i>dateOfHire</i> attribute within the ParttimeEmployee class
@@ -138,7 +66,7 @@ namespace AllEmployees
 
             if (DateTime.TryParse(userInput, out userInputDateTime))
             {
-                if(ValidateDateOfHire(userInputDateTime, ref errorMessage))
+                if (Validation.ValidateDateOfHire(userInputDateTime, ref errorMessage))
                 {
                     setStatus = true;
                     dateOfHire = userInputDateTime;
@@ -198,7 +126,7 @@ namespace AllEmployees
 
             if (DateTime.TryParse(userInput, out userInputDateTime))
             {
-                if (ValidateDateOfTermination(userInputDateTime, ref errorMessage))
+                if (Validation.ValidateDateOfTermination(userInputDateTime, ref errorMessage))
                 {
                     setStatus = true;
                     dateOfTermination = userInputDateTime;
@@ -258,7 +186,7 @@ namespace AllEmployees
 
             if (float.TryParse(userInput, out userInputFloat))
             {
-                if (ValidateHourlyRate(userInputFloat, ref errorMessage))
+                if (Validation.ValidateHourlyRate(userInputFloat, ref errorMessage))
                 {
                     setStatus = true;
                     hourlyRate = userInputFloat;

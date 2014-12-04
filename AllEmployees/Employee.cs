@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Supporting;
 
 namespace AllEmployees
 {
@@ -36,115 +37,7 @@ namespace AllEmployees
         string socialInsuranceNumber;///< string used to hold the employees SIN
         DateTime dateOfBirth;///< used to hold the employees date of birth
 
-        /**
-        * \brief Validates the first/lastName attribute within the Employee class
-        *
-        * \details <b>Details</b>
-        *
-        * This method will take in a string of user input representing the desired
-        * employee first/last name and check whether or not it is a
-        * valid name. Returns a true or false depending on whether or not the 
-        * attribute is valid.
-        * 
-        * \param firstName - string - The employee's first/last name 
-        * given by the user.
-        * 
-        * \param errorMessage - string - The error message container 
-        * which is passed as a reference from the calling method
-        * 
-        * \return bool - Returns true if the attribute is valid.
-        * Returns false if the attribute is not valid.
-        */
-        private bool ValidateName(string name, ref string errorMessage)
-        {
-            bool validateStatus = true;
-            errorMessage = "Invalid Characters Found:\n";
-
-            for (int i = 0; i < name.Length; i++)
-            {
-                if(!Char.IsLetter(name[i]))
-                {
-                    if(name[i] != '\'' && name[i] != '-')
-                    {
-                        errorMessage += name[i] + " ";
-                        validateStatus = false;
-                    }
-                }
-
-                if(validateStatus == false)
-                {
-                    errorMessage += "\n\nPlease Be Sure To Only Enter:\nA-Z\na-z\n-\n'";
-                }
-                else
-                {
-                    errorMessage = "";
-                }
-            }
-
-            return validateStatus;
-        }
-
-        /**
-        * \brief Validates the socialInsuranceNumber attribute within the Employee class
-        *
-        * \details <b>Details</b>
-        *
-        * This method will take in a string of user input representing the desired
-        * employee social insurance number and check whether or not it is a
-        * valid social insurance number. Returns a true or false depending on whether or not the 
-        * attribute is valid.
-        * 
-        * \param socialInsuranceNumber - string - The employee's social insurance
-        * number given by the user.
-        * 
-        * \param errorMessage - string - The error message container 
-        * which is passed as a reference from the calling method
-        * 
-        * \return bool - Returns true if the attribute is valid.
-        * Returns false if the attribute is not valid.
-        */
-        private bool ValidateSocialInsuranceNumber(string socialInsuranceNumber, ref string errorMessage)
-        {
-            bool validateStatus = true;
-
-
-
-            return validateStatus;
-        }
-
-        /**
-        * \brief Sets the dateOfBirth attribute within the Employee class
-        *
-        * \details <b>Details</b>
-        *
-        * This method will take in a dateOfBirth variable representing the 
-        * employee's date of birth and check whether or not it is a
-        * valid entry. Returns a true or false depending on whether or not the 
-        * attribute is valid.
-        * 
-        * \param dateOfBirth - DateTime - The employee's date of birth 
-        * given by the user.
-        * 
-        * \param errorMessage - string - The error message container 
-        * which is passed as a reference from the calling method
-        * 
-        * \return bool - Returns true if the attribute is valid.
-        * Returns false if the attribute is not valid.
-        */
-        private bool ValidateDateOfBirth(DateTime dateOfBirth, ref string errorMessage)
-        {
-            bool validateStatus = true;
-            int ageRequirement = 16;
-            errorMessage = "";
-
-            if((DateTime.Today.Year - dateOfBirth.Year) < ageRequirement)
-            {
-                validateStatus = false;
-                errorMessage = "Please Be Sure The Employee Is Older Than 16 Years Old\n";
-            }
-
-            return validateStatus;
-        }
+        
 
         /**
         * \brief Sets the <i>firstName</i> attribute within the Employee class
@@ -169,8 +62,8 @@ namespace AllEmployees
         public bool SetFirstName(string userInput, ref string errorMessage)
         {
             bool setStatus = false;
-            
-            if(ValidateName(userInput, ref errorMessage))
+
+            if (Validation.ValidateName(userInput, ref errorMessage))
             {
                 setStatus = true;
                 firstName = userInput;
@@ -221,7 +114,7 @@ namespace AllEmployees
         {
             bool setStatus = false;
 
-            if(ValidateName(userInput, ref errorMessage))
+            if (Validation.ValidateName(userInput, ref errorMessage))
             {
                 setStatus = true;
                 lastName = userInput;
@@ -272,7 +165,7 @@ namespace AllEmployees
         {
             bool setStatus = false;
 
-            if(ValidateSocialInsuranceNumber(userInput, ref errorMessage))
+            if (Validation.ValidateSocialInsuranceNumber(userInput, ref errorMessage))
             {
                 setStatus = true;
                 socialInsuranceNumber = userInput;
@@ -328,7 +221,7 @@ namespace AllEmployees
 
             if (DateTime.TryParse(userInput, out userInputDateTime))
             {
-                if (ValidateDateOfBirth(userInputDateTime, ref errorMessage))
+                if (Validation.ValidateDateOfBirth(userInputDateTime, ref errorMessage))
                 {
                     setStatus = true;
                     dateOfBirth = userInputDateTime;

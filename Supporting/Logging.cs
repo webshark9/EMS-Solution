@@ -1,4 +1,13 @@
-﻿
+﻿/// \namespace Supporting
+/// 
+/// \brief Contains the FileIO class, Logging class, and the Validation class
+/// 
+/// File: FileIO.cs, Logging.cs, and Validation.cs \n
+/// Project: EMS Term Project \n
+/// First Version: Nov.17/2014 \n
+/// 
+/// \authors Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
