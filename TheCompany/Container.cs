@@ -49,6 +49,15 @@ namespace TheCompany
         public bool AddEmployee(object newEmployee)
         {
             bool addSuccessful = false;
+            
+            //FulltimeEmployee possibleEmployee = (FulltimeEmployee)newEmployee;
+
+            /*
+            if (possibleEmployee.Validate() == true)
+            {
+                virtualDB.Add(possibleEmployee);
+            }
+            */
 
             return addSuccessful;
         }
