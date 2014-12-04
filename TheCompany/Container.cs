@@ -41,12 +41,12 @@ namespace TheCompany
         * If the employee is not valid it will not add it. This method also logs whether the log was successful or 
         * not.
         * 
-        * \param newEmployee - object - the employee to be added
+        * \param newEmployee - AllEmployees.Employee - the employee to be added
         * 
         * \return A bool <i>addSuccessful</i> which will be 'true' if the employee was added successfully and 'false' otherwise
         *
         */
-        public bool AddEmployee(object newEmployee)
+        public bool AddEmployee(AllEmployees.Employee newEmployee)
         {
             bool addSuccessful = false;
             
@@ -69,14 +69,24 @@ namespace TheCompany
         * This method attempts to remove the employee object passed as a parameter from the <i>virtualDB</i> data member
         * by searching the data base for the object. This method also logs whether the remove was successful or not.
         * 
-        * \param employeeToRemove - object - the employee that is to be removed
+        * \param employeeToRemove - AllEmployees.Employee - the employee that is to be removed
         * 
         * \return A bool <i>removeSuccessful</i> which will be 'true' if the employee was removed successfully and 'false' otherwise
         *
         */
-        public bool RemoveEmployee(object employeeToRemove)
+        public bool RemoveEmployee(AllEmployees.Employee employeeToRemove)
         {
             bool removeSuccessful = false;
+
+            foreach( AllEmployees.Employee storedEmployee in virtualDB)
+            {
+                if(storedEmployee.GetSocialInsuranceNumber() == (AllEmployees.Employee)employeeToRemove.GetSocialInsuranceNumber())
+                {
+
+                }
+
+
+            }
 
             return removeSuccessful;
         }
@@ -88,13 +98,13 @@ namespace TheCompany
         * This method searches the data base for the first parameter, and if it finds it the method then replaces it with the 
         * second parameter.
         * 
-        * \param employeeToModify - object - the employee that is to be modified
-        * \param newEmployee - object - the employee to replace the old employee
+        * \param employeeToModify - AllEmployees.Employee - the employee that is to be modified
+        * \param newEmployee - AllEmployees.Employee - the employee to replace the old employee
          * 
         * \return A bool <i>modifySuccessful</i> which will be 'true' if the employee was modified successfully and 'false' otherwise
         *
         */
-        public bool ModifyEmployee(object employeeToModify, object newEmployee)
+        public bool ModifyEmployee(AllEmployees.Employee employeeToModify, AllEmployees.Employee newEmployee)
         {
             bool modifySuccessful = false;
 
