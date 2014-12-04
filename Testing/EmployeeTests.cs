@@ -59,7 +59,7 @@ namespace Testing
             string unusedString = "";
             Employee employeeObj = new Employee();
             bool expected = true;
-            bool actual = employeeObj.SetSocialInsuranceNumber(testInput);
+            bool actual = employeeObj.SetSocialInsuranceNumber(testInput, ref unusedString);
 
             Assert.AreEqual(expected, actual, "Valid SIN was found invalid");
         }
@@ -82,7 +82,7 @@ namespace Testing
             string unusedString = "";
             Employee employeeObj = new Employee();
             bool expected = true;
-            bool actual = employeeObj.SetSocialInsuranceNumber(testInput);
+            bool actual = employeeObj.SetSocialInsuranceNumber(testInput, ref unusedString);
 
             Assert.AreEqual(expected, actual, "Valid SIN was found invalid");
         }

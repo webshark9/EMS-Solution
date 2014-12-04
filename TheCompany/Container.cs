@@ -80,7 +80,7 @@ namespace TheCompany
 
             foreach( AllEmployees.Employee storedEmployee in virtualDB)
             {
-                if(storedEmployee.GetSocialInsuranceNumber() == (AllEmployees.Employee)employeeToRemove.GetSocialInsuranceNumber())
+                if(storedEmployee.GetSocialInsuranceNumber() == employeeToRemove.GetSocialInsuranceNumber())
                 {
 
                 }
