@@ -29,7 +29,7 @@ namespace Supporting
     /// the attribute be invalid.
     /// 
     /// \authors Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
-    class Validation
+    public class Validation
     {
         /**
         * \brief Validates the first/lastName attribute within the Employee class
@@ -50,7 +50,7 @@ namespace Supporting
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private static bool ValidateName(string name, ref string errorMessage)
+        public static bool ValidateName(string name, ref string errorMessage)
         {
             bool validateStatus = true;
             errorMessage = "Invalid Characters Found:\n";
@@ -98,7 +98,7 @@ namespace Supporting
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private static bool ValidateSocialInsuranceNumber(string socialInsuranceNumber, ref string errorMessage)
+        public static bool ValidateSocialInsuranceNumber(string socialInsuranceNumber, ref string errorMessage)
         {
             bool validateStatus = true;
             int sinNumLength = 9;
@@ -174,7 +174,7 @@ namespace Supporting
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private static bool ValidateDateOfBirth(DateTime dateOfBirth, ref string errorMessage)
+        public static bool ValidateDateOfBirth(DateTime dateOfBirth, ref string errorMessage)
         {
             bool validateStatus = true;
             int ageRequirement = 16;
@@ -208,7 +208,7 @@ namespace Supporting
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool ValidateDateOfHire(DateTime dateOfHire, ref string errorMessage)
+        public static bool ValidateDateOfHire(DateTime dateOfHire, ref string errorMessage)
         {
             bool validateStatus = true;
             errorMessage = "";
@@ -241,12 +241,12 @@ namespace Supporting
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool ValidateDateOfTermination(DateTime dateOfTermination, ref string errorMessage)
+        public static bool ValidateDateOfTermination(DateTime dateOfTermination, ref string errorMessage)
         {
             bool validateStatus = true;
             errorMessage = "";
 
-            if (dateOfTermination > DateTime.Today || dateOfTermination < dateOfHire)
+            if (dateOfTermination > DateTime.Today/* || dateOfTermination < dateOfHire*/)
             {
                 validateStatus = false;
                 errorMessage = "Please Be Sure The Date Of Termination Does Not Exceed The Present Day\nOr Precede The Date Of Hire\n";
@@ -274,7 +274,7 @@ namespace Supporting
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool ValidateSalary(float salary, ref string errorMessage)
+        public static bool ValidateSalary(float salary, ref string errorMessage)
         {
             bool validateStatus = true;
 
@@ -302,7 +302,7 @@ namespace Supporting
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool ValidateContractStartDate(DateTime contractStartDate, ref string errorMessage)
+        public static bool ValidateContractStartDate(DateTime contractStartDate, ref string errorMessage)
         {
             bool validateStatus = true;
             errorMessage = "";
@@ -335,12 +335,12 @@ namespace Supporting
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool ValidateContractStopDate(DateTime contractStopDate, ref string errorMessage)
+        public static bool ValidateContractStopDate(DateTime contractStopDate, ref string errorMessage)
         {
             bool validateStatus = true;
             errorMessage = "";
 
-            if (contractStopDate > DateTime.Today || contractStopDate < contractStartDate)
+            if (contractStopDate > DateTime.Today/* || contractStopDate < contractStartDate*/)
             {
                 validateStatus = false;
                 errorMessage = "Please Be Sure The Contract Stop Date Does Not Exceed The Present Day\nOr Precede The Contract Start Date\n";
@@ -368,65 +368,9 @@ namespace Supporting
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool ValidatefixedContractAmount(float fixedContractAmount, ref string errorMessage)
+        public static bool ValidatefixedContractAmount(float fixedContractAmount, ref string errorMessage)
         {
             bool validateStatus = false;
-
-
-
-            return validateStatus;
-        }
-
-        /**
-        * \brief Sets the dateOfHire attribute within the ParttimeEmployee class
-        *
-        * \details <b>Details</b>
-        *
-        * This method will take in a DateTime variable representing the 
-        * employee's date of hire and check whether or not it is a
-        * valid entry. Returns a true or false depending on whether or not the 
-        * attribute is valid.
-        * 
-        * \param dateOfHire - DateTime - The date the employee was hired 
-        * given by the user.
-        * 
-        * \param errorMessage - string - The error message container 
-        * which is passed as a reference from the calling method
-        * 
-        * \return bool - Returns true if the attribute is valid.
-        * Returns false if the attribute is not valid.
-        */
-        private bool ValidateDateOfHire(DateTime dateOfHire, ref string errorMessage)
-        {
-            bool validateStatus = true;
-
-
-
-            return validateStatus;
-        }
-
-        /**
-        * \brief Sets the dateOfTermination attribute within the ParttimeEmployee class
-        *
-        * \details <b>Details</b>
-        *
-        * This method will take in a DateTime variable representing the 
-        * employee's date of termination and check whether or not it is a
-        * valid entry. Returns a true or false depending on whether or not the 
-        * attribute is valid.
-        * 
-        * \param dateOfTermination - DateTime - The date the employee was terminated/fired 
-        * given by the user.
-        * 
-        * \param errorMessage - string - The error message container 
-        * which is passed as a reference from the calling method
-        * 
-        * \return bool - Returns true if the attribute is valid.
-        * Returns false if the attribute is not valid.
-        */
-        private bool ValidateDateOfTermination(DateTime dateOfTermination, ref string errorMessage)
-        {
-            bool validateStatus = true;
 
 
 
@@ -452,7 +396,7 @@ namespace Supporting
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool ValidateHourlyRate(float hourlyRate, ref string errorMessage)
+        public static bool ValidateHourlyRate(float hourlyRate, ref string errorMessage)
         {
             bool validateStatus = true;
 
@@ -480,7 +424,7 @@ namespace Supporting
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool ValidateSeason(string season, ref string errorMessage)
+        public static bool ValidateSeason(string season, ref string errorMessage)
         {
             bool validateStatus = true;
 
@@ -508,7 +452,7 @@ namespace Supporting
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        private bool ValidatePiecePay(float piecePay, ref string errorMessage)
+        public static bool ValidatePiecePay(float piecePay, ref string errorMessage)
         {
             bool validateStatus = true;
 

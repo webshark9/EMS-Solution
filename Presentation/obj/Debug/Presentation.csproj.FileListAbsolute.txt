@@ -13,3 +13,12 @@ C:\Users\PC\OneDrive\GitHub\EMS-Solution\Presentation\bin\Debug\Presentation.pdb
 C:\Users\PC\OneDrive\GitHub\EMS-Solution\Presentation\obj\Debug\Presentation.csprojResolveAssemblyReference.cache
 C:\Users\PC\OneDrive\GitHub\EMS-Solution\Presentation\obj\Debug\Presentation.dll
 C:\Users\PC\OneDrive\GitHub\EMS-Solution\Presentation\obj\Debug\Presentation.pdb
+C:\Users\Matthew\Desktop\EMS-Solution\Presentation\obj\Debug\Presentation.csprojResolveAssemblyReference.cache
+C:\Users\Matthew\Desktop\EMS-Solution\Presentation\obj\Debug\Presentation.dll
+C:\Users\Matthew\Desktop\EMS-Solution\Presentation\bin\Debug\Presentation.dll
+C:\Users\Matthew\Desktop\EMS-Solution\Presentation\bin\Debug\Presentation.pdb
+C:\Users\Matthew\Desktop\EMS-Solution\Presentation\bin\Debug\AllEmployees.dll
+C:\Users\Matthew\Desktop\EMS-Solution\Presentation\bin\Debug\Supporting.dll
+C:\Users\Matthew\Desktop\EMS-Solution\Presentation\bin\Debug\AllEmployees.pdb
+C:\Users\Matthew\Desktop\EMS-Solution\Presentation\bin\Debug\Supporting.pdb
+C:\Users\Matthew\Desktop\EMS-Solution\Presentation\obj\Debug\Presentation.pdb

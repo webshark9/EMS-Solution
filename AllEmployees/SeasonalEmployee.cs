@@ -61,7 +61,7 @@ namespace AllEmployees
         {
             bool setStatus = false;
 
-            if (Validation.ValidateSeason(userInput, ref errorMessage))
+            if (Supporting.Validation.ValidateSeason(userInput, ref errorMessage))
             {
                 setStatus = true;
                 season = userInput;
@@ -116,7 +116,7 @@ namespace AllEmployees
 
             if (float.TryParse(userInput, out userInputFloat))
             {
-                if (Validation.ValidatePiecePay(userInputFloat, ref errorMessage))
+                if (Supporting.Validation.ValidatePiecePay(userInputFloat, ref errorMessage))
                 {
                     setStatus = true;
                     piecePay = userInputFloat;

@@ -66,7 +66,7 @@ namespace AllEmployees
 
             if(DateTime.TryParse(userInput, out userInputDateTime))
             {
-                if (Validation.ValidateContractStartDate(userInputDateTime, ref errorMessage))
+                if (Supporting.Validation.ValidateContractStartDate(userInputDateTime, ref errorMessage))
                 {
                     setStatus = true;
                     contractStartDate = userInputDateTime;
@@ -127,7 +127,7 @@ namespace AllEmployees
 
             if(DateTime.TryParse(userInput, out userInputDateTime))
             {
-                if (Validation.ValidateContractStopDate(userInputDateTime, ref errorMessage))
+                if (Supporting.Validation.ValidateContractStopDate(userInputDateTime, ref errorMessage))
                 {
                     setStatus = true;
                     contractStopDate = userInputDateTime;
@@ -187,7 +187,7 @@ namespace AllEmployees
 
             if(float.TryParse(userInput, out userInputFloat))
             {
-                if (Validation.ValidatefixedContractAmount(userInputFloat, ref errorMessage))
+                if (Supporting.Validation.ValidatefixedContractAmount(userInputFloat, ref errorMessage))
                 {
                     setStatus = true;
                     fixedContractAmount = userInputFloat;

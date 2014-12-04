@@ -63,7 +63,7 @@ namespace AllEmployees
         {
             bool setStatus = false;
 
-            if (Validation.ValidateName(userInput, ref errorMessage))
+            if (Supporting.Validation.ValidateName(userInput, ref errorMessage))
             {
                 setStatus = true;
                 firstName = userInput;
@@ -114,7 +114,7 @@ namespace AllEmployees
         {
             bool setStatus = false;
 
-            if (Validation.ValidateName(userInput, ref errorMessage))
+            if (Supporting.Validation.ValidateName(userInput, ref errorMessage))
             {
                 setStatus = true;
                 lastName = userInput;
@@ -165,7 +165,7 @@ namespace AllEmployees
         {
             bool setStatus = false;
 
-            if (Validation.ValidateSocialInsuranceNumber(userInput, ref errorMessage))
+            if (Supporting.Validation.ValidateSocialInsuranceNumber(userInput, ref errorMessage))
             {
                 setStatus = true;
                 socialInsuranceNumber = userInput;
@@ -221,7 +221,7 @@ namespace AllEmployees
 
             if (DateTime.TryParse(userInput, out userInputDateTime))
             {
-                if (Validation.ValidateDateOfBirth(userInputDateTime, ref errorMessage))
+                if (Supporting.Validation.ValidateDateOfBirth(userInputDateTime, ref errorMessage))
                 {
                     setStatus = true;
                     dateOfBirth = userInputDateTime;

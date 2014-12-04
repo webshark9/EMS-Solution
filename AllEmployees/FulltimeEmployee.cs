@@ -66,7 +66,7 @@ namespace AllEmployees
 
             if(DateTime.TryParse(userInput, out userInputDateTime))
             {
-                if (Validation.ValidateDateOfHire(userInputDateTime, ref errorMessage))
+                if (Supporting.Validation.ValidateDateOfHire(userInputDateTime, ref errorMessage))
                 {
                     setStatus = true;
                     dateOfHire = userInputDateTime;
@@ -126,7 +126,7 @@ namespace AllEmployees
 
             if (DateTime.TryParse(userInput, out userInputDateTime))
             {
-                if (Validation.ValidateDateOfTermination(userInputDateTime, ref errorMessage))
+                if (Supporting.Validation.ValidateDateOfTermination(userInputDateTime, ref errorMessage))
                 {
                     setStatus = true;
                     dateOfTermination = userInputDateTime;
@@ -186,7 +186,7 @@ namespace AllEmployees
 
             if(float.TryParse(userInput, out userInputFloat))
             {
-                if (Validation.ValidateSalary(userInputFloat, ref errorMessage))
+                if (Supporting.Validation.ValidateSalary(userInputFloat, ref errorMessage))
                 {
                     setStatus = true;
                     salary = userInputFloat;

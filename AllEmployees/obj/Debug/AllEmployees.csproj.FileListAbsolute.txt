@@ -6,3 +6,10 @@ C:\Users\Willi\Documents\GitHub\EMS-Solution\AllEmployees\obj\Debug\AllEmployees
 C:\Users\Willi\Documents\GitHub\EMS-Solution\AllEmployees\obj\Debug\AllEmployees.pdb
 C:\Users\Willi\Documents\GitHub\EMS-Solution\AllEmployees\bin\Debug\Presentation.dll
 C:\Users\Willi\Documents\GitHub\EMS-Solution\AllEmployees\bin\Debug\Presentation.pdb
+C:\Users\Matthew\Desktop\EMS-Solution\AllEmployees\obj\Debug\AllEmployees.csprojResolveAssemblyReference.cache
+C:\Users\Matthew\Desktop\EMS-Solution\AllEmployees\obj\Debug\AllEmployees.dll
+C:\Users\Matthew\Desktop\EMS-Solution\AllEmployees\bin\Debug\AllEmployees.dll
+C:\Users\Matthew\Desktop\EMS-Solution\AllEmployees\bin\Debug\AllEmployees.pdb
+C:\Users\Matthew\Desktop\EMS-Solution\AllEmployees\bin\Debug\Supporting.dll
+C:\Users\Matthew\Desktop\EMS-Solution\AllEmployees\bin\Debug\Supporting.pdb
+C:\Users\Matthew\Desktop\EMS-Solution\AllEmployees\obj\Debug\AllEmployees.pdb

@@ -36,7 +36,7 @@ namespace Testing
             string unusedString = "";
             Employee employeeObj = new Employee();
             bool expected = false;
-            bool actual = employeeObj.SetSocialInsuranceNumber(testInput);
+            bool actual = employeeObj.SetSocialInsuranceNumber(testInput, ref unusedString);
 
             Assert.AreEqual(expected, actual, "Invalid SIN was found valid");
         }

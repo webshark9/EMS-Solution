@@ -1,14 +1,14 @@
 ﻿/// \namespace Supporting
 /// 
-<<<<<<< HEAD
+/// 
 /// \brief Contains the FileIO class, Logging class, and the Validation class
 /// 
 /// File: FileIO.cs, Logging.cs, and Validation.cs \n
-=======
+/// 
 /// \brief Contains the FileIO class as well as the Logging class
 /// 
 /// File: FileIO.cs and Logging.cs \n
->>>>>>> origin/master
+/// 
 /// Project: EMS Term Project \n
 /// First Version: Nov.17/2014 \n
 /// 

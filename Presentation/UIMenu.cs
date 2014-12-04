@@ -404,6 +404,7 @@ namespace Presentation
         */
         private void CreateFullTimeEmployee()
         {
+            Employee empObj = new Employee();
             ConsoleKeyInfo userInput;
             bool back = false;
 
@@ -413,13 +414,13 @@ namespace Presentation
                 Console.WriteLine("Create a Full Time Employee:");
                 Console.WriteLine("\n");
                 Console.WriteLine("Current Info:");
-                Console.WriteLine("First Name: {0}", Employee.GetFirstName());
-                Console.WriteLine("Last Name: {0}", Employee.GetFirstName());
-                Console.WriteLine("SIN: {0}", Employee.GetFirstName());
-                Console.WriteLine("Date of Birth: {0}", Employee.GetFirstName());
-                Console.WriteLine("Date of Hire: {0}", Employee.GetFirstName());
-                Console.WriteLine("Date of Termination: {0}", Employee.GetFirstName());
-                Console.WriteLine("Salary: {0}", Employee.GetFirstName());
+                Console.WriteLine("First Name: {0}", empObj.GetFirstName());
+                Console.WriteLine("Last Name: {0}", empObj.GetFirstName());
+                Console.WriteLine("SIN: {0}", empObj.GetFirstName());
+                Console.WriteLine("Date of Birth: {0}", empObj.GetFirstName());
+                Console.WriteLine("Date of Hire: {0}", empObj.GetFirstName());
+                Console.WriteLine("Date of Termination: {0}", empObj.GetFirstName());
+                Console.WriteLine("Salary: {0}", empObj.GetFirstName());
                 Console.WriteLine("\n");
                 Console.WriteLine("Edit Info:");
                 Console.WriteLine("\t1. Edit First Name");

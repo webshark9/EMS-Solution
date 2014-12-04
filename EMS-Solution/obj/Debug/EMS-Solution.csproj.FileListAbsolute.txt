@@ -28,3 +28,7 @@ C:\Users\Matthew\Desktop\EMS-Solution\EMS-Solution\bin\Debug\EMS-Solution.pdb
 C:\Users\Matthew\Desktop\EMS-Solution\EMS-Solution\bin\Debug\Presentation.dll
 C:\Users\Matthew\Desktop\EMS-Solution\EMS-Solution\bin\Debug\Presentation.pdb
 C:\Users\Matthew\Desktop\EMS-Solution\EMS-Solution\obj\Debug\EMS-Solution.csprojResolveAssemblyReference.cache
+C:\Users\Matthew\Desktop\EMS-Solution\EMS-Solution\bin\Debug\Supporting.dll
+C:\Users\Matthew\Desktop\EMS-Solution\EMS-Solution\bin\Debug\Supporting.pdb
+C:\Users\Matthew\Desktop\EMS-Solution\EMS-Solution\bin\Debug\AllEmployees.dll
+C:\Users\Matthew\Desktop\EMS-Solution\EMS-Solution\bin\Debug\AllEmployees.pdb
