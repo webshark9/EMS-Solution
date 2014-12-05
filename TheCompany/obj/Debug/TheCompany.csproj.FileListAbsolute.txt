@@ -17,3 +17,7 @@ C:\Users\Matthew\Desktop\EMS-Solution\TheCompany\bin\Debug\Supporting.dll
 C:\Users\Matthew\Desktop\EMS-Solution\TheCompany\bin\Debug\Supporting.pdb
 C:\Users\Matthew\Desktop\EMS-Solution\TheCompany\bin\Debug\AllEmployees.dll
 C:\Users\Matthew\Desktop\EMS-Solution\TheCompany\bin\Debug\AllEmployees.pdb
+C:\Users\Willi\Documents\GitHub\EMS-Solution\TheCompany\bin\Debug\AllEmployees.dll
+C:\Users\Willi\Documents\GitHub\EMS-Solution\TheCompany\bin\Debug\Supporting.dll
+C:\Users\Willi\Documents\GitHub\EMS-Solution\TheCompany\bin\Debug\AllEmployees.pdb
+C:\Users\Willi\Documents\GitHub\EMS-Solution\TheCompany\bin\Debug\Supporting.pdb

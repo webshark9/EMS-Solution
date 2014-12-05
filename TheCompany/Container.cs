@@ -45,7 +45,7 @@ namespace TheCompany
         * \return Nothing
         *
         */
-        void Container()
+        public Container()
         {
             lastIndex = 0;
             virtualDB = new ArrayList();
@@ -63,7 +63,7 @@ namespace TheCompany
         * \return Nothing
         *
         */
-        void Container(string[] employeeStrings)
+        public Container(string[] employeeStrings)
         {
             lastIndex = 0;
 
