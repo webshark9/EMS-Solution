@@ -12,6 +12,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using AllEmployees;
 
 namespace TheCompany
 {
@@ -34,6 +35,58 @@ namespace TheCompany
         private int lastIndex;///< used to tell what the last employee was that was returned from NextEmployee()
 
         /**
+        * \brief Constructor: Used to create a new Container object
+        * \details <b>Details</b>
+        *
+        * This method initializes the data members of this class
+        * 
+        * \param None
+        * 
+        * \return Nothing
+        *
+        */
+        void Container()
+        {
+            lastIndex = 0;
+            virtualDB = new ArrayList();
+        }
+
+
+        /**
+        * \brief Constructor: Used to create a new Container object and add entries at the same time
+        * \details <b>Details</b>
+        *
+        * This method creates 
+        * 
+        * \param employeeStrings - string[] - used to hold all of the strings that hold the information for the employees.
+        * 
+        * \return Nothing
+        *
+        */
+        void Container(string[] employeeStrings)
+        {
+            lastIndex = 0;
+
+            Employee employeeToAdd = null;
+            int prevPipeIndex = 0;// used to hold the index of the last pipe character found
+            int nextPipeIndex = 0;// used to hold the index of the next pipe character found
+
+            foreach(string employeeString in employeeStrings)
+            {
+                prevPipeIndex = 0;
+                nextPipeIndex = employeeString.IndexOf("|");
+
+                while(nextPipeIndex != -1)
+                {
+
+                }
+
+            }
+
+
+        }
+
+        /**
         * \brief To add a new employee to the data base
         * \details <b>Details</b>
         *
@@ -41,12 +94,14 @@ namespace TheCompany
         * If the employee is not valid it will not add it. This method also logs whether the log was successful or 
         * not.
         * 
-        * \param newEmployee - AllEmployees.Employee - the employee to be added
+        * \param newEmployee - Employee - the employee to be added
+        * \param errorMessage - string - a string that is passed as a reference and is used to hold an error message if 
+        *        an error occurs
         * 
         * \return A bool <i>addSuccessful</i> which will be 'true' if the employee was added successfully and 'false' otherwise
         *
         */
-        public bool AddEmployee(AllEmployees.Employee newEmployee)
+        public bool AddEmployee(Employee newEmployee, ref string errorMessage)
         {
             bool addSuccessful = false;
             
@@ -69,23 +124,31 @@ namespace TheCompany
         * This method attempts to remove the employee object passed as a parameter from the <i>virtualDB</i> data member
         * by searching the data base for the object. This method also logs whether the remove was successful or not.
         * 
-        * \param employeeToRemove - AllEmployees.Employee - the employee that is to be removed
+        * \param employeeToRemove - Employee - the employee that is to be removed
+        * \param errorMessage - string - a string that is passed as a reference and is used to hold an error message if 
+        *        an error occurs
         * 
         * \return A bool <i>removeSuccessful</i> which will be 'true' if the employee was removed successfully and 'false' otherwise
         *
         */
-        public bool RemoveEmployee(AllEmployees.Employee employeeToRemove)
+        public bool RemoveEmployee(Employee employeeToRemove, ref string errorMessage)
         {
-            bool removeSuccessful = false;
+            bool removeSuccessful = false;// set to 'true' if the employee is found and removed
 
-            foreach( AllEmployees.Employee storedEmployee in virtualDB)
+            foreach(Employee storedEmployee in virtualDB)
             {
                 if(storedEmployee.GetSocialInsuranceNumber() == employeeToRemove.GetSocialInsuranceNumber())
                 {
-
+                    virtualDB.Remove(storedEmployee);
+                    removeSuccessful = true;
+                    break;// we don't allow duplicate SIN's in our database so as soon as we find a match we can exit
                 }
 
+            }
 
+            if(removeSuccessful == false)
+            {
+                // errorMessage = "";
             }
 
             return removeSuccessful;
@@ -98,15 +161,42 @@ namespace TheCompany
         * This method searches the data base for the first parameter, and if it finds it the method then replaces it with the 
         * second parameter.
         * 
-        * \param employeeToModify - AllEmployees.Employee - the employee that is to be modified
-        * \param newEmployee - AllEmployees.Employee - the employee to replace the old employee
-         * 
+        * \param employeeToModify - Employee - the employee that is to be modified
+        * \param newEmployee - Employee - the employee to replace the old employee
+        * \param errorMessage - string - a string that is passed as a reference and is used to hold an error message if 
+        *        an error occurs
+        * 
         * \return A bool <i>modifySuccessful</i> which will be 'true' if the employee was modified successfully and 'false' otherwise
         *
         */
-        public bool ModifyEmployee(AllEmployees.Employee employeeToModify, AllEmployees.Employee newEmployee)
+        public bool ModifyEmployee(Employee employeeToModify, Employee newEmployee, ref string errorMessage)
         {
-            bool modifySuccessful = false;
+            bool modifySuccessful = true;// will be set to 'false' if there was a problem
+            string unusedString = "";
+
+            foreach (Employee storedEmployee in virtualDB)
+            {
+                if (storedEmployee.GetSocialInsuranceNumber() == employeeToModify.GetSocialInsuranceNumber())
+                {
+                    if(AddEmployee(newEmployee, ref unusedString) == false)// check if the new employee is valid
+                    {
+                        modifySuccessful = false;
+                        // errorMessage = "";
+                    }
+                    else// the add was successful
+                    {
+                        virtualDB.Remove(storedEmployee);// remove the old employee
+                    }                  
+
+                    break;// we don't allow duplicate SIN's in our database so as soon as we find a match we can exit
+                }
+
+            }
+
+            if((modifySuccessful == false) && (errorMessage == ""))// if both conditions are true then the employee could not be found
+            {
+                // errorMessage = "";
+            }
 
             return modifySuccessful;
         }
@@ -129,9 +219,12 @@ namespace TheCompany
         */
         public object NextEmployee(bool returnFirst = false)
         {
+            if(returnFirst == true)// check if the user wants the first element
+            {
+                lastIndex = 0;// reset the 'lastIndex' data member so that first element will be returned
+            }
 
-
-            return virtualDB[0];
+            return virtualDB[lastIndex++];// return the element and increase the 'lastIndex' data member so the next time this method is called the next index will be returned
         }
 
         /**

@@ -50,45 +50,103 @@ namespace Supporting
         * \return An array of strings <i>validRecords</i> that will hold all of the valid records read in the database file
         *
         */
-        public static string[] OpenDBase(string dbName, ref string errorMessage)
+        public static List<string[]> OpenDBase(string dbName, ref string errorMessage)
         {
             List<string> stringsRead = new List<string>();// all of the lines read from the database file
-            string[] validRecords = null;// the VALID records read from the database file
-            string tmp = "";
-            int counter = 0;// used to index the validRecords array
-            int numRecordsWritten = 0;// the total number of records read
+            List<string[]> validRecords = new List<string[]>();// the VALID lines read from the database file
+            int numRecordsRead = 0;// the total number of records read
             int numValidRecords = 0;// the number of valid records read
             int numInvalidRecords = 0;// the number of invalid records read
 
+            int prevPipeIndex = 0;// used to hold the index of the last pipe character found
+            int nextPipeIndex = 0;// used to hold the index of the next pipe character found
+
             databaseName = dbName;// save the name of the database file in the 'databaseName' data member
-           
+
             //File.Open(databaseName, FileMode.OpenOrCreate, FileAccess.ReadWrite);// open/create the database file for read/write access
 
             dbReader = new StreamReader(databaseName);
 
-            while (dbReader.Peek() >= 0) 
-            {          
-                tmp = ReadRecord();
-                stringsRead.Add(tmp);// add the string read from the file to the List container
-            }
-
-            // validate records and remove ones that are invalid
-
-            validRecords = new string[stringsRead.Count];// want 'validRecords' to hold all of the valid records read, which is what 'stringsRead' know holds
-
-
-            /* Maybe we could pass the container object as a parameter and for each string call
-             * a method that attempts to add the employee; if it fails the entry was invalid
-             */
-
-
-            // add the valid records in 'stringsRead' to 'validRecords'
-            foreach(string record in stringsRead)
+            /* this loop reads the entire database file and stores each line separately into 'stringsRead' */
+            while (dbReader.Peek() >= 0)
             {
-                validRecords[counter++] = record;
+                stringsRead.Add(ReadRecord());// add the string read from the file to the List container
+                ++numRecordsRead;
             }
 
-            return validRecords;
+            /* this foreach find the valid records in 'stringsRead' and stores them into 'validRecords' */
+            foreach (string record in stringsRead)
+            {
+                prevPipeIndex = 0;// used to hold the index of the last pipe character found
+                nextPipeIndex = record.IndexOf('|');// used to hold the index of the current pipe character found
+                string[] stringsInRecord = new string[8];// used to hold all of the separate words in a record
+                int stringsInRecordIndex = 0;// used to index the 'stringsInRecord' variable
+
+                if (nextPipeIndex == -1)// check if there are no pipe characters in the string (which would make it invalid)
+                {
+                    ++numInvalidRecords;
+                    continue;
+                }
+                stringsInRecord[stringsInRecordIndex++] = record.Substring(0, nextPipeIndex);// add the first string (the type)
+
+                prevPipeIndex = nextPipeIndex;
+                nextPipeIndex = record.IndexOf('|', prevPipeIndex+1);// find the next pipe in the string
+                while (nextPipeIndex != -1)// loop until all the pipe characters are found
+                {
+                    stringsInRecord[stringsInRecordIndex++] = record.Substring(prevPipeIndex+1, nextPipeIndex-prevPipeIndex-1);// add the new string
+
+                    prevPipeIndex = nextPipeIndex;
+                    nextPipeIndex = record.IndexOf('|', prevPipeIndex + 1);// find the next pipe in the string
+                }
+
+                if (stringsInRecordIndex != 8 && stringsInRecordIndex != 7)// each string read should have 8 or 7 strings associated with it (type plus 7 or 6 data members)
+                {
+                    ++numInvalidRecords;
+                    continue;
+                }
+                else// right number of strings
+                {
+                    if (stringsInRecord[0].Length != 2)// first string should be the employee type as 2 characters
+                    {
+                        ++numInvalidRecords;
+                        continue;
+                    }
+                    else
+                    {
+                        if (stringsInRecord[0][0] == 'F' && stringsInRecord[0][1] == 'T')
+                        {
+
+                        }
+                        else if (stringsInRecord[0][0] == 'P' && stringsInRecord[0][1] == 'T')
+                        {
+
+                        }
+                        else if (stringsInRecord[0][0] == 'C' && stringsInRecord[0][1] == 'T')
+                        {
+
+                        }
+                        else if (stringsInRecord[0][0] == 'S' && stringsInRecord[0][1] == 'N')
+                        {
+
+                        }
+                        else// invalid employee type
+                        {
+                            ++numInvalidRecords;
+                            continue;
+                        }
+
+                    }// end 'else' statement
+
+
+                }// end 'else' statement 
+
+                validRecords.Add(stringsInRecord);
+                ++numValidRecords;
+
+                //validRecords[counter++] = record;
+            }
+
+            return validRecords;            
         }
 
         /**
