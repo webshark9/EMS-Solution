@@ -36,7 +36,133 @@ namespace AllEmployees
         DateTime dateOfTermination;///< used to hold the date the employee stopped working at the company
         float salary;///< used to hold the employees salary
 
-        
+        /**
+        * \brief Default constructor for the FulltimeEmployee child class
+        *
+        * \details <b>Details</b>
+        *
+        * This is the default constructor for the FulltimeEmployee child
+        * class which is in charge of creating the attributes
+        * for the fulltime employee when called upon. This
+        * constructor also calls upon the default Employee class parent constructor.
+        * 
+        * \param void
+        *
+        * \return void
+        */
+        FulltimeEmployee() : base()
+        {
+
+        }
+
+        /**
+        * \brief Constructor for the FulltimeEmployee child class
+        *
+        * \details <b>Details</b>
+        *
+        * This is a constructor for the FulltimeEmployee child
+        * class which is in charge of creating the attributes
+        * for the fulltime employee when called upon, taking in
+        * a series of parameters ment to be inserted into the FulltimeEmployee
+        * object, and validating the parameters before trying to insert them.
+        * Should a parameter be found invalid, the attribute will be left blank.
+        * This constructor also calls upon the Employee class parent constructor.
+        * 
+        * \param doh - DateTime - The employee's date of hire given 
+        * by the user.
+        * 
+        * \param dot - DateTime - The employee's date of termination given 
+        * by the user.
+        * 
+        * \param sal - float - The employee salary
+        *  given by the user.
+        *  
+        * \param fName - string - The desired employee first name given 
+        * by the user.
+        * 
+        * \param lName - string - The desired employee last name given 
+        * by the user.
+        * 
+        * \param sin - string - The employee's social insurance
+        * number given by the user.
+        * 
+        * \param dob - DateTime - The employee's date of birth given 
+        * by the user.
+        *
+        * \return void
+        */
+        FulltimeEmployee(DateTime doh, DateTime dot, float sal, string fName, string lName, string sin, DateTime dob) : base(fName, lName, sin, dob)
+        {
+            string unused = "";
+
+            if (Supporting.Validation.ValidateDateOfHire(doh, ref unused))
+            {
+                dateOfHire = doh;
+            }
+
+            if (Supporting.Validation.ValidateDateOfTermination(dot, ref unused))
+            {
+                dateOfTermination = dot;
+            }
+
+            if (Supporting.Validation.ValidateSalary(sal, ref unused))
+            {
+                salary = sal;
+            }
+        }
+
+        /**
+        * \brief Check all attributes in the FulltimeEmployee object to ensure they are valid
+        *
+        * \details <b>Details</b>
+        *
+        * This method will go through each attribute within the FulltimeEmployee
+        * object and makes sure that they are all valid. Will 
+        * return a true or a false depending whether or not all attributes
+        * are valid.
+        * 
+        * \param void
+        * 
+        * \return bool - Returns true if all attributes within the fulltime
+        * employee are valid. Returns false if there is at least one invalid
+        * attribute.
+        */
+        bool Validate()
+        {
+            bool validStatus = true;
+            string unused = "";
+
+            if(!Supporting.Validation.ValidateDateOfHire(GetDateOfHire(), ref unused))
+            {
+                validStatus = false;
+            }
+            else if(!Supporting.Validation.ValidateDateOfTermination(GetDateOfTermination(), ref unused))
+            {
+                validStatus = false;
+            }
+            else if(!Supporting.Validation.ValidateSalary(GetSalary(), ref unused))
+            {
+                validStatus = false;
+            }
+            else if (!Supporting.Validation.ValidateName(GetFirstName(), ref unused))
+            {
+                validStatus = false;
+            }
+            else if (!Supporting.Validation.ValidateName(GetLastName(), ref unused))
+            {
+                validStatus = false;
+            }
+            else if (!Supporting.Validation.ValidateDateOfBirth(GetDateOfBirth(), ref unused))
+            {
+                validStatus = false;
+            }
+            else if (!Supporting.Validation.ValidateSocialInsuranceNumber(GetSocialInsuranceNumber(), ref unused))
+            {
+                validStatus = false;
+            }
+
+            return validStatus;
+        }
 
         /**
         * \brief Sets the <i>dateOfHire</i> attribute within the FulltimeEmployee class

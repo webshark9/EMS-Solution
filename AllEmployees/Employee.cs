@@ -34,10 +34,77 @@ namespace AllEmployees
     {
         string firstName;///< string used to hold the employees first name
         string lastName;///< string used to hold the employees last name
-        string socialInsuranceNumber;///< string used to hold the employees SIN
-        DateTime dateOfBirth;///< used to hold the employees date of birth
+        public string socialInsuranceNumber;///< string used to hold the employees SIN
+        public DateTime dateOfBirth;///< used to hold the employees date of birth
 
-        
+        /**
+        * \brief Default constructor for the Employee parent class
+        *
+        * \details <b>Details</b>
+        *
+        * This is the default constructor for the Employee parent
+        * class which is in charge of creating the base attributes
+        * for the employee when called upon.
+        * 
+        * \param void
+        *
+        * \return void
+        */
+        public Employee()
+        {
+
+        }
+
+        /**
+        * \brief Constructor for the Employee parent class
+        *
+        * \details <b>Details</b>
+        *
+        * This is a constructor for the Employee parent
+        * class which is in charge of creating the base attributes
+        * for the employee when called upon, taking in
+        * a series of parameters ment to be inserted into the Employee
+        * object, and validating the parameters before trying to insert them.
+        * Should a parameter be found invalid, the attribute will be left blank.
+        * 
+        * \param fName - string - The desired employee first name given 
+        * by the user.
+        * 
+        * \param lName - string - The desired employee last name given 
+        * by the user.
+        * 
+        * \param sin - string - The employee's social insurance
+        * number given by the user.
+        * 
+        * \param dob - DateTime - The employee's date of birth given 
+        * by the user.
+        *
+        * \return void
+        */
+        public Employee(string fName, string lName, string sin, DateTime dob)
+        {
+            string unused = "";
+
+            if (Supporting.Validation.ValidateName(fName, ref unused))
+            {
+                firstName = fName;
+            }
+
+            if (Supporting.Validation.ValidateName(lName, ref unused))
+            {
+                lastName = lName;
+            }
+
+            if (Supporting.Validation.ValidateSocialInsuranceNumber(sin, ref unused))
+            {
+                socialInsuranceNumber = sin;
+            }
+
+            if (Supporting.Validation.ValidateDateOfBirth(dob, ref unused))
+            {
+                dateOfBirth = dob;
+            }
+        }
 
         /**
         * \brief Sets the <i>firstName</i> attribute within the Employee class
@@ -152,7 +219,7 @@ namespace AllEmployees
         * within the Employee class to the user input string. Returns a true 
         * or false depending on whether or not the attribute was set successfully.
         * 
-        * \param userInput - string - The employee social insurance
+        * \param userInput - string - The employee's social insurance
         * number given by the user.
         * 
         * \param errorMessage - string - The error message container 
@@ -161,7 +228,7 @@ namespace AllEmployees
         * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
-        public bool SetSocialInsuranceNumber(string userInput, ref string errorMessage)
+        virtual public bool SetSocialInsuranceNumber(string userInput, ref string errorMessage)
         {
             bool setStatus = false;
 
@@ -204,7 +271,7 @@ namespace AllEmployees
         * the ParttimeEmployee class to the user input DateTime. Returns a true 
         * or false depending on whether or not the attribute was set successfully.
         * 
-        * \param userInput - string - The employee's date of bith given 
+        * \param userInput - string - The employee's date of birth given 
         * by the user.
         * 
         * \param errorMessage - string - The error message container 
@@ -213,7 +280,7 @@ namespace AllEmployees
         * \return bool - Returns true if the attribute was set successfully.
         * Returns false if the attribute was not set successfully.
         */
-        public bool SetDateOfBirth(string userInput, ref string errorMessage)
+        virtual public bool SetDateOfBirth(string userInput, ref string errorMessage)
         {
             bool setStatus = false;
             DateTime userInputDateTime;

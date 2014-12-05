@@ -399,7 +399,7 @@ namespace Supporting
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        public static bool ValidatefixedContractAmount(float fixedContractAmount, ref string errorMessage)
+        public static bool ValidateFixedContractAmount(float fixedContractAmount, ref string errorMessage)
         {
             bool validateStatus = false;
             float amountMinimum = 0;
@@ -508,6 +508,22 @@ namespace Supporting
                 validateStatus = false;
                 errorMessage = "Please Be Sure To Enter A Non-Negative Pay Amount.\n";
             }
+
+            return validateStatus;
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        public static bool ValidateBusinessNumber(string businessNumber, ref string errorMessage)
+        {
+            bool validateStatus = true;
+
+            return validateStatus;
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        public static bool ValidateDateOfCreation(DateTime dateOfCreation, ref string errorMessage)
+        {
+            bool validateStatus = true;
 
             return validateStatus;
         }
