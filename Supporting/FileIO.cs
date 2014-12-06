@@ -61,6 +61,8 @@ namespace Supporting
             int nextPipeIndex = 0;// used to hold the index of the next pipe character found
             string returnedErrorMessage = "";
 
+
+
             databaseName = dbName;// save the name of the database file in the 'databaseName' data member so we can close the file later
 
             //File.Open(databaseName, FileMode.OpenOrCreate, FileAccess.ReadWrite);// open/create the database file for read/write access
