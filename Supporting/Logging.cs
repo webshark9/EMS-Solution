@@ -67,7 +67,7 @@ namespace Supporting
         * \brief To close the log file for the day
         * \details <b>Details</b>
         *
-        * This method simply sets the <i>logFileWriter</i> data member to null.
+        * This method simply closes the <i>logFileWriter</i> data member and sets it to null.
         * 
         * \param None
         * 
@@ -76,6 +76,7 @@ namespace Supporting
         */
         public static void CloseLogFile()
         {
+            logFileWriter.Close();
             logFileWriter = null;
         }
 
