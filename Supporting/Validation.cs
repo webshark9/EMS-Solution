@@ -616,12 +616,15 @@ namespace Supporting
             bool validateStatus = true;
             errorMessage = "";
 
-            for (int i = 0; i < 2; i++)
+            if (dateOfCreation != DateTime.MinValue)
             {
-                if(businessNumber[i] != dateOfCreation.ToString()[i])
+                for (int i = 0; i < 2; i++)
                 {
-                    validateStatus = false;
-                    errorMessage = "Please Be Sure The Business Number's First Two Digits\nMatch The Business' Date Of Creation's Year.\nex. Year: 1982\n  Business#: 82xxx xxxx";
+                    if (businessNumber[i] != dateOfCreation.ToString()[i])
+                    {
+                        validateStatus = false;
+                        errorMessage = "Please Be Sure The Business Number's First Two Digits\nMatch The Business' Date Of Creation's Year.\nex. Year: 1982\n  Business#: 82xxx xxxx";
+                    }
                 }
             }
 

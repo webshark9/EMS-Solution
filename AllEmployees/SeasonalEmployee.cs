@@ -108,6 +108,15 @@ namespace AllEmployees
             }
         }
 
+        public string Details()
+        {
+            string empDetails = "";
+
+            empDetails = "";
+
+            return empDetails;
+        }
+
         /**
         * \brief Check all attributes in the SeasonalEmployee object to ensure they are valid
         *
