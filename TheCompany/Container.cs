@@ -63,9 +63,142 @@ namespace TheCompany
         * \return Nothing
         *
         */
-        public Container(string[] employeeStrings)
+        public Container(List<string[]> employeesList)
         {
-            lastIndex = 0;
+            lastIndex = 0;// initialize the data member
+            FulltimeEmployee FTemployee = new FulltimeEmployee();
+            ParttimeEmployee PTemployee = new ParttimeEmployee();
+            ContractEmployee CTemployee = new ContractEmployee();
+            SeasonalEmployee SNemployee = new SeasonalEmployee();
+
+            foreach(string[] employeeString in employeesList)
+            {
+                if (employeeString[0] == "FT")
+                {
+                    DateTime dateOfBirth = new DateTime();
+                    DateTime dateOfHire = new DateTime();
+                    DateTime dateOfTermination = new DateTime();
+                    float salary = 0;
+
+                    if (!DateTime.TryParse(employeeString[4], out dateOfBirth))// convert string to a dateTime variable
+                    {
+                        continue;// invalid date and we don't store invalid objects in the database so continue (don't add)
+                    }
+
+                    if (!DateTime.TryParse(employeeString[5], out dateOfHire))// convert string to a dateTime variable
+                    {
+                        continue;// invalid date and we don't store invalid objects in the database so continue (don't add)
+                    }
+
+                    if (!DateTime.TryParse(employeeString[6], out dateOfTermination))// convert string to a dateTime variable
+                    {
+                        continue;// invalid date and we don't store invalid objects in the database so continue (don't add)
+                    }
+
+                    if(!float.TryParse(employeeString[7], out salary))
+                    {
+                        continue;// invalid float and we don't store invalid objects in the database so continue (don't add)
+                    }
+
+                    FTemployee = new FulltimeEmployee(dateOfHire, dateOfTermination, salary, employeeString[2], employeeString[1], employeeString[3], dateOfBirth);
+
+                    if (FTemployee.Validate())// check if the employee was valid
+                    {
+                        virtualDB.Add(FTemployee);
+                    }
+
+                }
+                else if (employeeString[0] == "PT")
+                {
+                    DateTime dateOfBirth = new DateTime();
+                    DateTime dateOfHire = new DateTime();
+                    DateTime dateOfTermination = new DateTime();
+                    float hourlyRate = 0;
+
+                    if (!DateTime.TryParse(employeeString[4], out dateOfBirth))// convert string to a dateTime variable
+                    {
+                        continue;// invalid date and we don't store invalid objects in the database so continue (don't add)
+                    }
+
+                    if (!DateTime.TryParse(employeeString[5], out dateOfHire))// convert string to a dateTime variable
+                    {
+                        continue;// invalid date and we don't store invalid objects in the database so continue (don't add)
+                    }
+
+                    if (!DateTime.TryParse(employeeString[6], out dateOfTermination))// convert string to a dateTime variable
+                    {
+                        continue;// invalid date and we don't store invalid objects in the database so continue (don't add)
+                    }
+
+                    if (!float.TryParse(employeeString[7], out hourlyRate))
+                    {
+                        continue;// invalid float and we don't store invalid objects in the database so continue (don't add)
+                    }
+
+                    PTemployee = new ParttimeEmployee(dateOfHire, dateOfTermination, hourlyRate, employeeString[2], employeeString[1], employeeString[3], dateOfBirth);
+
+                    if (PTemployee.Validate())// check if the employee was valid
+                    {
+                        virtualDB.Add(PTemployee);
+                    }
+                }
+                else if (employeeString[0] == "CT")
+                {
+                    DateTime dateOfIncorporation = new DateTime();
+                    DateTime contractStartDate = new DateTime();
+                    DateTime contractStopDate = new DateTime();
+                    float contractAmount = 0;
+
+                    if (!DateTime.TryParse(employeeString[4], out dateOfIncorporation))// convert string to a dateTime variable
+                    {
+                        continue;// invalid date and we don't store invalid objects in the database so continue (don't add)
+                    }
+
+                    if (!DateTime.TryParse(employeeString[5], out contractStartDate))// convert string to a dateTime variable
+                    {
+                        continue;// invalid date and we don't store invalid objects in the database so continue (don't add)
+                    }
+
+                    if (!DateTime.TryParse(employeeString[6], out contractStopDate))// convert string to a dateTime variable
+                    {
+                        continue;// invalid date and we don't store invalid objects in the database so continue (don't add)
+                    }
+
+                    if (!float.TryParse(employeeString[7], out contractAmount))
+                    {
+                        continue;// invalid float and we don't store invalid objects in the database so continue (don't add)
+                    }
+                    CTemployee = new ContractEmployee(contractStartDate, contractStopDate, contractAmount, employeeString[2], employeeString[1], employeeString[3], dateOfIncorporation);
+
+                    if (CTemployee.Validate())// check if the employee was valid
+                    {
+                        virtualDB.Add(CTemployee);
+                    }
+                }
+                else if (employeeString[0] == "SN")
+                {
+                    DateTime dateOfBirth = new DateTime();
+                    float piecePay = 0;
+
+                    if (!DateTime.TryParse(employeeString[4], out dateOfBirth))// convert string to a dateTime variable
+                    {
+                        continue;// invalid date and we don't store invalid objects in the database so continue (don't add)
+                    }
+
+                    if (!float.TryParse(employeeString[6], out piecePay))
+                    {
+                        continue;// invalid float and we don't store invalid objects in the database so continue (don't add)
+                    }
+                    SNemployee = new SeasonalEmployee(employeeString[5], piecePay, employeeString[2], employeeString[1], employeeString[3], dateOfBirth);
+
+                    if (SNemployee.Validate())// check if the employee was valid
+                    {
+                        virtualDB.Add(SNemployee);
+                    }
+                }
+                // do nothing if the employee type is invalid 
+
+            }
 
             Employee employeeToAdd = null;
 
