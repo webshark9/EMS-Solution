@@ -152,7 +152,7 @@ namespace Supporting
 
                             if (DateTime.TryParse(stringsInRecord[5], out dateOfHire))// convert string to a dateTime variable
                             {
-                                if(!Validation.ValidateDateOfHire(dateOfHire, ref returnedErrorMessage))
+                                if (!Validation.ValidateDateOfHire(dateOfBirth, dateOfHire, DateTime.MinValue, ref returnedErrorMessage))
                                 {
                                     ++numInvalidRecords;
                                     //Console.WriteLine("[FileIO.Open] Invalid date of hire found reading record: " + record);
@@ -174,7 +174,7 @@ namespace Supporting
 
                             if (DateTime.TryParse(stringsInRecord[6], out dateOfTermination))// convert string to a dateTime variable
                             {
-                                if(!Validation.ValidateDateOfTermination(dateOfTermination, ref returnedErrorMessage))
+                                if(!Validation.ValidateDateOfTermination(dateOfBirth, dateOfHire, dateOfTermination, ref returnedErrorMessage))
                                 {
                                     ++numInvalidRecords;
                                     //Console.WriteLine("[FileIO.Open] Invalid date of termination found reading record: " + record);
@@ -300,7 +300,7 @@ namespace Supporting
 
                             if (DateTime.TryParse(stringsInRecord[5], out contractStartDate))// convert string to a dateTime variable
                             {
-                                if (!Validation.ValidateContractStartDate(contractStartDate, ref returnedErrorMessage))
+                                if (!Validation.ValidateContractStartDate(dateOfBirth, contractStartDate, DateTime.MinValue, ref returnedErrorMessage))
                                 {
                                     ++numInvalidRecords;
                                     //Console.WriteLine("[FileIO.Open] Invalid contract start date found reading record: " + record);
@@ -322,7 +322,7 @@ namespace Supporting
 
                             if (DateTime.TryParse(stringsInRecord[6], out contractStopDate))// convert string to a dateTime variable
                             {
-                                if (!Validation.ValidateContractStopDate(contractStopDate, ref returnedErrorMessage))
+                                if (!Validation.ValidateContractStopDate(dateOfBirth, contractStartDate, contractStopDate, ref returnedErrorMessage))
                                 {
                                     ++numInvalidRecords;
                                     //Console.WriteLine("[FileIO.Open] Invalid contract stop date found reading record: " + record);
