@@ -49,7 +49,7 @@ namespace AllEmployees
         *
         * \return void
         */
-        SeasonalEmployee() : base()
+        public SeasonalEmployee() : base()
         {
 
         }

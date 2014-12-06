@@ -50,7 +50,7 @@ namespace AllEmployees
         *
         * \return void
         */
-        ParttimeEmployee() : base()
+        public ParttimeEmployee() : base()
         {
 
         }

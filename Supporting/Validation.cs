@@ -305,7 +305,7 @@ namespace Supporting
             bool validateStatus = true;
             float salaryMinimum = 0;
 
-            if(salary < salaryMinimum)
+            if(salary <= salaryMinimum)
             {
                 validateStatus = false;
                 errorMessage = "Please Be Sure To Enter A Non-Negative Salary.\n";
@@ -401,10 +401,10 @@ namespace Supporting
         */
         public static bool ValidateFixedContractAmount(float fixedContractAmount, ref string errorMessage)
         {
-            bool validateStatus = false;
+            bool validateStatus = true;
             float amountMinimum = 0;
 
-            if (fixedContractAmount < amountMinimum)
+            if (fixedContractAmount <= amountMinimum)
             {
                 validateStatus = false;
                 errorMessage = "Please Be Sure To Enter A Non-Negative Amount.\n";
@@ -437,7 +437,7 @@ namespace Supporting
             bool validateStatus = true;
             float rateMinimum = 0;
 
-            if (hourlyRate < rateMinimum)
+            if (hourlyRate <= rateMinimum)
             {
                 validateStatus = false;
                 errorMessage = "Please Be Sure To Enter A Non-Negative Rate.\n";
@@ -503,7 +503,7 @@ namespace Supporting
             bool validateStatus = true;
             float payMinimum = 0;
 
-            if (piecePay < payMinimum)
+            if (piecePay <= payMinimum)
             {
                 validateStatus = false;
                 errorMessage = "Please Be Sure To Enter A Non-Negative Pay Amount.\n";
