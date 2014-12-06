@@ -117,6 +117,15 @@ namespace AllEmployees
             }
         }
 
+        public string Details()
+        {
+            string empDetails = "";
+
+            empDetails = "";
+
+            return empDetails;
+        }
+
         /**
         * \brief Check all attributes in the ParttimeEmployee object to ensure they are valid
         *

@@ -270,7 +270,7 @@ namespace Supporting
                                 continue;
                             }
 
-                            if (!Validation.ValidateBusinessNumber(stringsInRecord[3], ref returnedErrorMessage))
+                            if (!Validation.ValidateBusinessNumber(stringsInRecord[3], DateTime.MinValue, ref returnedErrorMessage))
                             {
                                 ++numInvalidRecords;
                                 //Console.WriteLine("[FileIO.Open] Invalid business number found reading record: " + record);
@@ -280,7 +280,7 @@ namespace Supporting
 
                             if (DateTime.TryParse(stringsInRecord[4], out dateOfBirth))// convert string to a dateTime variable
                             {
-                                if (!Validation.ValidateDateOfCreation(dateOfBirth, ref returnedErrorMessage))
+                                if (!Validation.ValidateDateOfCreation(stringsInRecord[3], dateOfBirth, ref returnedErrorMessage))
                                 {
                                     ++numInvalidRecords;
                                     //Console.WriteLine("[FileIO.Open] Invalid date of incorporation found reading record: " + record);

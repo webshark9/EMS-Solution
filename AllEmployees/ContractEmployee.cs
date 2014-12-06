@@ -121,10 +121,19 @@ namespace AllEmployees
                 SetSocialInsuranceNumber(sin, ref unused);
             }
 
-            if(Supporting.Validation.ValidateDateOfCreation(dob, ref unused))
+            if (Supporting.Validation.ValidateDateOfCreation(sin, dob, ref unused))
             {
                 SetDateOfBirth(dob.ToString(), ref unused);
             }
+        }
+
+        public string Details()
+        {
+            string empDetails = "";
+
+            empDetails = "";
+
+            return empDetails;
         }
 
         /**
@@ -164,7 +173,7 @@ namespace AllEmployees
             {
                 validStatus = false;
             }
-            else if (!Supporting.Validation.ValidateDateOfCreation(GetDateOfBirth(), ref unused))
+            else if (!Supporting.Validation.ValidateDateOfCreation(GetSocialInsuranceNumber(), GetDateOfBirth(), ref unused))
             {
                 validStatus = false;
             }
@@ -194,7 +203,7 @@ namespace AllEmployees
 
             if (DateTime.TryParse(userInput, out userInputDateTime))
             {
-                if (Supporting.Validation.ValidateDateOfCreation(userInputDateTime, ref errorMessage))
+                if (Supporting.Validation.ValidateDateOfCreation(GetSocialInsuranceNumber(), userInputDateTime, ref errorMessage))
                 {
                     setStatus = true;
                     //Employee.dateOfBirth = userInputDateTime;
