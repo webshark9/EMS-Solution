@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using AllEmployees;
+using TheCompany;
 
 
 namespace Presentation
@@ -84,7 +85,7 @@ namespace Presentation
     /// \authors Matthew Thiessen, Willi Boldt, Ping Ueng, and Tylor McLaughlin
     public class UIMenu
     {
-
+        private Container companyContainer;
         /**
         * \brief Displays the Main Menu
         *
@@ -106,7 +107,7 @@ namespace Presentation
 
         // string sampleDataMember; ///< this is the commenting style for class data member.
 
-        public void MainMenu()
+        public void MainMenu(Container container)
         {
             ConsoleKeyInfo userInput;
             bool exit = false;
@@ -115,9 +116,15 @@ namespace Presentation
             {
                 Console.Clear();
                 Console.WriteLine("MAIN MENU:");
-                Console.WriteLine("\n");
+                Console.WriteLine("");
                 Console.WriteLine("\t1. Manage Data Base Files");
                 Console.WriteLine("\t2. Manage Employees");
+                Console.WriteLine("\t3. ----------");
+                Console.WriteLine("\t4. ----------");
+                Console.WriteLine("\t5. ----------");
+                Console.WriteLine("\t6. ----------");
+                Console.WriteLine("\t7. ----------");
+                Console.WriteLine("\t8. ----------");
                 Console.WriteLine("\t9. Save and Exit EMS");
 
                 userInput = Console.ReadKey();
@@ -164,18 +171,24 @@ namespace Presentation
             ConsoleKeyInfo userInput;
             bool back = false;
 
-            while(back == false)
+            while (back == false)
             {
                 Console.Clear();
                 Console.WriteLine("FILE MANAGEMENT MENU:");
-                Console.WriteLine("\n");
+                Console.WriteLine("");
                 Console.WriteLine("\t1. Load EMS Data Base From File");
-                Console.WriteLine("\t2. Save EMployee Set To EMS Data Base File");
+                Console.WriteLine("\t2. Save Employee Set To EMS Data Base File");
+                Console.WriteLine("\t3. ----------");
+                Console.WriteLine("\t4. ----------");
+                Console.WriteLine("\t5. ----------");
+                Console.WriteLine("\t6. ----------");
+                Console.WriteLine("\t7. ----------");
+                Console.WriteLine("\t8. ----------");
                 Console.WriteLine("\t9. Return To Main Menu");
 
                 userInput = Console.ReadKey();
 
-                switch(userInput.KeyChar)
+                switch (userInput.KeyChar)
                 {
                     case '1':
 
@@ -218,20 +231,24 @@ namespace Presentation
             ConsoleKeyInfo userInput;
             bool back = false;
 
-            while(back == false)
+            while (back == false)
             {
                 Console.Clear();
                 Console.WriteLine("EMPLOYEE MANAGMENT MENU:");
-                Console.WriteLine("\n");
+                Console.WriteLine("");
                 Console.WriteLine("\t1. Display Employee Set");
                 Console.WriteLine("\t2. Create A New Employee");
                 Console.WriteLine("\t3. Modify An Existing Employee");
                 Console.WriteLine("\t4. Remove An Existing Employee");
+                Console.WriteLine("\t5. ----------");
+                Console.WriteLine("\t6. ----------");
+                Console.WriteLine("\t7. ----------");
+                Console.WriteLine("\t8. ----------");
                 Console.WriteLine("\t9. Return To Main Menu");
 
                 userInput = Console.ReadKey();
 
-                switch(userInput.KeyChar)
+                switch (userInput.KeyChar)
                 {
                     case '1':
                         DisplayEmployeeSetMenu();
@@ -285,9 +302,15 @@ namespace Presentation
             {
                 Console.Clear();
                 Console.WriteLine("DISPLAY EMPLOYEE SET:");
-                Console.WriteLine("\n");
+                Console.WriteLine("");
                 Console.WriteLine("\t1. Display All Employees");
                 Console.WriteLine("\t2. Search Specific Employee");
+                Console.WriteLine("\t3. ----------");
+                Console.WriteLine("\t4. ----------");
+                Console.WriteLine("\t5. ----------");
+                Console.WriteLine("\t6. ----------");
+                Console.WriteLine("\t7. ----------");
+                Console.WriteLine("\t8. ----------");
                 Console.WriteLine("\t9. Return To Employee Management Menu");
 
                 userInput = Console.ReadKey();
@@ -338,14 +361,18 @@ namespace Presentation
             while (back == false)
             {
                 Console.Clear();
-                Console.WriteLine("Create a New Employee:");
-                Console.WriteLine("\n");
-                Console.WriteLine("Create Employee Type:");
-                Console.WriteLine("\n");
-                Console.WriteLine("\t1. Full Time Employee");
-                Console.WriteLine("\t2. Part Time Employee");
+//                Console.WriteLine("Create a New Employee:");
+//                Console.WriteLine("");
+                Console.WriteLine("CHOOSE EMPLOYEE TYPE:");
+                Console.WriteLine("");
+                Console.WriteLine("\t1. Full-time Employee");
+                Console.WriteLine("\t2. Part-time Employee");
                 Console.WriteLine("\t3. Contract Employee");
                 Console.WriteLine("\t4. Seasonal Employee");
+                Console.WriteLine("\t5. ----------");
+                Console.WriteLine("\t6. ----------");
+                Console.WriteLine("\t7. ----------");
+                Console.WriteLine("\t8. ----------");
                 Console.WriteLine("\t9. Return To Employee Management Menu");
 
                 userInput = Console.ReadKey();
@@ -353,11 +380,11 @@ namespace Presentation
                 switch (userInput.KeyChar)
                 {
                     case '1':
-                        CreateFullTimeEmployee();
+                        CreateFulltimeEmployee();
                         break;
 
                     case '2':
-                        CreatePartTimeEmployee();
+                        CreateParttimeEmployee();
                         break;
 
                     case '3':
@@ -402,151 +429,11 @@ namespace Presentation
         * \return Nothing is returned
         * 
         */
-        private void CreateFullTimeEmployee()
+        private void CreateFulltimeEmployee()
         {
             FulltimeEmployee empObj = new FulltimeEmployee();
-            ConsoleKeyInfo userInput;
-            DateTime defaultDateTime = new DateTime();
-            string userInputSentence = "";
-            string errorMessage = "";
-            bool back = false;
 
-            while (back == false)
-            {
-                userInputSentence = "";
-                Console.Clear();
-                Console.WriteLine("Create a Full Time Employee:");
-                Console.WriteLine("\n");
-                Console.WriteLine("Current Info:");
-                Console.WriteLine("First Name: {0}", empObj.GetFirstName());
-                Console.WriteLine("Last Name: {0}", empObj.GetLastName());
-                Console.WriteLine("SIN: {0}", empObj.GetSocialInsuranceNumber());
-                if (DateTime.Compare(empObj.GetDateOfBirth(), defaultDateTime) == 0)
-                {
-                    Console.WriteLine("Date of Birth: ");
-                }
-                else
-                {
-                    Console.WriteLine("Date of Birth: {0}", empObj.GetDateOfBirth());
-                }
-
-                if (DateTime.Compare(empObj.GetDateOfHire(), defaultDateTime) == 0)
-                {
-                    Console.WriteLine("Date of Hire: ");
-                }
-                else
-                {
-                    Console.WriteLine("Date of Hire: {0}", empObj.GetDateOfHire());
-                }
-
-                if (DateTime.Compare(empObj.GetDateOfTermination(), defaultDateTime) == 0)
-                {
-                    Console.WriteLine("Date of Termination: ");
-                }
-                else
-                {
-                    Console.WriteLine("Date of Termination: {0}", empObj.GetDateOfTermination());
-                }
-                
-                
-                Console.WriteLine("Salary: ${0}", empObj.GetSalary());
-                Console.WriteLine("\n");
-                Console.WriteLine("Edit Info:");
-                Console.WriteLine("\t1. Edit First Name");
-                Console.WriteLine("\t2. Edit Last Name");
-                Console.WriteLine("\t3. Edit SIN");
-                Console.WriteLine("\t4. Edit Date of Birth");
-                Console.WriteLine("\t5. Edit Date of Hire");
-                Console.WriteLine("\t6. Edit Date of Termination");
-                Console.WriteLine("\t7. Edit Salary");
-                Console.WriteLine("\t9. Return To Employee Management Menu");
-
-                userInput = Console.ReadKey();
-
-                switch (userInput.KeyChar)
-                {
-                    case '1':
-                        {
-                            userInputSentence = TakeUserInputSentence("Enter First Name: ");
-                            empObj.SetFirstName(userInputSentence, ref errorMessage);
-                            if (errorMessage != "")
-                            {
-                                PrintErrorMessage(errorMessage);
-                            }
-                        }
-                        break;
-
-                    case '2':
-                        {
-                            userInputSentence = TakeUserInputSentence("Enter Last Name: ");
-                            empObj.SetLastName(userInputSentence, ref errorMessage);
-                            if (errorMessage != "")
-                            {
-                                PrintErrorMessage(errorMessage);
-                            }
-                        }
-                        break;
-
-                    case '3':
-                        {
-                            userInputSentence = TakeUserInputSIN("Enter Social Insurance Number: ");
-                            empObj.SetSocialInsuranceNumber(userInputSentence, ref errorMessage);
-                            if (errorMessage != "")
-                            {
-                                PrintErrorMessage(errorMessage);
-                            }
-                        }
-                        break;
-
-                    case '4':
-                        {
-                            userInputSentence = TakeUserInputDate("Enter Date of Birth (yyyy/mm/dd): ");
-                            empObj.SetDateOfBirth(userInputSentence, ref errorMessage);
-                            if (errorMessage != "")
-                            {
-                                PrintErrorMessage(errorMessage);
-                            }
-                        }
-                        break;
-
-                    case '5':
-                        {
-                            userInputSentence = TakeUserInputDate("Enter Date of Hire (yyyy/mm/dd): ");
-                            empObj.SetDateOfHire(userInputSentence, ref errorMessage);
-                            if (errorMessage != "")
-                            {
-                                PrintErrorMessage(errorMessage);
-                            }
-                        }
-                        break;
-
-                    case '6':
-                        {
-                            userInputSentence = TakeUserInputDate("Enter Date of Termination (yyyy/mm/dd): ");
-                            empObj.SetDateOfTermination(userInputSentence, ref errorMessage);
-                            if (errorMessage != "")
-                            {
-                                PrintErrorMessage(errorMessage);
-                            }
-                        }
-                        break;
-
-                    case '7':
-                        {
-                            userInputSentence = TakeUserInputMoney("Enter Salary (2 decimal degits required): ");
-                            empObj.SetSalary(userInputSentence, ref errorMessage);
-                            if (errorMessage != "")
-                            {
-                                PrintErrorMessage(errorMessage);
-                            }
-                        }
-                        break;
-
-                    case '9':
-                        back = true;
-                        break;
-                }
-            }
+            ModifyFulltimeEmployee(empObj, true);
         }
 
         /**
@@ -575,151 +462,11 @@ namespace Presentation
         * \return Nothing is returned
         * 
         */
-        private void CreatePartTimeEmployee()
+        private void CreateParttimeEmployee()
         {
             ParttimeEmployee empObj = new ParttimeEmployee();
-            ConsoleKeyInfo userInput;
-            DateTime defaultDateTime = new DateTime();
-            string userInputSentence = "";
-            string errorMessage = "";
-            bool back = false;
 
-            while (back == false)
-            {
-                userInputSentence = "";
-                Console.Clear();
-                Console.WriteLine("Create a Full Time Employee:");
-                Console.WriteLine("\n");
-                Console.WriteLine("Current Info:");
-                Console.WriteLine("First Name: {0}", empObj.GetFirstName());
-                Console.WriteLine("Last Name: {0}", empObj.GetLastName());
-                Console.WriteLine("SIN: {0}", empObj.GetSocialInsuranceNumber());
-                if (DateTime.Compare(empObj.GetDateOfBirth(), defaultDateTime) == 0)
-                {
-                    Console.WriteLine("Date of Birth: ");
-                }
-                else
-                {
-                    Console.WriteLine("Date of Birth: {0}", empObj.GetDateOfBirth());
-                }
-
-                if (DateTime.Compare(empObj.GetDateOfHire(), defaultDateTime) == 0)
-                {
-                    Console.WriteLine("Date of Hire: ");
-                }
-                else
-                {
-                    Console.WriteLine("Date of Hire: {0}", empObj.GetDateOfHire());
-                }
-
-                if (DateTime.Compare(empObj.GetDateOfTermination(), defaultDateTime) == 0)
-                {
-                    Console.WriteLine("Date of Termination: ");
-                }
-                else
-                {
-                    Console.WriteLine("Date of Termination: {0}", empObj.GetDateOfTermination());
-                }
-
-
-                Console.WriteLine("Hourly Rate: ${0}", empObj.GetHourlyRate());
-                Console.WriteLine("\n");
-                Console.WriteLine("Edit Info:");
-                Console.WriteLine("\t1. Edit First Name");
-                Console.WriteLine("\t2. Edit Last Name");
-                Console.WriteLine("\t3. Edit SIN");
-                Console.WriteLine("\t4. Edit Date of Birth");
-                Console.WriteLine("\t5. Edit Date of Hire");
-                Console.WriteLine("\t6. Edit Date of Termination");
-                Console.WriteLine("\t7. Edit Hourly Rate");
-                Console.WriteLine("\t9. Return To Employee Management Menu");
-
-                userInput = Console.ReadKey();
-
-                switch (userInput.KeyChar)
-                {
-                    case '1':
-                        {
-                            userInputSentence = TakeUserInputSentence("Enter First Name: ");
-                            empObj.SetFirstName(userInputSentence, ref errorMessage);
-                            if (errorMessage != "")
-                            {
-                                PrintErrorMessage(errorMessage);
-                            }
-                        }
-                        break;
-
-                    case '2':
-                        {
-                            userInputSentence = TakeUserInputSentence("Enter Last Name: ");
-                            empObj.SetLastName(userInputSentence, ref errorMessage);
-                            if (errorMessage != "")
-                            {
-                                PrintErrorMessage(errorMessage);
-                            }
-                        }
-                        break;
-
-                    case '3':
-                        {
-                            userInputSentence = TakeUserInputSIN("Enter Social Insurance Number: ");
-                            empObj.SetSocialInsuranceNumber(userInputSentence, ref errorMessage);
-                            if (errorMessage != "")
-                            {
-                                PrintErrorMessage(errorMessage);
-                            }
-                        }
-                        break;
-
-                    case '4':
-                        {
-                            userInputSentence = TakeUserInputDate("Enter Date of Birth (yyyy/mm/dd): ");
-                            empObj.SetDateOfBirth(userInputSentence, ref errorMessage);
-                            if (errorMessage != "")
-                            {
-                                PrintErrorMessage(errorMessage);
-                            }
-                        }
-                        break;
-
-                    case '5':
-                        {
-                            userInputSentence = TakeUserInputDate("Enter Date of Hire (yyyy/mm/dd): ");
-                            empObj.SetDateOfHire(userInputSentence, ref errorMessage);
-                            if (errorMessage != "")
-                            {
-                                PrintErrorMessage(errorMessage);
-                            }
-                        }
-                        break;
-
-                    case '6':
-                        {
-                            userInputSentence = TakeUserInputDate("Enter Date of Termination (yyyy/mm/dd): ");
-                            empObj.SetDateOfTermination(userInputSentence, ref errorMessage);
-                            if (errorMessage != "")
-                            {
-                                PrintErrorMessage(errorMessage);
-                            }
-                        }
-                        break;
-
-                    case '7':
-                        {
-                            userInputSentence = TakeUserInputMoney("Enter Hourly Rate (2 decimal degits required): ");
-                            empObj.SetHourlyRate(userInputSentence, ref errorMessage);
-                            if (errorMessage != "")
-                            {
-                                PrintErrorMessage(errorMessage);
-                            }
-                        }
-                        break;
-
-                    case '9':
-                        back = true;
-                        break;
-                }
-            }
+            ModifyParttimeEmployee(empObj, true);
         }
 
         /**
@@ -733,9 +480,9 @@ namespace Presentation
         * 
         * Available options:
         * 
-        * Corporation Name
+        * Corporation Name (stored in Last Name)
          * Business Number
-         * Date of Incorporation
+         * Date of Incorporation (stored in Date of Birth)
          * Contract Start Date
          * Contract Stop Date
          * Fixed Contract Amount
@@ -749,7 +496,9 @@ namespace Presentation
         */
         private void CreateContractEmployee()
         {
+            ContractEmployee empObj = new ContractEmployee();
 
+            ModifyContractEmployee(empObj, true);
         }
 
         /**
@@ -778,382 +527,11 @@ namespace Presentation
         */
         private void CreateSeasonalEmployee()
         {
-
+            SeasonalEmployee empObj = new SeasonalEmployee();
+            ModifySeasonalEmployee(empObj, true);
         }
 
-        /**
-         * \brief UI of enter first name
-         *
-         * \details <b>Details</b>
-         *
-         * This method allows user to enter first name of employee
-         * 
-         * Available Option:
-         * 
-         * 9. Cancel
-         * 
-         * \param None
-         * 
-         * \return Nothing is returned
-         * 
-         */
-        private void EnterFirstName()
-        {
-
-        }
-
-        /**
-         * \brief UI of choosing season for seaonal employee creation
-         *
-         * \details <b>Details</b>
-         *
-         * This method allows user to choose one of the four seaon for 
-         * setting seasonal employee's seasonal attribute.
-         * 
-         * Available options:
-         * 
-         * Spring
-         * Summer
-         * Fall
-         * Winter
-         * 
-         * \param None
-         * 
-         * \return Nothing is returned
-         * 
-         */
-        private void EnterLastName()
-        {
-
-        }
-
-        /**
-         * \brief UI of choosing season for seaonal employee creation
-         *
-         * \details <b>Details</b>
-         *
-         * This method allows user to choose one of the four seaon for 
-         * setting seasonal employee's seasonal attribute.
-         * 
-         * Available options:
-         * 
-         * Spring
-         * Summer
-         * Fall
-         * Winter
-         * 
-         * \param None
-         * 
-         * \return Nothing is returned
-         * 
-         */
-        private void EnterSIN()
-        {
-
-        }
-
-        /**
-         * \brief UI of choosing season for seaonal employee creation
-         *
-         * \details <b>Details</b>
-         *
-         * This method allows user to choose one of the four seaon for 
-         * setting seasonal employee's seasonal attribute.
-         * 
-         * Available options:
-         * 
-         * Spring
-         * Summer
-         * Fall
-         * Winter
-         * 
-         * \param None
-         * 
-         * \return Nothing is returned
-         * 
-         */
-        private void EnterDateOfBirth()
-        {
-
-        }
-
-        /**
-         * \brief UI of choosing season for seaonal employee creation
-         *
-         * \details <b>Details</b>
-         *
-         * This method allows user to choose one of the four seaon for 
-         * setting seasonal employee's seasonal attribute.
-         * 
-         * Available options:
-         * 
-         * Spring
-         * Summer
-         * Fall
-         * Winter
-         * 
-         * \param None
-         * 
-         * \return Nothing is returned
-         * 
-         */
-        private void EnterDateOfHire()
-        {
-
-        }
-
-        /**
-         * \brief UI of choosing season for seaonal employee creation
-         *
-         * \details <b>Details</b>
-         *
-         * This method allows user to choose one of the four seaon for 
-         * setting seasonal employee's seasonal attribute.
-         * 
-         * Available options:
-         * 
-         * Spring
-         * Summer
-         * Fall
-         * Winter
-         * 
-         * \param None
-         * 
-         * \return Nothing is returned
-         * 
-         */
-        private void EnterDateOfTermination()
-        {
-
-        }
-
-        /**
-         * \brief UI of choosing season for seaonal employee creation
-         *
-         * \details <b>Details</b>
-         *
-         * This method allows user to choose one of the four seaon for 
-         * setting seasonal employee's seasonal attribute.
-         * 
-         * Available options:
-         * 
-         * Spring
-         * Summer
-         * Fall
-         * Winter
-         * 
-         * \param None
-         * 
-         * \return Nothing is returned
-         * 
-         */
-        private void EnterSalary()
-        {
-
-        }
-
-        /**
-         * \brief UI of choosing season for seaonal employee creation
-         *
-         * \details <b>Details</b>
-         *
-         * This method allows user to choose one of the four seaon for 
-         * setting seasonal employee's seasonal attribute.
-         * 
-         * Available options:
-         * 
-         * Spring
-         * Summer
-         * Fall
-         * Winter
-         * 
-         * \param None
-         * 
-         * \return Nothing is returned
-         * 
-         */
-        private void EnterHourlyRate()
-        {
-
-        }
-
-        /**
-         * \brief UI of choosing season for seaonal employee creation
-         *
-         * \details <b>Details</b>
-         *
-         * This method allows user to choose one of the four seaon for 
-         * setting seasonal employee's seasonal attribute.
-         * 
-         * Available options:
-         * 
-         * Spring
-         * Summer
-         * Fall
-         * Winter
-         * 
-         * \param None
-         * 
-         * \return Nothing is returned
-         * 
-         */
-        private void EnterContractStartDate()
-        {
-
-        }
-
-        /**
-         * \brief UI of choosing season for seaonal employee creation
-         *
-         * \details <b>Details</b>
-         *
-         * This method allows user to choose one of the four seaon for 
-         * setting seasonal employee's seasonal attribute.
-         * 
-         * Available options:
-         * 
-         * Spring
-         * Summer
-         * Fall
-         * Winter
-         * 
-         * \param None
-         * 
-         * \return Nothing is returned
-         * 
-         */
-        private void EnterContractStopDate()
-        {
-
-        }
-
-        /**
-         * \brief UI of choosing season for seaonal employee creation
-         *
-         * \details <b>Details</b>
-         *
-         * This method allows user to choose one of the four seaon for 
-         * setting seasonal employee's seasonal attribute.
-         * 
-         * Available options:
-         * 
-         * Spring
-         * Summer
-         * Fall
-         * Winter
-         * 
-         * \param None
-         * 
-         * \return Nothing is returned
-         * 
-         */
-        private void EnterFixedContractAmount()
-        {
-
-        }
-
-        /**
-         * \brief UI of choosing season for seaonal employee creation
-         *
-         * \details <b>Details</b>
-         *
-         * This method allows user to choose one of the four seaon for 
-         * setting seasonal employee's seasonal attribute.
-         * 
-         * Available options:
-         * 
-         * Spring
-         * Summer
-         * Fall
-         * Winter
-         * 
-         * \param None
-         * 
-         * \return Nothing is returned
-         * 
-         */
-        private void EnterBusinessNumber()
-        {
-
-        }
-
-        /**
-         * \brief UI of choosing season for seaonal employee creation
-         *
-         * \details <b>Details</b>
-         *
-         * This method allows user to choose one of the four seaon for 
-         * setting seasonal employee's seasonal attribute.
-         * 
-         * Available options:
-         * 
-         * Spring
-         * Summer
-         * Fall
-         * Winter
-         * 
-         * \param None
-         * 
-         * \return Nothing is returned
-         * 
-         */
-        private void EnterDateOfIncorporation()
-        {
-
-        }
-
-        /**
-         * \brief UI of choosing season for seaonal employee creation
-         *
-         * \details <b>Details</b>
-         *
-         * This method allows user to choose one of the four seaon for 
-         * setting seasonal employee's seasonal attribute.
-         * 
-         * Available options:
-         * 
-         * Spring
-         * Summer
-         * Fall
-         * Winter
-         * 
-         * \param None
-         * 
-         * \return Nothing is returned
-         * 
-         */
-        private void EnterPiecePay()
-        {
-
-        }
-
-        /**
-         * \brief UI of choosing season for seaonal employee creation
-         *
-         * \details <b>Details</b>
-         *
-         * This method allows user to choose one of the four seaon for 
-         * setting seasonal employee's seasonal attribute.
-         * 
-         * Available options:
-         * 
-         * Spring
-         * Summer
-         * Fall
-         * Winter
-         * 
-         * \param None
-         * 
-         * \return Nothing is returned
-         * 
-         */
-        private string ChooseSeason()
-        {
-            string season = "";
-
-            return season;
-        }
-
+        
         /**
         * \brief Displays the Modify an Existing Employee Menu
         *
@@ -1176,9 +554,789 @@ namespace Presentation
         */
         private void ModifyAnExistingEmployeeMenu()
         {
-            char userInput = '0';
+            ConsoleKeyInfo userInput;
+            bool back = false;
+
+            while (back == false)
+            {
+                Console.Clear();
+                Console.WriteLine("CHOOSE AN EMPLOYEE TO MODIFY:");
+                Console.WriteLine("");
+                Console.WriteLine("\t1. Search By First Name");
+                Console.WriteLine("\t2. Search By Last Name/Corporation Name");
+                Console.WriteLine("\t3. Search By SIN/Business Number");
+                Console.WriteLine("\t4. ----------");
+                Console.WriteLine("\t5. ----------");
+                Console.WriteLine("\t6. ----------");
+                Console.WriteLine("\t7. ----------");
+                Console.WriteLine("\t8. ----------");
+                Console.WriteLine("\t9. Return To Employee Management Menu");
+
+                userInput = Console.ReadKey();
+
+                switch (userInput.KeyChar)
+                {
+                    case '1':
+                        SearchFirstNameUI();
+                        break;
+
+                    case '2':
+                        SearchLastNameUI();
+                        break;
+
+                    case '3':
+                        SearchSINUI();
+                        break;
+
+                    case '9':
+                        back = true;
+                        break;
+                }
+            }
         }
 
+        /**
+        * \brief UI of full time employee creation
+        *
+        * \details <b>Details</b>
+        *
+        * This method will give user the option to enter each element of a full time 
+         * employee. The elements that have been entered will also be displayed. 
+         * User can choose to save the employee data in this menu.
+        * 
+        * Available options:
+        * 
+        * First Name
+         * Last Name
+         * SIN
+         * Date of Birth
+         * Date of Hire
+         * Date of Termination
+         * Salary
+         * Save and Return to Manage Employee Menu
+        * Return to Manage Employee Menu Without Saving
+        * 
+        * \param None
+        * 
+        * \return Nothing is returned
+        * 
+        */
+        private bool ModifyFulltimeEmployee(FulltimeEmployee theObj, bool isNew)
+        {
+//            FulltimeEmployee theObj = new FulltimeEmployee();
+            ConsoleKeyInfo userInput;
+            DateTime defaultDateTime = new DateTime();
+            string userInputSentence = "";
+            string errorMessage = "";
+            bool back = false;
+            bool removeOld = false;
+
+            while (back == false)
+            {
+                userInputSentence = "";
+                Console.Clear();
+                if (isNew == true)
+                {
+                    Console.WriteLine("CREATE A FULL-TIME EMPLOYEE:");
+                }
+                else
+                {
+                    Console.WriteLine("MODIFY A FULL-TIME EMPLOYEE:");
+                }
+                Console.WriteLine("");
+                Console.WriteLine("\t1. Edit First Name");
+                Console.WriteLine("\t2. Edit Last Name");
+                Console.WriteLine("\t3. Edit SIN");
+                Console.WriteLine("\t4. Edit Date of Birth");
+                Console.WriteLine("\t5. Edit Date of Hire");
+                Console.WriteLine("\t6. Edit Date of Termination");
+                Console.WriteLine("\t7. Edit Salary");
+                Console.WriteLine("\t8. Save Entry");
+                Console.WriteLine("\t9. Return To Choose Employee Type");
+                Console.WriteLine("");
+                Console.WriteLine("CURRENT INFO:");
+                Console.WriteLine("");
+                Console.WriteLine("First Name: {0}", theObj.GetFirstName());
+                Console.WriteLine("Last Name: {0}", theObj.GetLastName());
+                Console.WriteLine("SIN: {0}", displaySIN(theObj.GetSocialInsuranceNumber()));
+
+                if (DateTime.Compare(theObj.GetDateOfBirth(), defaultDateTime) == 0)
+                {
+                    Console.WriteLine("Date of Birth: ");
+                }
+                else
+                {
+                    Console.WriteLine("Date of Birth: {0}", theObj.GetDateOfBirth());
+                }
+
+                if (DateTime.Compare(theObj.GetDateOfHire(), defaultDateTime) == 0)
+                {
+                    Console.WriteLine("Date of Hire: ");
+                }
+                else
+                {
+                    Console.WriteLine("Date of Hire: {0}", theObj.GetDateOfHire());
+                }
+
+                if (DateTime.Compare(theObj.GetDateOfTermination(), defaultDateTime) == 0)
+                {
+                    Console.WriteLine("Date of Termination: ");
+                }
+                else
+                {
+                    Console.WriteLine("Date of Termination: {0}", theObj.GetDateOfTermination());
+                }
+
+
+                Console.WriteLine("Salary: ${0}", theObj.GetSalary());
+
+                userInput = Console.ReadKey();
+
+                switch (userInput.KeyChar)
+                {
+                    case '1':
+                        {
+                            userInputSentence = TakeUserInputSentence("Enter First Name: ");
+                            theObj.SetFirstName(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '2':
+                        {
+                            userInputSentence = TakeUserInputSentence("Enter Last Name: ");
+                            theObj.SetLastName(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '3':
+                        {
+                            userInputSentence = TakeUserInputSIN("Enter Social Insurance Number: ");
+                            theObj.SetSocialInsuranceNumber(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '4':
+                        {
+                            userInputSentence = TakeUserInputDate("Enter Date of Birth (yyyy/mm/dd): ");
+                            theObj.SetDateOfBirth(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '5':
+                        {
+                            userInputSentence = TakeUserInputDate("Enter Date of Hire (yyyy/mm/dd): ");
+                            theObj.SetDateOfHire(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '6':
+                        {
+                            userInputSentence = TakeUserInputDate("Enter Date of Termination (yyyy/mm/dd): ");
+                            theObj.SetDateOfTermination(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '7':
+                        {
+                            userInputSentence = TakeUserInputMoney("Enter Salary (2 decimal degits required): ");
+                            theObj.SetSalary(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '8':
+                        {
+                            // uh don't know what to call to push the object into the container.
+                            if (isNew == true)
+                            {
+
+                            }
+                            else
+                            {
+                                removeOld = true;
+                            }
+                        }
+                        break;
+
+                    case '9':
+                        back = true;
+                        break;
+                }
+            }
+            return removeOld;
+        }
+
+        /**
+        * \brief UI of part time employee creation
+        *
+        * \details <b>Details</b>
+        *
+        * This method will give user the option to enter each element of a part time 
+         * employee. The elements that have been entered will also be displayed. 
+         * User can choose to save the employee data in this menu.
+        * 
+        * Available options:
+        * 
+        * First Name
+         * Last Name
+         * SIN
+         * Date of Birth
+         * Date of Hire
+         * Date of Termination
+         * Hourly Rate
+         * Save and Return to Manage Employee Menu
+        * Return to Manage Employee Menu Without Saving
+        * 
+        * \param None
+        * 
+        * \return Nothing is returned
+        * 
+        */
+        private bool ModifyParttimeEmployee(ParttimeEmployee theObj, bool isNew)
+        {
+            ConsoleKeyInfo userInput;
+            DateTime defaultDateTime = new DateTime();
+            string userInputSentence = "";
+            string errorMessage = "";
+            bool back = false;
+            bool removeOld = false;
+
+            while (back == false)
+            {
+                userInputSentence = "";
+                Console.Clear();
+                if (isNew == true)
+                {
+                    Console.WriteLine("CREATE A PART-TIME EMPLOYEE:");
+                }
+                else
+                {
+                    Console.WriteLine("MODIFY A PART-TIME EMPLOYEE:");
+                }
+                Console.WriteLine("");
+                Console.WriteLine("\t1. Edit First Name");
+                Console.WriteLine("\t2. Edit Last Name");
+                Console.WriteLine("\t3. Edit SIN");
+                Console.WriteLine("\t4. Edit Date of Birth");
+                Console.WriteLine("\t5. Edit Date of Hire");
+                Console.WriteLine("\t6. Edit Date of Termination");
+                Console.WriteLine("\t7. Edit Hourly Rate");
+                Console.WriteLine("\t8. Save Entry");
+                Console.WriteLine("\t9. Return To Choose Employee Type");
+                Console.WriteLine("");
+                Console.WriteLine("CURRENT INFO:");
+                Console.WriteLine("");
+                Console.WriteLine("First Name: {0}", theObj.GetFirstName());
+                Console.WriteLine("Last Name: {0}", theObj.GetLastName());
+                Console.WriteLine("SIN: {0}", displaySIN(theObj.GetSocialInsuranceNumber()));
+                if (DateTime.Compare(theObj.GetDateOfBirth(), defaultDateTime) == 0)
+                {
+                    Console.WriteLine("Date of Birth: ");
+                }
+                else
+                {
+                    Console.WriteLine("Date of Birth: {0}", theObj.GetDateOfBirth());
+                }
+
+                if (DateTime.Compare(theObj.GetDateOfHire(), defaultDateTime) == 0)
+                {
+                    Console.WriteLine("Date of Hire: ");
+                }
+                else
+                {
+                    Console.WriteLine("Date of Hire: {0}", theObj.GetDateOfHire());
+                }
+
+                if (DateTime.Compare(theObj.GetDateOfTermination(), defaultDateTime) == 0)
+                {
+                    Console.WriteLine("Date of Termination: ");
+                }
+                else
+                {
+                    Console.WriteLine("Date of Termination: {0}", theObj.GetDateOfTermination());
+                }
+
+
+                Console.WriteLine("Hourly Rate: ${0}", theObj.GetHourlyRate());
+
+                userInput = Console.ReadKey();
+
+                switch (userInput.KeyChar)
+                {
+                    case '1':
+                        {
+                            userInputSentence = TakeUserInputSentence("Enter First Name: ");
+                            theObj.SetFirstName(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '2':
+                        {
+                            userInputSentence = TakeUserInputSentence("Enter Last Name: ");
+                            theObj.SetLastName(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '3':
+                        {
+                            userInputSentence = TakeUserInputSIN("Enter Social Insurance Number: ");
+                            theObj.SetSocialInsuranceNumber(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '4':
+                        {
+                            userInputSentence = TakeUserInputDate("Enter Date of Birth (yyyy/mm/dd): ");
+                            theObj.SetDateOfBirth(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '5':
+                        {
+                            userInputSentence = TakeUserInputDate("Enter Date of Hire (yyyy/mm/dd): ");
+                            theObj.SetDateOfHire(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '6':
+                        {
+                            userInputSentence = TakeUserInputDate("Enter Date of Termination (yyyy/mm/dd): ");
+                            theObj.SetDateOfTermination(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '7':
+                        {
+                            userInputSentence = TakeUserInputMoney("Enter Hourly Rate (2 decimal degits required): ");
+                            theObj.SetHourlyRate(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '8':
+                        {
+                            // uh don't know what to call to push the object into the container.
+                            if (isNew == true)
+                            {
+
+                            }
+                            else
+                            {
+                                removeOld = true;
+                            }
+                        }
+                        break;
+
+                    case '9':
+                        back = true;
+                        break;
+                }
+            }
+            return removeOld;
+        }
+
+        /**
+        * \brief UI of contract employee creation
+        *
+        * \details <b>Details</b>
+        *
+        * This method will give user the option to enter each element of a contract 
+         * employee. The elements that have been entered will also be displayed. 
+         * User can choose to save the employee data in this menu.
+        * 
+        * Available options:
+        * 
+        * Corporation Name (stored in Last Name)
+         * Business Number
+         * Date of Incorporation (stored in Date of Birth)
+         * Contract Start Date
+         * Contract Stop Date
+         * Fixed Contract Amount
+         * Save and Return to Manage Employee Menu
+        * Return to Manage Employee Menu Without Saving
+        * 
+        * \param None
+        * 
+        * \return Nothing is returned
+        * 
+        */
+        private bool ModifyContractEmployee(ContractEmployee theObj, bool isNew)
+        {
+            ConsoleKeyInfo userInput;
+            DateTime defaultDateTime = new DateTime();
+            string userInputSentence = "";
+            string errorMessage = "";
+            bool back = false;
+            bool removeOld = false;
+
+            while (back == false)
+            {
+                userInputSentence = "";
+                Console.Clear();
+                if (isNew == true)
+                {
+                    Console.WriteLine("CREATE A CONTRACT EMPLOYEE:");
+                }
+                else
+                {
+                    Console.WriteLine("MODIFY A CONTRACT EMPLOYEE:");
+                }
+                Console.WriteLine("");
+                Console.WriteLine("\t1. Edit Name of Corporation");
+                Console.WriteLine("\t2. Edit Business Number");
+                Console.WriteLine("\t3. Edit Date of Incorporation");
+                Console.WriteLine("\t4. Edit Contract Start Date");
+                Console.WriteLine("\t5. Edit Contract Stop Date");
+                Console.WriteLine("\t6. Edit Fixed Contract Amount");
+                Console.WriteLine("\t7. ----------");
+                Console.WriteLine("\t8. Save Entry");
+                Console.WriteLine("\t9. Return To Choose Employee Type");
+                Console.WriteLine("");
+                Console.WriteLine("CURRENT INFO:");
+                Console.WriteLine("");
+                Console.WriteLine("Name of Corporation: {0}", theObj.GetLastName());
+                Console.WriteLine("Business Number: {0}", theObj.GetSocialInsuranceNumber());
+
+                if (DateTime.Compare(theObj.GetDateOfBirth(), defaultDateTime) == 0)
+                {
+                    Console.WriteLine("Date of Incorporation: ");
+                }
+                else
+                {
+                    Console.WriteLine("Date of Incorporation: {0}", theObj.GetDateOfBirth());
+                }
+
+                if (DateTime.Compare(theObj.GetContractStartDate(), defaultDateTime) == 0)
+                {
+                    Console.WriteLine("Contract Start Date: ");
+                }
+                else
+                {
+                    Console.WriteLine("Contract Start Date: {0}", theObj.GetContractStartDate());
+                }
+
+                if (DateTime.Compare(theObj.GetContractStopDate(), defaultDateTime) == 0)
+                {
+                    Console.WriteLine("Contract Stop Date: ");
+                }
+                else
+                {
+                    Console.WriteLine("Contract Stop Date: {0}", theObj.GetContractStopDate());
+                }
+
+
+                Console.WriteLine("Fixed Contract Amount: ${0}", theObj.GetFixedContractAmount());
+
+                userInput = Console.ReadKey();
+
+                switch (userInput.KeyChar)
+                {
+                    case '1':
+                        {
+                            userInputSentence = TakeUserInputSentence("Enter Name of Corporation: ");
+                            theObj.SetLastName(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '2':
+                        {
+                            userInputSentence = TakeUserInputSIN("Enter Business Number: ");
+                            theObj.SetSocialInsuranceNumber(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '3':
+                        {
+                            userInputSentence = TakeUserInputDate("Enter Date of Incorporation (yyyy/mm/dd): ");
+                            theObj.SetDateOfBirth(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '4':
+                        {
+                            userInputSentence = TakeUserInputDate("Enter Contract Start Date (yyyy/mm/dd): ");
+                            theObj.SetContractStartDate(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '5':
+                        {
+                            userInputSentence = TakeUserInputDate("Enter Contract Stop Date (yyyy/mm/dd): ");
+                            theObj.SetContractStopDate(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '6':
+                        {
+                            userInputSentence = TakeUserInputMoney("Enter Fixed Contract Amount (2 decimal degits required): ");
+                            theObj.SetFixedContractAmount(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '8':
+                        {
+                            // uh don't know what to call to push the object into the container.
+                            if (isNew == true)
+                            {
+
+                            }
+                            else
+                            {
+                                removeOld = true;
+                            }
+                        }
+                        break;
+
+                    case '9':
+                        back = true;
+                        break;
+                }
+            }
+            return removeOld;
+        }
+
+        /**
+        * \brief UI of seasonal employee creation
+        *
+        * \details <b>Details</b>
+        *
+        * This method will give user the option to enter each element of a seasonal 
+         * employee. The elements that have been entered will also be displayed. 
+         * User can choose to save the employee data in this menu.
+        * 
+        * Available options:
+        * 
+        * First Name
+         * Last Name
+         * SIN
+         * Season
+         * Piece Pay
+         * Save and Return to Manage Employee Menu
+        * Return to Manage Employee Menu Without Saving
+        * 
+        * \param None
+        * 
+        * \return Nothing is returned
+        * 
+        */
+        private bool ModifySeasonalEmployee(SeasonalEmployee theObj, bool isNew)
+        {
+            ConsoleKeyInfo userInput;
+            DateTime defaultDateTime = new DateTime();
+            string userInputSentence = "";
+            string errorMessage = "";
+            bool back = false;
+            bool removeOld = false;
+
+            while (back == false)
+            {
+                userInputSentence = "";
+                Console.Clear();
+                if (isNew == true)
+                {
+                    Console.WriteLine("CREATE A SEASONAL EMPLOYEE:");
+                }
+                else
+                {
+                    Console.WriteLine("MODIFY A SEASONAL EMPLOYEE:");
+                }
+                Console.WriteLine("");
+                Console.WriteLine("\t1. Edit First Name");
+                Console.WriteLine("\t2. Edit Last Name");
+                Console.WriteLine("\t3. Edit SIN");
+                Console.WriteLine("\t4. Edit Date of Birth");
+                Console.WriteLine("\t5. Edit Season");
+                Console.WriteLine("\t6. Edit Piece Pay");
+                Console.WriteLine("\t7. ----------");
+                Console.WriteLine("\t8. Save Entry");
+                Console.WriteLine("\t9. Return To Choose Employee Type");
+                Console.WriteLine("");
+                Console.WriteLine("CURRENT INFO:");
+                Console.WriteLine("");
+                Console.WriteLine("First Name: {0}", theObj.GetFirstName());
+                Console.WriteLine("Last Name: {0}", theObj.GetLastName());
+                Console.WriteLine("SIN: {0}", displaySIN(theObj.GetSocialInsuranceNumber()));
+
+                if (DateTime.Compare(theObj.GetDateOfBirth(), defaultDateTime) == 0)
+                {
+                    Console.WriteLine("Date of Birth: ");
+                }
+                else
+                {
+                    Console.WriteLine("Date of Birth: {0}", theObj.GetDateOfBirth());
+                }
+                Console.WriteLine("Season: {0}", theObj.GetSeason());
+                Console.WriteLine("Salary: ${0}", theObj.GetPiecePay());
+
+                userInput = Console.ReadKey();
+
+                switch (userInput.KeyChar)
+                {
+                    case '1':
+                        {
+                            userInputSentence = TakeUserInputSentence("Enter First Name: ");
+                            theObj.SetFirstName(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '2':
+                        {
+                            userInputSentence = TakeUserInputSentence("Enter Last Name: ");
+                            theObj.SetLastName(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '3':
+                        {
+                            userInputSentence = TakeUserInputSIN("Enter Social Insurance Number: ");
+                            theObj.SetSocialInsuranceNumber(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '4':
+                        {
+                            userInputSentence = TakeUserInputDate("Enter Date of Birth (yyyy/mm/dd): ");
+                            theObj.SetDateOfBirth(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '5':
+                        {
+                            userInputSentence = ChooseSeason();
+                            theObj.SetSeason(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '6':
+                        {
+                            userInputSentence = TakeUserInputMoney("Enter Piece Pay (2 decimal degits required): ");
+                            theObj.SetPiecePay(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '8':
+                        {
+                            // uh don't know what to call to push the object into the container.
+                            if (isNew == true)
+                            {
+
+                            }
+                            else
+                            {
+                                removeOld = true;
+                            }
+                        }
+                        break;
+
+                    case '9':
+                        back = true;
+                        break;
+                }
+            }
+            return removeOld;
+        }
         /**
         * \brief Displays the Remove an Existing Employee Menu
         *
@@ -1226,20 +1384,27 @@ namespace Presentation
             return employeeRecord;
         }
 
+
+
         private void DisplayAllEmployees()
         {
 
         }
 
-        
+
         private void SearchFirstNameUI()
         {
-    
+
         }
 
         private void SearchLastNameUI()
         {
-        
+
+        }
+
+        private void SearchSINUI()
+        {
+
         }
 
         private void LoadFromFileUI()
@@ -1369,28 +1534,84 @@ namespace Presentation
             string currentInput = "";
             int userInputNumber = 0;
             int counter = 0;
-            while (counter < 9)
+
+            if (sinOrBN.Contains("Social"))
             {
-                Console.Clear();
-                Console.WriteLine("{0}", sinOrBN);
-                Console.WriteLine("{0}", currentInput);
-                userInputNumber = TakeUserInputNumber();
-
-                if (userInputNumber == -2)
+                while (counter < 11)
                 {
-                    currentInput = currentInput.Remove(currentInput.Length - 1);
-                    counter = counter - 1;
-                }
-                else if (userInputNumber < -1)
-                {
-                    currentInput += userInputNumber.ToString();
-                    counter = counter + 1;
-                }
+                    Console.Clear();
+                    Console.WriteLine("{0}", sinOrBN);
+                    Console.WriteLine("{0}", currentInput);
+                    userInputNumber = TakeUserInputNumber();
 
+                    if (userInputNumber == -2)
+                    {
+                        if (counter == 4 || counter == 8)
+                        {
+                            currentInput = currentInput.Remove(currentInput.Length - 2);
+                            counter = counter - 2;
+                        }
+                        else
+                        {
+                            currentInput = currentInput.Remove(currentInput.Length - 1);
+                            counter = counter - 1;
+                        }
+                    }
+                    else if (userInputNumber > -1)
+                    {
+                        currentInput += userInputNumber.ToString();
+                        counter = counter + 1;
+                        if (counter == 3 || counter == 7)
+                        {
+                            counter = counter + 1;
+                            currentInput += " ";
+                        }
+                    }
+
+                }
             }
+            else
+            {
+                while (counter < 10)
+                {
+                    Console.Clear();
+                    Console.WriteLine("{0}", sinOrBN);
+                    Console.WriteLine("{0}", currentInput);
+                    userInputNumber = TakeUserInputNumber();
 
+                    if (userInputNumber == -2)
+                    {
+                        if (counter == 6)
+                        {
+                            currentInput = currentInput.Remove(currentInput.Length - 2);
+                            counter = counter - 2;
+                        }
+                        else
+                        {
+                            currentInput = currentInput.Remove(currentInput.Length - 1);
+                            counter = counter - 1;
+                        }
+                    }
+                    else if (userInputNumber > -1)
+                    {
+                        currentInput += userInputNumber.ToString();
+                        counter = counter + 1;
+                        if (counter == 5)
+                        {
+                            counter = counter + 1;
+                            currentInput += " ";
+                        }
+                    }
+
+                }
+            }
+            Console.Clear();
+            Console.WriteLine("{0}", sinOrBN);
+            Console.WriteLine("{0}", currentInput);
             return currentInput;
         }
+
+
 
         private string TakeUserInputDate(string whichDate)
         {
@@ -1403,7 +1624,7 @@ namespace Presentation
                 Console.WriteLine("{0}", whichDate);
                 Console.WriteLine("{0}", currentInput);
                 userInputNumber = TakeUserInputNumber();
-                
+
                 if (userInputNumber == -2)
                 {
                     if (counter == 5 || counter == 8)
@@ -1419,19 +1640,20 @@ namespace Presentation
 
 
                 }
-                else if (userInputNumber < -1)
+                else if (userInputNumber > -1)
                 {
                     currentInput += userInputNumber.ToString();
                     counter = counter + 1;
                     if (counter == 4 || counter == 7)
                     {
                         counter = counter + 1;
-                        currentInput += "/";
+                        currentInput += "-";
                     }
                 }
 
             }
             Console.Clear();
+            Console.WriteLine("{0}", whichDate);
             Console.WriteLine("{0}", currentInput);
             return currentInput;
         }
@@ -1452,7 +1674,7 @@ namespace Presentation
 
                 if (userInputNumber == -2)
                 {
-                    if (currentInput[currentInput.Length-1] == '.')
+                    if (currentInput[currentInput.Length - 1] == '.')
                     {
                         decimalFound = false;
                     }
@@ -1479,8 +1701,95 @@ namespace Presentation
             }
 
             Console.Clear();
+            Console.WriteLine("{0}", moneyType);
             Console.WriteLine("${0}", currentInput);
             return currentInput;
+        }
+
+        private string displaySIN(string unparsed)
+        {
+            string parsed = "";
+
+            if (unparsed != null)
+            {
+                parsed = unparsed.Insert(3, " ");
+                unparsed = parsed;
+                parsed = unparsed.Insert(7, " ");
+            }
+
+            return parsed;
+        }
+
+        private string displayBN(string unparsed)
+        {
+            string parsed = "";
+
+            if (unparsed != null)
+            {
+                parsed = unparsed.Insert(5, " ");
+            }
+
+            return parsed;
+        }
+
+        /**
+         * \brief UI of choosing season for seaonal employee creation
+         *
+         * \details <b>Details</b>
+         *
+         * This method allows user to choose one of the four seaon for 
+         * setting seasonal employee's seasonal attribute.
+         * 
+         * Available options:
+         * 
+         * Spring
+         * Summer
+         * Fall
+         * Winter
+         * 
+         * \param None
+         * 
+         * \return Nothing is returned
+         * 
+         */
+        private string ChooseSeason()
+        {
+            string season = "";
+            ConsoleKeyInfo userInput;
+
+            while (season == "")
+            {
+                Console.Clear();
+                Console.WriteLine("Select Season:");
+                Console.WriteLine("\n");
+                Console.WriteLine("\t1. Spring");
+                Console.WriteLine("\t2. Summer");
+                Console.WriteLine("\t3. Fall");
+                Console.WriteLine("\t4. Winter");
+
+                userInput = Console.ReadKey();
+
+                switch (userInput.KeyChar)
+                {
+                    case '1':
+                        season = "Spring";
+                        break;
+
+                    case '2':
+                        season = "Summer";
+                        break;
+
+                    case '3':
+                        season = "Fall";
+                        break;
+
+                    case '4':
+                        season = "Winter";
+                        break;
+                }
+
+            }
+            return season;
         }
 
 
