@@ -88,8 +88,7 @@ namespace AllEmployees
         *  
         * \return void
         */
-        SeasonalEmployee(string seas, float pPay, string fName, string lName, string sin, DateTime dob)
-            : base(fName, lName, sin)
+        public SeasonalEmployee(string seas, float pPay, string fName, string lName, string sin, DateTime dob) : base(fName, lName, sin)
         {
             string unused = "";
 

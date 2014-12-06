@@ -351,7 +351,13 @@ namespace Supporting
             float salaryMinimum = 0;
             errorMessage = "";
 
-            if(salary <= salaryMinimum)
+            if (salary == salaryMinimum)
+            {
+                validateStatus = false;
+                errorMessage = "Please Be Sure To Enter A Non-Zero Salary.\n";
+            }
+
+            if(salary < salaryMinimum)
             {
                 validateStatus = false;
                 errorMessage = "Please Be Sure To Enter A Non-Negative Salary.\n";
@@ -586,20 +592,72 @@ namespace Supporting
             return validateStatus;
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
-        public static bool ValidateBusinessNumber(string businessNumber, ref string errorMessage)
+        /**
+        * \brief Validates the businessNumber attribute within the Employee class
+        *
+        * \details <b>Details</b>
+        *
+        * This method will take in a string of user input representing the desired
+        * company business number and check whether or not it is a
+        * valid business number. Returns a true or false depending on whether or not the 
+        * attribute is valid.
+        * 
+        * \param businessNumber - string - The company's's business
+        * number given by the user.
+        * 
+        * \param errorMessage - string - The error message container 
+        * which is passed as a reference from the calling method
+        * 
+        * \return bool - Returns true if the attribute is valid.
+        * Returns false if the attribute is not valid.
+        */
+        public static bool ValidateBusinessNumber(string businessNumber, DateTime dateOfCreation, ref string errorMessage)
         {
             bool validateStatus = true;
             errorMessage = "";
 
-            return validateStatus;
+            for (int i = 0; i < 2; i++)
+            {
+                if(businessNumber[i] != dateOfCreation.ToString()[i])
+                {
+                    validateStatus = false;
+                    errorMessage = "Please Be Sure The Business Number's First Two Digits\nMatch The Business' Date Of Creation's Year.\nex. Year: 1982\n  Business#: 82xxx xxxx";
+                }
+            }
+
+            if(validateStatus)
+            {
+                if(!ValidateSocialInsuranceNumber(businessNumber, ref errorMessage))
+                {
+                    validateStatus = false;
+                }
+            }
+
+                return validateStatus;
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        public static bool ValidateDateOfCreation(DateTime dateOfCreation, ref string errorMessage)
+        public static bool ValidateDateOfCreation(string businessNumber, DateTime dateOfCreation, ref string errorMessage)
         {
             bool validateStatus = true;
             errorMessage = "";
+
+            for (int i = 0; i < 2; i++)
+            {
+                if (businessNumber[i] != dateOfCreation.ToString()[i])
+                {
+                    validateStatus = false;
+                    errorMessage = "Please Be Sure The Business' Date Of Creation's Year\nMatches The Business Number's First Two Digits.\nex. Year: 1982\n  Business#: 82xxx xxxx";
+                }
+            }
+
+            if(validateStatus)
+            {
+                if(ValidateDateOfBirth(dateOfCreation, ref errorMessage))
+                {
+                    validateStatus = false;
+                }
+            }
 
             return validateStatus;
         }

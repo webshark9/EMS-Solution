@@ -92,8 +92,7 @@ namespace AllEmployees
         *
         * \return void
         */
-        ParttimeEmployee(DateTime doh, DateTime dot, float hRate, string fName, string lName, string sin, DateTime dob)
-            : base(fName, lName, sin)
+        public ParttimeEmployee(DateTime doh, DateTime dot, float hRate, string fName, string lName, string sin, DateTime dob) : base(fName, lName, sin)
         {
             string unused = "";
 

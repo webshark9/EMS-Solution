@@ -84,17 +84,15 @@ namespace AllEmployees
         * \param lName - string - The desired employee last name given 
         * by the user.
         * 
-        * \param sin - string - The employee's social insurance
+        * \param sin - string - The company's social insurance
         * number given by the user.
         * 
-        * \param dob - DateTime - The employee's date of birth given 
+        * \param dob - DateTime - The company's date of creation given 
         * by the user.
         * 
         * \return void
         */
-        ///////////////////////////////////////////////////////////////////////////////////////////////////
-
-        ContractEmployee(DateTime conStarDate, DateTime conStopDate, float fixedConAmount, string fName, string lName, string sin, DateTime dob) : base()
+        public ContractEmployee(DateTime conStarDate, DateTime conStopDate, float fixedConAmount, string lName, string sin, DateTime dob) : base()
         {
             string unused = "";
 
@@ -111,6 +109,21 @@ namespace AllEmployees
             if (Supporting.Validation.ValidateFixedContractAmount(fixedConAmount, ref unused))
             {
                 fixedContractAmount = fixedConAmount;
+            }
+
+            if(Supporting.Validation.ValidateName(lName, ref unused))
+            {
+                SetLastName(lName, ref unused);
+            }
+
+            if(Supporting.Validation.ValidateSocialInsuranceNumber(sin, ref unused))
+            {
+                SetSocialInsuranceNumber(sin, ref unused);
+            }
+
+            if(Supporting.Validation.ValidateDateOfCreation(dob, ref unused))
+            {
+                SetDateOfBirth(dob.ToString(), ref unused);
             }
         }
 
@@ -130,15 +143,41 @@ namespace AllEmployees
         * employee are valid. Returns false if there is at least one invalid
         * attribute.
         */
-        /////////////////////////////////////////////////////////////////////////////////
         public bool Validate()
         {
             bool validStatus = true;
+            string unused = "";
+
+            if (!Supporting.Validation.ValidateContractStartDate(GetDateOfBirth(), GetContractStartDate(), GetContractStopDate(), ref unused))
+            {
+                validStatus = false;
+            }
+            else if (!Supporting.Validation.ValidateContractStopDate(GetDateOfBirth(), GetContractStartDate(), GetContractStopDate(), ref unused))
+            {
+                validStatus = false;
+            }
+            else if (!Supporting.Validation.ValidateFixedContractAmount(GetFixedContractAmount(), ref unused))
+            {
+                validStatus = false;
+            }
+            else if (!Supporting.Validation.ValidateName(GetLastName(), ref unused))
+            {
+                validStatus = false;
+            }
+            else if (!Supporting.Validation.ValidateDateOfCreation(GetDateOfBirth(), ref unused))
+            {
+                validStatus = false;
+            }
+            else if (!Supporting.Validation.ValidateBusinessNumber(GetSocialInsuranceNumber(), GetDateOfBirth(), ref unused))
+            {
+                validStatus = false;
+            }
 
             return validStatus;
         }
+
         ///////////////////////////////////////////////////////////////////////////////////////////
-        public bool SetSocialInsuranceNumber(string userInput, ref string errorMessage)
+        public bool SetBusinessNumber(string userInput, ref string errorMessage)
         {
             bool setStatus = false;
 
@@ -148,7 +187,7 @@ namespace AllEmployees
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////
-        public bool SetDateOfBirth(string userInput, ref string errorMessage)
+        public bool SetDateOfCreation(string userInput, ref string errorMessage)
         {
             bool setStatus = false;
             DateTime userInputDateTime;
