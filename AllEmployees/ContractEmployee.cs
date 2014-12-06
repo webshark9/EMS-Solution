@@ -50,7 +50,8 @@ namespace AllEmployees
         *
         * \return void
         */
-        public ContractEmployee() : base()
+        public ContractEmployee()
+            : base()
         {
 
         }
@@ -92,7 +93,8 @@ namespace AllEmployees
         * \return void
         */
         ///////////////////////////////////////////////////////////////////////////////////////////////////
-        ContractEmployee(DateTime conStarDate, DateTime conStopDate, float fixedConAmount, string fName, string lName, string sin, DateTime dob) : base(fName, lName, sin, dob)
+        ContractEmployee(DateTime conStarDate, DateTime conStopDate, float fixedConAmount, string fName, string lName, string sin, DateTime dob)
+            : base(fName, lName, sin, dob)
         {
             string unused = "";
 
@@ -193,7 +195,7 @@ namespace AllEmployees
             bool setStatus = false;
             DateTime userInputDateTime;
 
-            if(DateTime.TryParse(userInput, out userInputDateTime))
+            if (DateTime.TryParse(userInput, out userInputDateTime))
             {
                 if (Supporting.Validation.ValidateContractStartDate(userInputDateTime, ref errorMessage))
                 {
@@ -254,7 +256,7 @@ namespace AllEmployees
             bool setStatus = false;
             DateTime userInputDateTime;
 
-            if(DateTime.TryParse(userInput, out userInputDateTime))
+            if (DateTime.TryParse(userInput, out userInputDateTime))
             {
                 if (Supporting.Validation.ValidateContractStopDate(userInputDateTime, ref errorMessage))
                 {
@@ -314,7 +316,7 @@ namespace AllEmployees
             bool setStatus = false;
             float userInputFloat = 0;
 
-            if(float.TryParse(userInput, out userInputFloat))
+            if (float.TryParse(userInput, out userInputFloat))
             {
                 if (Supporting.Validation.ValidateFixedContractAmount(userInputFloat, ref errorMessage))
                 {
@@ -322,7 +324,7 @@ namespace AllEmployees
                     fixedContractAmount = userInputFloat;
                 }
             }
-            else 
+            else
             {
                 //UIMenu.printErrorMessage("\"Fixed Contract Amount\" is not formatted correctly\nPlease be sure to use the format\n$\"00.00\"     ex.$56.78\n\n");
             }

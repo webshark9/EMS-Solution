@@ -49,7 +49,8 @@ namespace AllEmployees
         *
         * \return void
         */
-        public SeasonalEmployee() : base()
+        public SeasonalEmployee()
+            : base()
         {
 
         }
@@ -87,7 +88,8 @@ namespace AllEmployees
         *  
         * \return void
         */
-        SeasonalEmployee(string seas, float pPay, string fName, string lName, string sin, DateTime dob) : base(fName, lName, sin, dob)
+        SeasonalEmployee(string seas, float pPay, string fName, string lName, string sin, DateTime dob)
+            : base(fName, lName, sin, dob)
         {
             string unused = "";
 
@@ -123,27 +125,27 @@ namespace AllEmployees
             bool validStatus = true;
             string unused = "";
 
-            if(!Supporting.Validation.ValidatePiecePay(GetPiecePay(), ref unused))
+            if (!Supporting.Validation.ValidatePiecePay(GetPiecePay(), ref unused))
             {
                 validStatus = false;
             }
-            else if(!Supporting.Validation.ValidateSeason(GetSeason(), ref unused))
+            else if (!Supporting.Validation.ValidateSeason(GetSeason(), ref unused))
             {
                 validStatus = false;
             }
-            else if(!Supporting.Validation.ValidateName(GetFirstName(), ref unused))
+            else if (!Supporting.Validation.ValidateName(GetFirstName(), ref unused))
             {
                 validStatus = false;
             }
-            else if(!Supporting.Validation.ValidateName(GetLastName(), ref unused))
+            else if (!Supporting.Validation.ValidateName(GetLastName(), ref unused))
             {
                 validStatus = false;
             }
-            else if(!Supporting.Validation.ValidateDateOfBirth(GetDateOfBirth(), ref unused))
+            else if (!Supporting.Validation.ValidateDateOfBirth(GetDateOfBirth(), ref unused))
             {
                 validStatus = false;
             }
-            else if(!Supporting.Validation.ValidateSocialInsuranceNumber(GetSocialInsuranceNumber(), ref unused))
+            else if (!Supporting.Validation.ValidateSocialInsuranceNumber(GetSocialInsuranceNumber(), ref unused))
             {
                 validStatus = false;
             }
