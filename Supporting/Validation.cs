@@ -200,6 +200,31 @@ namespace Supporting
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
+<<<<<<< HEAD
+        public static bool ValidateDateOfBirth(DateTime dateOfBirth, DateTime dateOfHire, DateTime dateOfTermination, ref string errorMessage)
+        {
+            bool validateStatus = true;
+            int ageRequirement = 16;
+            errorMessage = "";
+
+            if ((dateOfHire.Year - dateOfBirth.Year) < ageRequirement)
+            {
+                validateStatus = false;
+                errorMessage += "Please Be Sure The Employee Is Over 16 Years Old\nBefore Hiring\n\n";
+            }
+
+            if(dateOfBirth > dateOfTermination)
+            {
+                validateStatus = false;
+                errorMessage += "Please Be Sure The Employee Is Over 16 Years Old\nBefore Terminating\n\n";
+            }
+
+            return validateStatus;
+        }
+
+        /// /////////////////////
+=======
+>>>>>>> origin/master
         public static bool ValidateDateOfBirth(DateTime dateOfBirth, ref string errorMessage)
         {
             bool validateStatus = true;
@@ -304,6 +329,7 @@ namespace Supporting
         {
             bool validateStatus = true;
             float salaryMinimum = 0;
+            errorMessage = "";
 
             if(salary <= salaryMinimum)
             {
@@ -403,6 +429,7 @@ namespace Supporting
         {
             bool validateStatus = true;
             float amountMinimum = 0;
+            errorMessage = "";
 
             if (fixedContractAmount <= amountMinimum)
             {
@@ -436,6 +463,7 @@ namespace Supporting
         {
             bool validateStatus = true;
             float rateMinimum = 0;
+            errorMessage = "";
 
             if (hourlyRate <= rateMinimum)
             {
@@ -469,6 +497,7 @@ namespace Supporting
         {
             bool validateStatus = true;
             season.ToLower();
+            errorMessage = "";
 
             if(season != "summer" && season != "fall" && season != "winter" && season != "spring")
             {
@@ -502,6 +531,7 @@ namespace Supporting
         {
             bool validateStatus = true;
             float payMinimum = 0;
+            errorMessage = "";
 
             if (piecePay <= payMinimum)
             {
@@ -516,6 +546,7 @@ namespace Supporting
         public static bool ValidateBusinessNumber(string businessNumber, ref string errorMessage)
         {
             bool validateStatus = true;
+            errorMessage = "";
 
             return validateStatus;
         }
@@ -524,6 +555,7 @@ namespace Supporting
         public static bool ValidateDateOfCreation(DateTime dateOfCreation, ref string errorMessage)
         {
             bool validateStatus = true;
+            errorMessage = "";
 
             return validateStatus;
         }
