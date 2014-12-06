@@ -34,8 +34,8 @@ namespace AllEmployees
     {
         string firstName;///< string used to hold the employees first name
         string lastName;///< string used to hold the employees last name
-        public string socialInsuranceNumber;///< string used to hold the employees SIN
-        public DateTime dateOfBirth;///< used to hold the employees date of birth
+        string socialInsuranceNumber;///< string used to hold the employees SIN
+        DateTime dateOfBirth;///< used to hold the employees date of birth
 
         /**
         * \brief Default constructor for the Employee parent class
@@ -81,7 +81,7 @@ namespace AllEmployees
         *
         * \return void
         */
-        public Employee(string fName, string lName, string sin, DateTime dob)
+        public Employee(string fName, string lName, string sin)
         {
             string unused = "";
 
@@ -98,11 +98,6 @@ namespace AllEmployees
             if (Supporting.Validation.ValidateSocialInsuranceNumber(sin, ref unused))
             {
                 socialInsuranceNumber = sin;
-            }
-
-            if (Supporting.Validation.ValidateDateOfBirth(dob, ref unused))
-            {
-                dateOfBirth = dob;
             }
         }
 

@@ -88,7 +88,8 @@ namespace AllEmployees
         *  
         * \return void
         */
-        SeasonalEmployee(string seas, float pPay, string fName, string lName, string sin, DateTime dob) : base(fName, lName, sin, dob)
+        SeasonalEmployee(string seas, float pPay, string fName, string lName, string sin, DateTime dob)
+            : base(fName, lName, sin)
         {
             string unused = "";
 
@@ -100,6 +101,11 @@ namespace AllEmployees
             if (Supporting.Validation.ValidatePiecePay(pPay, ref unused))
             {
                 piecePay = pPay;
+            }
+
+            if (Supporting.Validation.ValidateDateOfBirth(dob, ref unused))
+            {
+                SetDateOfBirth(dob.ToString(), ref unused);
             }
         }
 
