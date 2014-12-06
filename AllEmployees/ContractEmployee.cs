@@ -131,7 +131,12 @@ namespace AllEmployees
         {
             string empDetails = "";
 
-            empDetails = "";
+            empDetails += "Business Name: " + GetLastName() + "\n";
+            empDetails += "Business Number: " + GetSocialInsuranceNumber() + "\n";
+            empDetails += "Business Date Of Creation: " + GetDateOfBirth() + "\n";
+            empDetails += "Contract Start Date: " + GetContractStartDate() + "\n";
+            empDetails += "Contract Stop Date: " + GetContractStopDate() + "\n";
+            empDetails += "Fixed Contract Amount: " + GetFixedContractAmount() + "\n";
 
             return empDetails;
         }

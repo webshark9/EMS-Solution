@@ -107,7 +107,7 @@ namespace Presentation
 
         // string sampleDataMember; ///< this is the commenting style for class data member.
 
-        public void MainMenu(Container container)
+        public void MainMenu()
         {
             ConsoleKeyInfo userInput;
             bool exit = false;

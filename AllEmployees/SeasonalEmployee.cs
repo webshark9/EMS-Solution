@@ -112,7 +112,12 @@ namespace AllEmployees
         {
             string empDetails = "";
 
-            empDetails = "";
+            empDetails = "First Name: " + GetFirstName() + "\n";
+            empDetails += "Last Name: " + GetLastName() + "\n";
+            empDetails += "SIN: " + GetSocialInsuranceNumber() + "\n";
+            empDetails += "Date Of Birth: " + GetDateOfBirth() + "\n";
+            empDetails += "Season: " + GetSeason() + "\n";
+            empDetails += "Piece Pay: $" + GetPiecePay() + "\n";
 
             return empDetails;
         }

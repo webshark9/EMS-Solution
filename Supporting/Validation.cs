@@ -435,12 +435,6 @@ namespace Supporting
             bool validateStatus = true;
             errorMessage = "";
 
-            if (contractStopDate > DateTime.Today)
-            {
-                validateStatus = false;
-                errorMessage = "Please Be Sure The Contract Stop Date Does Not Exceed The Present Day\n" + DateTime.Today.ToString() + "\n\n";
-            }
-
             if (contractStopDate.Year < dateOfBirth.Year)
             {
                 validateStatus = false;
