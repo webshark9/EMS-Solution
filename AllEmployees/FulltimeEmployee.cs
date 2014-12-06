@@ -92,8 +92,12 @@ namespace AllEmployees
         *
         * \return void
         */
+<<<<<<< HEAD
         FulltimeEmployee(DateTime doh, DateTime dot, float sal, string fName, string lName, string sin, DateTime dob)
             : base(fName, lName, sin, dob)
+=======
+        FulltimeEmployee(DateTime doh, DateTime dot, float sal, string fName, string lName, string sin, DateTime dob) : base(fName, lName, sin, dob)
+>>>>>>> parent of c906aef... Validation Update
         {
             string unused = "";
 
@@ -134,11 +138,19 @@ namespace AllEmployees
             bool validStatus = true;
             string unused = "";
 
+<<<<<<< HEAD
             if (!Supporting.Validation.ValidateDateOfHire(GetDateOfHire(), ref unused))
             {
                 validStatus = false;
             }
             else if (!Supporting.Validation.ValidateDateOfTermination(GetDateOfTermination(), ref unused))
+=======
+            if(!Supporting.Validation.ValidateDateOfHire(GetDateOfHire(), ref unused))
+            {
+                validStatus = false;
+            }
+            else if(!Supporting.Validation.ValidateDateOfTermination(GetDateOfTermination(), ref unused))
+>>>>>>> parent of c906aef... Validation Update
             {
                 validStatus = false;
             }

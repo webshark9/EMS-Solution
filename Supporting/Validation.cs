@@ -201,6 +201,7 @@ namespace Supporting
         * Returns false if the attribute is not valid.
         */
 <<<<<<< HEAD
+<<<<<<< HEAD
         public static bool ValidateDateOfBirth(DateTime dateOfBirth, DateTime dateOfHire, DateTime dateOfTermination, ref string errorMessage)
         {
             bool validateStatus = true;
@@ -225,6 +226,8 @@ namespace Supporting
         /// /////////////////////
 =======
 >>>>>>> origin/master
+=======
+>>>>>>> parent of c906aef... Validation Update
         public static bool ValidateDateOfBirth(DateTime dateOfBirth, ref string errorMessage)
         {
             bool validateStatus = true;
