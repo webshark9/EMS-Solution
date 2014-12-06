@@ -533,7 +533,7 @@ namespace Presentation
 
                     case '7':
                         {
-                            userInputSentence = TakeUserInputMoney("Enter Salary: ");
+                            userInputSentence = TakeUserInputMoney("Enter Salary (2 decimal degits required): ");
                             empObj.SetSalary(userInputSentence, ref errorMessage);
                             if (errorMessage != "")
                             {
@@ -577,7 +577,149 @@ namespace Presentation
         */
         private void CreatePartTimeEmployee()
         {
+            ParttimeEmployee empObj = new ParttimeEmployee();
+            ConsoleKeyInfo userInput;
+            DateTime defaultDateTime = new DateTime();
+            string userInputSentence = "";
+            string errorMessage = "";
+            bool back = false;
 
+            while (back == false)
+            {
+                userInputSentence = "";
+                Console.Clear();
+                Console.WriteLine("Create a Full Time Employee:");
+                Console.WriteLine("\n");
+                Console.WriteLine("Current Info:");
+                Console.WriteLine("First Name: {0}", empObj.GetFirstName());
+                Console.WriteLine("Last Name: {0}", empObj.GetLastName());
+                Console.WriteLine("SIN: {0}", empObj.GetSocialInsuranceNumber());
+                if (DateTime.Compare(empObj.GetDateOfBirth(), defaultDateTime) == 0)
+                {
+                    Console.WriteLine("Date of Birth: ");
+                }
+                else
+                {
+                    Console.WriteLine("Date of Birth: {0}", empObj.GetDateOfBirth());
+                }
+
+                if (DateTime.Compare(empObj.GetDateOfHire(), defaultDateTime) == 0)
+                {
+                    Console.WriteLine("Date of Hire: ");
+                }
+                else
+                {
+                    Console.WriteLine("Date of Hire: {0}", empObj.GetDateOfHire());
+                }
+
+                if (DateTime.Compare(empObj.GetDateOfTermination(), defaultDateTime) == 0)
+                {
+                    Console.WriteLine("Date of Termination: ");
+                }
+                else
+                {
+                    Console.WriteLine("Date of Termination: {0}", empObj.GetDateOfTermination());
+                }
+
+
+                Console.WriteLine("Hourly Rate: ${0}", empObj.GetHourlyRate());
+                Console.WriteLine("\n");
+                Console.WriteLine("Edit Info:");
+                Console.WriteLine("\t1. Edit First Name");
+                Console.WriteLine("\t2. Edit Last Name");
+                Console.WriteLine("\t3. Edit SIN");
+                Console.WriteLine("\t4. Edit Date of Birth");
+                Console.WriteLine("\t5. Edit Date of Hire");
+                Console.WriteLine("\t6. Edit Date of Termination");
+                Console.WriteLine("\t7. Edit Hourly Rate");
+                Console.WriteLine("\t9. Return To Employee Management Menu");
+
+                userInput = Console.ReadKey();
+
+                switch (userInput.KeyChar)
+                {
+                    case '1':
+                        {
+                            userInputSentence = TakeUserInputSentence("Enter First Name: ");
+                            empObj.SetFirstName(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '2':
+                        {
+                            userInputSentence = TakeUserInputSentence("Enter Last Name: ");
+                            empObj.SetLastName(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '3':
+                        {
+                            userInputSentence = TakeUserInputSIN("Enter Social Insurance Number: ");
+                            empObj.SetSocialInsuranceNumber(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '4':
+                        {
+                            userInputSentence = TakeUserInputDate("Enter Date of Birth (yyyy/mm/dd): ");
+                            empObj.SetDateOfBirth(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '5':
+                        {
+                            userInputSentence = TakeUserInputDate("Enter Date of Hire (yyyy/mm/dd): ");
+                            empObj.SetDateOfHire(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '6':
+                        {
+                            userInputSentence = TakeUserInputDate("Enter Date of Termination (yyyy/mm/dd): ");
+                            empObj.SetDateOfTermination(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '7':
+                        {
+                            userInputSentence = TakeUserInputMoney("Enter Hourly Rate (2 decimal degits required): ");
+                            empObj.SetHourlyRate(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
+                        break;
+
+                    case '9':
+                        back = true;
+                        break;
+                }
+            }
         }
 
         /**
@@ -1319,7 +1461,6 @@ namespace Presentation
                         centCounter = centCounter - 1;
                     }
                     currentInput = currentInput.Remove(currentInput.Length - 1);
-//                    counter = counter - 1;
                 }
                 else if (userInputNumber == -3 && decimalFound == false)
                 {
@@ -1333,7 +1474,6 @@ namespace Presentation
                     {
                         centCounter = centCounter + 1;
                     }
-//                    counter = counter + 1;
                 }
 
             }
