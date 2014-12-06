@@ -92,16 +92,16 @@ namespace AllEmployees
         * \return void
         */
         ///////////////////////////////////////////////////////////////////////////////////////////////////
-        ContractEmployee(DateTime conStarDate, DateTime conStopDate, float fixedConAmount, string fName, string lName, string sin, DateTime dob) : base(fName, lName, sin, dob)
+        ContractEmployee(DateTime conStarDate, DateTime conStopDate, float fixedConAmount, string fName, string lName, string sin, DateTime dob) : base()
         {
             string unused = "";
 
-            if (Supporting.Validation.ValidateContractStartDate(conStarDate, ref unused))
+            if (Supporting.Validation.ValidateContractStartDate(dob, conStarDate, conStopDate, ref unused))
             {
                 contractStartDate = conStarDate;
             }
 
-            if (Supporting.Validation.ValidateContractStopDate(conStopDate, ref unused))
+            if (Supporting.Validation.ValidateContractStopDate(dob, conStarDate, conStopDate, ref unused))
             {
                 contractStopDate = conStopDate;
             }
@@ -195,7 +195,7 @@ namespace AllEmployees
 
             if(DateTime.TryParse(userInput, out userInputDateTime))
             {
-                if (Supporting.Validation.ValidateContractStartDate(userInputDateTime, ref errorMessage))
+                if (Supporting.Validation.ValidateContractStartDate(GetDateOfBirth(), userInputDateTime, contractStopDate, ref errorMessage))
                 {
                     setStatus = true;
                     contractStartDate = userInputDateTime;
@@ -256,7 +256,7 @@ namespace AllEmployees
 
             if(DateTime.TryParse(userInput, out userInputDateTime))
             {
-                if (Supporting.Validation.ValidateContractStopDate(userInputDateTime, ref errorMessage))
+                if (Supporting.Validation.ValidateContractStopDate(GetDateOfBirth(), contractStartDate, userInputDateTime, ref errorMessage))
                 {
                     setStatus = true;
                     contractStopDate = userInputDateTime;

@@ -65,15 +65,15 @@ namespace Supporting
                         validateStatus = false;
                     }
                 }
+            }
 
-                if (validateStatus == false)
-                {
-                    errorMessage += "\n\nPlease Be Sure To Only Enter:\nA-Z\na-z\n-\n'";
-                }
-                else
-                {
-                    errorMessage = "";
-                }
+            if (validateStatus == false)
+            {
+                errorMessage += "\n\nPlease Be Sure To Only Enter:\nA-Z\na-z\n-\n'";
+            }
+            else
+            {
+                errorMessage = "";
             }
 
             return validateStatus;
@@ -159,7 +159,7 @@ namespace Supporting
                     if(checkSum != (roundedUpInt - sinValNumOne))
                     {
                         validateStatus = false;
-                        errorMessage = "Invalid SIN. Please Be Sure To Enter A Valid SIN.";
+                        errorMessage = "Invalid Checksum. Please Be Sure To Enter A Valid SIN.";
                     }
                 }
                 else
@@ -200,6 +200,27 @@ namespace Supporting
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
+        public static bool ValidateDateOfBirth(DateTime dateOfBirth, DateTime dateOfHire, DateTime dateOfTermination, ref string errorMessage)
+        {
+            bool validateStatus = true;
+            int ageRequirement = 16;
+            errorMessage = "";
+
+            if ((dateOfHire.Year - dateOfBirth.Year) < ageRequirement)
+            {
+                validateStatus = false;
+                errorMessage += "Please Be Sure The Employee Is Over 16 Years Old\nBefore Hiring\n\n";
+            }
+
+            if(dateOfBirth > dateOfTermination)
+            {
+                validateStatus = false;
+                errorMessage += "Please Be Sure The Employee Is Over 16 Years Old\nBefore Terminating\n\n";
+            }
+
+            return validateStatus;
+        }
+
         public static bool ValidateDateOfBirth(DateTime dateOfBirth, ref string errorMessage)
         {
             bool validateStatus = true;
@@ -209,7 +230,7 @@ namespace Supporting
             if ((DateTime.Today.Year - dateOfBirth.Year) < ageRequirement)
             {
                 validateStatus = false;
-                errorMessage = "Please Be Sure The Employee Is Older Than 16 Years Old\n";
+                errorMessage += "Please Be Sure The Employee Is Over 16 Years Old\nBefore Hiring\n\n";
             }
 
             return validateStatus;
@@ -234,15 +255,28 @@ namespace Supporting
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        public static bool ValidateDateOfHire(DateTime dateOfHire, ref string errorMessage)
+        public static bool ValidateDateOfHire(DateTime dateOfBirth, DateTime dateOfHire, DateTime dateOfTermination, ref string errorMessage)
         {
             bool validateStatus = true;
+            int ageRequirement = 16;
             errorMessage = "";
 
-            if (dateOfHire > DateTime.Today)//////////////////////////////////fix
+            if (dateOfHire > DateTime.Today)
             {
                 validateStatus = false;
-                errorMessage = "Please Be Sure The Date Of Hire Does Not Exceed The Present Day\n";
+                errorMessage += "Please Be Sure The Date Of Hire Does Not Exceed The Present Day\n" + DateTime.Today.ToString() + "\n";
+            }
+
+            if ((dateOfHire.Year - dateOfBirth.Year) < ageRequirement)
+            {
+                validateStatus = false;
+                errorMessage += "Please Be Sure The Employee Is Over 16 Years Old\nBefore Hiring\n\n";
+            }
+
+            if (dateOfHire > dateOfTermination)
+            {
+                validateStatus = false;
+                errorMessage += "Please Be Sure The Date Of Hire Does Not Exceed The Date Of Termination:\n" + dateOfTermination.ToString() + "\n\n";
             }
 
             return validateStatus;
@@ -267,15 +301,28 @@ namespace Supporting
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        public static bool ValidateDateOfTermination(DateTime dateOfTermination, ref string errorMessage)
+        public static bool ValidateDateOfTermination(DateTime dateOfBirth, DateTime dateOfHire, DateTime dateOfTermination, ref string errorMessage)
         {
             bool validateStatus = true;
+            int ageRequirement = 16;
             errorMessage = "";
 
-            if (dateOfTermination > DateTime.Today/* || dateOfTermination < dateOfHire*/)
+            if (dateOfTermination > DateTime.Today)
             {
                 validateStatus = false;
-                errorMessage = "Please Be Sure The Date Of Termination Does Not Exceed The Present Day\nOr Precede The Date Of Hire\n";
+                errorMessage += "Please Be Sure The Date Of Termination Does Not Exceed The Present Day\n" + DateTime.Today.ToString() + "\n\n";
+            }
+
+            if ((dateOfTermination.Year - dateOfBirth.Year) < ageRequirement)
+            {
+                validateStatus = false;
+                errorMessage += "Please Be Sure The Employee Is Over 16 Years Old\nBefore Terminating\n\n";
+            }
+
+            if(dateOfTermination < dateOfHire)
+            {
+                validateStatus = false;
+                errorMessage += "Please Be Sure The Date Of Termination Does Not Precede The Date Of Hire\n" + dateOfHire.ToString() + "\n\n";
             }
 
             return validateStatus;
@@ -333,7 +380,7 @@ namespace Supporting
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        public static bool ValidateContractStartDate(DateTime contractStartDate, ref string errorMessage)
+        public static bool ValidateContractStartDate(DateTime dateOfBirth, DateTime contractStartDate, DateTime contractStopDate, ref string errorMessage)
         {
             bool validateStatus = true;
             errorMessage = "";
@@ -341,8 +388,20 @@ namespace Supporting
             if (contractStartDate > DateTime.Today)
             {
                 validateStatus = false;
-                errorMessage = "Please Be Sure The Contract Start Date Does Not Exceed The Present Day\n";
+                errorMessage = "Please Be Sure The Contract Start Date Does Not Exceed The Present Day\n" + DateTime.Today.ToString() + "\n\n";
             }
+
+            if (contractStartDate.Year < dateOfBirth.Year)
+            {
+                validateStatus = false;
+                errorMessage = "Please Be Sure The Contract Start Date Does Not Precede The Company's Creation Date\n" + dateOfBirth.ToString() + "\n\n";
+            }
+
+             if(contractStartDate > contractStopDate)
+             {
+                 validateStatus = false;
+                 errorMessage = "Please Be Sure The Contract Start Date Does Not Exceed The Contract Stop Date\n" + contractStopDate.ToString() + "\n\n";
+             }
 
             return validateStatus;
         }
@@ -366,15 +425,27 @@ namespace Supporting
         * \return bool - Returns true if the attribute is valid.
         * Returns false if the attribute is not valid.
         */
-        public static bool ValidateContractStopDate(DateTime contractStopDate, ref string errorMessage)
+        public static bool ValidateContractStopDate(DateTime dateOfBirth, DateTime contractStartDate, DateTime contractStopDate, ref string errorMessage)
         {
             bool validateStatus = true;
             errorMessage = "";
 
-            if (contractStopDate > DateTime.Today/* || contractStopDate < contractStartDate*/)
+            if (contractStopDate > DateTime.Today)
             {
                 validateStatus = false;
-                errorMessage = "Please Be Sure The Contract Stop Date Does Not Exceed The Present Day\nOr Precede The Contract Start Date\n";
+                errorMessage = "Please Be Sure The Contract Stop Date Does Not Exceed The Present Day\n" + DateTime.Today.ToString() + "\n\n";
+            }
+
+            if (contractStopDate.Year < dateOfBirth.Year)
+            {
+                validateStatus = false;
+                errorMessage = "Please Be Sure The Contract Stop Date Does Not Precede The Company's Creation Date\n" + dateOfBirth.ToString() + "\n\n";
+            }
+
+            if (contractStopDate < contractStartDate)
+            {
+                validateStatus = false;
+                errorMessage = "Please Be Sure The Contract Stop Date Does Not Precede The Contract Start Date\n" + contractStartDate.ToString() + "\n\n";
             }
 
             return validateStatus;

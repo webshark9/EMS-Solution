@@ -91,16 +91,16 @@ namespace AllEmployees
         *
         * \return void
         */
-        FulltimeEmployee(DateTime doh, DateTime dot, float sal, string fName, string lName, string sin, DateTime dob) : base(fName, lName, sin, dob)
+        FulltimeEmployee(DateTime doh, DateTime dot, float sal, string fName, string lName, string sin, DateTime dob) : base(fName, lName, sin)
         {
             string unused = "";
 
-            if (Supporting.Validation.ValidateDateOfHire(doh, ref unused))
+            if (Supporting.Validation.ValidateDateOfHire(dob, doh, dot, ref unused))
             {
                 dateOfHire = doh;
             }
 
-            if (Supporting.Validation.ValidateDateOfTermination(dot, ref unused))
+            if (Supporting.Validation.ValidateDateOfTermination(dob, doh, dot, ref unused))
             {
                 dateOfTermination = dot;
             }
@@ -108,6 +108,11 @@ namespace AllEmployees
             if (Supporting.Validation.ValidateSalary(sal, ref unused))
             {
                 salary = sal;
+            } 
+            
+            if (Supporting.Validation.ValidateDateOfBirth(dob, doh, dot, ref unused))
+            {
+                SetDateOfBirth(dob.ToString(), ref unused);
             }
         }
 
@@ -132,11 +137,11 @@ namespace AllEmployees
             bool validStatus = true;
             string unused = "";
 
-            if(!Supporting.Validation.ValidateDateOfHire(GetDateOfHire(), ref unused))
+            if(!Supporting.Validation.ValidateDateOfHire(GetDateOfBirth(), GetDateOfHire(), GetDateOfTermination(), ref unused))
             {
                 validStatus = false;
             }
-            else if(!Supporting.Validation.ValidateDateOfTermination(GetDateOfTermination(), ref unused))
+            else if(!Supporting.Validation.ValidateDateOfTermination(GetDateOfBirth(), GetDateOfHire(), GetDateOfTermination(), ref unused))
             {
                 validStatus = false;
             }
@@ -192,7 +197,7 @@ namespace AllEmployees
 
             if(DateTime.TryParse(userInput, out userInputDateTime))
             {
-                if (Supporting.Validation.ValidateDateOfHire(userInputDateTime, ref errorMessage))
+                if (Supporting.Validation.ValidateDateOfHire(GetDateOfBirth(), userInputDateTime, dateOfTermination, ref errorMessage))
                 {
                     setStatus = true;
                     dateOfHire = userInputDateTime;
@@ -252,7 +257,7 @@ namespace AllEmployees
 
             if (DateTime.TryParse(userInput, out userInputDateTime))
             {
-                if (Supporting.Validation.ValidateDateOfTermination(userInputDateTime, ref errorMessage))
+                if (Supporting.Validation.ValidateDateOfTermination(GetDateOfBirth(), dateOfHire, userInputDateTime, ref errorMessage))
                 {
                     setStatus = true;
                     dateOfTermination = userInputDateTime;
