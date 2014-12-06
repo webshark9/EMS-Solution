@@ -50,8 +50,7 @@ namespace AllEmployees
         *
         * \return void
         */
-        public ParttimeEmployee()
-            : base()
+        public ParttimeEmployee() : base()
         {
 
         }
@@ -92,8 +91,7 @@ namespace AllEmployees
         *
         * \return void
         */
-        ParttimeEmployee(DateTime doh, DateTime dot, float hRate, string fName, string lName, string sin, DateTime dob)
-            : base(fName, lName, sin, dob)
+        ParttimeEmployee(DateTime doh, DateTime dot, float hRate, string fName, string lName, string sin, DateTime dob) : base(fName, lName, sin, dob)
         {
             string unused = "";
 
@@ -134,15 +132,15 @@ namespace AllEmployees
             bool validStatus = true;
             string unused = "";
 
-            if (!Supporting.Validation.ValidateDateOfHire(GetDateOfHire(), ref unused))
+            if(!Supporting.Validation.ValidateDateOfHire(GetDateOfHire(), ref unused))
             {
                 validStatus = false;
             }
-            else if (!Supporting.Validation.ValidateDateOfTermination(GetDateOfTermination(), ref unused))
+            else if(!Supporting.Validation.ValidateDateOfTermination(GetDateOfTermination(), ref unused))
             {
                 validStatus = false;
             }
-            else if (!Supporting.Validation.ValidateHourlyRate(GetHourlyRate(), ref unused))
+            else if(!Supporting.Validation.ValidateHourlyRate(GetHourlyRate(), ref unused))
             {
                 validStatus = false;
             }
@@ -200,7 +198,7 @@ namespace AllEmployees
                     dateOfHire = userInputDateTime;
                 }
             }
-            else
+            else 
             {
                 errorMessage = userInput + " Is Not A Valid Format Fot A Date.\n\nPlease Enter Dates In The Following Format\nyyyy-mm-dd     ex. 2012-08-29\n";
             }

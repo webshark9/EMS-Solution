@@ -50,8 +50,7 @@ namespace AllEmployees
         *
         * \return void
         */
-        public FulltimeEmployee()
-            : base()
+        public FulltimeEmployee() : base()
         {
 
         }
@@ -92,8 +91,7 @@ namespace AllEmployees
         *
         * \return void
         */
-        FulltimeEmployee(DateTime doh, DateTime dot, float sal, string fName, string lName, string sin, DateTime dob)
-            : base(fName, lName, sin, dob)
+        FulltimeEmployee(DateTime doh, DateTime dot, float sal, string fName, string lName, string sin, DateTime dob) : base(fName, lName, sin, dob)
         {
             string unused = "";
 
@@ -134,15 +132,15 @@ namespace AllEmployees
             bool validStatus = true;
             string unused = "";
 
-            if (!Supporting.Validation.ValidateDateOfHire(GetDateOfHire(), ref unused))
+            if(!Supporting.Validation.ValidateDateOfHire(GetDateOfHire(), ref unused))
             {
                 validStatus = false;
             }
-            else if (!Supporting.Validation.ValidateDateOfTermination(GetDateOfTermination(), ref unused))
+            else if(!Supporting.Validation.ValidateDateOfTermination(GetDateOfTermination(), ref unused))
             {
                 validStatus = false;
             }
-            else if (!Supporting.Validation.ValidateSalary(GetSalary(), ref unused))
+            else if(!Supporting.Validation.ValidateSalary(GetSalary(), ref unused))
             {
                 validStatus = false;
             }
@@ -192,7 +190,7 @@ namespace AllEmployees
             bool setStatus = false;
             DateTime userInputDateTime;
 
-            if (DateTime.TryParse(userInput, out userInputDateTime))
+            if(DateTime.TryParse(userInput, out userInputDateTime))
             {
                 if (Supporting.Validation.ValidateDateOfHire(userInputDateTime, ref errorMessage))
                 {
@@ -312,7 +310,7 @@ namespace AllEmployees
             bool setStatus = false;
             float userInputFloat = 0;
 
-            if (float.TryParse(userInput, out userInputFloat))
+            if(float.TryParse(userInput, out userInputFloat))
             {
                 if (Supporting.Validation.ValidateSalary(userInputFloat, ref errorMessage))
                 {
