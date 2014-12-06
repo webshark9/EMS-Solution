@@ -26,3 +26,7 @@ C:\Users\Willi\Documents\GitHub\EMS-Solution\Presentation\bin\Debug\AllEmployees
 C:\Users\Willi\Documents\GitHub\EMS-Solution\Presentation\bin\Debug\Supporting.dll
 C:\Users\Willi\Documents\GitHub\EMS-Solution\Presentation\bin\Debug\AllEmployees.pdb
 C:\Users\Willi\Documents\GitHub\EMS-Solution\Presentation\bin\Debug\Supporting.pdb
+C:\Users\PC\OneDrive\GitHub\EMS-Solution\Presentation\bin\Debug\AllEmployees.dll
+C:\Users\PC\OneDrive\GitHub\EMS-Solution\Presentation\bin\Debug\Supporting.dll
+C:\Users\PC\OneDrive\GitHub\EMS-Solution\Presentation\bin\Debug\AllEmployees.pdb
+C:\Users\PC\OneDrive\GitHub\EMS-Solution\Presentation\bin\Debug\Supporting.pdb

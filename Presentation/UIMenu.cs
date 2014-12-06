@@ -365,7 +365,7 @@ namespace Presentation
                         break;
 
                     case '4':
-                        CreatePartTimeEmployee();
+                        CreateSeasonalEmployee();
                         break;
 
                     case '9':
@@ -404,23 +404,52 @@ namespace Presentation
         */
         private void CreateFullTimeEmployee()
         {
-            Employee empObj = new Employee();
+            FulltimeEmployee empObj = new FulltimeEmployee();
             ConsoleKeyInfo userInput;
+            DateTime defaultDateTime = new DateTime();
+            string userInputSentence = "";
+            string errorMessage = "";
             bool back = false;
 
             while (back == false)
             {
+                userInputSentence = "";
                 Console.Clear();
                 Console.WriteLine("Create a Full Time Employee:");
                 Console.WriteLine("\n");
                 Console.WriteLine("Current Info:");
                 Console.WriteLine("First Name: {0}", empObj.GetFirstName());
-                Console.WriteLine("Last Name: {0}", empObj.GetFirstName());
-                Console.WriteLine("SIN: {0}", empObj.GetFirstName());
-                Console.WriteLine("Date of Birth: {0}", empObj.GetFirstName());
-                Console.WriteLine("Date of Hire: {0}", empObj.GetFirstName());
-                Console.WriteLine("Date of Termination: {0}", empObj.GetFirstName());
-                Console.WriteLine("Salary: {0}", empObj.GetFirstName());
+                Console.WriteLine("Last Name: {0}", empObj.GetLastName());
+                Console.WriteLine("SIN: {0}", empObj.GetSocialInsuranceNumber());
+                if (DateTime.Compare(empObj.GetDateOfBirth(), defaultDateTime) == 0)
+                {
+                    Console.WriteLine("Date of Birth: ");
+                }
+                else
+                {
+                    Console.WriteLine("Date of Birth: {0}", empObj.GetDateOfBirth());
+                }
+
+                if (DateTime.Compare(empObj.GetDateOfHire(), defaultDateTime) == 0)
+                {
+                    Console.WriteLine("Date of Hire: ");
+                }
+                else
+                {
+                    Console.WriteLine("Date of Hire: {0}", empObj.GetDateOfHire());
+                }
+
+                if (DateTime.Compare(empObj.GetDateOfTermination(), defaultDateTime) == 0)
+                {
+                    Console.WriteLine("Date of Termination: ");
+                }
+                else
+                {
+                    Console.WriteLine("Date of Termination: {0}", empObj.GetDateOfTermination());
+                }
+                
+                
+                Console.WriteLine("Salary: ${0}", empObj.GetSalary());
                 Console.WriteLine("\n");
                 Console.WriteLine("Edit Info:");
                 Console.WriteLine("\t1. Edit First Name");
@@ -437,31 +466,80 @@ namespace Presentation
                 switch (userInput.KeyChar)
                 {
                     case '1':
-                        CreateFullTimeEmployee();
+                        {
+                            userInputSentence = TakeUserInputSentence("Enter First Name: ");
+                            empObj.SetFirstName(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
                         break;
 
                     case '2':
-                        CreatePartTimeEmployee();
+                        {
+                            userInputSentence = TakeUserInputSentence("Enter Last Name: ");
+                            empObj.SetLastName(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
                         break;
 
                     case '3':
-                        CreateContractEmployee();
+                        {
+                            userInputSentence = TakeUserInputSIN("Enter Social Insurance Number: ");
+                            empObj.SetSocialInsuranceNumber(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
                         break;
 
                     case '4':
-                        CreatePartTimeEmployee();
+                        {
+                            userInputSentence = TakeUserInputDate("Enter Date of Birth (yyyy/mm/dd): ");
+                            empObj.SetDateOfBirth(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
                         break;
 
                     case '5':
-                        CreateFullTimeEmployee();
+                        {
+                            userInputSentence = TakeUserInputDate("Enter Date of Hire (yyyy/mm/dd): ");
+                            empObj.SetDateOfHire(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
                         break;
 
                     case '6':
-                        CreatePartTimeEmployee();
+                        {
+                            userInputSentence = TakeUserInputDate("Enter Date of Termination (yyyy/mm/dd): ");
+                            empObj.SetDateOfTermination(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
                         break;
 
                     case '7':
-                        CreateContractEmployee();
+                        {
+                            userInputSentence = TakeUserInputMoney("Enter Salary: ");
+                            empObj.SetSalary(userInputSentence, ref errorMessage);
+                            if (errorMessage != "")
+                            {
+                                PrintErrorMessage(errorMessage);
+                            }
+                        }
                         break;
 
                     case '9':
@@ -1072,24 +1150,208 @@ namespace Presentation
             Console.Clear();
         }
 
-        private string TakeUserInputOption()
+        private int TakeUserInputNumber()
         {
-            string userInput = "";
-            return userInput;
+            ConsoleKeyInfo userInput;
+            int userInputNumber = -1;
+
+            userInput = Console.ReadKey();
+
+            switch (userInput.KeyChar)
+            {
+                case '0':
+                    userInputNumber = 0;
+                    break;
+
+                case '1':
+                    userInputNumber = 1;
+                    break;
+
+                case '2':
+                    userInputNumber = 2;
+                    break;
+
+                case '3':
+                    userInputNumber = 3;
+                    break;
+
+                case '4':
+                    userInputNumber = 4;
+                    break;
+
+                case '5':
+                    userInputNumber = 5;
+                    break;
+
+                case '6':
+                    userInputNumber = 6;
+                    break;
+
+                case '7':
+                    userInputNumber = 7;
+                    break;
+
+                case '8':
+                    userInputNumber = 8;
+                    break;
+
+                case '9':
+                    userInputNumber = 9;
+                    break;
+
+                case '.':
+                    userInputNumber = -3;
+                    break;
+
+            }
+            if (userInput.Key == ConsoleKey.Backspace)
+            {
+                userInputNumber = -2;
+            }
+
+
+            return userInputNumber;
         }
 
-        private string TakeUserInputSentence()
+        private string TakeUserInputSentence(string nameType)
         {
-            string userInput = "";
-            return userInput;
+            string currentInput = "";
+            Console.Clear();
+            Console.WriteLine("{0}", nameType);
+            currentInput = Console.ReadLine();
+            return currentInput;
+        }
+
+        private string TakeUserInputSIN(string sinOrBN)
+        {
+            string currentInput = "";
+            int userInputNumber = 0;
+            int counter = 0;
+            while (counter < 9)
+            {
+                Console.Clear();
+                Console.WriteLine("{0}", sinOrBN);
+                Console.WriteLine("{0}", currentInput);
+                userInputNumber = TakeUserInputNumber();
+
+                if (userInputNumber == -2)
+                {
+                    currentInput = currentInput.Remove(currentInput.Length - 1);
+                    counter = counter - 1;
+                }
+                else if (userInputNumber < -1)
+                {
+                    currentInput += userInputNumber.ToString();
+                    counter = counter + 1;
+                }
+
+            }
+
+            return currentInput;
+        }
+
+        private string TakeUserInputDate(string whichDate)
+        {
+            string currentInput = "";
+            int userInputNumber = 0;
+            int counter = 0;
+            while (counter < 10)
+            {
+                Console.Clear();
+                Console.WriteLine("{0}", whichDate);
+                Console.WriteLine("{0}", currentInput);
+                userInputNumber = TakeUserInputNumber();
+                
+                if (userInputNumber == -2)
+                {
+                    if (counter == 5 || counter == 8)
+                    {
+                        currentInput = currentInput.Remove(currentInput.Length - 2);
+                        counter = counter - 2;
+                    }
+                    else
+                    {
+                        currentInput = currentInput.Remove(currentInput.Length - 1);
+                        counter = counter - 1;
+                    }
+
+
+                }
+                else if (userInputNumber < -1)
+                {
+                    currentInput += userInputNumber.ToString();
+                    counter = counter + 1;
+                    if (counter == 4 || counter == 7)
+                    {
+                        counter = counter + 1;
+                        currentInput += "/";
+                    }
+                }
+
+            }
+            Console.Clear();
+            Console.WriteLine("{0}", currentInput);
+            return currentInput;
+        }
+
+        private string TakeUserInputMoney(string moneyType)
+        {
+            string currentInput = "";
+            int userInputNumber = 0;
+            int centCounter = 0;
+            bool decimalFound = false;
+
+            while (centCounter < 2)
+            {
+                Console.Clear();
+                Console.WriteLine("{0}", moneyType);
+                Console.WriteLine("${0}", currentInput);
+                userInputNumber = TakeUserInputNumber();
+
+                if (userInputNumber == -2)
+                {
+                    if (currentInput[currentInput.Length-1] == '.')
+                    {
+                        decimalFound = false;
+                    }
+                    if (centCounter > 0)
+                    {
+                        centCounter = centCounter - 1;
+                    }
+                    currentInput = currentInput.Remove(currentInput.Length - 1);
+//                    counter = counter - 1;
+                }
+                else if (userInputNumber == -3 && decimalFound == false)
+                {
+                    currentInput += ".";
+                    decimalFound = true;
+                }
+                else if (userInputNumber > -1)
+                {
+                    currentInput += userInputNumber.ToString();
+                    if (decimalFound == true)
+                    {
+                        centCounter = centCounter + 1;
+                    }
+//                    counter = counter + 1;
+                }
+
+            }
+
+            Console.Clear();
+            Console.WriteLine("${0}", currentInput);
+            return currentInput;
         }
 
 
-
-
-        public static void printErrorMessage(string errorMessage)
+        private void PrintErrorMessage(string errorMessage)
         {
-            Console.WriteLine(errorMessage);
+            ConsoleKeyInfo userInput;
+            Console.WriteLine("\n");
+            Console.WriteLine("{0}", errorMessage);
+            Console.WriteLine("\n");
+            Console.WriteLine("Press any key to continue...");
+            userInput = Console.ReadKey();
         }
 
     }
