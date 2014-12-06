@@ -43,7 +43,7 @@ namespace AllEmployees
         *
         * This is the default constructor for the FulltimeEmployee child
         * class which is in charge of creating the attributes
-        * for the fulltime employee when called upon. This
+        * for the full-time employee when called upon. This
         * constructor also calls upon the default Employee class parent constructor.
         * 
         * \param void
@@ -63,8 +63,8 @@ namespace AllEmployees
         *
         * This is a constructor for the FulltimeEmployee child
         * class which is in charge of creating the attributes
-        * for the fulltime employee when called upon, taking in
-        * a series of parameters ment to be inserted into the FulltimeEmployee
+        * for the full-time employee when called upon, taking in
+        * a series of parameters meant to be inserted into the FulltimeEmployee
         * object, and validating the parameters before trying to insert them.
         * Should a parameter be found invalid, the attribute will be left blank.
         * This constructor also calls upon the Employee class parent constructor.
@@ -132,11 +132,11 @@ namespace AllEmployees
         * 
         * \param void
         * 
-        * \return bool - Returns true if all attributes within the fulltime
+        * \return bool - Returns true if all attributes within the full-time
         * employee are valid. Returns false if there is at least one invalid
         * attribute.
         */
-        bool Validate()
+        public bool Validate()
         {
             bool validStatus = true;
             string unused = "";
@@ -270,7 +270,7 @@ namespace AllEmployees
             }
             else
             {
-                errorMessage = userInput + " Is Not A Valid Format Fot A Date.\n\nPlease Enter Dates In The Following Format\nyyyy-mm-dd     ex. 2012-08-29\n";
+                errorMessage = userInput + " Is Not A Valid Format For A Date.\n\nPlease Enter Dates In The Following Format\nyyyy-mm-dd     ex. 2012-08-29\n";
             }
 
             return setStatus;
@@ -330,7 +330,7 @@ namespace AllEmployees
             }
             else
             {
-                errorMessage = userInput + " Is Not A Valid Format Fot A Date.\n\nPlease Enter Dates In The Following Format\nyyyy-mm-dd     ex. 2012-08-29\n";
+                errorMessage = userInput + " Is Not A Valid Format For A Date.\n\nPlease Enter Dates In The Following Format\nyyyy-mm-dd     ex. 2012-08-29\n";
             }
 
 

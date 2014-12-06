@@ -64,7 +64,7 @@ namespace AllEmployees
         * This is a constructor for the ContractEmployee child
         * class which is in charge of creating the attributes
         * for the contract employee when called upon, taking in
-        * a series of parameters ment to be inserted into the ContractEmployee
+        * a series of parameters meant to be inserted into the ContractEmployee
         * object, and validating the parameters before trying to insert them.
         * Should a parameter be found invalid, the attribute will be left blank.
         * This constructor also calls upon the Employee class parent constructor.
@@ -131,7 +131,7 @@ namespace AllEmployees
         * attribute.
         */
         /////////////////////////////////////////////////////////////////////////////////
-        bool Validate()
+        public bool Validate()
         {
             bool validStatus = true;
 
@@ -163,7 +163,7 @@ namespace AllEmployees
             }
             else
             {
-                errorMessage = userInput + " Is Not A Valid Format Fot A Date.\n\nPlease Enter Dates In The Following Format\nyyyy-mm-dd     ex. 2012-08-29\n";
+                errorMessage = userInput + " Is Not A Valid Format For A Date.\n\nPlease Enter Dates In The Following Format\nyyyy-mm-dd     ex. 2012-08-29\n";
             }
 
             return setStatus;
@@ -205,7 +205,7 @@ namespace AllEmployees
             }
             else
             {
-                errorMessage = userInput + " Is Not A Valid Format Fot A Date.\n\nPlease Enter Dates In The Following Format\nyyyy-mm-dd     ex. 2012-08-29\n";
+                errorMessage = userInput + " Is Not A Valid Format For A Date.\n\nPlease Enter Dates In The Following Format\nyyyy-mm-dd     ex. 2012-08-29\n";
             }
 
 
@@ -266,7 +266,7 @@ namespace AllEmployees
             }
             else
             {
-                errorMessage = userInput + " Is Not A Valid Format Fot A Date.\n\nPlease Enter Dates In The Following Format\nyyyy-mm-dd     ex. 2012-08-29\n";
+                errorMessage = userInput + " Is Not A Valid Format For A Date.\n\nPlease Enter Dates In The Following Format\nyyyy-mm-dd     ex. 2012-08-29\n";
             }
 
             return setStatus;

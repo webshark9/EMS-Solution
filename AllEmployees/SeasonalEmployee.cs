@@ -63,7 +63,7 @@ namespace AllEmployees
         * This is a constructor for the SeasonalEmployee child
         * class which is in charge of creating the attributes
         * for the seasonal employee when called upon, taking in
-        * a series of parameters ment to be inserted into the SeasonalEmployee
+        * a series of parameters meant to be inserted into the SeasonalEmployee
         * object, and validating the parameters before trying to insert them.
         * Should a parameter be found invalid, the attribute will be left blank.
         * This constructor also calls upon the Employee class parent constructor.
@@ -125,7 +125,7 @@ namespace AllEmployees
         * employee are valid. Returns false if there is at least one invalid
         * attribute.
         */
-        bool Validate()
+        public bool Validate()
         {
             bool validStatus = true;
             string unused = "";

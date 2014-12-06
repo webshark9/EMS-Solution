@@ -68,20 +68,6 @@ namespace TheCompany
             lastIndex = 0;
 
             Employee employeeToAdd = null;
-            int prevPipeIndex = 0;// used to hold the index of the last pipe character found
-            int nextPipeIndex = 0;// used to hold the index of the next pipe character found
-
-            foreach(string employeeString in employeeStrings)
-            {
-                prevPipeIndex = 0;
-                nextPipeIndex = employeeString.IndexOf("|");
-
-                while(nextPipeIndex != -1)
-                {
-
-                }
-
-            }
 
 
         }
@@ -104,8 +90,54 @@ namespace TheCompany
         public bool AddEmployee(Employee newEmployee, ref string errorMessage)
         {
             bool addSuccessful = false;
+            FulltimeEmployee FTemployee = new FulltimeEmployee();
+            ParttimeEmployee PTemployee = new ParttimeEmployee();
+            ContractEmployee CTemployee = new ContractEmployee();
+            SeasonalEmployee SNemployee = new SeasonalEmployee();
             
             //FulltimeEmployee possibleEmployee = (FulltimeEmployee)newEmployee;
+
+            if (FTemployee.GetType() == newEmployee.GetType())
+            {
+                FTemployee = (FulltimeEmployee)newEmployee;
+
+                if(FTemployee.Validate())
+                {
+                    virtualDB.Add(FTemployee);
+                    addSuccessful = true;
+                }
+            }
+            else if(PTemployee.GetType() == newEmployee.GetType())
+            {
+                PTemployee = (ParttimeEmployee)newEmployee;
+
+                if (PTemployee.Validate())
+                {
+                    virtualDB.Add(PTemployee);
+                    addSuccessful = true;
+                }
+            }
+            else if(CTemployee.GetType() == newEmployee.GetType())
+            {
+                CTemployee = (ContractEmployee)newEmployee;
+
+                if (CTemployee.Validate())
+                {
+                    virtualDB.Add(CTemployee);
+                    addSuccessful = true;
+                }
+            }
+            else if(SNemployee.GetType() == newEmployee.GetType())
+            {
+                SNemployee = (SeasonalEmployee)newEmployee;
+
+                if (SNemployee.Validate())
+                {
+                    virtualDB.Add(SNemployee);
+                    addSuccessful = true;
+                }
+            }
+
 
             /*
             if (possibleEmployee.Validate() == true)
