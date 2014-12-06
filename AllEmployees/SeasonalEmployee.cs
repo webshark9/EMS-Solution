@@ -88,12 +88,7 @@ namespace AllEmployees
         *  
         * \return void
         */
-<<<<<<< HEAD
-        SeasonalEmployee(string seas, float pPay, string fName, string lName, string sin, DateTime dob)
-            : base(fName, lName, sin, dob)
-=======
         SeasonalEmployee(string seas, float pPay, string fName, string lName, string sin, DateTime dob) : base(fName, lName, sin, dob)
->>>>>>> parent of c906aef... Validation Update
         {
             string unused = "";
 

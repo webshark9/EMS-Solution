@@ -93,12 +93,9 @@ namespace AllEmployees
         * \return void
         */
         ///////////////////////////////////////////////////////////////////////////////////////////////////
-<<<<<<< HEAD
-        ContractEmployee(DateTime conStarDate, DateTime conStopDate, float fixedConAmount, string fName, string lName, string sin, DateTime dob)
-            : base(fName, lName, sin, dob)
-=======
+
         ContractEmployee(DateTime conStarDate, DateTime conStopDate, float fixedConAmount, string fName, string lName, string sin, DateTime dob) : base(fName, lName, sin, dob)
->>>>>>> parent of c906aef... Validation Update
+
         {
             string unused = "";
 
