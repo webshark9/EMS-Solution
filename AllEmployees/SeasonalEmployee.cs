@@ -49,10 +49,10 @@ namespace AllEmployees
         *
         * \return void
         */
-        public SeasonalEmployee()
-            : base()
+        public SeasonalEmployee() : base()
         {
-
+            season = "";
+            piecePay = 0;
         }
 
         /**
@@ -91,6 +91,9 @@ namespace AllEmployees
         public SeasonalEmployee(string seas, float pPay, string fName, string lName, string sin, DateTime dob) : base(fName, lName, sin)
         {
             string unused = "";
+
+            season = "";
+            piecePay = 0;
 
             if (Supporting.Validation.ValidateSeason(seas, ref unused))
             {

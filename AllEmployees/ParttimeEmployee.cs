@@ -50,10 +50,11 @@ namespace AllEmployees
         *
         * \return void
         */
-        public ParttimeEmployee()
-            : base()
+        public ParttimeEmployee() : base()
         {
-
+            dateOfHire = new DateTime();
+            dateOfTermination = new DateTime();
+            hourlyRate = 0;
         }
 
         /**
@@ -95,6 +96,10 @@ namespace AllEmployees
         public ParttimeEmployee(DateTime doh, DateTime dot, float hRate, string fName, string lName, string sin, DateTime dob) : base(fName, lName, sin)
         {
             string unused = "";
+
+            dateOfHire = new DateTime();
+            dateOfTermination = new DateTime();
+            hourlyRate = 0;
 
             if (Supporting.Validation.ValidateDateOfHire(dob, doh, dot, ref unused))
             {

@@ -50,10 +50,11 @@ namespace AllEmployees
         *
         * \return void
         */
-        public FulltimeEmployee()
-            : base()
+        public FulltimeEmployee() : base()
         {
-
+            dateOfHire = new DateTime();
+            dateOfTermination = new DateTime();
+            salary = 0;
         }
 
         /**
@@ -97,6 +98,10 @@ namespace AllEmployees
 
         {
             string unused = "";
+
+            dateOfHire = new DateTime();
+            dateOfTermination = new DateTime();
+            salary = 0;
 
             if (Supporting.Validation.ValidateDateOfHire(dob, doh, dot, ref unused))
             {

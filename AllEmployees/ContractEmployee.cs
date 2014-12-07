@@ -50,10 +50,11 @@ namespace AllEmployees
         *
         * \return void
         */
-        public ContractEmployee()
-            : base()
+        public ContractEmployee() : base()
         {
-
+            contractStartDate = new DateTime();
+            contractStopDate = new DateTime();
+            fixedContractAmount = 0;
         }
 
         /**
@@ -95,6 +96,10 @@ namespace AllEmployees
         public ContractEmployee(DateTime conStarDate, DateTime conStopDate, float fixedConAmount, string lName, string sin, DateTime dob) : base()
         {
             string unused = "";
+
+            contractStartDate = new DateTime();
+            contractStopDate = new DateTime();
+            fixedContractAmount = 0;
 
             if (Supporting.Validation.ValidateContractStartDate(dob, conStarDate, conStopDate, ref unused))
             {

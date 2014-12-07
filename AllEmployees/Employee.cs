@@ -52,7 +52,10 @@ namespace AllEmployees
         */
         public Employee()
         {
-
+            firstName = "";
+            lastName = "";
+            socialInsuranceNumber = "";
+            dateOfBirth = new DateTime();
         }
 
         /**
@@ -84,6 +87,11 @@ namespace AllEmployees
         public Employee(string fName, string lName, string sin)
         {
             string unused = "";
+
+            firstName = "";
+            lastName = "";
+            socialInsuranceNumber = "";
+            dateOfBirth = new DateTime();
 
             if (Supporting.Validation.ValidateName(fName, ref unused))
             {
