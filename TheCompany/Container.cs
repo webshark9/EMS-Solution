@@ -408,8 +408,16 @@ namespace TheCompany
             {
                 lastIndex = 0;// reset the 'lastIndex' data member so that first element will be returned
             }
+            
+            if(lastIndex >= virtualDB.Count)
+            {
+                return null;
+            }
+            else
+            {
+                return virtualDB[lastIndex++];// return the element and increase the 'lastIndex' data member so the next time this method is called the next index will be returned
+            }
 
-            return virtualDB[lastIndex++];// return the element and increase the 'lastIndex' data member so the next time this method is called the next index will be returned
         }
 
         /**
