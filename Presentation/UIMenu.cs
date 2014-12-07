@@ -519,16 +519,17 @@ namespace Presentation
         private void ModifyAnExistingEmployeeMenu()
         {
             ConsoleKeyInfo userInput;
+            Employee theObj = new Employee();
             bool back = false;
 
             while (back == false)
             {
                 Console.Clear();
-                Console.WriteLine("CHOOSE AN EMPLOYEE TO MODIFY:");
+                Console.WriteLine("MODIFY AN EMPLOYEE:");
                 Console.WriteLine("");
-                Console.WriteLine("\t1. Search By First Name");
-                Console.WriteLine("\t2. Search By Last Name/Business Name");
-                Console.WriteLine("\t3. Search By SIN/Business Number");
+                Console.WriteLine("\t1. Search By SIN/Business Number");
+                Console.WriteLine("\t2. ----------");
+                Console.WriteLine("\t3. ----------");
                 Console.WriteLine("\t4. ----------");
                 Console.WriteLine("\t5. ----------");
                 Console.WriteLine("\t6. ----------");
@@ -541,15 +542,15 @@ namespace Presentation
                 switch (userInput.KeyChar)
                 {
                     case '1':
-                        SearchFirstNameUI();
+                        theObj = SearchBySIN("Search By SIN/BN To Modify:");
                         break;
 
                     case '2':
-                        SearchLastNameUI();
+                        SearchFirstNameUI();
                         break;
 
                     case '3':
-                        SearchSINUI();
+                        SearchLastNameUI();
                         break;
 
                     case '9':
@@ -1382,16 +1383,17 @@ namespace Presentation
         private void RemoveAnExistingEmployeeMenu()
         {
             ConsoleKeyInfo userInput;
+            Employee theObj = new Employee();
             bool back = false;
 
             while (back == false)
             {
                 Console.Clear();
-                Console.WriteLine("CHOOSE AN EMPLOYEE TO REMOVE:");
+                Console.WriteLine("REMOVE AN EMPLOYEE:");
                 Console.WriteLine("");
-                Console.WriteLine("\t1. Search By First Name");
-                Console.WriteLine("\t2. Search By Last Name/Business Name");
-                Console.WriteLine("\t3. Search By SIN/Business Number");
+                Console.WriteLine("\t1. Search By SIN/Business Number");
+                Console.WriteLine("\t2. ----------");
+                Console.WriteLine("\t3. ----------");
                 Console.WriteLine("\t4. ----------");
                 Console.WriteLine("\t5. ----------");
                 Console.WriteLine("\t6. ----------");
@@ -1404,15 +1406,15 @@ namespace Presentation
                 switch (userInput.KeyChar)
                 {
                     case '1':
-                        SearchFirstNameUI();
+                        theObj = SearchBySIN("Search By SIN/BN To Remove:");
                         break;
 
                     case '2':
-                        SearchLastNameUI();
+                        SearchFirstNameUI();
                         break;
 
                     case '3':
-                        SearchSINUI();
+                        SearchLastNameUI();
                         break;
 
                     case '9':
@@ -1437,12 +1439,48 @@ namespace Presentation
         * 
         * \return string - the employee record of the search result..
         */
-        private string SearchEmployeeMenu()
+        private void SearchEmployeeMenu()
         {
-            char userInput = '0';
-            string employeeRecord = "";
+            ConsoleKeyInfo userInput;
+            Employee theObj = new Employee();
+            bool back = false;
 
-            return employeeRecord;
+            while (back == false)
+            {
+                Console.Clear();
+                Console.WriteLine("DISPLAY AN EMPLOYEE:");
+                Console.WriteLine("");
+                Console.WriteLine("\t1. Search By SIN/Business Number");
+                Console.WriteLine("\t2. ----------");
+                Console.WriteLine("\t3. ----------");
+                Console.WriteLine("\t4. ----------");
+                Console.WriteLine("\t5. ----------");
+                Console.WriteLine("\t6. ----------");
+                Console.WriteLine("\t7. ----------");
+                Console.WriteLine("\t8. ----------");
+                Console.WriteLine("\t9. Return To Employee Management Menu");
+
+                userInput = Console.ReadKey();
+
+                switch (userInput.KeyChar)
+                {
+                    case '1':
+                        theObj = SearchBySIN("Search By SIN/BN To Display:");
+                        break;
+
+                    case '2':
+                        SearchFirstNameUI();
+                        break;
+
+                    case '3':
+                        SearchLastNameUI();
+                        break;
+
+                    case '9':
+                        back = true;
+                        break;
+                }
+            }
         }
 
 
@@ -1506,6 +1544,11 @@ namespace Presentation
 
         }
 
+        private void ModifySingleEmployee(Employee theObj)
+        {
+            
+        }
+
 
         private void SearchFirstNameUI()
         {
@@ -1517,11 +1560,30 @@ namespace Presentation
 
         }
 
-        private void SearchSINUI()
+        private Employee SearchBySIN(string displayOrModifyOrRemove)
         {
+            string searchParameter = "";
+            Employee theObj = new Employee();
 
+            searchParameter = TakeUserInputSIN(displayOrModifyOrRemove);
+
+            theObj = (Employee)companyContainer.NextEmployee(true);
+
+            while (theObj != null)
+            {
+                if (theObj.GetSocialInsuranceNumber() == searchParameter)
+                {
+                    break;
+                }
+                else
+                {
+                    theObj = (Employee)companyContainer.NextEmployee();
+                }
+            }
+
+            return theObj;
         }
-
+        
         private void LoadFromFileUI()
         {
 
@@ -1650,7 +1712,29 @@ namespace Presentation
             int userInputNumber = 0;
             int counter = 0;
 
-            if (sinOrBN.Contains("Social"))
+            if (sinOrBN.Contains("Search"))
+            {
+                while (counter < 9)
+                {
+                    Console.Clear();
+                    Console.WriteLine("{0}", sinOrBN);
+                    Console.WriteLine("{0}", currentInput);
+                    userInputNumber = TakeUserInputNumber();
+
+                    if (userInputNumber == -2 && currentInput.Length > 0)
+                    {
+                        currentInput = currentInput.Remove(currentInput.Length - 1);
+                        counter = counter - 1;
+                    }
+                    else if (userInputNumber > -1)
+                    {
+                        currentInput += userInputNumber.ToString();
+                        counter = counter + 1;
+                    }
+
+                }
+            }
+            else if (sinOrBN.Contains("Social"))
             {
                 while (counter < 11)
                 {
