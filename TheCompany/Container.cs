@@ -251,7 +251,7 @@ namespace TheCompany
             ContractEmployee CTemployee = new ContractEmployee();
             SeasonalEmployee SNemployee = new SeasonalEmployee();
 
-            foreach (Employee emp in virtualDB)
+            foreach (Employee emp in virtualDB)// make sure that the employee that is going to be added doesn't have the same SIN or business number as an existing employee in the database
             {
                 if (emp.GetSocialInsuranceNumber() == newEmployee.GetSocialInsuranceNumber())
                 {
@@ -273,7 +273,8 @@ namespace TheCompany
                 }
                 else
                 {
-                    errorMessage = "Employee did not pass validation test.";
+                    errorMessage = "Employee did not pass Full-Time Employee validation test.";
+                    Logging.LogEvent("[Container.AddEmployee] Employee failed to be Added. Employee information: " + FTemployee.Details());
                 }
             }
             else if (PTemployee.GetType() == newEmployee.GetType() && sameSIN == false)
@@ -287,7 +288,8 @@ namespace TheCompany
                 }
                 else
                 {
-                    errorMessage = "Employee did not pass validation test.";
+                    errorMessage = "Employee did not pass Part-Time Employee validation test.";
+                    Logging.LogEvent("[Container.AddEmployee] Employee failed to be Added. Employee information: " + PTemployee.Details());
                 }
             }
             else if (CTemployee.GetType() == newEmployee.GetType() && sameSIN == false)
@@ -298,6 +300,11 @@ namespace TheCompany
                 {
                     virtualDB.Add(CTemployee);
                     addSuccessful = true;
+                }
+                else
+                {
+                    errorMessage = "Employee did not pass Contract Employee validation test.";
+                    Logging.LogEvent("[Container.AddEmployee] Employee failed to be Added. Employee information: " + CTemployee.Details());
                 }
             }
             else if (SNemployee.GetType() == newEmployee.GetType() && sameSIN == false)
@@ -311,11 +318,10 @@ namespace TheCompany
                 }
                 else
                 {
-                    errorMessage = "Employee did not pass validation test.";
+                    errorMessage = "Employee did not pass Seasonal Employee validation test.";
+                    Logging.LogEvent("[Container.AddEmployee] Employee failed to be Added. Employee information: " + SNemployee.Details());
                 }
             }
-
-
             
             if (addSuccessful == true)
             {
@@ -350,6 +356,7 @@ namespace TheCompany
                 {
                     virtualDB.Remove(storedEmployee);
                     removeSuccessful = true;
+                    Logging.LogEvent("[Container.RemoveEmployee] Employee removed. Employee SIN: " + employeeToRemove.GetSocialInsuranceNumber());
                     break;// we don't allow duplicate SIN's in our database so as soon as we find a match we can exit
                 }
 
@@ -358,6 +365,7 @@ namespace TheCompany
             if(removeSuccessful == false)
             {
                 errorMessage = "Remove was unsuccessful. The SIN number could not be found.";
+                Logging.LogEvent("[Container.RemoveEmployee] Employee failed to be removed. The SIN: " + employeeToRemove.GetSocialInsuranceNumber() + " could not be found");
             }
 
             return removeSuccessful;
@@ -382,6 +390,12 @@ namespace TheCompany
         {
             bool modifySuccessful = true;// will be set to 'false' if there was a problem
             string unusedString = "";
+            FulltimeEmployee FTemployee = new FulltimeEmployee();
+            ParttimeEmployee PTemployee = new ParttimeEmployee();
+            ContractEmployee CTemployee = new ContractEmployee();
+            SeasonalEmployee SNemployee = new SeasonalEmployee();
+            string originalValues = "";
+            string newValues = "";
 
             foreach (Employee storedEmployee in virtualDB)
             {
@@ -395,6 +409,41 @@ namespace TheCompany
                     else// the add was successful
                     {
                         virtualDB.Remove(storedEmployee);// remove the old employee
+
+                        if (FTemployee.GetType() == newEmployee.GetType())
+                        {
+                            FTemployee = (FulltimeEmployee)employeeToModify;                
+                            originalValues = FTemployee.Details();
+
+                            FTemployee = (FulltimeEmployee)newEmployee;
+                            newValues = FTemployee.Details();
+                        }
+                        else if (PTemployee.GetType() == newEmployee.GetType())
+                        {
+                            PTemployee = (ParttimeEmployee)newEmployee;                
+                            originalValues = FTemployee.Details();
+
+                            PTemployee = (ParttimeEmployee)newEmployee;
+                            newValues = FTemployee.Details();                  
+                        }
+                        else if (CTemployee.GetType() == newEmployee.GetType())
+                        {
+                            CTemployee = (ContractEmployee)newEmployee;                                         
+                            originalValues = FTemployee.Details();
+
+                            CTemployee = (ContractEmployee)newEmployee;
+                            newValues = FTemployee.Details();                    
+                        }
+                        else if (SNemployee.GetType() == newEmployee.GetType())
+                        {
+                            SNemployee = (SeasonalEmployee)newEmployee;                
+                            originalValues = SNemployee.Details();
+
+                            SNemployee = (SeasonalEmployee)newEmployee;
+                            newValues = SNemployee.Details();                  
+                        }
+
+                        Logging.LogEvent("[Container.ModifyEmployee] Employee modified. Original Values: " + originalValues + "\nNew Values: " + newValues);
                     }                  
 
                     break;// we don't allow duplicate SIN's in our database so as soon as we find a match we can exit
@@ -404,7 +453,7 @@ namespace TheCompany
 
             if((modifySuccessful == false) && (errorMessage == ""))// if both conditions are true then the employee could not be found
             {
-                // errorMessage = "";
+                errorMessage = "The employee to modify could not be found.";
             }
 
             return modifySuccessful;
@@ -490,7 +539,7 @@ namespace TheCompany
                     return emp;
                 }
             }
-
+            
             return null;
         }
 
