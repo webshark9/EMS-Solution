@@ -808,6 +808,7 @@ namespace Presentation
             string errorMessage = "";
             bool back = false;
             bool removeOld = false;
+            bool saveSuccess = false;
 
             while (back == false)
             {
@@ -952,13 +953,20 @@ namespace Presentation
                     case '8':
                         {
                             // uh don't know what to call to push the object into the container.
-                            if (isNew == true)
+                            saveSuccess = companyContainer.AddEmployee(theObj, ref errorMessage);
+                            if (saveSuccess == true)
                             {
-
+                                Console.Clear();
+                                Console.WriteLine("Save Successful!");
+                                userInput = Console.ReadKey();
+                                if (isNew == false)
+                                {
+                                    removeOld = true;
+                                }
                             }
                             else
                             {
-                                removeOld = true;
+                                PrintErrorMessage(errorMessage);
                             }
                         }
                         break;
@@ -1008,6 +1016,7 @@ namespace Presentation
             string errorMessage = "";
             bool back = false;
             bool removeOld = false;
+            bool saveSuccess = false;
 
             while (back == false)
             {
@@ -1140,13 +1149,20 @@ namespace Presentation
                     case '8':
                         {
                             // uh don't know what to call to push the object into the container.
-                            if (isNew == true)
+                            saveSuccess = companyContainer.AddEmployee(theObj, ref errorMessage);
+                            if (saveSuccess == true)
                             {
-
+                                Console.Clear();
+                                Console.WriteLine("Save Successful!");
+                                userInput = Console.ReadKey();
+                                if (isNew == false)
+                                {
+                                    removeOld = true;
+                                }
                             }
                             else
                             {
-                                removeOld = true;
+                                PrintErrorMessage(errorMessage);
                             }
                         }
                         break;
@@ -1195,6 +1211,7 @@ namespace Presentation
             string errorMessage = "";
             bool back = false;
             bool removeOld = false;
+            bool saveSuccess = false;
 
             while (back == false)
             {
@@ -1310,13 +1327,20 @@ namespace Presentation
                     case '8':
                         {
                             // uh don't know what to call to push the object into the container.
-                            if (isNew == true)
+                            saveSuccess = companyContainer.AddEmployee(theObj, ref errorMessage);
+                            if (saveSuccess == true)
                             {
-
+                                Console.Clear();
+                                Console.WriteLine("Save Successful!");
+                                userInput = Console.ReadKey();
+                                if (isNew == false)
+                                {
+                                    removeOld = true;
+                                }
                             }
                             else
                             {
-                                removeOld = true;
+                                PrintErrorMessage(errorMessage);
                             }
                         }
                         break;
@@ -1629,7 +1653,7 @@ namespace Presentation
                     Console.WriteLine("{0}", currentInput);
                     userInputNumber = TakeUserInputNumber();
 
-                    if (userInputNumber == -2)
+                    if (userInputNumber == -2 && currentInput.Length > 0)
                     {
                         if (counter == 4 || counter == 8)
                         {
@@ -1664,7 +1688,7 @@ namespace Presentation
                     Console.WriteLine("{0}", currentInput);
                     userInputNumber = TakeUserInputNumber();
 
-                    if (userInputNumber == -2)
+                    if (userInputNumber == -2 && currentInput.Length > 0)
                     {
                         if (counter == 6)
                         {
@@ -1710,7 +1734,7 @@ namespace Presentation
                 Console.WriteLine("{0}", currentInput);
                 userInputNumber = TakeUserInputNumber();
 
-                if (userInputNumber == -2)
+                if (userInputNumber == -2 && currentInput.Length > 0)
                 {
                     if (counter == 5 || counter == 8)
                     {
@@ -1757,7 +1781,7 @@ namespace Presentation
                 Console.WriteLine("${0}", currentInput);
                 userInputNumber = TakeUserInputNumber();
 
-                if (userInputNumber == -2)
+                if (userInputNumber == -2 && currentInput.Length > 0)
                 {
                     if (currentInput[currentInput.Length - 1] == '.')
                     {
