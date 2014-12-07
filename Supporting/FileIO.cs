@@ -69,9 +69,17 @@ namespace Supporting
             {
                 dbReader = new StreamReader(databaseName);
             }
+            catch(FileNotFoundException)
+            {
+                errorMessage = "The Database file: " + databaseName + " could not be found.";
+            }
+            catch (DirectoryNotFoundException)
+            {
+                errorMessage = "The Directory for the database file could not be found.";
+            }
             catch(Exception e)
             {
-
+                errorMessage = "Error opening the database file. Message: " + e.Message;
             }
             
 
@@ -459,12 +467,14 @@ namespace Supporting
                     continue;
                 }// end 'else' statement 
 
+                // if it reaches this point the record was valid
                 validRecords.Add(stringsInRecord);
                 ++numValidRecords;
                 Logging.LogEvent("[FileIO.Open] Valid employee read. Record: " + record);
 
             }// end 'foreach'
 
+            Logging.LogEvent("[FileIO.Open] Total Records read: " + numRecordsRead.ToString() + ". Valid records read: " + numValidRecords.ToString() + ". Invalid records read: " + numInvalidRecords.ToString());
             //Console.WriteLine("Records Read: {0}", numRecordsRead);
             //Console.WriteLine("Valid Records: {0}", numValidRecords);
             //Console.WriteLine("Invalid Records: {0}", numInvalidRecords);
@@ -489,23 +499,91 @@ namespace Supporting
         *         <i>errorMessage</i> can be checked to see what went wrong.
         *
         */
-        public static bool CloseDBase(string[] stringsToWrite, ref string errorMessage)
+        public static bool CloseDBase(string[] validStringsToWrite, string[] invalidStringsToWrite, ref string errorMessage)
         {
             bool noErrors = true;
             int numRecordsWritten = 0;// the total number of records written
             int numValidRecords = 0;// the number of valid records read
             int numInvalidRecords = 0;// the number of invalid records read
+            int pipeIndex = 0;// used to hold the index of the first pipe character found
+            int numPipes = 0;// used to count the number of pipe characters found
+            string employeeType = "";
 
-            dbWriter = new StreamWriter(databaseName);
-
-            foreach( string record in stringsToWrite)
+            try
             {
-                WriteRecord(record);
-                ++numRecordsWritten;
+                dbWriter = new StreamWriter(databaseName);
 
+                foreach (string record in validStringsToWrite)
+                {
+                    pipeIndex = record.IndexOf('|');
+                    ++numPipes;
+                    if (pipeIndex == -1)// check if there are no pipe characters in the string (which would make it invalid)
+                    {
+                        ++numInvalidRecords;
+                        continue;
+                    }
+                    employeeType = record.Substring(0, pipeIndex);// extract the employee type from the string
+
+                    pipeIndex = record.IndexOf('|', pipeIndex + 1);// find the next pipe in the string
+                    while (pipeIndex != -1)// loop until all the pipe characters are found
+                    {
+                        ++numPipes;
+                        pipeIndex = record.IndexOf('|', pipeIndex + 1);// find the next pipe in the string
+                    }
+
+                    if(numPipes == 8)
+                    {
+                        if(employeeType == "FT" || employeeType == "PT" || employeeType == "CT")
+                        {
+                            WriteRecord(record);
+                            ++numRecordsWritten;
+                            ++numValidRecords;
+                        }
+                        else
+                        {
+                            ++numInvalidRecords;
+                        }
+
+                    }
+                    else if(numPipes == 7)
+                    {
+                        if (employeeType == "SN")
+                        {
+                            WriteRecord(record);
+                            ++numRecordsWritten;
+                        }
+                        else
+                        {
+                            ++numInvalidRecords;
+                        }
+                    }
+                    else
+                    {
+                        ++numInvalidRecords;
+                    }
+                    
+
+                }// end 'foreach'
+
+                foreach (string record in invalidStringsToWrite)// don't do any validation with the invalidStringsToWrite, just count how many and write them to the file
+                {
+                    WriteRecord(record);
+                    ++numRecordsWritten;
+                    ++numInvalidRecords;
+                }
+
+                dbWriter.Close();
+            }
+            catch (DirectoryNotFoundException)
+            {
+                errorMessage = "The Directory to save the database file could not be found.";
+            }
+            catch(Exception e)
+            {
+                errorMessage = "Error saving to the database file. Message: " + e.Message;
             }
 
-            dbWriter.Close();
+            Logging.LogEvent("[FileIO.Open] Total Records written: " + numRecordsWritten.ToString() + ". Valid records written: " + numValidRecords.ToString() + ". Invalid records written: " + numInvalidRecords.ToString());
 
             return noErrors;
         }
@@ -523,8 +601,6 @@ namespace Supporting
         */
         private static string ReadRecord()
         {
-            //string[] records = null;
-
             return dbReader.ReadLine();
         }
 
@@ -532,24 +608,18 @@ namespace Supporting
         * \brief To write a single record to the database file
         * \details <b>Details</b>
         *
-        * This method writes a string (and a newline) to the database file using the <i>dbWriter</i> data member and returns 
-        * whether or not the write was successful
+        * This method writes a string (and a newline) to the database file using the <i>dbWriter</i> data member
         * 
         * \param record - string - the string that the calling method would like to write to the
         * database file
         * 
-        * \return Returns a string <i>record</i> which will hold the line read or be empty ("") if the
-        * read failed
+        * \return Nothing
         *
         */
-        private static bool WriteRecord(string record)
+        private static void WriteRecord(string record)
         {
-            bool writeSuccessful = false;
-
             dbWriter.WriteLine(record);
             dbWriter.Flush();// actually write the data to the file
-
-            return writeSuccessful;
         }
 
         /**

@@ -295,7 +295,7 @@ namespace TheCompany
             
             if (addSuccessful == true)
             {
-                Logging.LogEvent("[Container.AddEmployee] Employee Added. SIN: " + newEmployee.GetSocialInsuranceNumber().ToString());
+                Logging.LogEvent("[Container.AddEmployee] Employee Added. SIN: " + newEmployee.GetSocialInsuranceNumber());
             }
             
 
@@ -409,11 +409,11 @@ namespace TheCompany
                 lastIndex = 0;// reset the 'lastIndex' data member so that first element will be returned
             }
             
-            if(lastIndex >= virtualDB.Count)
+            if(lastIndex >= virtualDB.Count)// check if indexing the virtualDB to what the index is will cause an exception
             {
-                return null;
+                return null;// returned all employees, so return null
             }
-            else
+            else// index is valid
             {
                 return virtualDB[lastIndex++];// return the element and increase the 'lastIndex' data member so the next time this method is called the next index will be returned
             }
