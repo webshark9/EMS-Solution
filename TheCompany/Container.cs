@@ -471,5 +471,30 @@ namespace TheCompany
         }
 
 
+        /**
+        * \brief To return an employee in the data base 
+        * \details <b>Details</b>
+        *
+        * This method checks if the parameter is 
+        * \param employeeIndex - int - the 
+        * 
+        * \return An object that will be a member of the <i>virtualDB</i> data member or <i>null</i> if the index was invalid. 
+        *
+        */
+        public object ReturnObject(string sinNumber)
+        {
+            foreach(Employee emp in virtualDB)
+            {
+                if(emp.GetSocialInsuranceNumber() == sinNumber)
+                {
+                    return emp;
+                }
+            }
+
+            return null;
+        }
+
+
+
     }
 }
