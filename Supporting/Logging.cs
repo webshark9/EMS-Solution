@@ -140,7 +140,7 @@ namespace Supporting
 
                 // construct the log string
                 logString = lastDate.Year.ToString() + "-" + lastDate.Month.ToString() + "-" + lastDate.Day.ToString();// add the YYYY-MM-DD
-                logString += " " + lastDate.Hour.ToString() + ":" + lastDate.Minute.ToString() + ":" + lastDate.Second.ToString();// add the HH:MM:SS
+                logString += " " + DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString() + ":" + DateTime.Now.Second.ToString();// add the HH:MM:SS
                 logString += " " + eventString;
 
                 try

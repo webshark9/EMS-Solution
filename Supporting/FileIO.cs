@@ -62,7 +62,6 @@ namespace Supporting
             string returnedErrorMessage = "";
 
 
-
             databaseName = dbName;// save the name of the database file in the 'databaseName' data member so we can close the file later
 
             //File.Open(databaseName, FileMode.OpenOrCreate, FileAccess.ReadWrite);// open/create the database file for read/write access
@@ -88,6 +87,8 @@ namespace Supporting
                 DateTime dateOfHire = new DateTime();
                 DateTime dateOfTermination = new DateTime();
 
+                returnedErrorMessage = "";
+
                 nextPipeIndex = record.IndexOf('|');
                 if (nextPipeIndex == -1)// check if there are no pipe characters in the string (which would make it invalid)
                 {
@@ -105,8 +106,6 @@ namespace Supporting
                     prevPipeIndex = nextPipeIndex;// save the index of the current pipe
                     nextPipeIndex = record.IndexOf('|', prevPipeIndex + 1);// find the next pipe in the string
                 }
-
-//validRecords.Add(stringsInRecord);
 
                 if (stringsInRecordIndex == 8)// FT, PT, and CT employee types will have 8 strings in a record (the type of employee plus 7 data members)
                 {
