@@ -765,7 +765,7 @@ namespace Supporting
                 {
                     validateStatus = false;
                 }
-                else
+                else if(businessNumber != "")
                 {
                     for (int i = 0; i < 2; i++)
                     {

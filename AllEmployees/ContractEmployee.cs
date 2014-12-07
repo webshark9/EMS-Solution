@@ -195,38 +195,6 @@ namespace AllEmployees
             return validStatus;
         }
 
-        ///////////////////////////////////////////////////////////////////////////////////////////
-        public bool SetBusinessNumber(string userInput, ref string errorMessage)
-        {
-            bool setStatus = false;
-
-
-
-            return setStatus;
-        }
-
-        ////////////////////////////////////////////////////////////////////////////////////////
-        public bool SetDateOfCreation(string userInput, ref string errorMessage)
-        {
-            bool setStatus = false;
-            DateTime userInputDateTime;
-
-            if (DateTime.TryParse(userInput, out userInputDateTime))
-            {
-                if (Supporting.Validation.ValidateDateOfCreation(GetSocialInsuranceNumber(), userInputDateTime, ref errorMessage))
-                {
-                    setStatus = true;
-                    //Employee.dateOfBirth = userInputDateTime;
-                }
-            }
-            else
-            {
-                errorMessage = userInput + " Is Not A Valid Format For A Date.\n\nPlease Enter Dates In The Following Format\nyyyy-mm-dd     ex. 2012-08-29\n";
-            }
-
-            return setStatus;
-        }
-
         /**
         * \brief Sets the <i>contractStartDate</i> attribute within the ContractEmployee class
         *

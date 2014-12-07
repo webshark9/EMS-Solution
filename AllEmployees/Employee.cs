@@ -239,14 +239,14 @@ namespace AllEmployees
 
             if (userInput.Length == sinLength)
             {
-                if (userInput[3] == ' ' && userInput[7] == ' ')
+                if (userInput[3] == ' ' && userInput[6] == ' ')
                 {
-                    userInput = userInput.Remove(userInput[4], 1);
-                    userInput = userInput.Remove(userInput[7], 1);
+                    userInput = userInput.Remove(3, 1);
+                    userInput = userInput.Remove(6, 1);
                 }
                 else
                 {
-                    errorMessage = "Please Me Sure The SIN Is In The Proper Format\nex. xxx xxx xxx\n";
+                    errorMessage = "Please Be Sure The SIN Is In The Proper Format\nex. xxx xxx xxx\n";
                 }
 
                 if (Supporting.Validation.ValidateSocialInsuranceNumber(userInput, ref errorMessage))
@@ -257,7 +257,59 @@ namespace AllEmployees
             }
             else
             {
-                errorMessage = "Please Me Sure The SIN Is In The Proper Format\nex. xxx xxx xxx\n";
+                errorMessage = "Please Be Sure The SIN Is In The Proper Format\nex. xxx xxx xxx\n";
+            }
+
+            return setStatus;
+        }
+
+        public bool SetBusinessNumber(string userInput, ref string errorMessage)
+        {
+            bool setStatus = false;
+            int bnLength = 10;
+            string bnTemp = userInput;
+
+            if (userInput.Length == bnLength)
+            {
+                if (userInput[5] == ' ')
+                {
+                    userInput = userInput.Remove(5, 1);
+                }
+                else
+                {
+                    errorMessage = "Please Be Sure The BN Is In The Proper Format\nex. xxx xxx xxx\n";
+                }
+
+                if (Supporting.Validation.ValidateBusinessNumber(userInput, GetDateOfBirth(), ref errorMessage))
+                {
+                    setStatus = true;
+                    socialInsuranceNumber = bnTemp;
+                }
+            }
+            else
+            {
+                errorMessage = "Please Be Sure The SIN Is In The Proper Format\nex. xxx xxx xxx\n";
+            }
+
+            return setStatus;
+        }
+
+        public bool SetDateOfCreation(string userInput, ref string errorMessage)
+        {
+            bool setStatus = false;
+            DateTime userInputDateTime;
+
+            if (DateTime.TryParse(userInput, out userInputDateTime))
+            {
+                if (Supporting.Validation.ValidateDateOfCreation(GetSocialInsuranceNumber(), userInputDateTime, ref errorMessage))
+                {
+                    setStatus = true;
+                    //Employee.dateOfBirth = userInputDateTime;
+                }
+            }
+            else
+            {
+                errorMessage = userInput + " Is Not A Valid Format For A Date.\n\nPlease Enter Dates In The Following Format\nyyyy-mm-dd     ex. 2012-08-29\n";
             }
 
             return setStatus;
