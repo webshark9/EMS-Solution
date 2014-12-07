@@ -626,7 +626,8 @@ namespace Presentation
                 Console.WriteLine("");
                 Console.WriteLine("First Name: {0}", theObj.GetFirstName());
                 Console.WriteLine("Last Name: {0}", theObj.GetLastName());
-                Console.WriteLine("SIN: {0}", displaySIN(theObj.GetSocialInsuranceNumber()));
+                Console.WriteLine("SIN: {0}", theObj.GetSocialInsuranceNumber());
+//                Console.WriteLine("SIN: {0}", displaySIN(theObj.GetSocialInsuranceNumber()));
 
                 if (DateTime.Compare(theObj.GetDateOfBirth(), defaultDateTime) == 0)
                 {
@@ -835,7 +836,8 @@ namespace Presentation
                 Console.WriteLine("");
                 Console.WriteLine("First Name: {0}", theObj.GetFirstName());
                 Console.WriteLine("Last Name: {0}", theObj.GetLastName());
-                Console.WriteLine("SIN: {0}", displaySIN(theObj.GetSocialInsuranceNumber()));
+                Console.WriteLine("SIN: {0}", theObj.GetSocialInsuranceNumber());
+//                Console.WriteLine("SIN: {0}", displaySIN(theObj.GetSocialInsuranceNumber()));
                 if (DateTime.Compare(theObj.GetDateOfBirth(), defaultDateTime) == 0)
                 {
                     Console.WriteLine("Date of Birth: ");
@@ -1221,7 +1223,8 @@ namespace Presentation
                 Console.WriteLine("");
                 Console.WriteLine("First Name: {0}", theObj.GetFirstName());
                 Console.WriteLine("Last Name: {0}", theObj.GetLastName());
-                Console.WriteLine("SIN: {0}", displaySIN(theObj.GetSocialInsuranceNumber()));
+                Console.WriteLine("SIN: {0}", theObj.GetSocialInsuranceNumber());
+//                Console.WriteLine("SIN: {0}", displaySIN(theObj.GetSocialInsuranceNumber()));
 
                 if (DateTime.Compare(theObj.GetDateOfBirth(), defaultDateTime) == 0)
                 {
@@ -1802,17 +1805,17 @@ namespace Presentation
             return parsed;
         }
 
-        private string displayBN(string unparsed)
-        {
-            string parsed = "";
-
-            if (unparsed != "")
-            {
-                parsed = unparsed.Insert(5, " ");
-            }
-
-            return parsed;
-        }
+//        private string displayBN(string unparsed)
+//        {
+//            string parsed = "";
+//
+//            if (unparsed != "")
+//            {
+//                parsed = unparsed.Insert(5, " ");
+//            }
+//        
+//            return parsed;
+//        }
 
         /**
          * \brief UI of choosing season for seaonal employee creation
