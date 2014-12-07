@@ -13,6 +13,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using AllEmployees;
+using Supporting;
 
 namespace TheCompany
 {
@@ -222,7 +223,7 @@ namespace TheCompany
 
             }// end 'foreach'
 
-            //log: "[Container.Constructor] Employees Added: " + numEmployeesAdded.ToString() + "\n\tInvalid Employees Found: " + numInvalidEmployees;
+            Logging.LogEvent("[Container.Constructor] Employees Added: " + numEmpoyeesAdded.ToString() + "\n\tInvalid Employees Found: " + numInvalidEmployees);
 
         }
 
@@ -248,8 +249,6 @@ namespace TheCompany
             ParttimeEmployee PTemployee = new ParttimeEmployee();
             ContractEmployee CTemployee = new ContractEmployee();
             SeasonalEmployee SNemployee = new SeasonalEmployee();
-            
-            //FulltimeEmployee possibleEmployee = (FulltimeEmployee)newEmployee;
 
             if (FTemployee.GetType() == newEmployee.GetType())
             {
@@ -293,12 +292,12 @@ namespace TheCompany
             }
 
 
-            /*
-            if (possibleEmployee.Validate() == true)
+            
+            if (addSuccessful == true)
             {
-                virtualDB.Add(possibleEmployee);
+                Logging.LogEvent("[Container.AddEmployee] Employee Added. SIN: " + newEmployee.GetSocialInsuranceNumber().ToString());
             }
-            */
+            
 
             return addSuccessful;
         }
@@ -334,7 +333,7 @@ namespace TheCompany
 
             if(removeSuccessful == false)
             {
-                // errorMessage = "";
+                errorMessage = "Remove was unsuccessful. The SIN number could not be found.";
             }
 
             return removeSuccessful;

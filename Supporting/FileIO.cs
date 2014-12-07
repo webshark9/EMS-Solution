@@ -65,8 +65,15 @@ namespace Supporting
             databaseName = dbName;// save the name of the database file in the 'databaseName' data member so we can close the file later
 
             //File.Open(databaseName, FileMode.OpenOrCreate, FileAccess.ReadWrite);// open/create the database file for read/write access
+            try
+            {
+                dbReader = new StreamReader(databaseName);
+            }
+            catch(Exception e)
+            {
 
-            dbReader = new StreamReader(databaseName);
+            }
+            
 
             /* this loop reads the entire database file and stores each line separately into 'stringsRead' */
             while (dbReader.Peek() >= 0)
