@@ -239,7 +239,7 @@ namespace AllEmployees
 
             if (userInput.Length == sinLength)
             {
-                if (userInput[4] == ' ' && userInput[7] == ' ')
+                if (userInput[3] == ' ' && userInput[7] == ' ')
                 {
                     userInput = userInput.Remove(userInput[4], 1);
                     userInput = userInput.Remove(userInput[7], 1);
