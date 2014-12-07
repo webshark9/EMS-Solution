@@ -197,6 +197,8 @@ namespace Presentation
                         companyContainer = new Container(FileIO.OpenDBase("EMS_DB_FILE.txt", ref errorMessage));
                         Console.Clear();
                         Console.WriteLine("FILE HAS BEEN LOADED");
+                        Console.WriteLine("");
+                        Console.WriteLine("Press any key to continue...");
                         userInput = Console.ReadKey();
                         break;
 
@@ -595,6 +597,7 @@ namespace Presentation
             string errorMessage = "";
             bool back = false;
             bool removeOld = false;
+            bool saveSuccess = false;
 
             while (back == false)
             {
@@ -739,14 +742,22 @@ namespace Presentation
                     case '8':
                         {
                             // uh don't know what to call to push the object into the container.
-                            if (isNew == true)
+                            saveSuccess = companyContainer.AddEmployee(theObj, ref errorMessage);
+                            if (saveSuccess == true)
                             {
-
+                                Console.Clear();
+                                Console.WriteLine("Save Successful!");
+                                userInput = Console.ReadKey();
+                                if (isNew == false)
+                                {
+                                    removeOld = true;
+                                }
                             }
                             else
                             {
-                                removeOld = true;
+                                PrintErrorMessage(errorMessage);
                             }
+
                         }
                         break;
 
@@ -1405,15 +1416,49 @@ namespace Presentation
 
         private void DisplayAllEmployees()
         {
-            Employee currentObj;
+            ConsoleKeyInfo userInput;
+            Employee currentObj = new Employee();
+            int counter = 0;
+            FulltimeEmployee FtEmployee = new FulltimeEmployee();
+            ParttimeEmployee PtEmployee = new ParttimeEmployee();
+            ContractEmployee CtEmployee = new ContractEmployee();
+            SeasonalEmployee SnEmployee = new SeasonalEmployee();
 
-            currentObj = NextEmployee(true);
+            Console.Clear();
+
+            currentObj = (Employee)companyContainer.NextEmployee(true);
 
             while (currentObj != null)
             {
                 
-            }
+                if (currentObj.GetType() == FtEmployee.GetType())
+                {
+                    FtEmployee = (FulltimeEmployee)currentObj;
+                    Console.WriteLine("{0}", FtEmployee.Details());
+                }
+                else if (currentObj.GetType() == PtEmployee.GetType())
+                {
+                    PtEmployee = (ParttimeEmployee)currentObj;
+                    Console.WriteLine("{0}", PtEmployee.Details());
+                }
+                else if (currentObj.GetType() == CtEmployee.GetType())
+                {
+                    CtEmployee = (ContractEmployee)currentObj;
+                    Console.WriteLine("{0}", CtEmployee.Details());
+                }
+                else if (currentObj.GetType() == SnEmployee.GetType())
+                {
+                    SnEmployee = (SeasonalEmployee)currentObj;
+                    Console.WriteLine("{0}", SnEmployee.Details());
+                }
+                currentObj = (Employee)companyContainer.NextEmployee();
 
+                if (counter >= 3 || currentObj == null)
+                {
+                    Console.WriteLine("Press any key to continue...");
+                    userInput = Console.ReadKey();
+                }
+            }
         }
 
         private void DisplaySingleEmployee(Employee theObj)
@@ -1423,10 +1468,9 @@ namespace Presentation
             ContractEmployee CtEmployee = new ContractEmployee();
             SeasonalEmployee SnEmployee = new SeasonalEmployee();
 
-            if (theObj.GetType() == FtEmployee.GetType())
-            {
+//            if (theObj.GetType() == FtEmployee.GetType())
+//            { }
 
-            }
         }
 
 
@@ -1841,6 +1885,7 @@ namespace Presentation
         private void PrintErrorMessage(string errorMessage)
         {
             ConsoleKeyInfo userInput;
+            Console.Clear();
             Console.WriteLine("\n");
             Console.WriteLine("{0}", errorMessage);
             Console.WriteLine("\n");
