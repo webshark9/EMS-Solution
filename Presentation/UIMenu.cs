@@ -195,6 +195,9 @@ namespace Presentation
                 {
                     case '1':
                         companyContainer = new Container(FileIO.OpenDBase("EMS_DB_FILE.txt", ref errorMessage));
+                        Console.Clear();
+                        Console.WriteLine("FILE HAS BEEN LOADED");
+                        userInput = Console.ReadKey();
                         break;
 
                     case '2':
