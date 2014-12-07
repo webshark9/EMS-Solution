@@ -56,7 +56,8 @@ namespace TheCompany
         * \brief Constructor: Used to create a new Container object and add entries at the same time
         * \details <b>Details</b>
         *
-        * This method creates 
+        * This method takes in a List of string arrays and creates employees using each one. It makes sure the employee is valid
+        * before adding the employee to the <i>virtualDB</i> data member. It logs the number of valid and invalid employees.
         * 
         * \param employeeStrings - string[] - used to hold all of the strings that hold the information for the employees.
         * 
@@ -66,10 +67,13 @@ namespace TheCompany
         public Container(List<string[]> employeesList)
         {
             lastIndex = 0;// initialize the data member
+            virtualDB = new ArrayList();
             FulltimeEmployee FTemployee = new FulltimeEmployee();
             ParttimeEmployee PTemployee = new ParttimeEmployee();
             ContractEmployee CTemployee = new ContractEmployee();
             SeasonalEmployee SNemployee = new SeasonalEmployee();
+            int numEmpoyeesAdded = 0;
+            int numInvalidEmployees = 0;
 
             foreach(string[] employeeString in employeesList)
             {
@@ -82,21 +86,25 @@ namespace TheCompany
 
                     if (!DateTime.TryParse(employeeString[4], out dateOfBirth))// convert string to a dateTime variable
                     {
+                        ++numInvalidEmployees;
                         continue;// invalid date and we don't store invalid objects in the database so continue (don't add)
                     }
 
                     if (!DateTime.TryParse(employeeString[5], out dateOfHire))// convert string to a dateTime variable
                     {
+                        ++numInvalidEmployees;
                         continue;// invalid date and we don't store invalid objects in the database so continue (don't add)
                     }
 
                     if (!DateTime.TryParse(employeeString[6], out dateOfTermination))// convert string to a dateTime variable
                     {
+                        ++numInvalidEmployees;
                         continue;// invalid date and we don't store invalid objects in the database so continue (don't add)
                     }
 
                     if(!float.TryParse(employeeString[7], out salary))
                     {
+                        ++numInvalidEmployees;
                         continue;// invalid float and we don't store invalid objects in the database so continue (don't add)
                     }
 
@@ -104,6 +112,7 @@ namespace TheCompany
 
                     if (FTemployee.Validate())// check if the employee was valid
                     {
+                        ++numEmpoyeesAdded;
                         virtualDB.Add(FTemployee);
                     }
 
@@ -117,21 +126,25 @@ namespace TheCompany
 
                     if (!DateTime.TryParse(employeeString[4], out dateOfBirth))// convert string to a dateTime variable
                     {
+                        ++numInvalidEmployees;
                         continue;// invalid date and we don't store invalid objects in the database so continue (don't add)
                     }
 
                     if (!DateTime.TryParse(employeeString[5], out dateOfHire))// convert string to a dateTime variable
                     {
+                        ++numInvalidEmployees;
                         continue;// invalid date and we don't store invalid objects in the database so continue (don't add)
                     }
 
                     if (!DateTime.TryParse(employeeString[6], out dateOfTermination))// convert string to a dateTime variable
                     {
+                        ++numInvalidEmployees;
                         continue;// invalid date and we don't store invalid objects in the database so continue (don't add)
                     }
 
                     if (!float.TryParse(employeeString[7], out hourlyRate))
                     {
+                        ++numInvalidEmployees;
                         continue;// invalid float and we don't store invalid objects in the database so continue (don't add)
                     }
 
@@ -139,6 +152,7 @@ namespace TheCompany
 
                     if (PTemployee.Validate())// check if the employee was valid
                     {
+                        ++numEmpoyeesAdded;
                         virtualDB.Add(PTemployee);
                     }
                 }
@@ -151,27 +165,32 @@ namespace TheCompany
 
                     if (!DateTime.TryParse(employeeString[4], out dateOfIncorporation))// convert string to a dateTime variable
                     {
+                        ++numInvalidEmployees;
                         continue;// invalid date and we don't store invalid objects in the database so continue (don't add)
                     }
 
                     if (!DateTime.TryParse(employeeString[5], out contractStartDate))// convert string to a dateTime variable
                     {
+                        ++numInvalidEmployees;
                         continue;// invalid date and we don't store invalid objects in the database so continue (don't add)
                     }
 
                     if (!DateTime.TryParse(employeeString[6], out contractStopDate))// convert string to a dateTime variable
                     {
+                        ++numInvalidEmployees;
                         continue;// invalid date and we don't store invalid objects in the database so continue (don't add)
                     }
 
                     if (!float.TryParse(employeeString[7], out contractAmount))
                     {
+                        ++numInvalidEmployees;
                         continue;// invalid float and we don't store invalid objects in the database so continue (don't add)
                     }
                     CTemployee = new ContractEmployee(contractStartDate, contractStopDate, contractAmount, employeeString[2], employeeString[3], dateOfIncorporation);
 
                     if (CTemployee.Validate())// check if the employee was valid
                     {
+                        ++numEmpoyeesAdded;
                         virtualDB.Add(CTemployee);
                     }
                 }
@@ -182,26 +201,28 @@ namespace TheCompany
 
                     if (!DateTime.TryParse(employeeString[4], out dateOfBirth))// convert string to a dateTime variable
                     {
+                        ++numInvalidEmployees;
                         continue;// invalid date and we don't store invalid objects in the database so continue (don't add)
                     }
 
                     if (!float.TryParse(employeeString[6], out piecePay))
                     {
+                        ++numInvalidEmployees;
                         continue;// invalid float and we don't store invalid objects in the database so continue (don't add)
                     }
                     SNemployee = new SeasonalEmployee(employeeString[5], piecePay, employeeString[2], employeeString[1], employeeString[3], dateOfBirth);
 
                     if (SNemployee.Validate())// check if the employee was valid
                     {
+                        ++numEmpoyeesAdded;
                         virtualDB.Add(SNemployee);
                     }
                 }
                 // do nothing if the employee type is invalid 
 
-            }
+            }// end 'foreach'
 
-            Employee employeeToAdd = null;
-
+            //log: "[Container.Constructor] Employees Added: " + numEmployeesAdded.ToString() + "\n\tInvalid Employees Found: " + numInvalidEmployees;
 
         }
 

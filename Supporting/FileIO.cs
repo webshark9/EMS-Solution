@@ -106,6 +106,8 @@ namespace Supporting
                     nextPipeIndex = record.IndexOf('|', prevPipeIndex + 1);// find the next pipe in the string
                 }
 
+                validRecords.Add(stringsInRecord);
+
                 if (stringsInRecordIndex == 8)// FT, PT, and CT employee types will have 8 strings in a record (the type of employee plus 7 data members)
                 {
                     if (stringsInRecord[0].Length != 2)// first string should be the employee type which is 2 characters
