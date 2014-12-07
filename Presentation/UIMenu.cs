@@ -1405,7 +1405,28 @@ namespace Presentation
 
         private void DisplayAllEmployees()
         {
+            Employee currentObj;
 
+            currentObj = NextEmployee(true);
+
+            while (currentObj != null)
+            {
+                
+            }
+
+        }
+
+        private void DisplaySingleEmployee(Employee theObj)
+        {
+            FulltimeEmployee FtEmployee = new FulltimeEmployee();
+            ParttimeEmployee PtEmployee = new ParttimeEmployee();
+            ContractEmployee CtEmployee = new ContractEmployee();
+            SeasonalEmployee SnEmployee = new SeasonalEmployee();
+
+            if (theObj.GetType() == FtEmployee.GetType())
+            {
+
+            }
         }
 
 
