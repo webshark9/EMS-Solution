@@ -34,7 +34,7 @@ namespace Supporting
     /// the current day and logging events that occur in other classes
     /// 
     /// \authors Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
-    class Logging
+    public class Logging
     {
         private static StreamWriter logFileWriter = null;///< the stream used to write to the log file
         private static DateTime lastDate = new DateTime();///< the last day that something was logged (used to tell if a new log file needs to be created)
