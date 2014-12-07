@@ -135,6 +135,7 @@ namespace AllEmployees
         public string Details()
         {
             string empDetails = "";
+            string bn = "";
             string dob = "";
             string cStarDate = "";
             string cStopDate = "";
@@ -154,8 +155,13 @@ namespace AllEmployees
                 cStopDate = GetContractStopDate().ToString("d");
             }
 
+            bn = GetSocialInsuranceNumber();
+
+            bn = bn.Insert(6, " ");
+            bn = bn.Insert(3, " ");
+
             empDetails += "Business Name: " + GetLastName() + "\n";
-            empDetails += "Business Number: " + GetSocialInsuranceNumber() + "\n";
+            empDetails += "Business Number: " + bn + "\n";
             empDetails += "Business Date Of Creation: " + dob + "\n";
             empDetails += "Contract Start Date: " + cStarDate + "\n";
             empDetails += "Contract Stop Date: " + cStopDate + "\n";

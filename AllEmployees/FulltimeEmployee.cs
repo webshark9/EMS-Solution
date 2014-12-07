@@ -127,6 +127,7 @@ namespace AllEmployees
         public string Details()
         {
             string empDetails = "";
+            string sin = "";
             string dob = "";
             string doh = "";
             string dot = "";
@@ -146,9 +147,14 @@ namespace AllEmployees
                 dot = GetDateOfTermination().ToString("d");
             }
 
+            sin = GetSocialInsuranceNumber();
+
+            sin = sin.Insert(6, " ");
+            sin = sin.Insert(3, " ");
+
             empDetails = "First Name: " + GetFirstName() + "\n";
             empDetails += "Last Name: " + GetLastName() + "\n";
-            empDetails += "SIN: " + GetSocialInsuranceNumber() + "\n";
+            empDetails += "SIN: " + sin + "\n";
             empDetails += "Date Of Birth: " + dob + "\n";
             empDetails += "Date Of Hire: " + doh + "\n";
             empDetails += "Date Of Termination: " + dot + "\n";

@@ -114,6 +114,7 @@ namespace AllEmployees
         public string Details()
         {
             string empDetails = "";
+            string sin = ""
             string dob = "";
 
             if (GetDateOfBirth() != DateTime.MinValue)
@@ -121,10 +122,14 @@ namespace AllEmployees
                 dob = GetDateOfBirth().ToString("d");
             }
 
+            sin = GetSocialInsuranceNumber();
+
+            sin = sin.Insert(6, " ");
+            sin = sin.Insert(3, " ");
 
             empDetails = "First Name: " + GetFirstName() + "\n";
             empDetails += "Last Name: " + GetLastName() + "\n";
-            empDetails += "SIN: " + GetSocialInsuranceNumber() + "\n";
+            empDetails += "SIN: " + sin + "\n";
             empDetails += "Date Of Birth: " + GetDateOfBirth().ToString() + "\n";
             empDetails += "Season: " + GetSeason() + "\n";
             empDetails += "Piece Pay: $" + GetPiecePay().ToString() + "\n";
