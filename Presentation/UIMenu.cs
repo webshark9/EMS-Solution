@@ -1888,10 +1888,10 @@ namespace Presentation
         private void PrintErrorMessage(string errorMessage)
         {
             ConsoleKeyInfo userInput;
-            Console.Clear();
-            Console.WriteLine("\n");
+//            Console.Clear();
+            Console.WriteLine("");
             Console.WriteLine("{0}", errorMessage);
-            Console.WriteLine("\n");
+            Console.WriteLine("");
             Console.WriteLine("Press any key to continue...");
             userInput = Console.ReadKey();
         }
