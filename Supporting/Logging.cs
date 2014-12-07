@@ -76,7 +76,11 @@ namespace Supporting
         */
         public static void CloseLogFile()
         {
-            logFileWriter.Close();
+            if(logFileWriter != null)
+            {
+                logFileWriter.Close();
+            }
+            
             logFileWriter = null;
         }
 
