@@ -43,14 +43,14 @@ namespace Supporting
         * \brief To create/open (for appending) the log file for the day
         * \details <b>Details</b>
         *
-        * The format for the log file name is: date (YYYY-MM-DD) followed by "EMS_Log_File"
+        * This method creates a log file in the following format: ems.YYYY-MM-DD.log.txt.
         * 
         * \param None
         * 
         * \return Nothing is returned
         *
         */
-        public static void OpenLogFile()
+        private static void OpenLogFile()
         {
             string fileName = "ems.";
             lastDate = DateTime.Today;
@@ -103,11 +103,10 @@ namespace Supporting
         public static bool LogEvent(string eventString)
         {
             bool logSuccessful = false;// used to tell if the event was logged successfully; will be set to 'true' if the log succeed
-            bool invalidString = false;
+            bool invalidString = false;// used to tell if the string to be logged (the parameter) is invalid (empty or just whitespace)
             string logString = "";// the string that gets written to the log file
 
-            // makes sure 'eventString' isn't empty or just whitespace
-            if (eventString.Length <= 0)
+            if (eventString.Length <= 0)// check if the string is empty
             {
                 invalidString = true;
             }
@@ -122,10 +121,12 @@ namespace Supporting
                         break;// as soon as we have a character that isn't a space we can exit
                     }
                 }
-                if ((stringIndex + 1) == eventString.Length)// check if the 'for' loop above iterated through the entire string (in which case there were only spaces in the string)
+
+                if ((stringIndex + 1) == eventString.Length)// check if we iterated through the entire string in the loop above (in which case there were only spaces in the string)
                 {
                     invalidString = true;
                 }
+
             }
 
             if (invalidString == false)
@@ -135,7 +136,6 @@ namespace Supporting
                     // need to open a new log file
                     CloseLogFile();
                     OpenLogFile();
-
                 }
                 else if (logFileWriter == null)// make sure we have a valid log file open
                 {

@@ -73,8 +73,8 @@ namespace TheCompany
             ParttimeEmployee PTemployee = new ParttimeEmployee();
             ContractEmployee CTemployee = new ContractEmployee();
             SeasonalEmployee SNemployee = new SeasonalEmployee();
-            int numEmpoyeesAdded = 0;
-            int numInvalidEmployees = 0;
+            int numEmpoyeesAdded = 0;// the number of employees that were added
+            int numInvalidEmployees = 0;// the number of employees that were invalid and not added
 
             foreach(string[] employeeString in employeesList)
             {
@@ -245,12 +245,24 @@ namespace TheCompany
         public bool AddEmployee(Employee newEmployee, ref string errorMessage)
         {
             bool addSuccessful = false;
+            bool sameSIN = false;
             FulltimeEmployee FTemployee = new FulltimeEmployee();
             ParttimeEmployee PTemployee = new ParttimeEmployee();
             ContractEmployee CTemployee = new ContractEmployee();
             SeasonalEmployee SNemployee = new SeasonalEmployee();
 
-            if (FTemployee.GetType() == newEmployee.GetType())
+            foreach (Employee emp in virtualDB)
+            {
+                if (emp.GetSocialInsuranceNumber() == newEmployee.GetSocialInsuranceNumber())
+                {
+                    errorMessage = "Another Employee has the same SIN number. Employee was not added";
+                    sameSIN = true;
+                    break;
+                }
+
+            }
+
+            if (FTemployee.GetType() == newEmployee.GetType() && sameSIN == false)
             {
                 FTemployee = (FulltimeEmployee)newEmployee;
 
@@ -259,8 +271,12 @@ namespace TheCompany
                     virtualDB.Add(FTemployee);
                     addSuccessful = true;
                 }
+                else
+                {
+                    errorMessage = "Employee did not pass validation test.";
+                }
             }
-            else if(PTemployee.GetType() == newEmployee.GetType())
+            else if (PTemployee.GetType() == newEmployee.GetType() && sameSIN == false)
             {
                 PTemployee = (ParttimeEmployee)newEmployee;
 
@@ -269,8 +285,12 @@ namespace TheCompany
                     virtualDB.Add(PTemployee);
                     addSuccessful = true;
                 }
+                else
+                {
+                    errorMessage = "Employee did not pass validation test.";
+                }
             }
-            else if(CTemployee.GetType() == newEmployee.GetType())
+            else if (CTemployee.GetType() == newEmployee.GetType() && sameSIN == false)
             {
                 CTemployee = (ContractEmployee)newEmployee;
 
@@ -280,7 +300,7 @@ namespace TheCompany
                     addSuccessful = true;
                 }
             }
-            else if(SNemployee.GetType() == newEmployee.GetType())
+            else if (SNemployee.GetType() == newEmployee.GetType() && sameSIN == false)
             {
                 SNemployee = (SeasonalEmployee)newEmployee;
 
@@ -288,6 +308,10 @@ namespace TheCompany
                 {
                     virtualDB.Add(SNemployee);
                     addSuccessful = true;
+                }
+                else
+                {
+                    errorMessage = "Employee did not pass validation test.";
                 }
             }
 
