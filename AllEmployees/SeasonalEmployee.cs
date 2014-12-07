@@ -114,7 +114,7 @@ namespace AllEmployees
         public string Details()
         {
             string empDetails = "";
-            string sin = ""
+            string sin = "";
             string dob = "";
 
             if (GetDateOfBirth() != DateTime.MinValue)
