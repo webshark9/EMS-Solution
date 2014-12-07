@@ -125,13 +125,31 @@ namespace AllEmployees
         public string Details()
         {
             string empDetails = "";
+            string dob = "";
+            string doh = "";
+            string dot = "";
+
+            if (GetDateOfBirth() != DateTime.MinValue)
+            {
+                dob = GetDateOfBirth().ToString("d");
+            }
+
+            if (GetDateOfHire() != DateTime.MinValue)
+            {
+                doh = GetDateOfHire().ToString("d");
+            }
+
+            if (GetDateOfTermination() != DateTime.MinValue)
+            {
+                dot = GetDateOfTermination().ToString("d");
+            }
 
             empDetails = "First Name: " + GetFirstName() + "\n";
             empDetails += "Last Name: " + GetLastName() + "\n";
             empDetails += "SIN: " + GetSocialInsuranceNumber() + "\n";
-            empDetails += "Date Of Birth: " + GetDateOfBirth().ToString() + "\n";
-            empDetails += "Date Of Hire: " + GetDateOfHire().ToString() + "\n";
-            empDetails += "Date Of Termination: " + GetDateOfTermination().ToString() + "\n";
+            empDetails += "Date Of Birth: " + dob + "\n";
+            empDetails += "Date Of Hire: " + doh + "\n";
+            empDetails += "Date Of Termination: " + dot + "\n";
             empDetails += "Hourly Rate: $" + GetHourlyRate().ToString() + "\n";
 
             return empDetails;

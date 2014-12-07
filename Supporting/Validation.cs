@@ -110,9 +110,17 @@ namespace Supporting
             int roundedUpInt = 0;
             errorMessage = "Invalid Characters Found:\n";
 
-            if(socialInsuranceNumber.Length == sinNumLength)
+            for (int i = 0; i < socialInsuranceNumber.Length; i++)
             {
-                for(int i = 0; i < socialInsuranceNumber.Length; i++)
+                if(socialInsuranceNumber[i] == ' ')
+                {
+                    socialInsuranceNumber = socialInsuranceNumber.Remove(i, 1);
+                }
+            }
+
+            if (socialInsuranceNumber.Length == sinNumLength)
+            {
+                for (int i = 0; i < socialInsuranceNumber.Length; i++)
                 {
                     if (!Char.IsDigit(socialInsuranceNumber[i]))
                     {
@@ -125,10 +133,10 @@ namespace Supporting
                     }
                 }
 
-                if(validateStatus)
+                if (validateStatus)
                 {
                     //add up all the numbers in the odd placeholders
-                    for(int i = 0; i <= 6; i++)
+                    for (int i = 0; i <= 6; i++)
                     {
                         sinValNumOne += sinNumInt[i];
 
@@ -136,13 +144,13 @@ namespace Supporting
                     }
 
                     //add up all the numbers in the even placeholders
-                    for(int i = 1; i <= 7; i++)
+                    for (int i = 1; i <= 7; i++)
                     {
                         sinValNumTwoStr += Convert.ToString((sinNumInt[i] * 2));
                         i++;
                     }
 
-                    for(int i = 0; i < sinValNumTwoStr.Length; i++)
+                    for (int i = 0; i < sinValNumTwoStr.Length; i++)
                     {
                         sinValNumTwo += (Convert.ToInt32(sinValNumTwoStr[i]) - 48);
                     }
@@ -156,7 +164,7 @@ namespace Supporting
                     }
 
                     checkSum = (Convert.ToInt32(socialInsuranceNumber[8]) - 48);
-                    if(checkSum != (roundedUpInt - sinValNumOne))
+                    if (checkSum != (roundedUpInt - sinValNumOne))
                     {
                         validateStatus = false;
                         errorMessage = "Invalid Checksum. Please Be Sure To Enter A Valid SIN.\n";

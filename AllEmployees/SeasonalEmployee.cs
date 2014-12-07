@@ -114,6 +114,13 @@ namespace AllEmployees
         public string Details()
         {
             string empDetails = "";
+            string dob = "";
+
+            if (GetDateOfBirth() != DateTime.MinValue)
+            {
+                dob = GetDateOfBirth().ToString("d");
+            }
+
 
             empDetails = "First Name: " + GetFirstName() + "\n";
             empDetails += "Last Name: " + GetLastName() + "\n";

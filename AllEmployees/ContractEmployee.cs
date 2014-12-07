@@ -135,12 +135,30 @@ namespace AllEmployees
         public string Details()
         {
             string empDetails = "";
+            string dob = "";
+            string cStarDate = "";
+            string cStopDate = "";
+
+            if(GetDateOfBirth() != DateTime.MinValue)
+            {
+                dob = GetDateOfBirth().ToString("d");
+            }
+
+            if(GetContractStartDate() != DateTime.MinValue)
+            {
+                cStarDate = GetContractStartDate().ToString("d");
+            }
+
+            if(GetContractStopDate() != DateTime.MinValue)
+            {
+                cStopDate = GetContractStopDate().ToString("d");
+            }
 
             empDetails += "Business Name: " + GetLastName() + "\n";
             empDetails += "Business Number: " + GetSocialInsuranceNumber() + "\n";
-            empDetails += "Business Date Of Creation: " + GetDateOfBirth().ToString() + "\n";
-            empDetails += "Contract Start Date: " + GetContractStartDate().ToString() + "\n";
-            empDetails += "Contract Stop Date: " + GetContractStopDate().ToString() + "\n";
+            empDetails += "Business Date Of Creation: " + dob + "\n";
+            empDetails += "Contract Start Date: " + cStarDate + "\n";
+            empDetails += "Contract Stop Date: " + cStopDate + "\n";
             empDetails += "Fixed Contract Amount: " + GetFixedContractAmount().ToString() + "\n";
 
             return empDetails;
