@@ -106,13 +106,14 @@ namespace Supporting
                     nextPipeIndex = record.IndexOf('|', prevPipeIndex + 1);// find the next pipe in the string
                 }
 
+//validRecords.Add(stringsInRecord);
+
                 if (stringsInRecordIndex == 8)// FT, PT, and CT employee types will have 8 strings in a record (the type of employee plus 7 data members)
                 {
                     if (stringsInRecord[0].Length != 2)// first string should be the employee type which is 2 characters
                     {
                         ++numInvalidRecords;
-                        //Console.WriteLine("[FileIO.Open] Invalid Employee Type string length was found reading: " + record);
-                        // log: "[FileIO.Open] Invalid Employee Type string length was found reading: " + record;
+                        Logging.LogEvent("[FileIO.Open] Invalid Employee Type string length was found reading: " + record);
                         continue;
                     }
                     else// first string has the right number of characters
@@ -125,8 +126,7 @@ namespace Supporting
                             if(!ValidateFirstThree(stringsInRecord[1], stringsInRecord[2], stringsInRecord[3], ref returnedErrorMessage))// check if the first 3 data members are valid (starting at the 2nd string in record because the first one is the employee type)
                             {
                                 ++numInvalidRecords;
-                                //Console.WriteLine("[FileIO.Open] Error was found reading record: " + record +" Error: " + returnedErrorMessage);
-                                //log: "[FileIO.Open] Error was found reading record: " + record +" Error: " + returnedErrorMessage;
+                                Logging.LogEvent("[FileIO.Open] Error was found reading record: " + record +" Error: " + returnedErrorMessage);
                                 continue;
                             }                            
 
@@ -135,8 +135,7 @@ namespace Supporting
                                 if(!Validation.ValidateDateOfBirth(dateOfBirth, ref returnedErrorMessage))
                                 {
                                     ++numInvalidRecords;
-                                    //Console.WriteLine("[FileIO.Open] Invalid date of birth found reading record: " + record);
-                                    //log: "[FileIO.Open] Invalid date of birth found reading record: " + record +".\n\tError: " + returnedErrorMessage;
+                                    Logging.LogEvent("[FileIO.Open] Invalid date of birth found reading record: " + record +".\n\tError: " + returnedErrorMessage);
                                     continue;
                                 }
                             }
@@ -146,7 +145,7 @@ namespace Supporting
                                 {
                                     ++numInvalidRecords;
                                     //Console.WriteLine("[FileIO.Open] Invalid date of birth format found reading record: " + record);
-                                    //log: "[FileIO.Open] Invalid date of birth format found reading record: " + record;
+                                    Logging.LogEvent("[FileIO.Open] Invalid date of birth format found reading record: " + record);
                                     continue;
                                 }
 
@@ -158,7 +157,7 @@ namespace Supporting
                                 {
                                     ++numInvalidRecords;
                                     //Console.WriteLine("[FileIO.Open] Invalid date of hire found reading record: " + record);
-                                    //log: "[FileIO.Open] Invalid date of hire found reading record: " + record +".\n\tError: " + returnedErrorMessage;
+                                    Logging.LogEvent("[FileIO.Open] Invalid date of hire found reading record: " + record +".\n\tError: " + returnedErrorMessage);
                                     continue;
                                 }
                             }
@@ -168,7 +167,7 @@ namespace Supporting
                                 {
                                     ++numInvalidRecords;
                                     //Console.WriteLine("[FileIO.Open] Invalid date of hire format found reading record: " + record);
-                                    //log: "[FileIO.Open] Invalid date of hire format found reading record: " + record;
+                                    Logging.LogEvent("[FileIO.Open] Invalid date of hire format found reading record: " + record);
                                     continue;
                                 }
 
@@ -180,7 +179,7 @@ namespace Supporting
                                 {
                                     ++numInvalidRecords;
                                     //Console.WriteLine("[FileIO.Open] Invalid date of termination found reading record: " + record);
-                                    //log: "[FileIO.Open] Invalid date of termination found reading record: " + record +".\n\tError: " + returnedErrorMessage;
+                                    Logging.LogEvent("[FileIO.Open] Invalid date of termination found reading record: " + record +".\n\tError: " + returnedErrorMessage);
                                     continue;
                                 }                            
                             }
@@ -190,7 +189,7 @@ namespace Supporting
                                 {
                                     ++numInvalidRecords;
                                     //Console.WriteLine("[FileIO.Open] Invalid date of termination format found reading record: " + record);
-                                    //log: "[FileIO.Open] Invalid date of termination format found reading record: " + record;
+                                    Logging.LogEvent("[FileIO.Open] Invalid date of termination format found reading record: " + record);
                                     continue;
                                 }
                                 
@@ -204,7 +203,7 @@ namespace Supporting
                                     {
                                         ++numInvalidRecords;
                                         //Console.WriteLine("[FileIO.Open] Invalid salary found reading record: " + record);
-                                        //log: "[FileIO.Open] Invalid salary found reading record: " + record +".\n\tError: " + returnedErrorMessage;
+                                        Logging.LogEvent("[FileIO.Open] Invalid salary found reading record: " + record +".\n\tError: " + returnedErrorMessage);
                                         continue;
                                     }
                                 }
@@ -214,7 +213,7 @@ namespace Supporting
                                     {
                                         ++numInvalidRecords;
                                         //Console.WriteLine("[FileIO.Open] Invalid salary format found reading record: " + record);
-                                        //log: "[FileIO.Open] Invalid salary format found reading record: " + record;
+                                        Logging.LogEvent("[FileIO.Open] Invalid salary format found reading record: " + record);
                                         continue;
                                     }
 
@@ -230,7 +229,7 @@ namespace Supporting
                                     {
                                         ++numInvalidRecords;
                                         //Console.WriteLine("[FileIO.Open] Invalid hourly rate found reading record: " + record);
-                                        //log: "[FileIO.Open] Invalid hourly rate found reading record: " + record +".\n\tError: " + returnedErrorMessage;
+                                        Logging.LogEvent("[FileIO.Open] Invalid hourly rate found reading record: " + record +".\n\tError: " + returnedErrorMessage);
                                         continue;
                                     }
                                 }
@@ -240,7 +239,7 @@ namespace Supporting
                                     {
                                         ++numInvalidRecords;
                                         //Console.WriteLine("[FileIO.Open] Invalid hourly rate format found reading record: " + record);
-                                        //log: "[FileIO.Open] Invalid hourly rate format found reading record: " + record;
+                                        Logging.LogEvent("[FileIO.Open] Invalid hourly rate format found reading record: " + record);
                                         continue;
                                     }
 
@@ -258,7 +257,7 @@ namespace Supporting
                             {
                                 ++numInvalidRecords;
                                 //Console.WriteLine("[FileIO.Open] Invalid business name found reading record: " + record);
-                                //log: "[FileIO.Open] Invalid business name found reading record: " + record +".\n\tError: " + returnedErrorMessage;
+                                Logging.LogEvent("[FileIO.Open] Invalid business name found reading record: " + record +".\n\tError: " + returnedErrorMessage);
                                 continue;
                             }
 
@@ -266,7 +265,7 @@ namespace Supporting
                             {
                                 ++numInvalidRecords;
                                 //Console.WriteLine("[FileIO.Open] Non empty entry for CT employee first name found reading record: " + record);
-                                //log: "[FileIO.Open] Non empty entry for CT employee first name found reading record: " + record;
+                                Logging.LogEvent("[FileIO.Open] Non empty entry for CT employee first name found reading record: " + record);
                                 continue;
                             }
 
@@ -274,7 +273,7 @@ namespace Supporting
                             {
                                 ++numInvalidRecords;
                                 //Console.WriteLine("[FileIO.Open] Invalid business number found reading record: " + record);
-                                //log: "[FileIO.Open] Invalid business number found reading record: " + record +".\n\tError: " + returnedErrorMessage;
+                                Logging.LogEvent("[FileIO.Open] Invalid business number found reading record: " + record +".\n\tError: " + returnedErrorMessage);
                                 continue;
                             }
 
@@ -284,7 +283,7 @@ namespace Supporting
                                 {
                                     ++numInvalidRecords;
                                     //Console.WriteLine("[FileIO.Open] Invalid date of incorporation found reading record: " + record);
-                                    //log: "[FileIO.Open] Invalid date of incorporation found reading record: " + record +".\n\tError: " + returnedErrorMessage;
+                                    Logging.LogEvent("[FileIO.Open] Invalid date of incorporation found reading record: " + record +".\n\tError: " + returnedErrorMessage);
                                     continue;
                                 }
                             }
@@ -294,7 +293,7 @@ namespace Supporting
                                 {
                                     ++numInvalidRecords;
                                     //Console.WriteLine("[FileIO.Open] Invalid date of incorporation format found reading record: " + record);
-                                    //log: "[FileIO.Open] Invalid date of incorporation format found reading record: " + record;
+                                    Logging.LogEvent("[FileIO.Open] Invalid date of incorporation format found reading record: " + record);
                                     continue;
                                 }
 
@@ -306,7 +305,7 @@ namespace Supporting
                                 {
                                     ++numInvalidRecords;
                                     //Console.WriteLine("[FileIO.Open] Invalid contract start date found reading record: " + record);
-                                    //log: "[FileIO.Open] Invalid contract start date found reading record: " + record +".\n\tError: " + returnedErrorMessage;
+                                    Logging.LogEvent("[FileIO.Open] Invalid contract start date found reading record: " + record +".\n\tError: " + returnedErrorMessage);
                                     continue;
                                 }
                             }
@@ -316,7 +315,7 @@ namespace Supporting
                                 {
                                     ++numInvalidRecords;
                                     //Console.WriteLine("[FileIO.Open] Invalid contract start date format found reading record: " + record);
-                                    //log: "[FileIO.Open] Invalid contract start date format found reading record: " + record;
+                                    Logging.LogEvent("[FileIO.Open] Invalid contract start date format found reading record: " + record);
                                     continue;
                                 }
 
@@ -328,7 +327,7 @@ namespace Supporting
                                 {
                                     ++numInvalidRecords;
                                     //Console.WriteLine("[FileIO.Open] Invalid contract stop date found reading record: " + record);
-                                    //log: "[FileIO.Open] Invalid contract stop date found reading record: " + record +".\n\tError: " + returnedErrorMessage;
+                                    Logging.LogEvent("[FileIO.Open] Invalid contract stop date found reading record: " + record +".\n\tError: " + returnedErrorMessage);
                                     continue;
                                 }
                             }
@@ -338,7 +337,7 @@ namespace Supporting
                                 {
                                     ++numInvalidRecords;
                                     //Console.WriteLine("[FileIO.Open] Invalid contract stop date format found reading record: " + record);
-                                    //log: "[FileIO.Open] Invalid contract stop date format found reading record: " + record;
+                                    Logging.LogEvent("[FileIO.Open] Invalid contract stop date format found reading record: " + record);
                                     continue;
                                 }
 
@@ -350,7 +349,7 @@ namespace Supporting
                                 {
                                     ++numInvalidRecords;
                                     //Console.WriteLine("[FileIO.Open] Invalid contract amount found reading record: " + record);
-                                    //log: "[FileIO.Open] Invalid contract amount found reading record: " + record +".\n\tError: " + returnedErrorMessage;
+                                    Logging.LogEvent("[FileIO.Open] Invalid contract amount found reading record: " + record +".\n\tError: " + returnedErrorMessage);
                                     continue;
                                 }
                             }
@@ -360,7 +359,7 @@ namespace Supporting
                                 {
                                     ++numInvalidRecords;
                                     //Console.WriteLine("[FileIO.Open] Invalid contract amount format found reading record: " + record);
-                                    //log: "[FileIO.Open] Invalid contract amount format found reading record: " + record;
+                                    Logging.LogEvent("[FileIO.Open] Invalid contract amount format found reading record: " + record);
                                     continue;
                                 }
 
@@ -371,7 +370,7 @@ namespace Supporting
                         {
                             ++numInvalidRecords;
                             //Console.WriteLine("[FileIO.Open] Invalid employee type found reading record: " + record);
-                            //log: "[FileIO.Open] Invalid employee type found reading record: " + record;
+                            Logging.LogEvent("[FileIO.Open] Invalid employee type found reading record: " + record);
                             continue;
                         }
 
@@ -387,7 +386,7 @@ namespace Supporting
                         if (!ValidateFirstThree(stringsInRecord[1], stringsInRecord[2], stringsInRecord[3], ref returnedErrorMessage))
                         {
                             ++numInvalidRecords;
-                            //log: "[FileIO.Open] Error was found reading record: " + record +" Error: " + returnedErrorMessage;
+                            Logging.LogEvent("[FileIO.Open] Error was found reading record: " + record +" Error: " + returnedErrorMessage);
                             continue;
                         }
 
@@ -396,7 +395,7 @@ namespace Supporting
                             if (!Validation.ValidateDateOfBirth(dateOfBirth, ref returnedErrorMessage))
                             {
                                 ++numInvalidRecords;
-                                //log: "[FileIO.Open] Invalid date of birth found reading record: " + record +".\n\tError: " + returnedErrorMessage;
+                                Logging.LogEvent("[FileIO.Open] Invalid date of birth found reading record: " + record +".\n\tError: " + returnedErrorMessage);
                                 continue;
                             }
                         }
@@ -405,7 +404,7 @@ namespace Supporting
                             if (stringsInRecord[4] != "N/A")
                             {
                                 ++numInvalidRecords;
-                                //log: "[FileIO.Open] Invalid date of birth format found reading record: " + record;
+                                Logging.LogEvent("[FileIO.Open] Invalid date of birth format found reading record: " + record);
                                 continue;
                             }
 
@@ -414,7 +413,7 @@ namespace Supporting
                         if (!Validation.ValidateSeason(stringsInRecord[5], ref returnedErrorMessage))
                         {
                             ++numInvalidRecords;
-                            //log: "[FileIO.Open] Invalid season found reading record: " + record +".\n\tError: " + returnedErrorMessage;
+                            Logging.LogEvent("[FileIO.Open] Invalid season found reading record: " + record +".\n\tError: " + returnedErrorMessage);
                             continue;
                         }
 
@@ -423,7 +422,7 @@ namespace Supporting
                             if (!Validation.ValidatePiecePay(piecePay, ref returnedErrorMessage))
                             {
                                 ++numInvalidRecords;
-                                //log: "[FileIO.Open] Invalid piece pay amount found reading record: " + record +".\n\tError: " + returnedErrorMessage;
+                                Logging.LogEvent("[FileIO.Open] Invalid piece pay amount found reading record: " + record +".\n\tError: " + returnedErrorMessage);
                                 continue;
                             }
                         }
@@ -432,7 +431,7 @@ namespace Supporting
                             if (stringsInRecord[6] != "N/A")
                             {
                                 ++numInvalidRecords;
-                                //log: "[FileIO.Open] Invalid piece pay amount format found reading record: " + record;
+                                Logging.LogEvent("[FileIO.Open] Invalid piece pay amount format found reading record: " + record);
                                 continue;
                             }
 
@@ -442,7 +441,7 @@ namespace Supporting
                     else// invalid employee type
                     {
                         ++numInvalidRecords;
-                        //log: "[FileIO.Open] Invalid employee type found reading record: " + record;
+                        Logging.LogEvent("[FileIO.Open] Invalid employee type found reading record: " + record);
                         continue;
                     }
 
@@ -450,13 +449,13 @@ namespace Supporting
                 else// wrong number of strings
                 {
                     ++numInvalidRecords;
-                    //log: "[FileIO.Open] Invalid number of strings found reading record: " + record;
+                    Logging.LogEvent("[FileIO.Open] Invalid number of strings found reading record: " + record);
                     continue;
                 }// end 'else' statement 
 
                 validRecords.Add(stringsInRecord);
                 ++numValidRecords;
-                //log: "[FileIO.Open] Valid employee read. Record: " + record;
+                Logging.LogEvent("[FileIO.Open] Valid employee read. Record: " + record);
 
             }// end 'foreach'
 
