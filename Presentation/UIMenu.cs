@@ -1727,7 +1727,7 @@ namespace Presentation
         {
             string parsed = "";
 
-            if (unparsed != null)
+            if (unparsed != "")
             {
                 parsed = unparsed.Insert(3, " ");
                 unparsed = parsed;
@@ -1741,7 +1741,7 @@ namespace Presentation
         {
             string parsed = "";
 
-            if (unparsed != null)
+            if (unparsed != "")
             {
                 parsed = unparsed.Insert(5, " ");
             }
