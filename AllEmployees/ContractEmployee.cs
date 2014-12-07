@@ -138,10 +138,10 @@ namespace AllEmployees
 
             empDetails += "Business Name: " + GetLastName() + "\n";
             empDetails += "Business Number: " + GetSocialInsuranceNumber() + "\n";
-            empDetails += "Business Date Of Creation: " + GetDateOfBirth() + "\n";
-            empDetails += "Contract Start Date: " + GetContractStartDate() + "\n";
-            empDetails += "Contract Stop Date: " + GetContractStopDate() + "\n";
-            empDetails += "Fixed Contract Amount: " + GetFixedContractAmount() + "\n";
+            empDetails += "Business Date Of Creation: " + GetDateOfBirth().ToString() + "\n";
+            empDetails += "Contract Start Date: " + GetContractStartDate().ToString() + "\n";
+            empDetails += "Contract Stop Date: " + GetContractStopDate().ToString() + "\n";
+            empDetails += "Fixed Contract Amount: " + GetFixedContractAmount().ToString() + "\n";
 
             return empDetails;
         }

@@ -234,11 +234,30 @@ namespace AllEmployees
         virtual public bool SetSocialInsuranceNumber(string userInput, ref string errorMessage)
         {
             bool setStatus = false;
+            int sinLength = 11;
+            string sinTemp = userInput;
 
-            if (Supporting.Validation.ValidateSocialInsuranceNumber(userInput, ref errorMessage))
+            if (userInput.Length == sinLength)
             {
-                setStatus = true;
-                socialInsuranceNumber = userInput;
+                if (userInput[4] == ' ' && userInput[7] == ' ')
+                {
+                    userInput = userInput.Remove(userInput[4], 1);
+                    userInput = userInput.Remove(userInput[7], 1);
+                }
+                else
+                {
+                    errorMessage = "Please Me Sure The SIN Is In The Proper Format\nex. xxx xxx xxx\n";
+                }
+
+                if (Supporting.Validation.ValidateSocialInsuranceNumber(userInput, ref errorMessage))
+                {
+                    setStatus = true;
+                    socialInsuranceNumber = sinTemp;
+                }
+            }
+            else
+            {
+                errorMessage = "Please Me Sure The SIN Is In The Proper Format\nex. xxx xxx xxx\n";
             }
 
             return setStatus;

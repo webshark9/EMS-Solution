@@ -118,9 +118,9 @@ namespace AllEmployees
             empDetails = "First Name: " + GetFirstName() + "\n";
             empDetails += "Last Name: " + GetLastName() + "\n";
             empDetails += "SIN: " + GetSocialInsuranceNumber() + "\n";
-            empDetails += "Date Of Birth: " + GetDateOfBirth() + "\n";
+            empDetails += "Date Of Birth: " + GetDateOfBirth().ToString() + "\n";
             empDetails += "Season: " + GetSeason() + "\n";
-            empDetails += "Piece Pay: $" + GetPiecePay() + "\n";
+            empDetails += "Piece Pay: $" + GetPiecePay().ToString() + "\n";
 
             return empDetails;
         }

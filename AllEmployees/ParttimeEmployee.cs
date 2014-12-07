@@ -129,10 +129,10 @@ namespace AllEmployees
             empDetails = "First Name: " + GetFirstName() + "\n";
             empDetails += "Last Name: " + GetLastName() + "\n";
             empDetails += "SIN: " + GetSocialInsuranceNumber() + "\n";
-            empDetails += "Date Of Birth: " + GetDateOfBirth() + "\n";
-            empDetails += "Date Of Hire: " + GetDateOfHire() + "\n";
-            empDetails += "Date Of Termination: " + GetDateOfTermination() + "\n";
-            empDetails += "Hourly Rate: $" + GetHourlyRate() + "\n";
+            empDetails += "Date Of Birth: " + GetDateOfBirth().ToString() + "\n";
+            empDetails += "Date Of Hire: " + GetDateOfHire().ToString() + "\n";
+            empDetails += "Date Of Termination: " + GetDateOfTermination().ToString() + "\n";
+            empDetails += "Hourly Rate: $" + GetHourlyRate().ToString() + "\n";
 
             return empDetails;
         }
