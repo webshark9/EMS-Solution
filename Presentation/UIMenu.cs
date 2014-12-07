@@ -630,7 +630,7 @@ namespace Presentation
         private bool ModifyFulltimeEmployee(FulltimeEmployee theObj, bool isNew)
         {
             ConsoleKeyInfo userInput;
-            DateTime defaultDateTime = new DateTime();
+//            DateTime defaultDateTime = new DateTime();
             string userInputSentence = "";
             string errorMessage = "";
             bool back = false;
@@ -792,11 +792,15 @@ namespace Presentation
                     case '8':
                         {
                             // uh don't know what to call to push the object into the container.
-                            if (isNew == false)
+                            if (isNew == true)
                             {
-                                removeOld = true;
+                                saveSuccess = companyContainer.AddEmployee(theObj, ref errorMessage);
                             }
-                            saveSuccess = companyContainer.AddEmployee(theObj, ref errorMessage);
+                            else
+                            {
+                                saveSuccess = companyContainer.ModifyEmployee(theObj, ref errorMessage);
+                            }
+
                             if (saveSuccess == true)
                             {
                                 Console.Clear();
@@ -1014,7 +1018,16 @@ namespace Presentation
                     case '8':
                         {
                             // uh don't know what to call to push the object into the container.
-                            saveSuccess = companyContainer.AddEmployee(theObj, ref errorMessage);
+
+                            if (isNew == true)
+                            {
+                                saveSuccess = companyContainer.AddEmployee(theObj, ref errorMessage);
+                            }
+                            else
+                            {
+                                saveSuccess = companyContainer.ModifyEmployee(theObj, ref errorMessage);
+                            }
+
                             if (saveSuccess == true)
                             {
                                 Console.Clear();
@@ -1223,7 +1236,14 @@ namespace Presentation
                     case '8':
                         {
                             // uh don't know what to call to push the object into the container.
-                            saveSuccess = companyContainer.AddEmployee(theObj, ref errorMessage);
+                            if (isNew == true)
+                            {
+                                saveSuccess = companyContainer.AddEmployee(theObj, ref errorMessage);
+                            }
+                            else
+                            {
+                                saveSuccess = companyContainer.ModifyEmployee(theObj, ref errorMessage);
+                            }
                             if (saveSuccess == true)
                             {
                                 Console.Clear();
@@ -1412,7 +1432,14 @@ namespace Presentation
                     case '8':
                         {
                             // uh don't know what to call to push the object into the container.
-                            saveSuccess = companyContainer.AddEmployee(theObj, ref errorMessage);
+                            if (isNew == true)
+                            {
+                                saveSuccess = companyContainer.AddEmployee(theObj, ref errorMessage);
+                            }
+                            else
+                            {
+                                saveSuccess = companyContainer.ModifyEmployee(theObj, ref errorMessage);
+                            }
                             if (saveSuccess == true)
                             {
                                 Console.Clear();
