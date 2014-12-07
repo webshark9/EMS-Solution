@@ -369,8 +369,8 @@ namespace Presentation
             while (back == false)
             {
                 Console.Clear();
-//                Console.WriteLine("Create a New Employee:");
-//                Console.WriteLine("");
+                //                Console.WriteLine("Create a New Employee:");
+                //                Console.WriteLine("");
                 Console.WriteLine("CHOOSE EMPLOYEE TYPE:");
                 Console.WriteLine("");
                 Console.WriteLine("\t1. Full-time Employee");
@@ -494,7 +494,7 @@ namespace Presentation
             ModifySeasonalEmployee(empObj, true);
         }
 
-        
+
         /**
         * \brief Displays the Modify an Existing Employee Menu
         *
@@ -520,6 +520,10 @@ namespace Presentation
         {
             ConsoleKeyInfo userInput;
             Employee theObj = new Employee();
+            FulltimeEmployee FtEmployee = new FulltimeEmployee();
+            ParttimeEmployee PtEmployee = new ParttimeEmployee();
+            ContractEmployee CtEmployee = new ContractEmployee();
+            SeasonalEmployee SnEmployee = new SeasonalEmployee();
             bool back = false;
 
             while (back == false)
@@ -543,6 +547,40 @@ namespace Presentation
                 {
                     case '1':
                         theObj = SearchBySIN("Search By SIN/BN To Modify:");
+
+                        Console.Clear();
+
+                        if (theObj == null)
+                        {
+                            Console.WriteLine("NO MATCHING EMPLOYEE FOUND");
+                            Console.WriteLine("");
+                        }
+                        else
+                        {
+                            if (theObj.GetType() == FtEmployee.GetType())
+                            {
+                                FtEmployee = (FulltimeEmployee)theObj;
+                                ModifyFulltimeEmployee(FtEmployee, false);
+                            }
+                            else if (theObj.GetType() == PtEmployee.GetType())
+                            {
+                                PtEmployee = (ParttimeEmployee)theObj;
+                                ModifyParttimeEmployee(PtEmployee, false);
+                            }
+                            else if (theObj.GetType() == CtEmployee.GetType())
+                            {
+                                CtEmployee = (ContractEmployee)theObj;
+                                ModifyContractEmployee(CtEmployee, false);
+                            }
+                            else if (theObj.GetType() == SnEmployee.GetType())
+                            {
+                                SnEmployee = (SeasonalEmployee)theObj;
+                                ModifySeasonalEmployee(SnEmployee, false);
+                            }
+                        }
+
+                        Console.WriteLine("Press any key to continue...");
+                        userInput = Console.ReadKey();
                         break;
 
                     case '2':
@@ -615,7 +653,14 @@ namespace Presentation
                 Console.WriteLine("");
                 Console.WriteLine("\t1. Edit First Name");
                 Console.WriteLine("\t2. Edit Last Name");
-                Console.WriteLine("\t3. Edit SIN");
+                if (isNew == true)
+                {
+                    Console.WriteLine("\t3. Edit SIN");
+                }
+                else
+                {
+                    Console.WriteLine("\t3. ----------");
+                }
                 Console.WriteLine("\t4. Edit Date of Birth");
                 Console.WriteLine("\t5. Edit Date of Hire");
                 Console.WriteLine("\t6. Edit Date of Termination");
@@ -626,40 +671,40 @@ namespace Presentation
                 Console.WriteLine("CURRENT INFO:");
                 Console.WriteLine("");
                 Console.WriteLine("{0}", theObj.Details());
-//                Console.WriteLine("First Name: {0}", theObj.GetFirstName());
-//                Console.WriteLine("Last Name: {0}", theObj.GetLastName());
-//                Console.WriteLine("SIN: {0}", theObj.GetSocialInsuranceNumber());
-////                Console.WriteLine("SIN: {0}", displaySIN(theObj.GetSocialInsuranceNumber()));
+                //                Console.WriteLine("First Name: {0}", theObj.GetFirstName());
+                //                Console.WriteLine("Last Name: {0}", theObj.GetLastName());
+                //                Console.WriteLine("SIN: {0}", theObj.GetSocialInsuranceNumber());
+                ////                Console.WriteLine("SIN: {0}", displaySIN(theObj.GetSocialInsuranceNumber()));
 
-//                if (DateTime.Compare(theObj.GetDateOfBirth(), defaultDateTime) == 0)
-//                {
-//                    Console.WriteLine("Date of Birth: ");
-//                }
-//                else
-//                {
-//                    Console.WriteLine("Date of Birth: {0}", theObj.GetDateOfBirth());
-//                }
+                //                if (DateTime.Compare(theObj.GetDateOfBirth(), defaultDateTime) == 0)
+                //                {
+                //                    Console.WriteLine("Date of Birth: ");
+                //                }
+                //                else
+                //                {
+                //                    Console.WriteLine("Date of Birth: {0}", theObj.GetDateOfBirth());
+                //                }
 
-//                if (DateTime.Compare(theObj.GetDateOfHire(), defaultDateTime) == 0)
-//                {
-//                    Console.WriteLine("Date of Hire: ");
-//                }
-//                else
-//                {
-//                    Console.WriteLine("Date of Hire: {0}", theObj.GetDateOfHire());
-//                }
+                //                if (DateTime.Compare(theObj.GetDateOfHire(), defaultDateTime) == 0)
+                //                {
+                //                    Console.WriteLine("Date of Hire: ");
+                //                }
+                //                else
+                //                {
+                //                    Console.WriteLine("Date of Hire: {0}", theObj.GetDateOfHire());
+                //                }
 
-//                if (DateTime.Compare(theObj.GetDateOfTermination(), defaultDateTime) == 0)
-//                {
-//                    Console.WriteLine("Date of Termination: ");
-//                }
-//                else
-//                {
-//                    Console.WriteLine("Date of Termination: {0}", theObj.GetDateOfTermination());
-//                }
+                //                if (DateTime.Compare(theObj.GetDateOfTermination(), defaultDateTime) == 0)
+                //                {
+                //                    Console.WriteLine("Date of Termination: ");
+                //                }
+                //                else
+                //                {
+                //                    Console.WriteLine("Date of Termination: {0}", theObj.GetDateOfTermination());
+                //                }
 
 
-//                Console.WriteLine("Salary: ${0}", theObj.GetSalary());
+                //                Console.WriteLine("Salary: ${0}", theObj.GetSalary());
 
                 userInput = Console.ReadKey();
 
@@ -689,11 +734,14 @@ namespace Presentation
 
                     case '3':
                         {
-                            userInputSentence = TakeUserInputSIN("Enter Social Insurance Number: ");
-                            theObj.SetSocialInsuranceNumber(userInputSentence, ref errorMessage);
-                            if (errorMessage != "")
+                            if (isNew == true)
                             {
-                                PrintErrorMessage(errorMessage);
+                                userInputSentence = TakeUserInputSIN("Enter Social Insurance Number: ");
+                                theObj.SetSocialInsuranceNumber(userInputSentence, ref errorMessage);
+                                if (errorMessage != "")
+                                {
+                                    PrintErrorMessage(errorMessage);
+                                }
                             }
                         }
                         break;
@@ -745,16 +793,17 @@ namespace Presentation
                     case '8':
                         {
                             // uh don't know what to call to push the object into the container.
+                            if (isNew == false)
+                            {
+                                removeOld = true;
+                            }
                             saveSuccess = companyContainer.AddEmployee(theObj, ref errorMessage);
                             if (saveSuccess == true)
                             {
                                 Console.Clear();
                                 Console.WriteLine("Save Successful!");
                                 userInput = Console.ReadKey();
-                                if (isNew == false)
-                                {
-                                    removeOld = true;
-                                }
+                                
                             }
                             else
                             {
@@ -827,7 +876,14 @@ namespace Presentation
                 Console.WriteLine("");
                 Console.WriteLine("\t1. Edit First Name");
                 Console.WriteLine("\t2. Edit Last Name");
-                Console.WriteLine("\t3. Edit SIN");
+                if (isNew == true)
+                {
+                    Console.WriteLine("\t3. Edit SIN");
+                }
+                else
+                {
+                    Console.WriteLine("\t3. ----------");
+                }
                 Console.WriteLine("\t4. Edit Date of Birth");
                 Console.WriteLine("\t5. Edit Date of Hire");
                 Console.WriteLine("\t6. Edit Date of Termination");
@@ -837,40 +893,40 @@ namespace Presentation
                 Console.WriteLine("");
                 Console.WriteLine("CURRENT INFO:");
                 Console.WriteLine("");
-//                Console.WriteLine("{0}", theObj.Details());
-//                Console.WriteLine("First Name: {0}", theObj.GetFirstName());
-//                Console.WriteLine("Last Name: {0}", theObj.GetLastName());
-//                Console.WriteLine("SIN: {0}", theObj.GetSocialInsuranceNumber());
-////                Console.WriteLine("SIN: {0}", displaySIN(theObj.GetSocialInsuranceNumber()));
-//                if (DateTime.Compare(theObj.GetDateOfBirth(), defaultDateTime) == 0)
-//                {
-//                    Console.WriteLine("Date of Birth: ");
-//                }
-//                else
-//                {
-//                    Console.WriteLine("Date of Birth: {0}", theObj.GetDateOfBirth());
-//                }
+                Console.WriteLine("{0}", theObj.Details());
+                //                Console.WriteLine("First Name: {0}", theObj.GetFirstName());
+                //                Console.WriteLine("Last Name: {0}", theObj.GetLastName());
+                //                Console.WriteLine("SIN: {0}", theObj.GetSocialInsuranceNumber());
+                ////                Console.WriteLine("SIN: {0}", displaySIN(theObj.GetSocialInsuranceNumber()));
+                //                if (DateTime.Compare(theObj.GetDateOfBirth(), defaultDateTime) == 0)
+                //                {
+                //                    Console.WriteLine("Date of Birth: ");
+                //                }
+                //                else
+                //                {
+                //                    Console.WriteLine("Date of Birth: {0}", theObj.GetDateOfBirth());
+                //                }
 
-//                if (DateTime.Compare(theObj.GetDateOfHire(), defaultDateTime) == 0)
-//                {
-//                    Console.WriteLine("Date of Hire: ");
-//                }
-//                else
-//                {
-//                    Console.WriteLine("Date of Hire: {0}", theObj.GetDateOfHire());
-//                }
+                //                if (DateTime.Compare(theObj.GetDateOfHire(), defaultDateTime) == 0)
+                //                {
+                //                    Console.WriteLine("Date of Hire: ");
+                //                }
+                //                else
+                //                {
+                //                    Console.WriteLine("Date of Hire: {0}", theObj.GetDateOfHire());
+                //                }
 
-//                if (DateTime.Compare(theObj.GetDateOfTermination(), defaultDateTime) == 0)
-//                {
-//                    Console.WriteLine("Date of Termination: ");
-//                }
-//                else
-//                {
-//                    Console.WriteLine("Date of Termination: {0}", theObj.GetDateOfTermination());
-//                }
+                //                if (DateTime.Compare(theObj.GetDateOfTermination(), defaultDateTime) == 0)
+                //                {
+                //                    Console.WriteLine("Date of Termination: ");
+                //                }
+                //                else
+                //                {
+                //                    Console.WriteLine("Date of Termination: {0}", theObj.GetDateOfTermination());
+                //                }
 
 
-//                Console.WriteLine("Hourly Rate: ${0}", theObj.GetHourlyRate());
+                //                Console.WriteLine("Hourly Rate: ${0}", theObj.GetHourlyRate());
 
                 userInput = Console.ReadKey();
 
@@ -900,11 +956,14 @@ namespace Presentation
 
                     case '3':
                         {
-                            userInputSentence = TakeUserInputSIN("Enter Social Insurance Number: ");
-                            theObj.SetSocialInsuranceNumber(userInputSentence, ref errorMessage);
-                            if (errorMessage != "")
+                            if (isNew == true)
                             {
-                                PrintErrorMessage(errorMessage);
+                                userInputSentence = TakeUserInputSIN("Enter Social Insurance Number: ");
+                                theObj.SetSocialInsuranceNumber(userInputSentence, ref errorMessage);
+                                if (errorMessage != "")
+                                {
+                                    PrintErrorMessage(errorMessage);
+                                }
                             }
                         }
                         break;
@@ -1035,7 +1094,14 @@ namespace Presentation
                 }
                 Console.WriteLine("");
                 Console.WriteLine("\t1. Edit Business Name");
-                Console.WriteLine("\t2. Edit Business Number");
+                if (isNew == true)
+                {
+                    Console.WriteLine("\t2. Edit Business Number");
+                }
+                else
+                {
+                    Console.WriteLine("\t2. ----------");
+                }
                 Console.WriteLine("\t3. Edit Date of Incorporation");
                 Console.WriteLine("\t4. Edit Contract Start Date");
                 Console.WriteLine("\t5. Edit Contract Stop Date");
@@ -1048,39 +1114,39 @@ namespace Presentation
                 Console.WriteLine("");
                 Console.WriteLine("{0}", theObj.Details());
 
-//                Console.WriteLine("Business Name: {0}", theObj.GetLastName());
-//                Console.WriteLine("Business Number: {0}", theObj.GetSocialInsuranceNumber());
-////                Console.WriteLine("Business Number: {0}", displayBN(theObj.GetSocialInsuranceNumber()));
-//
-//                if (DateTime.Compare(theObj.GetDateOfBirth(), defaultDateTime) == 0)
-//                {
-//                    Console.WriteLine("Date of Incorporation: ");
-//                }
-//                else
-//                {
-//                    Console.WriteLine("Date of Incorporation: {0}", theObj.GetDateOfBirth());
-//                }
+                //                Console.WriteLine("Business Name: {0}", theObj.GetLastName());
+                //                Console.WriteLine("Business Number: {0}", theObj.GetSocialInsuranceNumber());
+                ////                Console.WriteLine("Business Number: {0}", displayBN(theObj.GetSocialInsuranceNumber()));
+                //
+                //                if (DateTime.Compare(theObj.GetDateOfBirth(), defaultDateTime) == 0)
+                //                {
+                //                    Console.WriteLine("Date of Incorporation: ");
+                //                }
+                //                else
+                //                {
+                //                    Console.WriteLine("Date of Incorporation: {0}", theObj.GetDateOfBirth());
+                //                }
 
-//                if (DateTime.Compare(theObj.GetContractStartDate(), defaultDateTime) == 0)
-//                {
-//                    Console.WriteLine("Contract Start Date: ");
-//                }
-//                else
-//                {
-//                    Console.WriteLine("Contract Start Date: {0}", theObj.GetContractStartDate());
-//                }
+                //                if (DateTime.Compare(theObj.GetContractStartDate(), defaultDateTime) == 0)
+                //                {
+                //                    Console.WriteLine("Contract Start Date: ");
+                //                }
+                //                else
+                //                {
+                //                    Console.WriteLine("Contract Start Date: {0}", theObj.GetContractStartDate());
+                //                }
 
-//                if (DateTime.Compare(theObj.GetContractStopDate(), defaultDateTime) == 0)
-//                {
-//                    Console.WriteLine("Contract Stop Date: ");
-//                }
-//                else
-//                {
-//                    Console.WriteLine("Contract Stop Date: {0}", theObj.GetContractStopDate());
-//                }
+                //                if (DateTime.Compare(theObj.GetContractStopDate(), defaultDateTime) == 0)
+                //                {
+                //                    Console.WriteLine("Contract Stop Date: ");
+                //                }
+                //                else
+                //                {
+                //                    Console.WriteLine("Contract Stop Date: {0}", theObj.GetContractStopDate());
+                //                }
 
 
-//                Console.WriteLine("Fixed Contract Amount: ${0}", theObj.GetFixedContractAmount());
+                //                Console.WriteLine("Fixed Contract Amount: ${0}", theObj.GetFixedContractAmount());
 
                 userInput = Console.ReadKey();
 
@@ -1099,11 +1165,14 @@ namespace Presentation
 
                     case '2':
                         {
-                            userInputSentence = TakeUserInputSIN("Enter Business Number: ");
-                            theObj.SetSocialInsuranceNumber(userInputSentence, ref errorMessage);
-                            if (errorMessage != "")
+                            if (isNew == true)
                             {
-                                PrintErrorMessage(errorMessage);
+                                userInputSentence = TakeUserInputSIN("Enter Business Number: ");
+                                theObj.SetSocialInsuranceNumber(userInputSentence, ref errorMessage);
+                                if (errorMessage != "")
+                                {
+                                    PrintErrorMessage(errorMessage);
+                                }
                             }
                         }
                         break;
@@ -1234,7 +1303,14 @@ namespace Presentation
                 Console.WriteLine("");
                 Console.WriteLine("\t1. Edit First Name");
                 Console.WriteLine("\t2. Edit Last Name");
-                Console.WriteLine("\t3. Edit SIN");
+                if (isNew == true)
+                {
+                    Console.WriteLine("\t3. Edit SIN");
+                }
+                else
+                {
+                    Console.WriteLine("\t3. ----------");
+                }
                 Console.WriteLine("\t4. Edit Date of Birth");
                 Console.WriteLine("\t5. Edit Season");
                 Console.WriteLine("\t6. Edit Piece Pay");
@@ -1245,21 +1321,21 @@ namespace Presentation
                 Console.WriteLine("CURRENT INFO:");
                 Console.WriteLine("");
                 Console.WriteLine("{0}", theObj.Details());
-//                Console.WriteLine("First Name: {0}", theObj.GetFirstName());
-//                Console.WriteLine("Last Name: {0}", theObj.GetLastName());
-//                Console.WriteLine("SIN: {0}", theObj.GetSocialInsuranceNumber());
-////                Console.WriteLine("SIN: {0}", displaySIN(theObj.GetSocialInsuranceNumber()));
-//
-//                if (DateTime.Compare(theObj.GetDateOfBirth(), defaultDateTime) == 0)
-//                {
-//                    Console.WriteLine("Date of Birth: ");
-//                }
-//                else
-//                {
-//                    Console.WriteLine("Date of Birth: {0}", theObj.GetDateOfBirth());
-//                }
-//                Console.WriteLine("Season: {0}", theObj.GetSeason());
-//                Console.WriteLine("Piece Pay: ${0}", theObj.GetPiecePay());
+                //                Console.WriteLine("First Name: {0}", theObj.GetFirstName());
+                //                Console.WriteLine("Last Name: {0}", theObj.GetLastName());
+                //                Console.WriteLine("SIN: {0}", theObj.GetSocialInsuranceNumber());
+                ////                Console.WriteLine("SIN: {0}", displaySIN(theObj.GetSocialInsuranceNumber()));
+                //
+                //                if (DateTime.Compare(theObj.GetDateOfBirth(), defaultDateTime) == 0)
+                //                {
+                //                    Console.WriteLine("Date of Birth: ");
+                //                }
+                //                else
+                //                {
+                //                    Console.WriteLine("Date of Birth: {0}", theObj.GetDateOfBirth());
+                //                }
+                //                Console.WriteLine("Season: {0}", theObj.GetSeason());
+                //                Console.WriteLine("Piece Pay: ${0}", theObj.GetPiecePay());
 
                 userInput = Console.ReadKey();
 
@@ -1289,11 +1365,14 @@ namespace Presentation
 
                     case '3':
                         {
-                            userInputSentence = TakeUserInputSIN("Enter Social Insurance Number: ");
-                            theObj.SetSocialInsuranceNumber(userInputSentence, ref errorMessage);
-                            if (errorMessage != "")
+                            if (isNew == true)
                             {
-                                PrintErrorMessage(errorMessage);
+                                userInputSentence = TakeUserInputSIN("Enter Social Insurance Number: ");
+                                theObj.SetSocialInsuranceNumber(userInputSentence, ref errorMessage);
+                                if (errorMessage != "")
+                                {
+                                    PrintErrorMessage(errorMessage);
+                                }
                             }
                         }
                         break;
@@ -1384,6 +1463,11 @@ namespace Presentation
         {
             ConsoleKeyInfo userInput;
             Employee theObj = new Employee();
+            FulltimeEmployee FtEmployee = new FulltimeEmployee();
+            ParttimeEmployee PtEmployee = new ParttimeEmployee();
+            ContractEmployee CtEmployee = new ContractEmployee();
+            SeasonalEmployee SnEmployee = new SeasonalEmployee();
+            string errorMessage = "";
             bool back = false;
 
             while (back == false)
@@ -1407,6 +1491,39 @@ namespace Presentation
                 {
                     case '1':
                         theObj = SearchBySIN("Search By SIN/BN To Remove:");
+                        Console.Clear();
+
+                        if (theObj == null)
+                        {
+                            Console.WriteLine("NO MATCHING EMPLOYEE FOUND");
+                            Console.WriteLine("");
+                        }
+                        else
+                        {
+                            if (theObj.GetType() == FtEmployee.GetType())
+                            {
+                                FtEmployee = (FulltimeEmployee)theObj;
+                                companyContainer.RemoveEmployee(FtEmployee, ref errorMessage);
+                            }
+                            else if (theObj.GetType() == PtEmployee.GetType())
+                            {
+                                PtEmployee = (ParttimeEmployee)theObj;
+                                companyContainer.RemoveEmployee(PtEmployee, ref errorMessage);
+                            }
+                            else if (theObj.GetType() == CtEmployee.GetType())
+                            {
+                                CtEmployee = (ContractEmployee)theObj;
+                                companyContainer.RemoveEmployee(CtEmployee, ref errorMessage);
+                            }
+                            else if (theObj.GetType() == SnEmployee.GetType())
+                            {
+                                SnEmployee = (SeasonalEmployee)theObj;
+                                companyContainer.RemoveEmployee(SnEmployee, ref errorMessage);
+                            }
+                        }
+
+                        Console.WriteLine("Press any key to continue...");
+                        userInput = Console.ReadKey();
                         break;
 
                     case '2':
@@ -1443,6 +1560,10 @@ namespace Presentation
         {
             ConsoleKeyInfo userInput;
             Employee theObj = new Employee();
+            FulltimeEmployee FtEmployee = new FulltimeEmployee();
+            ParttimeEmployee PtEmployee = new ParttimeEmployee();
+            ContractEmployee CtEmployee = new ContractEmployee();
+            SeasonalEmployee SnEmployee = new SeasonalEmployee();
             bool back = false;
 
             while (back == false)
@@ -1466,6 +1587,40 @@ namespace Presentation
                 {
                     case '1':
                         theObj = SearchBySIN("Search By SIN/BN To Display:");
+
+                        Console.Clear();
+
+                        if (theObj == null)
+                        {
+                            Console.WriteLine("NO MATCHING EMPLOYEE FOUND");
+                            Console.WriteLine("");
+                        }
+                        else
+                        {
+                            if (theObj.GetType() == FtEmployee.GetType())
+                            {
+                                FtEmployee = (FulltimeEmployee)theObj;
+                                Console.WriteLine("{0}", FtEmployee.Details());
+                            }
+                            else if (theObj.GetType() == PtEmployee.GetType())
+                            {
+                                PtEmployee = (ParttimeEmployee)theObj;
+                                Console.WriteLine("{0}", PtEmployee.Details());
+                            }
+                            else if (theObj.GetType() == CtEmployee.GetType())
+                            {
+                                CtEmployee = (ContractEmployee)theObj;
+                                Console.WriteLine("{0}", CtEmployee.Details());
+                            }
+                            else if (theObj.GetType() == SnEmployee.GetType())
+                            {
+                                SnEmployee = (SeasonalEmployee)theObj;
+                                Console.WriteLine("{0}", SnEmployee.Details());
+                            }
+                        }
+
+                        Console.WriteLine("Press any key to continue...");
+                        userInput = Console.ReadKey();
                         break;
 
                     case '2':
@@ -1480,6 +1635,8 @@ namespace Presentation
                         back = true;
                         break;
                 }
+
+
             }
         }
 
@@ -1501,7 +1658,7 @@ namespace Presentation
 
             while (currentObj != null)
             {
-                
+
                 if (currentObj.GetType() == FtEmployee.GetType())
                 {
                     FtEmployee = (FulltimeEmployee)currentObj;
@@ -1539,14 +1696,14 @@ namespace Presentation
             ContractEmployee CtEmployee = new ContractEmployee();
             SeasonalEmployee SnEmployee = new SeasonalEmployee();
 
-//            if (theObj.GetType() == FtEmployee.GetType())
-//            { }
+            //            if (theObj.GetType() == FtEmployee.GetType())
+            //            { }
 
         }
 
         private void ModifySingleEmployee(Employee theObj)
         {
-            
+
         }
 
 
@@ -1583,7 +1740,7 @@ namespace Presentation
 
             return theObj;
         }
-        
+
         private void LoadFromFileUI()
         {
 
@@ -1928,7 +2085,7 @@ namespace Presentation
             {
                 parsed = unparsed.Insert(5, " ");
             }
-        
+
             return parsed;
         }
 
@@ -2003,7 +2160,7 @@ namespace Presentation
         private void PrintErrorMessage(string errorMessage)
         {
             ConsoleKeyInfo userInput;
-//            Console.Clear();
+            //            Console.Clear();
             Console.WriteLine("");
             Console.WriteLine("{0}", errorMessage);
             Console.WriteLine("");
