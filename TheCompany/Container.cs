@@ -358,6 +358,7 @@ namespace TheCompany
                 if (emp.GetSocialInsuranceNumber() == newEmployee.GetSocialInsuranceNumber())
                 {
                     errorMessage = "Another Employee has the same SIN number. Employee was not added";
+                    Logging.LogEvent("[Container.AddEmployee] Employee failed to be Added due to duplicate SINS. The SIN is: " + emp.GetSocialInsuranceNumber());
                     sameSIN = true;
                     break;
                 }
@@ -491,7 +492,7 @@ namespace TheCompany
         public bool ModifyEmployee(Employee employeeToModify, ref string errorMessage)
         {
             bool modifySuccessful = false;// will be set to 'true' if there were no errors
-            string unusedString = "";
+            //string unusedString = "";
             FulltimeEmployee FTemployee = new FulltimeEmployee();
             ParttimeEmployee PTemployee = new ParttimeEmployee();
             ContractEmployee CTemployee = new ContractEmployee();
@@ -499,6 +500,7 @@ namespace TheCompany
             string originalValues = "";
             string newValues = "";
             int i = 0;
+
 
             for(i = 0; i < virtualDB.Count; i++)
             {
@@ -518,18 +520,18 @@ namespace TheCompany
                     else if (PTemployee.GetType() == virtualDB[i].GetType())
                     {
                         PTemployee = (ParttimeEmployee)virtualDB[i];                
-                        originalValues = FTemployee.Details();
+                        originalValues = PTemployee.Details();
 
                         PTemployee = (ParttimeEmployee)virtualDB[i];
-                        newValues = FTemployee.Details();                  
+                        newValues = PTemployee.Details();                  
                     }
                     else if (CTemployee.GetType() == virtualDB[i].GetType())
                     {
                         CTemployee = (ContractEmployee)virtualDB[i];                                         
-                        originalValues = FTemployee.Details();
+                        originalValues = CTemployee.Details();
 
                         CTemployee = (ContractEmployee)virtualDB[i];
-                        newValues = FTemployee.Details();                    
+                        newValues = CTemployee.Details();                    
                     }
                     else if (SNemployee.GetType() == virtualDB[i].GetType())
                     {

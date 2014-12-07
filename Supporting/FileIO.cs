@@ -503,7 +503,7 @@ namespace Supporting
         *         <i>errorMessage</i> can be checked to see what went wrong.
         *
         */
-        public static bool CloseDBase(string[] validStringsToWrite, string[] invalidStringsToWrite, ref string errorMessage)
+        public static bool CloseDBase(string[] stringsToWrite, ref string errorMessage)
         {
             bool noErrors = true;
             int numRecordsWritten = 0;// the total number of records written
@@ -518,7 +518,7 @@ namespace Supporting
                 dbWriter = new StreamWriter(databaseName);
                 Logging.LogEvent("[FileIO.CloseDBase] The file: " + databaseName + " was opened for writing.");
 
-                foreach (string record in validStringsToWrite)
+                foreach (string record in stringsToWrite)
                 {
                     pipeIndex = record.IndexOf('|');
                     ++numPipes;
@@ -570,13 +570,14 @@ namespace Supporting
 
                 }// end 'foreach'
 
+                /*
                 foreach (string record in invalidStringsToWrite)// don't do any validation with the invalidStringsToWrite, just count how many and write them to the file
                 {
                     WriteRecord(record);
                     ++numRecordsWritten;
                     ++numInvalidRecords;
                 }
-
+                */
                 dbWriter.Close();
             }
             catch (DirectoryNotFoundException)
