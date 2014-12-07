@@ -460,7 +460,6 @@ namespace Supporting
 
             }// end 'foreach'
 
-
             //Console.WriteLine("Records Read: {0}", numRecordsRead);
             //Console.WriteLine("Valid Records: {0}", numValidRecords);
             //Console.WriteLine("Invalid Records: {0}", numInvalidRecords);
