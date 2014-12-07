@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.Text;
 using AllEmployees;
 using TheCompany;
+using Supporting;
 
 
 namespace Presentation
@@ -86,6 +87,7 @@ namespace Presentation
     public class UIMenu
     {
         private Container companyContainer;
+
         /**
         * \brief Displays the Main Menu
         *
@@ -169,6 +171,7 @@ namespace Presentation
         private void ManageDBaseFilesMenu()
         {
             ConsoleKeyInfo userInput;
+            string errorMessage = "";
             bool back = false;
 
             while (back == false)
@@ -191,7 +194,7 @@ namespace Presentation
                 switch (userInput.KeyChar)
                 {
                     case '1':
-
+                        companyContainer = new Container(FileIO.OpenDBase("EMS_DB_FILE.txt", ref errorMessage));
                         break;
 
                     case '2':
@@ -404,25 +407,13 @@ namespace Presentation
 
 
         /**
-        * \brief UI of full time employee creation
+        * \brief Makes new full-time employee
         *
         * \details <b>Details</b>
         *
-        * This method will give user the option to enter each element of a full time 
-         * employee. The elements that have been entered will also be displayed. 
-         * User can choose to save the employee data in this menu.
-        * 
-        * Available options:
-        * 
-        * First Name
-         * Last Name
-         * SIN
-         * Date of Birth
-         * Date of Hire
-         * Date of Termination
-         * Salary
-         * Save and Return to Manage Employee Menu
-        * Return to Manage Employee Menu Without Saving
+        * Creates a new FulltimeEmployee() and pass it to ModifyFulltimeEmployee to 
+         * edit. Since there is no old record to remove the return value of 
+         * ModifyFulltimeEmployee does not matter.
         * 
         * \param None
         * 
@@ -437,25 +428,13 @@ namespace Presentation
         }
 
         /**
-        * \brief UI of part time employee creation
+        * \brief Makes new part-time employee
         *
         * \details <b>Details</b>
         *
-        * This method will give user the option to enter each element of a part time 
-         * employee. The elements that have been entered will also be displayed. 
-         * User can choose to save the employee data in this menu.
-        * 
-        * Available options:
-        * 
-        * First Name
-         * Last Name
-         * SIN
-         * Date of Birth
-         * Date of Hire
-         * Date of Termination
-         * Hourly Rate
-         * Save and Return to Manage Employee Menu
-        * Return to Manage Employee Menu Without Saving
+        * Creates a new ParttimeEmployee() and pass it to ModifyParttimeEmployee to 
+         * edit. Since there is no old record to remove the return value of 
+         * ModifyParttimeEmployee does not matter.
         * 
         * \param None
         * 
@@ -470,24 +449,13 @@ namespace Presentation
         }
 
         /**
-        * \brief UI of contract employee creation
+        * \brief Makes new contract employee
         *
         * \details <b>Details</b>
         *
-        * This method will give user the option to enter each element of a contract 
-         * employee. The elements that have been entered will also be displayed. 
-         * User can choose to save the employee data in this menu.
-        * 
-        * Available options:
-        * 
-        * Corporation Name (stored in Last Name)
-         * Business Number
-         * Date of Incorporation (stored in Date of Birth)
-         * Contract Start Date
-         * Contract Stop Date
-         * Fixed Contract Amount
-         * Save and Return to Manage Employee Menu
-        * Return to Manage Employee Menu Without Saving
+        * Creates a new ContractEmployee() and pass it to ModifyContractEmployee to 
+         * edit. Since there is no old record to remove the return value of 
+         * ModifyContractEmployee does not matter.
         * 
         * \param None
         * 
@@ -502,23 +470,13 @@ namespace Presentation
         }
 
         /**
-        * \brief UI of seasonal employee creation
+        * \brief Makes new seasonal employee
         *
         * \details <b>Details</b>
         *
-        * This method will give user the option to enter each element of a seasonal 
-         * employee. The elements that have been entered will also be displayed. 
-         * User can choose to save the employee data in this menu.
-        * 
-        * Available options:
-        * 
-        * First Name
-         * Last Name
-         * SIN
-         * Season
-         * Piece Pay
-         * Save and Return to Manage Employee Menu
-        * Return to Manage Employee Menu Without Saving
+        * Creates a new SeasonalEmployee() and pass it to ModifySeasonalEmployee to 
+         * edit. Since there is no old record to remove the return value of 
+         * ModifySeasonalEmployee does not matter.
         * 
         * \param None
         * 
@@ -543,8 +501,9 @@ namespace Presentation
         * 
         * Available options (after search):
         * 
-        * Specify employee detail
-        * Save
+        * Search By First Name
+         * Search By Last Name/Business Name
+         * Search By SIN/Business number
         * Return to Manage Employee Menu
         * 
         * \param None
@@ -563,7 +522,7 @@ namespace Presentation
                 Console.WriteLine("CHOOSE AN EMPLOYEE TO MODIFY:");
                 Console.WriteLine("");
                 Console.WriteLine("\t1. Search By First Name");
-                Console.WriteLine("\t2. Search By Last Name/Corporation Name");
+                Console.WriteLine("\t2. Search By Last Name/Business Name");
                 Console.WriteLine("\t3. Search By SIN/Business Number");
                 Console.WriteLine("\t4. ----------");
                 Console.WriteLine("\t5. ----------");
@@ -596,7 +555,7 @@ namespace Presentation
         }
 
         /**
-        * \brief UI of full time employee creation
+        * \brief UI of full time employee modification
         *
         * \details <b>Details</b>
         *
@@ -616,14 +575,17 @@ namespace Presentation
          * Save and Return to Manage Employee Menu
         * Return to Manage Employee Menu Without Saving
         * 
-        * \param None
+        * \param
+         * FulltimeEmployee theObj: The employee object. Only used for initializing 
+         *                          attributes.
+         * isNew: whether the object is a new one (empty) or an existing one (not empty).
         * 
-        * \return Nothing is returned
+        * \return bool: whether the base object should be deleted (only apply to existing 
+         *              object).
         * 
         */
         private bool ModifyFulltimeEmployee(FulltimeEmployee theObj, bool isNew)
         {
-//            FulltimeEmployee theObj = new FulltimeEmployee();
             ConsoleKeyInfo userInput;
             DateTime defaultDateTime = new DateTime();
             string userInputSentence = "";
@@ -794,7 +756,7 @@ namespace Presentation
         }
 
         /**
-        * \brief UI of part time employee creation
+        * \brief UI of part time employee modification
         *
         * \details <b>Details</b>
         *
@@ -814,9 +776,13 @@ namespace Presentation
          * Save and Return to Manage Employee Menu
         * Return to Manage Employee Menu Without Saving
         * 
-        * \param None
+        * \param
+         * ParttimeEmployee theObj: The employee object. Only used for initializing 
+         *                          attributes.
+         * isNew: whether the object is a new one (empty) or an existing one (not empty).
         * 
-        * \return Nothing is returned
+        * \return bool: whether the base object should be deleted (only apply to existing 
+         *              object).
         * 
         */
         private bool ModifyParttimeEmployee(ParttimeEmployee theObj, bool isNew)
@@ -990,7 +956,7 @@ namespace Presentation
         }
 
         /**
-        * \brief UI of contract employee creation
+        * \brief UI of contract employee modification
         *
         * \details <b>Details</b>
         *
@@ -1009,9 +975,13 @@ namespace Presentation
          * Save and Return to Manage Employee Menu
         * Return to Manage Employee Menu Without Saving
         * 
-        * \param None
+        * \param
+         * ContractEmployee theObj: The employee object. Only used for initializing 
+         *                          attributes.
+         * isNew: whether the object is a new one (empty) or an existing one (not empty).
         * 
-        * \return Nothing is returned
+        * \return bool: whether the base object should be deleted (only apply to existing 
+         *              object).
         * 
         */
         private bool ModifyContractEmployee(ContractEmployee theObj, bool isNew)
@@ -1036,7 +1006,7 @@ namespace Presentation
                     Console.WriteLine("MODIFY A CONTRACT EMPLOYEE:");
                 }
                 Console.WriteLine("");
-                Console.WriteLine("\t1. Edit Name of Corporation");
+                Console.WriteLine("\t1. Edit Business Name");
                 Console.WriteLine("\t2. Edit Business Number");
                 Console.WriteLine("\t3. Edit Date of Incorporation");
                 Console.WriteLine("\t4. Edit Contract Start Date");
@@ -1048,7 +1018,7 @@ namespace Presentation
                 Console.WriteLine("");
                 Console.WriteLine("CURRENT INFO:");
                 Console.WriteLine("");
-                Console.WriteLine("Name of Corporation: {0}", theObj.GetLastName());
+                Console.WriteLine("Business Name: {0}", theObj.GetLastName());
                 Console.WriteLine("Business Number: {0}", theObj.GetSocialInsuranceNumber());
 
                 if (DateTime.Compare(theObj.GetDateOfBirth(), defaultDateTime) == 0)
@@ -1087,7 +1057,7 @@ namespace Presentation
                 {
                     case '1':
                         {
-                            userInputSentence = TakeUserInputSentence("Enter Name of Corporation: ");
+                            userInputSentence = TakeUserInputSentence("Enter Business Name: ");
                             theObj.SetLastName(userInputSentence, ref errorMessage);
                             if (errorMessage != "")
                             {
@@ -1174,7 +1144,7 @@ namespace Presentation
         }
 
         /**
-        * \brief UI of seasonal employee creation
+        * \brief UI of seasonal employee modification
         *
         * \details <b>Details</b>
         *
@@ -1192,9 +1162,13 @@ namespace Presentation
          * Save and Return to Manage Employee Menu
         * Return to Manage Employee Menu Without Saving
         * 
-        * \param None
+        * \param
+         * SeasonalEmployee theObj: The employee object. Only used for initializing 
+         *                          attributes.
+         * isNew: whether the object is a new one (empty) or an existing one (not empty).
         * 
-        * \return Nothing is returned
+        * \return bool: whether the base object should be deleted (only apply to existing 
+         *              object).
         * 
         */
         private bool ModifySeasonalEmployee(SeasonalEmployee theObj, bool isNew)
@@ -1348,8 +1322,10 @@ namespace Presentation
         * 
         * Available options (after search) (for confirmation):
         * 
-        * Yes
-        * No
+        * Search by First Name
+         * Search by last name/business name
+         * search by sin/bn
+         * return to employee management menu
         * 
         * \param None
         * 
@@ -1358,7 +1334,45 @@ namespace Presentation
         */
         private void RemoveAnExistingEmployeeMenu()
         {
-            char userInput = '0';
+            ConsoleKeyInfo userInput;
+            bool back = false;
+
+            while (back == false)
+            {
+                Console.Clear();
+                Console.WriteLine("CHOOSE AN EMPLOYEE TO REMOVE:");
+                Console.WriteLine("");
+                Console.WriteLine("\t1. Search By First Name");
+                Console.WriteLine("\t2. Search By Last Name/Business Name");
+                Console.WriteLine("\t3. Search By SIN/Business Number");
+                Console.WriteLine("\t4. ----------");
+                Console.WriteLine("\t5. ----------");
+                Console.WriteLine("\t6. ----------");
+                Console.WriteLine("\t7. ----------");
+                Console.WriteLine("\t8. ----------");
+                Console.WriteLine("\t9. Return To Employee Management Menu");
+
+                userInput = Console.ReadKey();
+
+                switch (userInput.KeyChar)
+                {
+                    case '1':
+                        SearchFirstNameUI();
+                        break;
+
+                    case '2':
+                        SearchLastNameUI();
+                        break;
+
+                    case '3':
+                        SearchSINUI();
+                        break;
+
+                    case '9':
+                        back = true;
+                        break;
+                }
+            }
         }
 
         /**
@@ -1760,12 +1774,17 @@ namespace Presentation
             while (season == "")
             {
                 Console.Clear();
-                Console.WriteLine("Select Season:");
-                Console.WriteLine("\n");
+                Console.WriteLine("SELECT SEASON:");
+                Console.WriteLine("");
                 Console.WriteLine("\t1. Spring");
                 Console.WriteLine("\t2. Summer");
                 Console.WriteLine("\t3. Fall");
                 Console.WriteLine("\t4. Winter");
+                Console.WriteLine("\t5. ----------");
+                Console.WriteLine("\t6. ----------");
+                Console.WriteLine("\t7. ----------");
+                Console.WriteLine("\t8. ----------");
+                Console.WriteLine("\t9. ----------");
 
                 userInput = Console.ReadKey();
 
@@ -1789,6 +1808,8 @@ namespace Presentation
                 }
 
             }
+            Console.Clear();
+            Console.WriteLine("{0}", season);
             return season;
         }
 
