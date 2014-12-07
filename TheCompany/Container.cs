@@ -32,7 +32,7 @@ namespace TheCompany
 
     public class Container
     {
-        private ArrayList virtualDB;///< our container for storing all of our employees
+        private List<Employee> virtualDB;///< our container for storing all of our employees
         private int lastIndex;///< used to tell what the last employee was that was returned from NextEmployee()
 
         /**
@@ -49,7 +49,7 @@ namespace TheCompany
         public Container()
         {
             lastIndex = 0;
-            virtualDB = new ArrayList();
+            virtualDB = new List<Employee>();
         }
 
 
@@ -68,17 +68,20 @@ namespace TheCompany
         public Container(List<string[]> employeesList)
         {
             lastIndex = 0;// initialize the data member
-            virtualDB = new ArrayList();
+            virtualDB = new List<Employee>();
             FulltimeEmployee FTemployee = new FulltimeEmployee();
             ParttimeEmployee PTemployee = new ParttimeEmployee();
             ContractEmployee CTemployee = new ContractEmployee();
             SeasonalEmployee SNemployee = new SeasonalEmployee();
+            int totalEmployees = employeesList.Count;
             int numEmpoyeesAdded = 0;// the number of employees that were added
             int numInvalidEmployees = 0;// the number of employees that were invalid and not added
             bool invalidSIN = false;// used to tell if employees have identical SIN/BN numbers
 
             foreach(string[] employeeString in employeesList)
             {
+                Logging.LogEvent("[Container.Constructor] String: " + employeeString[0] + "    " + employeeString[1]);
+
                 if (employeeString[0] == "FT")
                 {
                     DateTime dateOfBirth = new DateTime();
@@ -120,6 +123,8 @@ namespace TheCompany
                             if(emp.GetSocialInsuranceNumber() == FTemployee.GetSocialInsuranceNumber())
                             {
                                 invalidSIN = true;
+                                Logging.LogEvent("[Container.Constructor] Duplicate SIN/BN found. SIN/BN: " + emp.GetSocialInsuranceNumber());
+                                ++numInvalidEmployees;
                                 break;
                             }
                         }
@@ -134,6 +139,10 @@ namespace TheCompany
                             ++numEmpoyeesAdded;
                         }
                         
+                    }
+                    else
+                    {
+                        ++numInvalidEmployees;
                     }
 
                 }
@@ -177,6 +186,8 @@ namespace TheCompany
                             if (emp.GetSocialInsuranceNumber() == PTemployee.GetSocialInsuranceNumber())
                             {
                                 invalidSIN = true;
+                                Logging.LogEvent("[Container.Constructor] Duplicate SIN/BN found. SIN/BN: " + emp.GetSocialInsuranceNumber());
+                                ++numInvalidEmployees;
                                 break;
                             }
                         }
@@ -192,6 +203,11 @@ namespace TheCompany
                         }
 
                     }
+                    else
+                    {
+                        ++numInvalidEmployees;
+                    }
+
                 }
                 else if (employeeString[0] == "CT")
                 {
@@ -232,6 +248,8 @@ namespace TheCompany
                             if (emp.GetSocialInsuranceNumber() == CTemployee.GetSocialInsuranceNumber())
                             {
                                 invalidSIN = true;
+                                Logging.LogEvent("[Container.Constructor] Duplicate SIN/BN found. SIN/BN: " + emp.GetSocialInsuranceNumber());
+                                ++numInvalidEmployees;
                                 break;
                             }
                         }
@@ -247,6 +265,11 @@ namespace TheCompany
                         }
 
                     }
+                    else
+                    {
+                        ++numInvalidEmployees;
+                    }
+
                 }
                 else if (employeeString[0] == "SN")
                 {
@@ -264,6 +287,7 @@ namespace TheCompany
                         ++numInvalidEmployees;
                         continue;// invalid float and we don't store invalid objects in the database so continue (don't add)
                     }
+
                     SNemployee = new SeasonalEmployee(employeeString[5], piecePay, employeeString[2], employeeString[1], employeeString[3], dateOfBirth);
 
                     if (SNemployee.Validate())// check if the employee was valid
@@ -273,6 +297,8 @@ namespace TheCompany
                             if (emp.GetSocialInsuranceNumber() == SNemployee.GetSocialInsuranceNumber())
                             {
                                 invalidSIN = true;
+                                Logging.LogEvent("[Container.Constructor] Duplicate SIN/BN found. SIN/BN: " + emp.GetSocialInsuranceNumber());
+                                ++numInvalidEmployees;
                                 break;
                             }
                         }
@@ -288,13 +314,18 @@ namespace TheCompany
                         }
 
                     }
+                    else
+                    {
+                        ++numInvalidEmployees;
+                    }
+
                 }
 
                 // do nothing if the employee type is invalid 
 
             }// end 'foreach'
 
-            Logging.LogEvent("[Container.Constructor] Employees Added: " + numEmpoyeesAdded.ToString() + "\n\tInvalid Employees Found: " + numInvalidEmployees);
+            Logging.LogEvent("[Container.Constructor] Total Employees: " + totalEmployees + ". Employees Added: " + numEmpoyeesAdded.ToString() + "\n\tInvalid Employees Found: " + numInvalidEmployees);
 
         }
 
@@ -457,9 +488,9 @@ namespace TheCompany
         * \return A bool <i>modifySuccessful</i> which will be 'true' if the employee was modified successfully and 'false' otherwise
         *
         */
-        public bool ModifyEmployee(Employee employeeToModify, Employee newEmployee, ref string errorMessage)
+        public bool ModifyEmployee(Employee employeeToModify, ref string errorMessage)
         {
-            bool modifySuccessful = true;// will be set to 'false' if there was a problem
+            bool modifySuccessful = false;// will be set to 'true' if there were no errors
             string unusedString = "";
             FulltimeEmployee FTemployee = new FulltimeEmployee();
             ParttimeEmployee PTemployee = new ParttimeEmployee();
@@ -467,11 +498,70 @@ namespace TheCompany
             SeasonalEmployee SNemployee = new SeasonalEmployee();
             string originalValues = "";
             string newValues = "";
+            int i = 0;
 
+            for(i = 0; i < virtualDB.Count; i++)
+            {
+                if (virtualDB[i].GetSocialInsuranceNumber() == employeeToModify.GetSocialInsuranceNumber())
+                {
+                    virtualDB[i] = employeeToModify;
+                    modifySuccessful = true;
+
+                    if (FTemployee.GetType() == virtualDB[i].GetType())
+                    {
+                        FTemployee = (FulltimeEmployee)employeeToModify;                
+                        originalValues = FTemployee.Details();
+
+                        FTemployee = (FulltimeEmployee)virtualDB[i];
+                        newValues = FTemployee.Details();
+                    }
+                    else if (PTemployee.GetType() == virtualDB[i].GetType())
+                    {
+                        PTemployee = (ParttimeEmployee)virtualDB[i];                
+                        originalValues = FTemployee.Details();
+
+                        PTemployee = (ParttimeEmployee)virtualDB[i];
+                        newValues = FTemployee.Details();                  
+                    }
+                    else if (CTemployee.GetType() == virtualDB[i].GetType())
+                    {
+                        CTemployee = (ContractEmployee)virtualDB[i];                                         
+                        originalValues = FTemployee.Details();
+
+                        CTemployee = (ContractEmployee)virtualDB[i];
+                        newValues = FTemployee.Details();                    
+                    }
+                    else if (SNemployee.GetType() == virtualDB[i].GetType())
+                    {
+                        SNemployee = (SeasonalEmployee)virtualDB[i];                
+                        originalValues = SNemployee.Details();
+
+                        SNemployee = (SeasonalEmployee)virtualDB[i];
+                        newValues = SNemployee.Details();                  
+                    }
+
+                    Logging.LogEvent("[Container.ModifyEmployee] Employee modified. Original Values: " + originalValues + "\nNew Values: " + newValues);
+                    break;
+
+                }// end 'if' statement
+
+            }// end 'for' loop
+
+            if(modifySuccessful == false)
+            {
+                errorMessage = "The Employee SIN could not be found, therefore the Employee was not modified.";
+                Logging.LogEvent("[Container.ModifyEmployee] Employee FAILED to be modified. SIN: " + employeeToModify.GetSocialInsuranceNumber());
+            }
+
+            /*
             foreach (Employee storedEmployee in virtualDB)
             {
                 if (storedEmployee.GetSocialInsuranceNumber() == employeeToModify.GetSocialInsuranceNumber())
                 {
+                    storedEmployee.SetFirstName
+                    
+                    virtualDB.Remove(storedEmployee);// remove the old employee
+
                     if(AddEmployee(newEmployee, ref unusedString) == false)// check if the new employee is valid
                     {
                         modifySuccessful = false;
@@ -479,7 +569,7 @@ namespace TheCompany
                     }
                     else// the add was successful
                     {
-                        virtualDB.Remove(storedEmployee);// remove the old employee
+                        
 
                         if (FTemployee.GetType() == newEmployee.GetType())
                         {
@@ -515,17 +605,19 @@ namespace TheCompany
                         }
 
                         Logging.LogEvent("[Container.ModifyEmployee] Employee modified. Original Values: " + originalValues + "\nNew Values: " + newValues);
-                    }                  
+                    }                
 
                     break;// we don't allow duplicate SIN's in our database so as soon as we find a match we can exit
                 }
+             
 
-            }
-
+            }*/
+            /*
             if((modifySuccessful == false) && (errorMessage == ""))// if both conditions are true then the employee could not be found
             {
                 errorMessage = "The employee to modify could not be found.";
             }
+            */
 
             return modifySuccessful;
         }

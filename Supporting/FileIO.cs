@@ -663,6 +663,8 @@ namespace Supporting
                 isValid = false;
             }
 
+            errorMessage = returnedErrorMessage;
+
             return isValid;
         }
 
