@@ -154,6 +154,8 @@ namespace AllEmployees
             empDetails += "Date Of Termination: " + dot + "\n";
             empDetails += "Salary: $" + GetSalary().ToString() + "\n";
 
+            Logging.LogEvent("[FulltimeEmployee.Details]\n" + empDetails);
+
             return empDetails;
         }
 
@@ -176,6 +178,7 @@ namespace AllEmployees
         public bool Validate()
         {
             bool validStatus = true;
+            string validStatusStr = "";
             string unused = "";
 
 
@@ -207,6 +210,17 @@ namespace AllEmployees
             {
                 validStatus = false;
             }
+
+            if (validStatus)
+            {
+                validStatusStr = "Valid\n";
+            }
+            else
+            {
+                validStatusStr = "Invalid\n";
+            }
+
+            Logging.LogEvent("[FulltimeEmployee.Validate] Employee " + GetLastName() + ", " + GetFirstName() + " SIN(" + GetSocialInsuranceNumber() + ") Was Found To Be " + validStatusStr);
 
             return validStatus;
         }
@@ -247,7 +261,12 @@ namespace AllEmployees
             }
             else
             {
-                //UIMenu.printErrorMessage("\"Date Of Hire\" is not formatted correctly\nPlease be sure to use the format\ndd/mm/yyyy     ex.29/08/2012\n\n");
+                errorMessage = userInput + " Is Not A Valid Format For A Date.\n\nPlease Enter Dates In The Following Format\nyyyy-mm-dd     ex. 2012-08-29\n";
+            }
+
+            if (!setStatus)
+            {
+                Logging.LogEvent("[FulltimeEmployee.SetDateOfHire] Attempted To Set dateOfHire Attribute With Invalid Value: " + userInput);
             }
 
             return setStatus;
@@ -310,6 +329,11 @@ namespace AllEmployees
                 errorMessage = userInput + " Is Not A Valid Format For A Date.\n\nPlease Enter Dates In The Following Format\nyyyy-mm-dd     ex. 2012-08-29\n";
             }
 
+            if (!setStatus)
+            {
+                Logging.LogEvent("[FulltimeEmployee.SetDateOfTermination] Attempted To Set dateOfTermination Attribute With Invalid Value: " + userInput);
+            }
+
             return setStatus;
         }
 
@@ -367,9 +391,13 @@ namespace AllEmployees
             }
             else
             {
-                errorMessage = userInput + " Is Not A Valid Format For A Date.\n\nPlease Enter Dates In The Following Format\nyyyy-mm-dd     ex. 2012-08-29\n";
+                errorMessage = userInput + " Is Not A Valid Monetary Value Format.\n\nPlease Enter Monetary Values In The Following Format\n0.00     ex. 12.34\n";
             }
 
+            if (!setStatus)
+            {
+                Logging.LogEvent("[FulltimeEmployee.SetSalary] Attempted To Set salary Attribute With Invalid Value: " + userInput);
+            }
 
             return setStatus;
         }

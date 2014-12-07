@@ -139,6 +139,11 @@ namespace AllEmployees
                 firstName = userInput;
             }
 
+            if(!setStatus)
+            {
+                Logging.LogEvent("[Employee.SetFirstName] Attempted To Set firstName Attribute With Invalid Value: " +  userInput);
+            }
+
             return setStatus;
         }
 
@@ -188,6 +193,11 @@ namespace AllEmployees
             {
                 setStatus = true;
                 lastName = userInput;
+            }
+
+            if (!setStatus)
+            {
+                Logging.LogEvent("[Employee.SetLastName] Attempted To Set lastName Attribute With Invalid Value: " + userInput);
             }
 
             return setStatus;
@@ -259,6 +269,11 @@ namespace AllEmployees
                 errorMessage = "Please Be Sure The SIN Is In The Proper Format\nex. xxx xxx xxx\n";
             }
 
+            if (!setStatus)
+            {
+                Logging.LogEvent("[Employee.SetSocialInsuranceNumber] Attempted To Set socialInsuranceNumber Attribute With Invalid Value: " + userInput);
+            }
+
             return setStatus;
         }
 
@@ -289,6 +304,11 @@ namespace AllEmployees
                 errorMessage = "Please Be Sure The SIN Is In The Proper Format\nex. xxx xxx xxx\n";
             }
 
+            if (!setStatus)
+            {
+                Logging.LogEvent("[Employee.SetBusinessNumber] Attempted To Set socialInsuranceNumber Attribute With Invalid Value: " + userInput);
+            }
+
             return setStatus;
         }
 
@@ -302,12 +322,17 @@ namespace AllEmployees
                 if (Supporting.Validation.ValidateDateOfCreation(GetSocialInsuranceNumber(), userInputDateTime, ref errorMessage))
                 {
                     setStatus = true;
-                    //Employee.dateOfBirth = userInputDateTime;
+                    dateOfBirth = userInputDateTime;
                 }
             }
             else
             {
                 errorMessage = userInput + " Is Not A Valid Format For A Date.\n\nPlease Enter Dates In The Following Format\nyyyy-mm-dd     ex. 2012-08-29\n";
+            }
+
+            if (!setStatus)
+            {
+                Logging.LogEvent("[Employee.SetDateOfCreation] Attempted To Set dateOfBirth Attribute With Invalid Value: " + userInput);
             }
 
             return setStatus;
@@ -370,8 +395,16 @@ namespace AllEmployees
             {
                 errorMessage = userInput + " Is Not A Valid Format Fot A Date.\n\nPlease Enter Dates In The Following Format\nyyyy-mm-dd     ex. 2012-08-29\n";
             }
+            
+            if (!setStatus)
+            {
+                Logging.LogEvent("[Employee.SetDateOfBirth] Attempted To Set dateOfBirth Attribute With Invalid Value: " + userInput);
+            }
+
             return setStatus;
         }
+
+        
 
         /**
         * \brief Retrieves the <i>dateOfBirth</i> attribute from the Employee class

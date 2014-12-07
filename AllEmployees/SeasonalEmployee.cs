@@ -129,6 +129,8 @@ namespace AllEmployees
             empDetails += "Season: " + GetSeason() + "\n";
             empDetails += "Piece Pay: $" + GetPiecePay().ToString() + "\n";
 
+            Logging.LogEvent("[SeasonalEmployee.Details]\n" + empDetails);
+
             return empDetails;
         }
 
@@ -151,6 +153,7 @@ namespace AllEmployees
         public bool Validate()
         {
             bool validStatus = true;
+            string validStatusStr = "";
             string unused = "";
 
             if (!Supporting.Validation.ValidatePiecePay(GetPiecePay(), ref unused))
@@ -177,6 +180,17 @@ namespace AllEmployees
             {
                 validStatus = false;
             }
+
+            if (validStatus)
+            {
+                validStatusStr = "Valid\n";
+            }
+            else
+            {
+                validStatusStr = "Invalid\n";
+            }
+
+            Logging.LogEvent("[SeasonalEmployee.Validate] Employee " + GetLastName() + ", " + GetFirstName() + " SIN(" + GetSocialInsuranceNumber() + ") Was Found To Be " + validStatusStr);
 
             return validStatus;
         }
@@ -209,6 +223,11 @@ namespace AllEmployees
             {
                 setStatus = true;
                 season = userInput;
+            }
+
+            if (!setStatus)
+            {
+                Logging.LogEvent("[SeasonalEmployee.SetSeason] Attempted To Set season Attribute With Invalid Value: " + userInput);
             }
 
             return setStatus;
@@ -268,8 +287,14 @@ namespace AllEmployees
             }
             else
             {
-                //UIMenu.printErrorMessage("\"Piece Pay\" is not formatted correctly\nPlease be sure to use the format\n$\"00.00\"     ex.$56.78\n\n");
+                errorMessage = userInput + " Is Not A Valid Monetary Value Format.\n\nPlease Enter Monetary Values In The Following Format\n0.00     ex. 12.34\n";
             }
+
+            if (!setStatus)
+            {
+                Logging.LogEvent("[SeasonalEmployee.SetPiecePay] Attempted To Set piecePay Attribute With Invalid Value: " + userInput);
+            }
+
             return setStatus;
         }
 
