@@ -554,6 +554,8 @@ namespace Presentation
                         {
                             Console.WriteLine("NO MATCHING EMPLOYEE FOUND");
                             Console.WriteLine("");
+                            Console.WriteLine("Press any key to continue...");
+                            userInput = Console.ReadKey();
                         }
                         else
                         {
@@ -578,9 +580,6 @@ namespace Presentation
                                 ModifySeasonalEmployee(SnEmployee, false);
                             }
                         }
-
-                        Console.WriteLine("Press any key to continue...");
-                        userInput = Console.ReadKey();
                         break;
 
                     case '2':
@@ -1656,6 +1655,14 @@ namespace Presentation
 
             currentObj = (Employee)companyContainer.NextEmployee(true);
 
+            if (currentObj == null)
+            {
+                Console.WriteLine("THE DATABASE IS EMPTY");
+                Console.WriteLine("");
+                Console.WriteLine("Press any key to continue...");
+                userInput = Console.ReadKey();
+            }
+
             while (currentObj != null)
             {
 
@@ -1783,6 +1790,13 @@ namespace Presentation
 
         private void DeleteConfirmationUI()
         {
+            ConsoleKeyInfo userInput;
+
+            userInput = Console.ReadKey();
+
+            Console.Clear();
+
+
 
         }
 
@@ -2160,7 +2174,7 @@ namespace Presentation
         private void PrintErrorMessage(string errorMessage)
         {
             ConsoleKeyInfo userInput;
-            //            Console.Clear();
+            Console.Clear();
             Console.WriteLine("");
             Console.WriteLine("{0}", errorMessage);
             Console.WriteLine("");
