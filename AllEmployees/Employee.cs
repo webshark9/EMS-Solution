@@ -235,7 +235,6 @@ namespace AllEmployees
         {
             bool setStatus = false;
             int sinLength = 11;
-            string sinTemp = userInput;
 
             if (userInput.Length == sinLength)
             {
@@ -252,7 +251,7 @@ namespace AllEmployees
                 if (Supporting.Validation.ValidateSocialInsuranceNumber(userInput, ref errorMessage))
                 {
                     setStatus = true;
-                    socialInsuranceNumber = sinTemp;
+                    socialInsuranceNumber = userInput;
                 }
             }
             else
@@ -267,7 +266,6 @@ namespace AllEmployees
         {
             bool setStatus = false;
             int bnLength = 10;
-            string bnTemp = userInput;
 
             if (userInput.Length == bnLength)
             {
@@ -283,7 +281,7 @@ namespace AllEmployees
                 if (Supporting.Validation.ValidateBusinessNumber(userInput, GetDateOfBirth(), ref errorMessage))
                 {
                     setStatus = true;
-                    socialInsuranceNumber = bnTemp;
+                    socialInsuranceNumber = userInput;
                 }
             }
             else
