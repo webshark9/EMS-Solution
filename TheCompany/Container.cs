@@ -75,6 +75,7 @@ namespace TheCompany
             SeasonalEmployee SNemployee = new SeasonalEmployee();
             int numEmpoyeesAdded = 0;// the number of employees that were added
             int numInvalidEmployees = 0;// the number of employees that were invalid and not added
+            bool invalidSIN = false;// used to tell if employees have identical SIN/BN numbers
 
             foreach(string[] employeeString in employeesList)
             {
@@ -113,8 +114,26 @@ namespace TheCompany
 
                     if (FTemployee.Validate())// check if the employee was valid
                     {
-                        ++numEmpoyeesAdded;
-                        virtualDB.Add(FTemployee);
+
+                        foreach( Employee emp in virtualDB)
+                        {
+                            if(emp.GetSocialInsuranceNumber() == FTemployee.GetSocialInsuranceNumber())
+                            {
+                                invalidSIN = true;
+                                break;
+                            }
+                        }
+
+                        if(invalidSIN == true)
+                        {
+                            invalidSIN = false;
+                        }
+                        else
+                        {
+                            virtualDB.Add(FTemployee);
+                            ++numEmpoyeesAdded;
+                        }
+                        
                     }
 
                 }
@@ -153,8 +172,25 @@ namespace TheCompany
 
                     if (PTemployee.Validate())// check if the employee was valid
                     {
-                        ++numEmpoyeesAdded;
-                        virtualDB.Add(PTemployee);
+                        foreach (Employee emp in virtualDB)
+                        {
+                            if (emp.GetSocialInsuranceNumber() == PTemployee.GetSocialInsuranceNumber())
+                            {
+                                invalidSIN = true;
+                                break;
+                            }
+                        }
+
+                        if (invalidSIN == true)
+                        {
+                            invalidSIN = false;
+                        }
+                        else
+                        {
+                            virtualDB.Add(PTemployee);
+                            ++numEmpoyeesAdded;
+                        }
+
                     }
                 }
                 else if (employeeString[0] == "CT")
@@ -191,8 +227,25 @@ namespace TheCompany
 
                     if (CTemployee.Validate())// check if the employee was valid
                     {
-                        ++numEmpoyeesAdded;
-                        virtualDB.Add(CTemployee);
+                        foreach (Employee emp in virtualDB)
+                        {
+                            if (emp.GetSocialInsuranceNumber() == CTemployee.GetSocialInsuranceNumber())
+                            {
+                                invalidSIN = true;
+                                break;
+                            }
+                        }
+
+                        if (invalidSIN == true)
+                        {
+                            invalidSIN = false;
+                        }
+                        else
+                        {
+                            virtualDB.Add(CTemployee);
+                            ++numEmpoyeesAdded;
+                        }
+
                     }
                 }
                 else if (employeeString[0] == "SN")
@@ -215,10 +268,28 @@ namespace TheCompany
 
                     if (SNemployee.Validate())// check if the employee was valid
                     {
-                        ++numEmpoyeesAdded;
-                        virtualDB.Add(SNemployee);
+                        foreach (Employee emp in virtualDB)
+                        {
+                            if (emp.GetSocialInsuranceNumber() == SNemployee.GetSocialInsuranceNumber())
+                            {
+                                invalidSIN = true;
+                                break;
+                            }
+                        }
+
+                        if (invalidSIN == true)
+                        {
+                            invalidSIN = false;
+                        }
+                        else
+                        {
+                            virtualDB.Add(SNemployee);
+                            ++numEmpoyeesAdded;
+                        }
+
                     }
                 }
+
                 // do nothing if the employee type is invalid 
 
             }// end 'foreach'
