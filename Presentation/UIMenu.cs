@@ -83,7 +83,7 @@ namespace Presentation
     ///         - Return to Main Menu
     ///     - Exit EMS
     /// 
-    /// \authors Matthew Thiessen, Willi Boldt, Ping Ueng, and Tylor McLaughlin
+    /// \authors Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
     public class UIMenu
     {
         private Container companyContainer;
@@ -267,11 +267,11 @@ namespace Presentation
                         break;
 
                     case '3':
-                        ModifyAnExistingEmployeeMenu();
+                        ModifyEmployeeMenu();
                         break;
 
                     case '4':
-                        RemoveAnExistingEmployeeMenu();
+                        RemoveEmployeeMenu();
                         break;
 
                     case '9':
@@ -330,7 +330,7 @@ namespace Presentation
                         break;
 
                     case '2':
-                        SearchEmployeeMenu();
+                        DisplaySingleEmployeeMenu();
                         break;
 
                     case '9':
@@ -516,14 +516,10 @@ namespace Presentation
         * \return Nothing is returned
         * 
         */
-        private void ModifyAnExistingEmployeeMenu()
+        private void ModifyEmployeeMenu()
         {
             ConsoleKeyInfo userInput;
             Employee theObj = new Employee();
-            FulltimeEmployee FtEmployee = new FulltimeEmployee();
-            ParttimeEmployee PtEmployee = new ParttimeEmployee();
-            ContractEmployee CtEmployee = new ContractEmployee();
-            SeasonalEmployee SnEmployee = new SeasonalEmployee();
             bool back = false;
 
             while (back == false)
@@ -531,9 +527,9 @@ namespace Presentation
                 Console.Clear();
                 Console.WriteLine("MODIFY AN EMPLOYEE:");
                 Console.WriteLine("");
-                Console.WriteLine("\t1. Search By SIN/Business Number");
-                Console.WriteLine("\t2. ----------");
-                Console.WriteLine("\t3. ----------");
+                Console.WriteLine("\t1. Search By Fist Name");
+                Console.WriteLine("\t2. Search By Last Name");
+                Console.WriteLine("\t3. Search By SIN/Business Number");
                 Console.WriteLine("\t4. ----------");
                 Console.WriteLine("\t5. ----------");
                 Console.WriteLine("\t6. ----------");
@@ -546,54 +542,65 @@ namespace Presentation
                 switch (userInput.KeyChar)
                 {
                     case '1':
-                        theObj = SearchBySIN("Search By SIN/BN To Modify:");
-
-                        Console.Clear();
-
-                        if (theObj == null)
-                        {
-                            Console.WriteLine("NO MATCHING EMPLOYEE FOUND");
-                            Console.WriteLine("");
-                            Console.WriteLine("Press any key to continue...");
-                            userInput = Console.ReadKey();
-                        }
-                        else
-                        {
-                            if (theObj.GetType() == FtEmployee.GetType())
-                            {
-                                FtEmployee = (FulltimeEmployee)theObj;
-                                ModifyFulltimeEmployee(FtEmployee, false);
-                            }
-                            else if (theObj.GetType() == PtEmployee.GetType())
-                            {
-                                PtEmployee = (ParttimeEmployee)theObj;
-                                ModifyParttimeEmployee(PtEmployee, false);
-                            }
-                            else if (theObj.GetType() == CtEmployee.GetType())
-                            {
-                                CtEmployee = (ContractEmployee)theObj;
-                                ModifyContractEmployee(CtEmployee, false);
-                            }
-                            else if (theObj.GetType() == SnEmployee.GetType())
-                            {
-                                SnEmployee = (SeasonalEmployee)theObj;
-                                ModifySeasonalEmployee(SnEmployee, false);
-                            }
-                        }
+                        theObj = SearchByFirstName("Search By First Name To Modify:");
+                        ModifyEmployeeTypeDeterminer(theObj);
                         break;
 
                     case '2':
-                        SearchFirstNameUI();
+                        theObj = SearchByLastName("Search By Last Name To Modify:");
+                        ModifyEmployeeTypeDeterminer(theObj);
                         break;
 
                     case '3':
-                        SearchLastNameUI();
+                        theObj = SearchBySIN("Search By SIN/BN To Modify:");
+                        ModifyEmployeeTypeDeterminer(theObj);
                         break;
 
                     case '9':
                         back = true;
                         break;
                 }
+            }
+        }
+
+        private void ModifyEmployeeTypeDeterminer(Employee theObj)
+        {
+
+            FulltimeEmployee FtEmployee = new FulltimeEmployee();
+            ParttimeEmployee PtEmployee = new ParttimeEmployee();
+            ContractEmployee CtEmployee = new ContractEmployee();
+            SeasonalEmployee SnEmployee = new SeasonalEmployee();
+            ConsoleKeyInfo userInput;
+            if (theObj == null)
+            {
+                Console.WriteLine("NO MATCHING EMPLOYEE FOUND");
+                Console.WriteLine("");
+                Console.WriteLine("Press any key to continue...");
+                userInput = Console.ReadKey();
+            }
+            else
+            {
+                if (theObj.GetType() == FtEmployee.GetType())
+                {
+                    FtEmployee = (FulltimeEmployee)theObj;
+                    ModifyFulltimeEmployee(FtEmployee, false);
+                }
+                else if (theObj.GetType() == PtEmployee.GetType())
+                {
+                    PtEmployee = (ParttimeEmployee)theObj;
+                    ModifyParttimeEmployee(PtEmployee, false);
+                }
+                else if (theObj.GetType() == CtEmployee.GetType())
+                {
+                    CtEmployee = (ContractEmployee)theObj;
+                    ModifyContractEmployee(CtEmployee, false);
+                }
+                else if (theObj.GetType() == SnEmployee.GetType())
+                {
+                    SnEmployee = (SeasonalEmployee)theObj;
+                    ModifySeasonalEmployee(SnEmployee, false);
+                }
+
             }
         }
 
@@ -630,7 +637,7 @@ namespace Presentation
         private bool ModifyFulltimeEmployee(FulltimeEmployee theObj, bool isNew)
         {
             ConsoleKeyInfo userInput;
-//            DateTime defaultDateTime = new DateTime();
+            //            DateTime defaultDateTime = new DateTime();
             string userInputSentence = "";
             string errorMessage = "";
             bool back = false;
@@ -806,7 +813,7 @@ namespace Presentation
                                 Console.Clear();
                                 Console.WriteLine("Save Successful!");
                                 userInput = Console.ReadKey();
-                                
+
                             }
                             else
                             {
@@ -857,7 +864,6 @@ namespace Presentation
         private bool ModifyParttimeEmployee(ParttimeEmployee theObj, bool isNew)
         {
             ConsoleKeyInfo userInput;
-            DateTime defaultDateTime = new DateTime();
             string userInputSentence = "";
             string errorMessage = "";
             bool back = false;
@@ -1085,7 +1091,6 @@ namespace Presentation
         private bool ModifyContractEmployee(ContractEmployee theObj, bool isNew)
         {
             ConsoleKeyInfo userInput;
-            DateTime defaultDateTime = new DateTime();
             string userInputSentence = "";
             string errorMessage = "";
             bool back = false;
@@ -1300,7 +1305,6 @@ namespace Presentation
         private bool ModifySeasonalEmployee(SeasonalEmployee theObj, bool isNew)
         {
             ConsoleKeyInfo userInput;
-            DateTime defaultDateTime = new DateTime();
             string userInputSentence = "";
             string errorMessage = "";
             bool back = false;
@@ -1485,15 +1489,10 @@ namespace Presentation
         * \return Nothing is returned
         * 
         */
-        private void RemoveAnExistingEmployeeMenu()
+        private void RemoveEmployeeMenu()
         {
             ConsoleKeyInfo userInput;
             Employee theObj = new Employee();
-            FulltimeEmployee FtEmployee = new FulltimeEmployee();
-            ParttimeEmployee PtEmployee = new ParttimeEmployee();
-            ContractEmployee CtEmployee = new ContractEmployee();
-            SeasonalEmployee SnEmployee = new SeasonalEmployee();
-            string errorMessage = "";
             bool back = false;
 
             while (back == false)
@@ -1501,9 +1500,9 @@ namespace Presentation
                 Console.Clear();
                 Console.WriteLine("REMOVE AN EMPLOYEE:");
                 Console.WriteLine("");
-                Console.WriteLine("\t1. Search By SIN/Business Number");
-                Console.WriteLine("\t2. ----------");
-                Console.WriteLine("\t3. ----------");
+                Console.WriteLine("\t1. Search By First Name");
+                Console.WriteLine("\t2. Search By Last Name");
+                Console.WriteLine("\t3. Search By SIN/Business Number");
                 Console.WriteLine("\t4. ----------");
                 Console.WriteLine("\t5. ----------");
                 Console.WriteLine("\t6. ----------");
@@ -1516,53 +1515,80 @@ namespace Presentation
                 switch (userInput.KeyChar)
                 {
                     case '1':
-                        theObj = SearchBySIN("Search By SIN/BN To Remove:");
-                        Console.Clear();
-
-                        if (theObj == null)
-                        {
-                            Console.WriteLine("NO MATCHING EMPLOYEE FOUND");
-                            Console.WriteLine("");
-                        }
-                        else
-                        {
-                            if (theObj.GetType() == FtEmployee.GetType())
-                            {
-                                FtEmployee = (FulltimeEmployee)theObj;
-                                companyContainer.RemoveEmployee(FtEmployee, ref errorMessage);
-                            }
-                            else if (theObj.GetType() == PtEmployee.GetType())
-                            {
-                                PtEmployee = (ParttimeEmployee)theObj;
-                                companyContainer.RemoveEmployee(PtEmployee, ref errorMessage);
-                            }
-                            else if (theObj.GetType() == CtEmployee.GetType())
-                            {
-                                CtEmployee = (ContractEmployee)theObj;
-                                companyContainer.RemoveEmployee(CtEmployee, ref errorMessage);
-                            }
-                            else if (theObj.GetType() == SnEmployee.GetType())
-                            {
-                                SnEmployee = (SeasonalEmployee)theObj;
-                                companyContainer.RemoveEmployee(SnEmployee, ref errorMessage);
-                            }
-                        }
-
-                        Console.WriteLine("Press any key to continue...");
-                        userInput = Console.ReadKey();
+                        theObj = SearchByFirstName("Search By First Name To Remove:");
+                        RemoveEmployeeTypeDeterminer(theObj);
                         break;
 
                     case '2':
-                        SearchFirstNameUI();
+                        theObj = SearchByLastName("Search By Last Name To Remove:");
+                        RemoveEmployeeTypeDeterminer(theObj);
                         break;
 
                     case '3':
-                        SearchLastNameUI();
+                        theObj = SearchBySIN("Search By SIN/BN To Remove:");
+                        RemoveEmployeeTypeDeterminer(theObj);
                         break;
 
                     case '9':
                         back = true;
                         break;
+                }
+            }
+        }
+
+        private void RemoveEmployeeTypeDeterminer(Employee theObj)
+        {
+            ConsoleKeyInfo userInput;
+            FulltimeEmployee FtEmployee = new FulltimeEmployee();
+            ParttimeEmployee PtEmployee = new ParttimeEmployee();
+            ContractEmployee CtEmployee = new ContractEmployee();
+            SeasonalEmployee SnEmployee = new SeasonalEmployee();
+            string errorMessage = "";
+
+            Console.Clear();
+
+            if (theObj == null)
+            {
+                Console.WriteLine("NO MATCHING EMPLOYEE FOUND");
+                Console.WriteLine("");
+            }
+            else
+            {
+                if (RemovalConfirmationUI(theObj) == true)
+                {
+                    if (theObj.GetType() == FtEmployee.GetType())
+                    {
+                        FtEmployee = (FulltimeEmployee)theObj;
+                        companyContainer.RemoveEmployee(FtEmployee, ref errorMessage);
+                    }
+                    else if (theObj.GetType() == PtEmployee.GetType())
+                    {
+                        PtEmployee = (ParttimeEmployee)theObj;
+                        companyContainer.RemoveEmployee(PtEmployee, ref errorMessage);
+                    }
+                    else if (theObj.GetType() == CtEmployee.GetType())
+                    {
+                        CtEmployee = (ContractEmployee)theObj;
+                        companyContainer.RemoveEmployee(CtEmployee, ref errorMessage);
+                    }
+                    else if (theObj.GetType() == SnEmployee.GetType())
+                    {
+                        SnEmployee = (SeasonalEmployee)theObj;
+                        companyContainer.RemoveEmployee(SnEmployee, ref errorMessage);
+                    }
+
+                    if (errorMessage != "")
+                    {
+                        PrintErrorMessage(errorMessage);
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("EMPLOYEE HAS BEEN REMOVED");
+                        Console.WriteLine("");
+                        Console.WriteLine("Press any key to continue...");
+                        userInput = Console.ReadKey();
+                    }
                 }
             }
         }
@@ -1582,14 +1608,10 @@ namespace Presentation
         * 
         * \return string - the employee record of the search result..
         */
-        private void SearchEmployeeMenu()
+        private void DisplaySingleEmployeeMenu()
         {
             ConsoleKeyInfo userInput;
             Employee theObj = new Employee();
-            FulltimeEmployee FtEmployee = new FulltimeEmployee();
-            ParttimeEmployee PtEmployee = new ParttimeEmployee();
-            ContractEmployee CtEmployee = new ContractEmployee();
-            SeasonalEmployee SnEmployee = new SeasonalEmployee();
             bool back = false;
 
             while (back == false)
@@ -1597,9 +1619,9 @@ namespace Presentation
                 Console.Clear();
                 Console.WriteLine("DISPLAY AN EMPLOYEE:");
                 Console.WriteLine("");
-                Console.WriteLine("\t1. Search By SIN/Business Number");
-                Console.WriteLine("\t2. ----------");
-                Console.WriteLine("\t3. ----------");
+                Console.WriteLine("\t1. Search By First Name");
+                Console.WriteLine("\t2. Search By Last Name");
+                Console.WriteLine("\t3. Search By SIN/Business Number");
                 Console.WriteLine("\t4. ----------");
                 Console.WriteLine("\t5. ----------");
                 Console.WriteLine("\t6. ----------");
@@ -1612,49 +1634,19 @@ namespace Presentation
                 switch (userInput.KeyChar)
                 {
                     case '1':
-                        theObj = SearchBySIN("Search By SIN/BN To Display:");
+                        theObj = SearchByFirstName("Search By First Name To Display:");
+                        DisplaySingleEmployeTypeDeterminer(theObj);
 
-                        Console.Clear();
-
-                        if (theObj == null)
-                        {
-                            Console.WriteLine("NO MATCHING EMPLOYEE FOUND");
-                            Console.WriteLine("");
-                        }
-                        else
-                        {
-                            if (theObj.GetType() == FtEmployee.GetType())
-                            {
-                                FtEmployee = (FulltimeEmployee)theObj;
-                                Console.WriteLine("{0}", FtEmployee.Details());
-                            }
-                            else if (theObj.GetType() == PtEmployee.GetType())
-                            {
-                                PtEmployee = (ParttimeEmployee)theObj;
-                                Console.WriteLine("{0}", PtEmployee.Details());
-                            }
-                            else if (theObj.GetType() == CtEmployee.GetType())
-                            {
-                                CtEmployee = (ContractEmployee)theObj;
-                                Console.WriteLine("{0}", CtEmployee.Details());
-                            }
-                            else if (theObj.GetType() == SnEmployee.GetType())
-                            {
-                                SnEmployee = (SeasonalEmployee)theObj;
-                                Console.WriteLine("{0}", SnEmployee.Details());
-                            }
-                        }
-
-                        Console.WriteLine("Press any key to continue...");
-                        userInput = Console.ReadKey();
                         break;
 
                     case '2':
-                        SearchFirstNameUI();
+                        theObj = SearchByLastName("Search By Last Name To Display:");
+                        DisplaySingleEmployeTypeDeterminer(theObj);
                         break;
 
                     case '3':
-                        SearchLastNameUI();
+                        theObj = SearchBySIN("Search By SIN/BN To Display:");
+                        DisplaySingleEmployeTypeDeterminer(theObj);
                         break;
 
                     case '9':
@@ -1666,8 +1658,70 @@ namespace Presentation
             }
         }
 
+        private void DisplaySingleEmployeTypeDeterminer(Employee theObj)
+        {
 
+            ConsoleKeyInfo userInput;
+            Console.Clear();
 
+            if (theObj == null)
+            {
+                Console.WriteLine("NO MATCHING EMPLOYEE FOUND");
+                Console.WriteLine("");
+            }
+            else
+            {
+                DisplayEmployeeUnknownType(theObj);
+            }
+
+            Console.WriteLine("Press any key to continue...");
+            userInput = Console.ReadKey();
+        }
+
+        private void DisplayEmployeeUnknownType(Employee theObj)
+        {
+
+            FulltimeEmployee FtEmployee = new FulltimeEmployee();
+            ParttimeEmployee PtEmployee = new ParttimeEmployee();
+            ContractEmployee CtEmployee = new ContractEmployee();
+            SeasonalEmployee SnEmployee = new SeasonalEmployee();
+
+            if (theObj.GetType() == FtEmployee.GetType())
+            {
+                FtEmployee = (FulltimeEmployee)theObj;
+                Console.WriteLine("{0}", FtEmployee.Details());
+            }
+            else if (theObj.GetType() == PtEmployee.GetType())
+            {
+                PtEmployee = (ParttimeEmployee)theObj;
+                Console.WriteLine("{0}", PtEmployee.Details());
+            }
+            else if (theObj.GetType() == CtEmployee.GetType())
+            {
+                CtEmployee = (ContractEmployee)theObj;
+                Console.WriteLine("{0}", CtEmployee.Details());
+            }
+            else if (theObj.GetType() == SnEmployee.GetType())
+            {
+                SnEmployee = (SeasonalEmployee)theObj;
+                Console.WriteLine("{0}", SnEmployee.Details());
+            }
+        }
+
+        /**
+         * \brief UI displaying all employee objects within companyContainer
+         *
+         * \details <b>Details</b>
+         *
+         * This method will display all the employee objects within companyContainer.
+         * 3 objects will be displayed at once and user has to press a key to view the 
+         * next 3 objects.
+         * 
+         * \param None
+         * 
+         * \return Nothing is returned
+         * 
+         */
         private void DisplayAllEmployees()
         {
             ConsoleKeyInfo userInput;
@@ -1713,6 +1767,7 @@ namespace Presentation
                     SnEmployee = (SeasonalEmployee)currentObj;
                     Console.WriteLine("{0}", SnEmployee.Details());
                 }
+
                 currentObj = (Employee)companyContainer.NextEmployee();
 
                 if (counter >= 3 || currentObj == null)
@@ -1723,17 +1778,17 @@ namespace Presentation
             }
         }
 
-        private void DisplaySingleEmployee(Employee theObj)
-        {
-            FulltimeEmployee FtEmployee = new FulltimeEmployee();
-            ParttimeEmployee PtEmployee = new ParttimeEmployee();
-            ContractEmployee CtEmployee = new ContractEmployee();
-            SeasonalEmployee SnEmployee = new SeasonalEmployee();
+        //private void DisplaySingleEmployee(Employee theObj)
+        //{
+        //    FulltimeEmployee FtEmployee = new FulltimeEmployee();
+        //    ParttimeEmployee PtEmployee = new ParttimeEmployee();
+        //    ContractEmployee CtEmployee = new ContractEmployee();
+        //    SeasonalEmployee SnEmployee = new SeasonalEmployee();
 
-            //            if (theObj.GetType() == FtEmployee.GetType())
-            //            { }
+        //            if (theObj.GetType() == FtEmployee.GetType())
+        //            { }
 
-        }
+        //        }
 
         private void ModifySingleEmployee(Employee theObj)
         {
@@ -1741,16 +1796,125 @@ namespace Presentation
         }
 
 
-        private void SearchFirstNameUI()
+        private Employee SearchByFirstName(string displayOrModifyOrRemove, bool lastName = false)
         {
+            string searchParameter = "";
+            Employee theObj = new Employee();
+            bool found = false;
+            bool back = false;
+            string dmr = "";
+            ConsoleKeyInfo userInput;
+            bool compareResult = false;
 
+            if (displayOrModifyOrRemove.Contains("Display"))
+            {
+                dmr = "DISPLAY";
+            }
+            else if (displayOrModifyOrRemove.Contains("Modify"))
+            {
+                dmr = "MODIFY";
+            }
+            else
+            {
+                dmr = "REMOVE";
+            }
+
+            Console.Clear();
+            searchParameter = TakeUserInputSentence(displayOrModifyOrRemove);
+
+            theObj = (Employee)companyContainer.NextEmployee(true);
+
+            while (theObj != null && found == false)
+            {
+                back = false;
+
+                if (lastName == false)
+                {
+                    if (theObj.GetFirstName() == searchParameter)
+                    {
+                        compareResult = true;
+                    }
+                    else
+                    {
+                        compareResult = false;
+                    }
+                }
+                else
+                {
+                    if (theObj.GetLastName() == searchParameter)
+                    {
+                        compareResult = true;
+                    }
+                    else
+                    {
+                        compareResult = false;
+                    }
+                }
+
+                if (compareResult == true)
+                {
+                    while (back == false)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("{0} THIS EMPLOYEE?:", dmr);
+                        Console.WriteLine("");
+                        Console.WriteLine("\t1. Yes");
+                        Console.WriteLine("\t2. No");
+                        Console.WriteLine("\t3. ----------");
+                        Console.WriteLine("\t4. ----------");
+                        Console.WriteLine("\t5. ----------");
+                        Console.WriteLine("\t6. ----------");
+                        Console.WriteLine("\t7. ----------");
+                        Console.WriteLine("\t8. ----------");
+                        Console.WriteLine("\t9. Return to {0} Menu", dmr);
+                        Console.WriteLine("");
+                        DisplayEmployeeUnknownType(theObj);
+                        
+                        
+                        userInput = Console.ReadKey();
+
+                        switch (userInput.KeyChar)
+                        {
+                            case '1':
+                                found = true;
+                                back = true;
+                                break;
+
+                            case '2':
+                                back = true;
+                                break;
+                        }
+                    }
+                }
+                else
+                {
+                    theObj = (Employee)companyContainer.NextEmployee();
+                }
+            }
+
+            return theObj;
         }
 
-        private void SearchLastNameUI()
+        private Employee SearchByLastName(string displayOrModifyOrRemove)
         {
-
+            return SearchByFirstName(displayOrModifyOrRemove, true);
         }
 
+        /**
+         * \brief Searching employe by SIN or BN
+         *
+         * \details <b>Details</b>
+         *
+         * This method will look through each object within the companyContainer 
+         * until it finds an object with matching SIN.
+         * 
+         * \param string displayOrModifyOrRemove: the instruction to remind user 
+         *                                        what they are searching for
+         * 
+         * \return Employee: the object with matching SIN. If there is no object 
+         *                   with matching SIN, it will return null.
+         * 
+         */
         private Employee SearchBySIN(string displayOrModifyOrRemove)
         {
             string searchParameter = "";
@@ -1815,15 +1979,115 @@ namespace Presentation
 
         }
 
-        private void DeleteConfirmationUI()
+        /**
+         * \brief Employee removal confirmation UI
+         *
+         * \details <b>Details</b>
+         *
+         * This method will show the detail of the employee that has been 
+         * chosen to be removed. It will prompt user for input of whether 
+         * the user wants to delete the employee.
+         * 
+         * \param Employee theObj: The employee object that holds the employee
+         *                         information.
+         * 
+         * \return bool: whether the employee should be deleted or not.
+         * 
+         */
+        private bool RemovalConfirmationUI(Employee theObj)
         {
             ConsoleKeyInfo userInput;
+            FulltimeEmployee FtEmployee = new FulltimeEmployee();
+            ParttimeEmployee PtEmployee = new ParttimeEmployee();
+            ContractEmployee CtEmployee = new ContractEmployee();
+            SeasonalEmployee SnEmployee = new SeasonalEmployee();
+            bool back = false;
+            bool removeOrNot = false;
 
-            userInput = Console.ReadKey();
+            while (back == false)
+            {
+                Console.Clear();
+                Console.WriteLine("ARE YOU DELETING THIS EMPLOYEE?");
+                Console.WriteLine("");
+                Console.WriteLine("\t1. No");
+                Console.WriteLine("\t2. No");
+                Console.WriteLine("\t3. No");
+                Console.WriteLine("\t4. No");
+                Console.WriteLine("\t5. No");
+                Console.WriteLine("\t6. No");
+                Console.WriteLine("\t7. Yes");
+                Console.WriteLine("\t8. No");
+                Console.WriteLine("\t9. No");
+                Console.WriteLine("");
+                Console.WriteLine("EMPLOYEE DETAIL:");
 
-            Console.Clear();
+                if (theObj.GetType() == FtEmployee.GetType())
+                {
+                    FtEmployee = (FulltimeEmployee)theObj;
+                    Console.WriteLine("{0}", FtEmployee.Details());
+                }
+                else if (theObj.GetType() == PtEmployee.GetType())
+                {
+                    PtEmployee = (ParttimeEmployee)theObj;
+                    Console.WriteLine("{0}", PtEmployee.Details());
+                }
+                else if (theObj.GetType() == CtEmployee.GetType())
+                {
+                    CtEmployee = (ContractEmployee)theObj;
+                    Console.WriteLine("{0}", CtEmployee.Details());
+                }
+                else if (theObj.GetType() == SnEmployee.GetType())
+                {
+                    SnEmployee = (SeasonalEmployee)theObj;
+                    Console.WriteLine("{0}", SnEmployee.Details());
+                }
+
+                userInput = Console.ReadKey();
+
+                switch (userInput.KeyChar)
+                {
+                    case '1':
+                        back = true;
+                        break;
+
+                    case '2':
+                        back = true;
+                        break;
+
+                    case '3':
+                        back = true;
+                        break;
+
+                    case '4':
+                        back = true;
+                        break;
+
+                    case '5':
+                        back = true;
+                        break;
+
+                    case '6':
+                        back = true;
+                        break;
+
+                    case '7':
+                        removeOrNot = true;
+                        back = true;
+                        break;
+
+                    case '8':
+                        back = true;
+                        break;
+
+                    case '9':
+                        back = true;
+                        break;
 
 
+                }
+            }
+
+            return removeOrNot;
 
         }
 
@@ -1832,6 +2096,20 @@ namespace Presentation
             Console.Clear();
         }
 
+        /**
+         * \brief method to make sure user only enters numbers
+         *
+         * \details <b>Details</b>
+         *
+         * This method uses switch() to make sure only numerical input 
+         * will be recorded.
+         * 
+         * \param None
+         * 
+         * \return int: a numerical value of 0 ~ 9, depending on what 
+         *              what a user has typed.
+         * 
+         */
         private int TakeUserInputNumber()
         {
             ConsoleKeyInfo userInput;
@@ -1904,6 +2182,28 @@ namespace Presentation
             return currentInput;
         }
 
+        /**
+         * \brief UI for entering SIN or BN
+         *
+         * \details <b>Details</b>
+         *
+         * This method only accepts 9 numerical input from user. The method 
+         * will automatically append spaces to the input for displaying purposes 
+         * depending on whether the user is entering SIN or BN. However the 
+         * spaces will not be added if the method is called to perform search for 
+         * that the method will not know whether the user is entering a SIN or BN 
+         * in that case.
+         * 
+         * Format for SIN: ### ### ###
+         * Format for BN:  ##### ####
+         * Format for searching: #########
+         * 
+         * \param string sinOrBN: the instruction displayed in UI to remind user 
+         *                        what they are entering the numbers for
+         * 
+         * \return string: The SIN or BN user has entered.
+         * 
+         */
         private string TakeUserInputSIN(string sinOrBN)
         {
             string currentInput = "";
@@ -2010,7 +2310,21 @@ namespace Presentation
 
 
 
-
+        /**
+         * \brief UI for taking date input from user
+         *
+         * \details <b>Details</b>
+         *
+         * This method only allows users to enter numerical characters, 
+         * and it will automatically append "-" at the 5th and 8th 
+         * characters to achieve the yyyy-mm-dd format.
+         * 
+         * \param string whichDate: instruction displayed in UI to remind 
+         *                          which date they are entering
+         * 
+         * \return string: the date in string format.
+         * 
+         */
         private string TakeUserInputDate(string whichDate)
         {
             string currentInput = "";
@@ -2056,6 +2370,24 @@ namespace Presentation
             return currentInput;
         }
 
+
+        /**
+         * \brief UI for taking numerical input from user in money format
+         *
+         * \details <b>Details</b>
+         *
+         * This method will display UI prompting user to input an amount of 
+         * money. It requires the user to enter 2 decimal digits to end the 
+         * input process.
+         * 
+         * 
+         * \param string moneyType: the instruction that will be displayed 
+         *                          to tell the user what they should be 
+         *                          entering
+         * 
+         * \return string: the amont of money in string format, minus "$".
+         * 
+         */
         private string TakeUserInputMoney(string moneyType)
         {
             string currentInput = "";
@@ -2215,7 +2547,6 @@ namespace Presentation
         {
             ConsoleKeyInfo userInput;
             Console.Clear();
-            Console.WriteLine("");
             Console.WriteLine("{0}", errorMessage);
             Console.WriteLine("");
             Console.WriteLine("Press any key to continue...");
