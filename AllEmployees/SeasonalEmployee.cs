@@ -351,6 +351,8 @@ namespace AllEmployees
 
             if (float.TryParse(userInput, out userInputFloat))
             {
+                userInputFloat = (float)Math.Round(userInputFloat, 2);
+
                 if (Supporting.Validation.ValidatePiecePay(userInputFloat, ref errorMessage))
                 {
                     setStatus = true;

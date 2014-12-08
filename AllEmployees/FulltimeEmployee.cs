@@ -483,6 +483,8 @@ namespace AllEmployees
 
             if (float.TryParse(userInput, out userInputFloat))
             {
+                userInputFloat = (float)Math.Round(userInputFloat, 2);
+
                 if (Supporting.Validation.ValidateSalary(userInputFloat, ref errorMessage))
                 {
                     setStatus = true;

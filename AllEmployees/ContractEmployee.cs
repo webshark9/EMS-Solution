@@ -203,7 +203,7 @@ namespace AllEmployees
             empDetails += "Business Date Of Creation: " + dob + "\n";
             empDetails += "Contract Start Date: " + cStarDate + "\n";
             empDetails += "Contract Stop Date: " + cStopDate + "\n";
-            empDetails += "Fixed Contract Amount: " + GetFixedContractAmount().ToString() + "\n";
+            empDetails += "Fixed Contract Amount: $" + GetFixedContractAmount().ToString() + "\n";
 
             Logging.LogEvent("[ContractEmployee.Details]\n" + empDetails);
 
@@ -488,6 +488,8 @@ namespace AllEmployees
 
             if (float.TryParse(userInput, out userInputFloat))
             {
+                userInputFloat = (float)Math.Round(userInputFloat, 2);
+
                 if (Supporting.Validation.ValidateFixedContractAmount(userInputFloat, ref errorMessage))
                 {
                     setStatus = true;

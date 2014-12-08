@@ -482,6 +482,8 @@ namespace AllEmployees
 
             if (float.TryParse(userInput, out userInputFloat))
             {
+                userInputFloat = (float)Math.Round(userInputFloat, 2);
+
                 if (Supporting.Validation.ValidateHourlyRate(userInputFloat, ref errorMessage))
                 {
                     setStatus = true;
