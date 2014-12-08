@@ -145,10 +145,13 @@ namespace AllEmployees
                 dot = GetDateOfTermination().ToString("d");
             }
 
-            sin = GetSocialInsuranceNumber();
+            if (GetSocialInsuranceNumber() != "")
+            {
+                sin = GetSocialInsuranceNumber();
 
-            sin = sin.Insert(6, " ");
-            sin = sin.Insert(3, " ");
+                sin = sin.Insert(6, " ");
+                sin = sin.Insert(3, " ");
+            }
 
             empDetails = "First Name: " + GetFirstName() + "\n";
             empDetails += "Last Name: " + GetLastName() + "\n";
@@ -159,6 +162,21 @@ namespace AllEmployees
             empDetails += "Hourly Rate: $" + GetHourlyRate().ToString() + "\n";
 
             Logging.LogEvent("[ParttimeEmployee.Details]\n" + empDetails);
+
+            return empDetails;
+        }
+
+        public string ToString()
+        {
+            string empDetails = "PT|";
+
+            empDetails += GetLastName() + "|";
+            empDetails += GetFirstName() + "|";
+            empDetails += GetSocialInsuranceNumber() + "|";
+            empDetails += GetDateOfBirth().ToString("d") + "|";
+            empDetails += GetDateOfHire().ToString("d") + "|";
+            empDetails += GetDateOfTermination().ToString("d") + "|";
+            empDetails += GetHourlyRate() + "|";
 
             return empDetails;
         }

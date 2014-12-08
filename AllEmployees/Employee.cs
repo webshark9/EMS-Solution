@@ -109,6 +109,20 @@ namespace AllEmployees
             }
         }
 
+        abstract virtual public string Details()
+        {
+            string empDetails = "";
+
+            return empDetails;
+        }
+
+        abstract virtual public string ToString()
+        {
+            string empDetailsStr = "";
+
+            return empDetailsStr;
+        }
+
         /**
         * \brief Sets the <i>firstName</i> attribute within the Employee class
         *

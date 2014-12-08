@@ -155,10 +155,12 @@ namespace AllEmployees
                 cStopDate = GetContractStopDate().ToString("d");
             }
 
-            bn = GetSocialInsuranceNumber();
+            if (GetSocialInsuranceNumber() != "")
+            {
+                bn = GetSocialInsuranceNumber();
 
-            bn = bn.Insert(6, " ");
-            bn = bn.Insert(3, " ");
+                bn = bn.Insert(5, " ");
+            }
 
             empDetails += "Business Name: " + GetLastName() + "\n";
             empDetails += "Business Number: " + bn + "\n";
@@ -168,6 +170,21 @@ namespace AllEmployees
             empDetails += "Fixed Contract Amount: " + GetFixedContractAmount().ToString() + "\n";
 
             Logging.LogEvent("[ContractEmployee.Details]\n" + empDetails);
+
+            return empDetails;
+        }
+
+        public string ToString()
+        {
+            string empDetails = "CT|";
+            
+            empDetails += GetLastName() + "|";
+            empDetails += GetFirstName() + "|";
+            empDetails += GetSocialInsuranceNumber() + "|";
+            empDetails += GetDateOfBirth().ToString("d") + "|";
+            empDetails += GetContractStartDate().ToString("d") + "|";
+            empDetails += GetContractStopDate().ToString("d") + "|";
+            empDetails += GetFixedContractAmount() + "|";
 
             return empDetails;
         }

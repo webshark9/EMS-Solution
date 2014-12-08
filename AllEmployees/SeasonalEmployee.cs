@@ -122,10 +122,13 @@ namespace AllEmployees
                 dob = GetDateOfBirth().ToString("d");
             }
 
-            sin = GetSocialInsuranceNumber();
+            if (GetSocialInsuranceNumber() != "")
+            {
+                sin = GetSocialInsuranceNumber();
 
-            sin = sin.Insert(6, " ");
-            sin = sin.Insert(3, " ");
+                sin = sin.Insert(6, " ");
+                sin = sin.Insert(3, " ");
+            }
 
             empDetails = "First Name: " + GetFirstName() + "\n";
             empDetails += "Last Name: " + GetLastName() + "\n";
@@ -135,6 +138,20 @@ namespace AllEmployees
             empDetails += "Piece Pay: $" + GetPiecePay().ToString() + "\n";
 
             Logging.LogEvent("[SeasonalEmployee.Details]\n" + empDetails);
+
+            return empDetails;
+        }
+
+        public string ToString()
+        {
+            string empDetails = "SN|";
+
+            empDetails += GetLastName() + "|";
+            empDetails += GetFirstName() + "|";
+            empDetails += GetSocialInsuranceNumber() + "|";
+            empDetails += GetDateOfBirth().ToString("d") + "|";
+            empDetails += GetSeason() + "|";
+            empDetails += GetPiecePay() + "|";
 
             return empDetails;
         }
