@@ -232,19 +232,19 @@ namespace AllEmployees
             {
                 validStatus = false;
             }
-            else if (!Supporting.Validation.ValidateSeason(GetSeason(), ref unused))
+            else if (!Supporting.Validation.ValidateSeason(GetSeason(), ref unused) && GetSeason() != "")
             {
                 validStatus = false;
             }
-            else if (!Supporting.Validation.ValidateName(GetFirstName(), ref unused))
+            else if (!Supporting.Validation.ValidateName(GetFirstName(), ref unused) && GetFirstName() != "")
             {
                 validStatus = false;
             }
-            else if (!Supporting.Validation.ValidateName(GetLastName(), ref unused))
+            else if (!Supporting.Validation.ValidateName(GetLastName(), ref unused) && GetLastName() != "")
             {
                 validStatus = false;
             }
-            else if (!Supporting.Validation.ValidateDateOfBirth(GetDateOfBirth(), ref unused))
+            else if (!Supporting.Validation.ValidateDateOfBirth(GetDateOfBirth(), ref unused) && GetDateOfBirth() != DateTime.MinValue)
             {
                 validStatus = false;
             }

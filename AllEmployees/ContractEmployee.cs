@@ -291,11 +291,11 @@ namespace AllEmployees
             string validStatusStr = "";
             string unused = "";
 
-            if (!Supporting.Validation.ValidateContractStartDate(GetDateOfBirth(), GetContractStartDate(), GetContractStopDate(), ref unused))
+            if (!Supporting.Validation.ValidateContractStartDate(GetDateOfBirth(), GetContractStartDate(), GetContractStopDate(), ref unused) && GetContractStartDate() != DateTime.MinValue)
             {
                 validStatus = false;
             }
-            else if (!Supporting.Validation.ValidateContractStopDate(GetDateOfBirth(), GetContractStartDate(), GetContractStopDate(), ref unused))
+            else if (!Supporting.Validation.ValidateContractStopDate(GetDateOfBirth(), GetContractStartDate(), GetContractStopDate(), ref unused) && GetContractStopDate() != DateTime.MinValue)
             {
                 validStatus = false;
             }
@@ -303,11 +303,11 @@ namespace AllEmployees
             {
                 validStatus = false;
             }
-            else if (!Supporting.Validation.ValidateName(GetLastName(), ref unused))
+            else if (!Supporting.Validation.ValidateName(GetLastName(), ref unused) && GetLastName() != "")
             {
                 validStatus = false;
             }
-            else if (!Supporting.Validation.ValidateDateOfCreation(GetSocialInsuranceNumber(), GetDateOfBirth(), ref unused))
+            else if (!Supporting.Validation.ValidateDateOfCreation(GetSocialInsuranceNumber(), GetDateOfBirth(), ref unused) && GetDateOfBirth() != DateTime.MinValue)
             {
                 validStatus = false;
             }
