@@ -615,5 +615,54 @@ namespace Testing
 
             Assert.AreEqual(expected, actual, "Valid fixed contract amount was found invalid");
         }
+
+        /**
+         * \test
+         * ID: \n
+         * Name: \n
+         * Description: \n
+         * How is it conducted: \n
+         * Type of test: \n
+         * Data Used: \n
+         * Expected outcome: 'false' return \n
+         * Actual outcome: 
+         */
+        [TestMethod]
+        public void Invalid_BusinessNumber_Test()
+        {
+            string testInput = "123234345";
+            string unusedString = "";
+            ContractEmployee employeeObj = new ContractEmployee();
+            bool expected = false;
+            bool actual = employeeObj.SetBusinessNumber(testInput, ref unusedString);
+
+            Assert.AreEqual(expected, actual, "Invalid business number contract amount was found valid");
+        }
+
+        /**
+         * \test
+         * ID: \n
+         * Name: \n
+         * Description: \n
+         * How is it conducted: \n
+         * Type of test: \n
+         * Data Used: \n
+         * Expected outcome: 'false' return \n
+         * Actual outcome: 
+         */
+        [TestMethod]
+        public void Valid_BusinessNumber_Test()
+        {
+            string testInput = "333333334";
+            string unusedString = "";
+            ContractEmployee employeeObj = new ContractEmployee();
+            bool expected = true;
+            bool actual = false;
+
+            employeeObj.SetDateOfBirth("1933/12/12");
+            actual = employeeObj.SetBusinessNumber(testInput, ref unusedString);
+
+            Assert.AreEqual(expected, actual, "Valid business number amount was found invalid");
+        }
     }
 }

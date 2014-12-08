@@ -133,7 +133,7 @@ namespace AllEmployees
             empDetails = "First Name: " + GetFirstName() + "\n";
             empDetails += "Last Name: " + GetLastName() + "\n";
             empDetails += "SIN: " + sin + "\n";
-            empDetails += "Date Of Birth: " + GetDateOfBirth().ToString() + "\n";
+            empDetails += "Date Of Birth: " + GetDateOfBirth().ToString("d") + "\n";
             empDetails += "Season: " + GetSeason() + "\n";
             empDetails += "Piece Pay: $" + GetPiecePay().ToString() + "\n";
 
