@@ -61,12 +61,11 @@ namespace Supporting
             int nextPipeIndex = 0;// used to hold the index of the next pipe character found
             string returnedErrorMessage = "";
 
-
-            databaseName = dbName;// save the name of the database file in the 'databaseName' data member so we can close the file later
-
             try
             {
-                dbReader = new StreamReader(databaseName);
+                dbReader = new StreamReader(dbName);
+                databaseName = dbName;// save the name of the database file in the 'databaseName' data member so we can close the file later
+
                 Logging.LogEvent("[FileIO.OpenDBase] The file: " + databaseName + " has been opened for reading.");
 
                 /* this loop reads the entire database file and stores each line separately into 'stringsRead' */
@@ -446,7 +445,7 @@ namespace Supporting
 
             }// end 'foreach'
 
-            Logging.LogEvent("[FileIO.OpenDBase] Total Records read: " + numRecordsRead.ToString() + ". Valid records read: " + numValidRecords.ToString() + ". Invalid records read: " + numInvalidRecords.ToString());
+            Logging.LogEvent("[FileIO.OpenDBase] Reading file: " + dbName + ". Total Records read: " + numRecordsRead.ToString() + ". Valid records read: " + numValidRecords.ToString() + ". Invalid records read: " + numInvalidRecords.ToString());
 
             if (dbReader != null)
             {
