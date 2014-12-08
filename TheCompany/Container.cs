@@ -506,7 +506,7 @@ namespace TheCompany
             {
                 if (virtualDB[i].GetSocialInsuranceNumber() == employeeToModify.GetSocialInsuranceNumber())
                 {
-                    Logging.LogEvent("[Container.ModifyEmployee] Employee modified. Original Values: " + virtualDB[i].Details() + "\nNew Values: " + employeeToModify.Details());
+                    Logging.LogEvent("[Container.ModifyEmployee] Employee modified. Original Values: " + virtualDB[i].ToString() + "\nNew Values: " + employeeToModify.ToString());
                     virtualDB[i] = employeeToModify;
                     modifySuccessful = true;
 
@@ -656,7 +656,34 @@ namespace TheCompany
             }
             else// index is valid
             {
-                return virtualDB[lastIndex++];// return the element and increase the 'lastIndex' data member so the next time this method is called the next index will be returned
+                FulltimeEmployee FTemployee = new FulltimeEmployee();
+                ParttimeEmployee PTemployee = new ParttimeEmployee();
+                ContractEmployee CTemployee = new ContractEmployee();
+                SeasonalEmployee SNemployee = new SeasonalEmployee();
+
+                if (FTemployee.GetType() == virtualDB[lastIndex].GetType())
+                {
+                    return new FulltimeEmployee((FulltimeEmployee)virtualDB[lastIndex++]);// return the element and increase the 'lastIndex' data member so the next time this method is called the next index will be returned
+
+                }
+                else if (PTemployee.GetType() == virtualDB[lastIndex].GetType())
+                {
+                    return new ParttimeEmployee((ParttimeEmployee)virtualDB[lastIndex++]);// return the element and increase the 'lastIndex' data member so the next time this method is called the next index will be returned
+                }
+                else if (CTemployee.GetType() == virtualDB[lastIndex].GetType())
+                {
+                    return new ContractEmployee((ContractEmployee)virtualDB[lastIndex++]);// return the element and increase the 'lastIndex' data member so the next time this method is called the next index will be returned
+                }
+                else if (SNemployee.GetType() == virtualDB[lastIndex].GetType())
+                {
+                    return new SeasonalEmployee((SeasonalEmployee)virtualDB[lastIndex++]);// return the element and increase the 'lastIndex' data member so the next time this method is called the next index will be returned
+                }
+                else 
+                {
+                    return null;
+                }
+
+
             }
 
         }
