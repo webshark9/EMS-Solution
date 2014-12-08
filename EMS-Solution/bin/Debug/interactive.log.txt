@@ -556,3 +556,346 @@ Piece Pay: $12.12
 2014-12-8 10:31:12 [FileIO.OpenDBase] The file: dgdgr.txt could not be found for reading.
 2014-12-8 10:31:12 [FileIO.OpenDBase] Reading file: dgdgr.txt. Total Records read: 0. Valid records read: 0. Invalid records read: 0
 2014-12-8 10:31:12 [Container.Constructor] Total Employees: 0. Employees Added: 0. Invalid Employees Found: 0
+2014-12-8 10:40:24 [ContractEmployee.Details]
+Business Name: 
+Business Number: 
+Business Date Of Creation: N/A
+Contract Start Date: N/A
+Contract Stop Date: N/A
+Fixed Contract Amount: $0
+
+2014-12-8 10:40:38 [ContractEmployee.Details]
+Business Name: Jones-Jones-Smith-And-Associates-Ltd
+Business Number: 
+Business Date Of Creation: N/A
+Contract Start Date: N/A
+Contract Stop Date: N/A
+Fixed Contract Amount: $0
+
+2014-12-8 10:40:52 [Employee.SetBusinessNumber] Attempted To Set socialInsuranceNumber Attribute With Invalid Value: 123456789
+2014-12-8 10:40:53 [ContractEmployee.Details]
+Business Name: Jones-Jones-Smith-And-Associates-Ltd
+Business Number: 
+Business Date Of Creation: N/A
+Contract Start Date: N/A
+Contract Stop Date: N/A
+Fixed Contract Amount: $0
+
+2014-12-8 10:41:8 [Employee.SetBusinessNumber] Attempted To Set socialInsuranceNumber Attribute With Invalid Value: 123456789
+2014-12-8 10:41:16 [ContractEmployee.Details]
+Business Name: Jones-Jones-Smith-And-Associates-Ltd
+Business Number: 
+Business Date Of Creation: N/A
+Contract Start Date: N/A
+Contract Stop Date: N/A
+Fixed Contract Amount: $0
+
+2014-12-8 10:41:25 [ContractEmployee.Details]
+Business Name: Jones-Jones-Smith-And-Associates-Ltd
+Business Number: 12345 6782
+Business Date Of Creation: N/A
+Contract Start Date: N/A
+Contract Stop Date: N/A
+Fixed Contract Amount: $0
+
+2014-12-8 10:41:38 [Employee.SetDateOfCreation] Attempted To Set dateOfBirth Attribute With Invalid Value: 1921-06-31
+2014-12-8 10:41:47 [ContractEmployee.Details]
+Business Name: Jones-Jones-Smith-And-Associates-Ltd
+Business Number: 12345 6782
+Business Date Of Creation: N/A
+Contract Start Date: N/A
+Contract Stop Date: N/A
+Fixed Contract Amount: $0
+
+2014-12-8 10:42:0 [Employee.SetDateOfCreation] Attempted To Set dateOfBirth Attribute With Invalid Value: 1921-06-30
+2014-12-8 10:42:10 [ContractEmployee.Details]
+Business Name: Jones-Jones-Smith-And-Associates-Ltd
+Business Number: 12345 6782
+Business Date Of Creation: N/A
+Contract Start Date: N/A
+Contract Stop Date: N/A
+Fixed Contract Amount: $0
+
+2014-12-8 10:42:23 [ContractEmployee.Details]
+Business Name: Jones-Jones-Smith-And-Associates-Ltd
+Business Number: 12345 6782
+Business Date Of Creation: 1912-06-30
+Contract Start Date: N/A
+Contract Stop Date: N/A
+Fixed Contract Amount: $0
+
+2014-12-8 10:42:36 [ContractEmployee.Details]
+Business Name: Jones-Jones-Smith-And-Associates-Ltd
+Business Number: 12345 6782
+Business Date Of Creation: 1912-06-30
+Contract Start Date: 2010-01-01
+Contract Stop Date: N/A
+Fixed Contract Amount: $0
+
+2014-12-8 10:42:43 [ContractEmployee.SetContractStopDate] Attempted To Set contractStopDate Attribute With Invalid Value: 2009-12-31
+2014-12-8 10:42:47 [ContractEmployee.Details]
+Business Name: Jones-Jones-Smith-And-Associates-Ltd
+Business Number: 12345 6782
+Business Date Of Creation: 1912-06-30
+Contract Start Date: 2010-01-01
+Contract Stop Date: N/A
+Fixed Contract Amount: $0
+
+2014-12-8 10:42:53 [ContractEmployee.Details]
+Business Name: Jones-Jones-Smith-And-Associates-Ltd
+Business Number: 12345 6782
+Business Date Of Creation: 1912-06-30
+Contract Start Date: 2010-01-01
+Contract Stop Date: 2010-12-31
+Fixed Contract Amount: $0
+
+2014-12-8 10:43:30 [ContractEmployee.Details]
+Business Name: Jones-Jones-Smith-And-Associates-Ltd
+Business Number: 12345 6782
+Business Date Of Creation: 1912-06-30
+Contract Start Date: 2010-01-01
+Contract Stop Date: 2010-12-31
+Fixed Contract Amount: $1000000
+
+2014-12-8 10:43:46 [ContractEmployee.Details]
+Business Name: Jones-Jones-Smith-And-Associates-Ltd
+Business Number: 12345 6782
+Business Date Of Creation: 1912-06-30
+Contract Start Date: 2010-01-01
+Contract Stop Date: 2010-12-31
+Fixed Contract Amount: $1000000
+
+2014-12-8 10:44:2 [ContractEmployee.Details]
+Business Name: Jones-Jones-Smith-And-Associates-Ltd
+Business Number: 12345 6782
+Business Date Of Creation: 1912-06-30
+Contract Start Date: 2010-01-01
+Contract Stop Date: 2010-12-31
+Fixed Contract Amount: $1000000
+
+2014-12-8 10:44:24 [ContractEmployee.Validate] Employee Jones-Jones-Smith-And-Associates-Ltd,  SIN(123456782) Was Found To Be Valid
+
+2014-12-8 10:44:24 [Container.AddEmployee] Employee Added. Employee Information: CT|Jones-Jones-Smith-And-Associates-Ltd||123456782|1912-06-30|2010-01-01|2010-12-31|1000000|
+2014-12-8 10:44:57 [FulltimeEmployee.Details]
+First Name: 
+Last Name: 
+SIN: 
+Date Of Birth: N/A
+Date Of Hire: N/A
+Date Of Termination: N/A
+Salary: $0
+
+2014-12-8 10:45:5 [FulltimeEmployee.Details]
+First Name: 
+Last Name: James
+SIN: 
+Date Of Birth: N/A
+Date Of Hire: N/A
+Date Of Termination: N/A
+Salary: $0
+
+2014-12-8 10:45:11 [FulltimeEmployee.Details]
+First Name: Greg
+Last Name: James
+SIN: 
+Date Of Birth: N/A
+Date Of Hire: N/A
+Date Of Termination: N/A
+Salary: $0
+
+2014-12-8 10:45:20 [FulltimeEmployee.Details]
+First Name: Greg
+Last Name: James
+SIN: 555 111 020
+Date Of Birth: N/A
+Date Of Hire: N/A
+Date Of Termination: N/A
+Salary: $0
+
+2014-12-8 10:45:32 [FulltimeEmployee.Details]
+First Name: Greg
+Last Name: James
+SIN: 555 111 020
+Date Of Birth: 1984-02-29
+Date Of Hire: N/A
+Date Of Termination: N/A
+Salary: $0
+
+2014-12-8 10:46:30 [FulltimeEmployee.SetDateOfTermination] Attempted To Set dateOfTermination Attribute With Invalid Value: 0001-01-01
+2014-12-8 10:46:34 [FulltimeEmployee.Details]
+First Name: Greg
+Last Name: James
+SIN: 555 111 020
+Date Of Birth: 1984-02-29
+Date Of Hire: N/A
+Date Of Termination: N/A
+Salary: $0
+
+2014-12-8 10:46:45 [FulltimeEmployee.Details]
+First Name: Greg
+Last Name: James
+SIN: 555 111 020
+Date Of Birth: 1984-02-29
+Date Of Hire: 2000-02-29
+Date Of Termination: N/A
+Salary: $0
+
+2014-12-8 10:47:6 [FulltimeEmployee.Details]
+First Name: Greg
+Last Name: James
+SIN: 555 111 020
+Date Of Birth: 1984-02-29
+Date Of Hire: 2000-02-29
+Date Of Termination: N/A
+Salary: $54756.3
+
+2014-12-8 10:47:36 [FulltimeEmployee.Details]
+First Name: Greg
+Last Name: James
+SIN: 555 111 020
+Date Of Birth: 1984-02-29
+Date Of Hire: 2000-02-29
+Date Of Termination: N/A
+Salary: $54756.3
+
+2014-12-8 10:47:43 [SeasonalEmployee.Details]
+First Name: 
+Last Name: 
+SIN: 
+Date Of Birth: N/A
+Season: 
+Piece Pay: $0
+
+2014-12-8 10:47:52 [SeasonalEmployee.Details]
+First Name: Billy
+Last Name: 
+SIN: 
+Date Of Birth: N/A
+Season: 
+Piece Pay: $0
+
+2014-12-8 10:47:59 [Employee.SetLastName] Attempted To Set lastName Attribute With Invalid Value: P3t3r5
+2014-12-8 10:48:17 [SeasonalEmployee.Details]
+First Name: Billy
+Last Name: 
+SIN: 
+Date Of Birth: N/A
+Season: 
+Piece Pay: $0
+
+2014-12-8 10:48:24 [SeasonalEmployee.Details]
+First Name: Billy
+Last Name: Peters
+SIN: 
+Date Of Birth: N/A
+Season: 
+Piece Pay: $0
+
+2014-12-8 10:48:31 [SeasonalEmployee.Details]
+First Name: Billy
+Last Name: Peters
+SIN: 333 333 334
+Date Of Birth: N/A
+Season: 
+Piece Pay: $0
+
+2014-12-8 10:48:44 [SeasonalEmployee.Details]
+First Name: Billy
+Last Name: Peters
+SIN: 333 333 334
+Date Of Birth: 1956-06-25
+Season: 
+Piece Pay: $0
+
+2014-12-8 10:49:2 [SeasonalEmployee.Details]
+First Name: Billy
+Last Name: Peters
+SIN: 333 333 334
+Date Of Birth: 1956-06-25
+Season: Winter
+Piece Pay: $0
+
+2014-12-8 10:49:12 [SeasonalEmployee.SetPiecePay] Attempted To Set piecePay Attribute With Invalid Value: 0.00
+2014-12-8 10:49:14 [SeasonalEmployee.Details]
+First Name: Billy
+Last Name: Peters
+SIN: 333 333 334
+Date Of Birth: 1956-06-25
+Season: Winter
+Piece Pay: $0
+
+2014-12-8 10:49:20 [SeasonalEmployee.Details]
+First Name: Billy
+Last Name: Peters
+SIN: 333 333 334
+Date Of Birth: 1956-06-25
+Season: Winter
+Piece Pay: $0.18
+
+2014-12-8 10:49:35 [ContractEmployee.Details]
+Business Name: Jones-Jones-Smith-And-Associates-Ltd
+Business Number: 12345 6782
+Business Date Of Creation: 1912-06-30
+Contract Start Date: 2010-01-01
+Contract Stop Date: 2010-12-31
+Fixed Contract Amount: $1000000
+
+2014-12-8 10:49:40 [ContractEmployee.Details]
+Business Name: Jones-Jones-Smith-And-Associates-Ltd
+Business Number: 12345 6782
+Business Date Of Creation: 1912-06-30
+Contract Start Date: 2010-01-01
+Contract Stop Date: 2010-12-31
+Fixed Contract Amount: $1000000
+
+2014-12-8 10:50:58 [FileIO.CloseDBase] The file: EMS_DB_FILE.txt was opened for writing.
+2014-12-8 10:50:58 [FileIO.CloseDBase] Total Records written: 1. Valid records written: 1. Invalid records written: 0
+2014-12-8 10:52:58 [ContractEmployee.Details]
+Business Name: Jones-Jones-Smith-And-Associates-Ltd
+Business Number: 12345 6782
+Business Date Of Creation: 1912-06-30
+Contract Start Date: 2010-01-01
+Contract Stop Date: 2010-12-31
+Fixed Contract Amount: $1000000
+
+2014-12-8 10:53:11 [ContractEmployee.Details]
+Business Name: Jones-Jones-Smith-And-Associates-Ltd
+Business Number: 12345 6782
+Business Date Of Creation: 1912-06-30
+Contract Start Date: 2010-01-01
+Contract Stop Date: 2010-12-31
+Fixed Contract Amount: $100000.3
+
+2014-12-8 10:53:35 [ContractEmployee.Details]
+Business Name: Jones-Jones-Smith-And-Associates-Ltd
+Business Number: 12345 6782
+Business Date Of Creation: 1912-06-30
+Contract Start Date: 2010-01-01
+Contract Stop Date: 2010-12-31
+Fixed Contract Amount: $100000.3
+
+2014-12-8 10:53:50 [ContractEmployee.Details]
+Business Name: Jones-Jones-Smith-And-Associates-Ltd
+Business Number: 12345 6782
+Business Date Of Creation: 1912-06-30
+Contract Start Date: 2010-01-01
+Contract Stop Date: 2010-12-31
+Fixed Contract Amount: $1000000
+
+2014-12-8 10:54:55 [ContractEmployee.Details]
+Business Name: Jones-Jones-Smith-And-Associates-Ltd
+Business Number: 12345 6782
+Business Date Of Creation: 1912-06-30
+Contract Start Date: 2010-01-01
+Contract Stop Date: 2010-12-31
+Fixed Contract Amount: $1000000
+
+2014-12-8 10:55:8 [ContractEmployee.Details]
+Business Name: Jones-Jones-Smith-And-Associates-Ltd
+Business Number: 12345 6782
+Business Date Of Creation: 1912-06-30
+Contract Start Date: 2010-01-01
+Contract Stop Date: 2010-12-31
+Fixed Contract Amount: $1000000
+
+2014-12-8 10:55:10 [Container.RemoveEmployee] Employee removed. Employee information: CT|Jones-Jones-Smith-And-Associates-Ltd||123456782|1912-06-30|2010-01-01|2010-12-31|1000000|
