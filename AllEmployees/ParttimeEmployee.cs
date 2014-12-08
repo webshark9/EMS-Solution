@@ -281,7 +281,7 @@ namespace AllEmployees
             string validStatusStr = "";
             string unused = "";
 
-            if (!Supporting.Validation.ValidateDateOfHire(GetDateOfBirth(), GetDateOfHire(), GetDateOfTermination(), ref unused) && GetDateOfHire() != DateTime.MinValue)
+            if (!Supporting.Validation.ValidateDateOfHire(GetDateOfBirth(), GetDateOfHire(), GetDateOfTermination(), ref unused) || GetDateOfHire() == DateTime.MinValue)
             {
                 validStatus = false;
             }
@@ -293,15 +293,15 @@ namespace AllEmployees
             {
                 validStatus = false;
             }
-            else if (!Supporting.Validation.ValidateName(GetFirstName(), ref unused) && GetFirstName() != "")
+            else if (!Supporting.Validation.ValidateName(GetFirstName(), ref unused) || GetFirstName() == "")
             {
                 validStatus = false;
             }
-            else if (!Supporting.Validation.ValidateName(GetLastName(), ref unused) && GetLastName() != "")
+            else if (!Supporting.Validation.ValidateName(GetLastName(), ref unused) || GetLastName() == "")
             {
                 validStatus = false;
             }
-            else if (!Supporting.Validation.ValidateDateOfBirth(GetDateOfBirth(), ref unused) && GetDateOfBirth() != DateTime.MinValue)
+            else if (!Supporting.Validation.ValidateDateOfBirth(GetDateOfBirth(), ref unused) || GetDateOfBirth() == DateTime.MinValue)
             {
                 validStatus = false;
             }

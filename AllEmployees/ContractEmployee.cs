@@ -116,7 +116,7 @@ namespace AllEmployees
                 fixedContractAmount = fixedConAmount;
             }
 
-            if(Supporting.Validation.ValidateName(lName, ref unused))
+            if(Supporting.Validation.ValidateName(lName, ref unused) && GetLastName() != "")
             {
                 SetLastName(lName, ref unused);
             }
@@ -291,11 +291,11 @@ namespace AllEmployees
             string validStatusStr = "";
             string unused = "";
 
-            if (!Supporting.Validation.ValidateContractStartDate(GetDateOfBirth(), GetContractStartDate(), GetContractStopDate(), ref unused) && GetContractStartDate() != DateTime.MinValue)
+            if (!Supporting.Validation.ValidateContractStartDate(GetDateOfBirth(), GetContractStartDate(), GetContractStopDate(), ref unused) || GetContractStartDate() == DateTime.MinValue)
             {
                 validStatus = false;
             }
-            else if (!Supporting.Validation.ValidateContractStopDate(GetDateOfBirth(), GetContractStartDate(), GetContractStopDate(), ref unused) && GetContractStopDate() != DateTime.MinValue)
+            else if (!Supporting.Validation.ValidateContractStopDate(GetDateOfBirth(), GetContractStartDate(), GetContractStopDate(), ref unused) || GetContractStopDate() == DateTime.MinValue)
             {
                 validStatus = false;
             }
@@ -303,15 +303,15 @@ namespace AllEmployees
             {
                 validStatus = false;
             }
-            else if (!Supporting.Validation.ValidateName(GetLastName(), ref unused) && GetLastName() != "")
+            else if (!Supporting.Validation.ValidateName(GetLastName(), ref unused) || GetLastName() == "")
             {
                 validStatus = false;
             }
-            else if (!Supporting.Validation.ValidateDateOfCreation(GetSocialInsuranceNumber(), GetDateOfBirth(), ref unused) && GetDateOfBirth() != DateTime.MinValue)
+            else if (!Supporting.Validation.ValidateDateOfCreation(GetSocialInsuranceNumber(), GetDateOfBirth(), ref unused) || GetDateOfBirth() == DateTime.MinValue)
             {
                 validStatus = false;
             }
-            else if (!Supporting.Validation.ValidateBusinessNumber(GetSocialInsuranceNumber(), GetDateOfBirth(), ref unused))
+            else if (!Supporting.Validation.ValidateBusinessNumber(GetSocialInsuranceNumber(), GetDateOfBirth(), ref unused) || GetSocialInsuranceNumber() == "")
             {
                 validStatus = false;
             }

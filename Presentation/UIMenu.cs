@@ -395,7 +395,7 @@ namespace Presentation
         * 
         * Full Time Employee
          * Part Time Employee
-         * Contract Emplployee
+         * Contract Employee
          * Seasonal Employee
         * Return to Manage Employee Menu
         * 
@@ -764,7 +764,7 @@ namespace Presentation
 
                     case '4':
                         {
-                            userInputSentence = TakeUserInputDate("ENTER DATE OF BIRTH (yyyy/mm/dd): ");
+                            userInputSentence = TakeUserInputDate("ENTER DATE OF BIRTH (YYYY-MM-DD): ");
                             theObj.SetDateOfBirth(userInputSentence, ref errorMessage);
                             if (errorMessage != "")
                             {
@@ -1720,11 +1720,11 @@ namespace Presentation
          * \details <b>Details</b>
          *
          * This method will take an user input, then match the input with objects within 
-         * the companyContainer. It will compare the first name by defult, but is also 
+         * the companyContainer. It will compare the first name by default, but is also 
          * capable to compare with the last name. It will display each of the matching 
          * object one by one, until user choose one of them.
          * 
-         * \param string displayOrModifyOrRemove: the sentense to display at the top of 
+         * \param string displayOrModifyOrRemove: the sentence to display at the top of 
          *                                        the UI
          *        bool lastName: if this is true, method will compare with last name instead.
          * 
@@ -1869,7 +1869,7 @@ namespace Presentation
         }
 
         /**
-         * \brief Searching employe by SIN or BN
+         * \brief Searching employee by SIN or BN
          *
          * \details <b>Details</b>
          *
@@ -1936,10 +1936,17 @@ namespace Presentation
 
             companyContainer = new Container(FileIO.OpenDBase("EMS_DB_FILE.txt", ref errorMessage));
             Console.Clear();
-            Console.WriteLine("FILE HAS BEEN LOADED");
-            Console.WriteLine("");
-            Console.WriteLine("Press any key to continue...");
-            userInput = Console.ReadKey();
+            if (errorMessage != "")
+            {
+                PrintErrorMessage(errorMessage);
+            }
+            else
+            {
+                Console.WriteLine("FILE HAS BEEN LOADED");
+                Console.WriteLine("");
+                Console.WriteLine("Press any key to continue...");
+                userInput = Console.ReadKey();
+            }
         }
 
         /**
@@ -1967,10 +1974,17 @@ namespace Presentation
             customPath = Console.ReadLine();
 
             companyContainer = new Container(FileIO.OpenDBase(customPath, ref errorMessage));
-            Console.Clear();
-            Console.WriteLine("FILE HAS BEEN LOADED");
-            Console.WriteLine("");
-            Console.WriteLine("Press any key to continue...");
+            if (errorMessage != "")
+            {
+                PrintErrorMessage(errorMessage);
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("FILE HAS BEEN LOADED");
+                Console.WriteLine("");
+                Console.WriteLine("Press any key to continue...");
+            }
             userInput = Console.ReadKey();
         }
 
@@ -2003,7 +2017,7 @@ namespace Presentation
                 Console.Clear();
                 Console.WriteLine("FILE SAVED SUCCESSFULLY");
                 Console.WriteLine("");
-                Console.WriteLine("Press any key to contineu...");
+                Console.WriteLine("Press any key to continue...");
                 userInput = Console.ReadKey();
             }
         }
@@ -2585,11 +2599,11 @@ namespace Presentation
         }
 
         /**
-         * \brief UI of choosing season for seaonal employee creation
+         * \brief UI of choosing season for seasonal employee creation
          *
          * \details <b>Details</b>
          *
-         * This method allows user to choose one of the four seaon for 
+         * This method allows user to choose one of the four season for 
          * setting seasonal employee's seasonal attribute.
          * 
          * Available options:

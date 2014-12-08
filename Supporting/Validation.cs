@@ -675,17 +675,26 @@ namespace Supporting
         public static bool ValidateSeason(string season, ref string errorMessage)
         {
             bool validateStatus = true;
-            char firstLetter = season[0];
+            char firstLetter = ' ';
 
-            season = season.ToLower();
-            season = season.Replace(season[0], char.ToUpper(firstLetter));
+            if(season.Length >= 4)
+            {
+                firstLetter = season[0];
+                season = season.ToLower();
+                season = season.Replace(season[0], char.ToUpper(firstLetter));
 
-            errorMessage = "";
+                errorMessage = "";
 
-            if(season != "Summer" && season != "Fall" && season != "Winter" && season != "Spring")
+                if(season != "Summer" && season != "Fall" && season != "Winter" && season != "Spring")
+                {
+                    validateStatus = false;
+                    errorMessage = "Please Enter A Valid Season.\n";
+                }
+            }
+            else
             {
                 validateStatus = false;
-                errorMessage = "Please Enter A Valid Season.\n";
+                errorMessage = "Please Be Sure To Enter A Season\n";
             }
 
             return validateStatus;
