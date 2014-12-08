@@ -170,6 +170,8 @@ namespace Supporting
 
             }// end 'if' statement
 
+            CloseLogFile();
+
             return logSuccessful;
         }
 

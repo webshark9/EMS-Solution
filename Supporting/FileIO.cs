@@ -68,6 +68,13 @@ namespace Supporting
             {
                 dbReader = new StreamReader(databaseName);
                 Logging.LogEvent("[FileIO.OpenDBase] The file: " + databaseName + " has been opened for reading.");
+
+                /* this loop reads the entire database file and stores each line separately into 'stringsRead' */
+                while (dbReader.Peek() >= 0)
+                {
+                    stringsRead.Add(ReadRecord());// add the string read from the file to the List container
+                    ++numRecordsRead;
+                }
             }
             catch(FileNotFoundException)
             {
@@ -83,15 +90,7 @@ namespace Supporting
             {
                 errorMessage = "Error opening the database file. Message: " + e.Message;
                 Logging.LogEvent("[FileIO.OpenDBase] The file: " + databaseName + " could not be opened for reading. Message: " + e.Message);
-            }
-            
-
-            /* this loop reads the entire database file and stores each line separately into 'stringsRead' */
-            while (dbReader.Peek() >= 0)
-            {
-                stringsRead.Add(ReadRecord());// add the string read from the file to the List container
-                ++numRecordsRead;
-            }
+            }           
 
             /* this foreach find the valid records in 'stringsRead' and stores them into 'validRecords' */
             foreach (string record in stringsRead)

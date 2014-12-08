@@ -238,7 +238,7 @@ namespace TheCompany
                         ++numInvalidEmployees;
                         continue;// invalid float and we don't store invalid objects in the database so continue (don't add)
                     }
-                    CTemployee = new ContractEmployee(contractStartDate, contractStopDate, contractAmount, employeeString[2], employeeString[3], dateOfIncorporation);
+                    CTemployee = new ContractEmployee(contractStartDate, contractStopDate, contractAmount, employeeString[1], employeeString[3], dateOfIncorporation);
 
                     if (CTemployee.Validate())// check if the employee was valid
                     {
