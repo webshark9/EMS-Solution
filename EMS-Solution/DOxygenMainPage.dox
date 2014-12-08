@@ -16,6 +16,18 @@
 /// - Saving the database to a file
 ///
 ///
+/// <b>Program Modifications:</b>
+///
+/// The major modifications made since the last version include:
+///
+/// - Added a Validation class
+/// - Added a Testing Project
+/// - Added a Details() and ToString() method in the Employee class and had them overridden in all of the child classes
+/// - Added Constructors for all of the Employee types
+/// - Added 2 Constructors for the Container Class, one that takes in a List of strings to initialize the database
+///
+///
+///
 /// <hr>
 /// \section requirements Project Requirements
 /// For a full list of requirements for the program please refer to the 'EMS Term Project Document F2014' document 
@@ -25,8 +37,8 @@
 /// \section version Current version of the EMS Term Project :
 /// <ul>
 /// <li>\authors   <b>Matthew Thiessen</b>, <b>Willi Boldt</b>, <b>Ping Chang Ueng</b>, and <b>Tylor McLaughlin</b>
-/// <li>\version   1.0</li>
-/// <li>\date      November 14, 2014</li>
+/// <li>\version   2.0</li>
+/// <li>\date      December 08, 2014</li>
 /// <li>\warning   Unauthorized use of this product could result in serious fines and/or jail time. (JK)
 /// </ul>
 ///

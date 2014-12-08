@@ -60,7 +60,7 @@ namespace TheCompany
         * This method takes in a List of string arrays and creates employees using each one. It makes sure the employee is valid
         * before adding the employee to the <i>virtualDB</i> data member. It logs the number of valid and invalid employees.
         * 
-        * \param employeeStrings - string[] - used to hold all of the strings that hold the information for the employees.
+        * \param employeesList - List<string[]> - used to hold all of the strings that hold the information for the employees.
         * 
         * \return Nothing
         *
