@@ -168,15 +168,27 @@ namespace AllEmployees
             {
                 dob = GetDateOfBirth().ToString("d");
             }
+            else
+            {
+                dob = "N/A";
+            }
 
             if(GetContractStartDate() != DateTime.MinValue)
             {
                 cStarDate = GetContractStartDate().ToString("d");
             }
+            else
+            {
+                cStarDate = "N/A";
+            }
 
             if(GetContractStopDate() != DateTime.MinValue)
             {
                 cStopDate = GetContractStopDate().ToString("d");
+            }
+            else
+            {
+                cStopDate = "N/A";
             }
 
             if (GetSocialInsuranceNumber() != "")
@@ -214,13 +226,44 @@ namespace AllEmployees
         override public string ToString()
         {
             string empDetails = "CT|";
-            
+
+            string dob = "";
+            string cStarDate = "";
+            string cStopDate = "";
+
+            if (GetDateOfBirth() != DateTime.MinValue)
+            {
+                dob = GetDateOfBirth().ToString("d");
+            }
+            else
+            {
+                dob = "N/A";
+            }
+
+            if (GetContractStartDate() != DateTime.MinValue)
+            {
+                cStarDate = GetContractStartDate().ToString("d");
+            }
+            else
+            {
+                cStarDate = "N/A";
+            }
+
+            if (GetContractStopDate() != DateTime.MinValue)
+            {
+                cStopDate = GetContractStopDate().ToString("d");
+            }
+            else
+            {
+                cStopDate = "N/A";
+            }
+
             empDetails += GetLastName() + "|";
             empDetails += GetFirstName() + "|";
             empDetails += GetSocialInsuranceNumber() + "|";
-            empDetails += GetDateOfBirth().ToString("d") + "|";
-            empDetails += GetContractStartDate().ToString("d") + "|";
-            empDetails += GetContractStopDate().ToString("d") + "|";
+            empDetails += dob + "|";
+            empDetails += cStarDate + "|";
+            empDetails += cStopDate + "|";
             empDetails += GetFixedContractAmount() + "|";
 
             return empDetails;

@@ -144,6 +144,10 @@ namespace AllEmployees
             {
                 dob = GetDateOfBirth().ToString("d");
             }
+            else
+            {
+                dob = "N/A";
+            }
 
             if (GetSocialInsuranceNumber() != "")
             {
@@ -156,7 +160,7 @@ namespace AllEmployees
             empDetails = "First Name: " + GetFirstName() + "\n";
             empDetails += "Last Name: " + GetLastName() + "\n";
             empDetails += "SIN: " + sin + "\n";
-            empDetails += "Date Of Birth: " + GetDateOfBirth().ToString("d") + "\n";
+            empDetails += "Date Of Birth: " + dob + "\n";
             empDetails += "Season: " + GetSeason() + "\n";
             empDetails += "Piece Pay: $" + GetPiecePay().ToString() + "\n";
 
@@ -181,11 +185,21 @@ namespace AllEmployees
         override public string ToString()
         {
             string empDetails = "SN|";
+            string dob = "";
+
+            if (GetDateOfBirth() != DateTime.MinValue)
+            {
+                dob = GetDateOfBirth().ToString("d");
+            }
+            else
+            {
+                dob = "N/A";
+            }
 
             empDetails += GetLastName() + "|";
             empDetails += GetFirstName() + "|";
             empDetails += GetSocialInsuranceNumber() + "|";
-            empDetails += GetDateOfBirth().ToString("d") + "|";
+            empDetails += dob + "|";
             empDetails += GetSeason() + "|";
             empDetails += GetPiecePay() + "|";
 

@@ -157,15 +157,27 @@ namespace AllEmployees
             {
                 dob = GetDateOfBirth().ToString("d");
             }
+            else
+            {
+                dob = "N/A";
+            }
 
             if (GetDateOfHire() != DateTime.MinValue)
             {
                 doh = GetDateOfHire().ToString("d");
             }
+            else
+            {
+                doh = "N/A";
+            }
 
             if (GetDateOfTermination() != DateTime.MinValue)
             {
                 dot = GetDateOfTermination().ToString("d");
+            }
+            else
+            {
+                dot = "N/A";
             }
 
             if (GetSocialInsuranceNumber() != "")
@@ -205,13 +217,43 @@ namespace AllEmployees
         override public string ToString()
         {
             string empDetails = "FT|";
+            string dob = "";
+            string doh = "";
+            string dot = "";
+
+            if (GetDateOfBirth() != DateTime.MinValue)
+            {
+                dob = GetDateOfBirth().ToString("d");
+            }
+            else
+            {
+                dob = "N/A";
+            }
+
+            if (GetDateOfHire() != DateTime.MinValue)
+            {
+                doh = GetDateOfHire().ToString("d");
+            }
+            else
+            {
+                doh = "N/A";
+            }
+
+            if (GetDateOfTermination() != DateTime.MinValue)
+            {
+                dot = GetDateOfTermination().ToString("d");
+            }
+            else
+            {
+                dot = "N/A";
+            }
 
             empDetails += GetLastName() + "|";
             empDetails += GetFirstName() + "|";
             empDetails += GetSocialInsuranceNumber() + "|";
-            empDetails += GetDateOfBirth().ToString("d") + "|";
-            empDetails += GetDateOfHire().ToString("d") + "|";
-            empDetails += GetDateOfTermination().ToString("d") + "|";
+            empDetails += dob + "|";
+            empDetails += doh + "|";
+            empDetails += dot + "|";
             empDetails += GetSalary() + "|";
 
             return empDetails;
