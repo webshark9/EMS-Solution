@@ -128,7 +128,7 @@ namespace AllEmployees
 
             if (Supporting.Validation.ValidateDateOfCreation(sin, dob, ref unused))
             {
-                SetDateOfBirth(dob.ToString(), ref unused);
+                SetDateOfBirth(dob.ToString("d"), ref unused);
             }
         }
 
