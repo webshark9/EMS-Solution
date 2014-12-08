@@ -132,7 +132,7 @@ namespace AllEmployees
             }
         }
 
-        public string Details()
+        override public string Details()
         {
             string empDetails = "";
             string bn = "";
@@ -174,7 +174,7 @@ namespace AllEmployees
             return empDetails;
         }
 
-        public string ToString()
+        override public string ToString()
         {
             string empDetails = "CT|";
             
