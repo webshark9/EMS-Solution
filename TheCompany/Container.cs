@@ -360,7 +360,7 @@ namespace TheCompany
         public bool AddEmployee(Employee newEmployee, ref string errorMessage)
         {
             bool addSuccessful = false;
-            bool sameSIN = false;
+            bool sameSIN = false;// used to tell if the new employee has the same SIN or business number as a current employee (which would make it invalid)
             FulltimeEmployee FTemployee = new FulltimeEmployee();
             ParttimeEmployee PTemployee = new ParttimeEmployee();
             ContractEmployee CTemployee = new ContractEmployee();
@@ -375,7 +375,6 @@ namespace TheCompany
                     sameSIN = true;
                     break;
                 }
-
             }
 
             if (FTemployee.GetType() == newEmployee.GetType() && sameSIN == false)
@@ -387,10 +386,10 @@ namespace TheCompany
                     virtualDB.Add(FTemployee);
                     addSuccessful = true;
                 }
-                else
+                else// employee failed Validate() test
                 {
                     errorMessage = "Employee did not pass Full-Time Employee validation test.";
-                    Logging.LogEvent("[Container.AddEmployee] Employee failed to be Added. Employee information: " + FTemployee.Details());
+                    Logging.LogEvent("[Container.AddEmployee] Employee failed to be Added (Validate() test failed). Employee information: " + FTemployee.Details());
                 }
             }
             else if (PTemployee.GetType() == newEmployee.GetType() && sameSIN == false)
@@ -402,7 +401,7 @@ namespace TheCompany
                     virtualDB.Add(PTemployee);
                     addSuccessful = true;
                 }
-                else
+                else// employee failed Validate() test
                 {
                     errorMessage = "Employee did not pass Part-Time Employee validation test.";
                     Logging.LogEvent("[Container.AddEmployee] Employee failed to be Added. Employee information: " + PTemployee.Details());
@@ -417,7 +416,7 @@ namespace TheCompany
                     virtualDB.Add(CTemployee);
                     addSuccessful = true;
                 }
-                else
+                else// employee failed Validate() test
                 {
                     errorMessage = "Employee did not pass Contract Employee validation test.";
                     Logging.LogEvent("[Container.AddEmployee] Employee failed to be Added. Employee information: " + CTemployee.Details());
@@ -432,7 +431,7 @@ namespace TheCompany
                     virtualDB.Add(SNemployee);
                     addSuccessful = true;
                 }
-                else
+                else// employee failed Validate() test
                 {
                     errorMessage = "Employee did not pass Seasonal Employee validation test.";
                     Logging.LogEvent("[Container.AddEmployee] Employee failed to be Added. Employee information: " + SNemployee.Details());
@@ -441,10 +440,9 @@ namespace TheCompany
             
             if (addSuccessful == true)
             {
-                Logging.LogEvent("[Container.AddEmployee] Employee Added. SIN: " + newEmployee.GetSocialInsuranceNumber());
+                Logging.LogEvent("[Container.AddEmployee] Employee Added. Employee Information: " + newEmployee.ToString());
             }
             
-
             return addSuccessful;
         }
 
@@ -455,7 +453,7 @@ namespace TheCompany
         * This method attempts to remove the employee object passed as a parameter from the <i>virtualDB</i> data member
         * by searching the data base for the object. This method also logs whether the remove was successful or not.
         * 
-        * \param employeeToRemove - Employee - the employee that is to be removed
+        * \param employeeToRemove - Employee - the employee that is to be removed (determined solely be SIN/BN)
         * \param errorMessage - string - a string that is passed as a reference and is used to hold an error message if 
         *        an error occurs
         * 
@@ -466,16 +464,15 @@ namespace TheCompany
         {
             bool removeSuccessful = false;// set to 'true' if the employee is found and removed
 
-            foreach(Employee storedEmployee in virtualDB)
+            foreach(Employee storedEmployee in virtualDB)// go though the database and search for the SIN/BN
             {
                 if(storedEmployee.GetSocialInsuranceNumber() == employeeToRemove.GetSocialInsuranceNumber())
                 {
-                    virtualDB.Remove(storedEmployee);
+                    virtualDB.Remove(storedEmployee);// found an employee with the same SIN/BN so remove the employee
                     removeSuccessful = true;
-                    Logging.LogEvent("[Container.RemoveEmployee] Employee removed. Employee SIN: " + employeeToRemove.GetSocialInsuranceNumber());
+                    Logging.LogEvent("[Container.RemoveEmployee] Employee removed. Employee information: " + employeeToRemove.ToString());
                     break;// we don't allow duplicate SIN's in our database so as soon as we find a match we can exit
                 }
-
             }
 
             if(removeSuccessful == false)
@@ -491,13 +488,12 @@ namespace TheCompany
         * \brief To modify an employee in the data base
         * \details <b>Details</b>
         *
-        * This method searches the data base for the first parameter, and if it finds it the method then replaces it with the 
-        * second parameter.
+        * This method searches the data base for an employee with the same SIN/BN as the Employee parameter, and if it finds it the
+        * method then replaces it with the Employee parameter
         * 
-        * \param employeeToModify - Employee - the employee that is to be modified
-        * \param newEmployee - Employee - the employee to replace the old employee
+        * \param employeeToModify - Employee - the employee that the old employee is to be set to
         * \param errorMessage - string - a string that is passed as a reference and is used to hold an error message if 
-        *        an error occurs
+        *                                an error occurs
         * 
         * \return A bool <i>modifySuccessful</i> which will be 'true' if the employee was modified successfully and 'false' otherwise
         *
@@ -505,17 +501,12 @@ namespace TheCompany
         public bool ModifyEmployee(Employee employeeToModify, ref string errorMessage)
         {
             bool modifySuccessful = false;// will be set to 'true' if there were no errors
-            //string unusedString = "";
             FulltimeEmployee FTemployee = new FulltimeEmployee();
             ParttimeEmployee PTemployee = new ParttimeEmployee();
             ContractEmployee CTemployee = new ContractEmployee();
             SeasonalEmployee SNemployee = new SeasonalEmployee();
-            //string originalValues = "";
-            //string newValues = "";
-            int i = 0;
 
-
-            for(i = 0; i < virtualDB.Count; i++)
+            for(int i = 0; i < virtualDB.Count; i++)
             {
                 if (virtualDB[i].GetSocialInsuranceNumber() == employeeToModify.GetSocialInsuranceNumber())
                 {
@@ -543,7 +534,7 @@ namespace TheCompany
         * \details <b>Details</b>
         *
         * This method first checks if the calling method wants the first element of the data base (determined
-        * by the parameter), and then checks if all the employees in the data base have already been returned,
+        * by the parameter), next it checks if all the employees in the data base have already been returned,
         * if so it returns <i>null</i> and if not it will return the next element in the <i>virtualDB</i> data member. 
         * 
         * \param returnFirst - bool - whether or not the calling method would like the first element of the data base.
@@ -551,7 +542,7 @@ namespace TheCompany
         *                             data member
         * 
         * \return An object that will be a member of the <i>virtualDB</i> data member or <i>null</i> if the data base is
-        *         empty or the last element has been reached 
+        *         empty or all the elements have already been returned 
         *
         */
         public object NextEmployee(bool returnFirst = false)
@@ -561,7 +552,7 @@ namespace TheCompany
                 lastIndex = 0;// reset the 'lastIndex' data member so that first element will be returned
             }
             
-            if(lastIndex >= virtualDB.Count)// check if indexing the virtualDB to what the index is will cause an exception
+            if(lastIndex >= virtualDB.Count)// check if indexing the virtualDB to what the index is will cause an exception (out of range)
             {
                 return null;// returned all employees, so return null
             }
@@ -572,10 +563,10 @@ namespace TheCompany
                 ContractEmployee CTemployee = new ContractEmployee();
                 SeasonalEmployee SNemployee = new SeasonalEmployee();
 
+                /* have to find out what type of Employee it is so we can call the proper copy constructor */
                 if (FTemployee.GetType() == virtualDB[lastIndex].GetType())
                 {
                     return new FulltimeEmployee((FulltimeEmployee)virtualDB[lastIndex++]);// return the element and increase the 'lastIndex' data member so the next time this method is called the next index will be returned
-
                 }
                 else if (PTemployee.GetType() == virtualDB[lastIndex].GetType())
                 {
@@ -589,12 +580,12 @@ namespace TheCompany
                 {
                     return new SeasonalEmployee((SeasonalEmployee)virtualDB[lastIndex++]);// return the element and increase the 'lastIndex' data member so the next time this method is called the next index will be returned
                 }
-                else 
+                else// the object stored wasn't a valid employee type
                 {
                     return null;
                 }
 
-            }
+            }// end 'else'
 
         }
 
@@ -615,69 +606,81 @@ namespace TheCompany
         {
             if( (employeeIndex >= 0) && (employeeIndex < virtualDB.Count))
             {
-                return virtualDB[employeeIndex];
+                FulltimeEmployee FTemployee = new FulltimeEmployee();
+                ParttimeEmployee PTemployee = new ParttimeEmployee();
+                ContractEmployee CTemployee = new ContractEmployee();
+                SeasonalEmployee SNemployee = new SeasonalEmployee();
+
+                /* have to find out what type of Employee it is so we can call the proper copy constructor */
+                if (FTemployee.GetType() == virtualDB[employeeIndex].GetType())
+                {
+                    return new FulltimeEmployee((FulltimeEmployee)virtualDB[employeeIndex]);// return the element and increase the 'lastIndex' data member so the next time this method is called the next index will be returned
+                }
+                else if (PTemployee.GetType() == virtualDB[employeeIndex].GetType())
+                {
+                    return new ParttimeEmployee((ParttimeEmployee)virtualDB[employeeIndex]);// return the element and increase the 'lastIndex' data member so the next time this method is called the next index will be returned
+                }
+                else if (CTemployee.GetType() == virtualDB[employeeIndex].GetType())
+                {
+                    return new ContractEmployee((ContractEmployee)virtualDB[employeeIndex]);// return the element and increase the 'lastIndex' data member so the next time this method is called the next index will be returned
+                }
+                else if (SNemployee.GetType() == virtualDB[employeeIndex].GetType())
+                {
+                    return new SeasonalEmployee((SeasonalEmployee)virtualDB[employeeIndex]);// return the element and increase the 'lastIndex' data member so the next time this method is called the next index will be returned
+                }
+                else// the object stored wasn't a valid employee type
+                {
+                    return null;
+                }
             }
-            else 
+            else// index is out of range
             {
                 return null;
             }
             
         }
 
-
         /**
-        * \brief To return an employee in the data base 
+        * \brief To save all of the employees stored in the <i>virtualDB</i> data member to a file
         * \details <b>Details</b>
         *
-        * This method checks if the parameter is 
-        * \param employeeIndex - int - the 
+        * This method converts each Employee in the <i>virtualDB</i> data member to a string and adds it to a List of strings.
+        * It then sends that list of strings to CloseDbase() to write them to the database file.
         * 
-        * \return An object that will be a member of the <i>virtualDB</i> data member or <i>null</i> if the index was invalid. 
+        * \param errorMessage - string - a string that is passed as a reference and is used to hold an error message if 
+        *                                an error occurs
+        * 
+        * \return A bool <i>saveSuccessful</i> that will be true if save was successful and false if there was a problem (and the errorMessage
+        *         string can be checked for the error message)
         *
         */
-        public object ReturnObject(string sinNumber)
-        {
-            foreach(Employee emp in virtualDB)
-            {
-                if(emp.GetSocialInsuranceNumber() == sinNumber)
-                {
-                    return emp;
-                }
-            }
-            
-            return null;
-        }
-
-
         public bool SaveDataBase(ref string errorMessage)
         {
             bool saveSuccessful = true;// set to false if there was a problem
             List<string> allRecords = new List<string>();
 
-
-            foreach(Employee emp in virtualDB)
+            foreach(Employee emp in virtualDB)// convert each Employee in the database to a string
             {
                 allRecords.Add(emp.ToString());
             }
 
-            if(allRecords.Count == 0)
+            if(allRecords.Count == 0)// check if the database is empty
             {
                 errorMessage = "The database was empty";
                 saveSuccessful = false;
             }
-            else
+            else// have at least one entry
             {
                 if(FileIO.CloseDBase(allRecords, ref errorMessage) == false)
                 {
                     saveSuccessful = false;
                 }
-
+                // else the save was successful
             }
 
             return saveSuccessful;
         }
 
-
-
     }
+
 }
