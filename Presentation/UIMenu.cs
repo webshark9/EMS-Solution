@@ -142,8 +142,10 @@ namespace Presentation
                         break;
 
                     case '9':
-                        SaveAndExitProgram();
-                        exit = true;
+
+
+
+                        exit = SaveAndExitProgram();
                         break;
                 }
             }
@@ -171,7 +173,6 @@ namespace Presentation
         private void ManageDBaseFilesMenu()
         {
             ConsoleKeyInfo userInput;
-            string errorMessage = "";
             bool back = false;
 
             while (back == false)
@@ -194,20 +195,11 @@ namespace Presentation
                 switch (userInput.KeyChar)
                 {
                     case '1':
-                        companyContainer = new Container(FileIO.OpenDBase("EMS_DB_FILE.txt", ref errorMessage));
-                        Console.Clear();
-                        Console.WriteLine("FILE HAS BEEN LOADED");
-                        Console.WriteLine("");
-                        Console.WriteLine("Press any key to continue...");
-                        userInput = Console.ReadKey();
+                        LoadFromFile();
                         break;
 
                     case '2':
-                        companyContainer.SaveDataBase(ref errorMessage);
-                        if (errorMessage != "")
-                        {
-                            PrintErrorMessage(errorMessage);
-                        }
+                        SaveToFile();
                         break;
 
                     case '9':
@@ -373,8 +365,6 @@ namespace Presentation
             while (back == false)
             {
                 Console.Clear();
-                //                Console.WriteLine("Create a New Employee:");
-                //                Console.WriteLine("");
                 Console.WriteLine("CHOOSE EMPLOYEE TYPE:");
                 Console.WriteLine("");
                 Console.WriteLine("\t1. Full-time Employee");
@@ -532,7 +522,7 @@ namespace Presentation
                 Console.WriteLine("MODIFY AN EMPLOYEE:");
                 Console.WriteLine("");
                 Console.WriteLine("\t1. Search By Fist Name");
-                Console.WriteLine("\t2. Search By Last Name");
+                Console.WriteLine("\t2. Search By Last Name/Business Name");
                 Console.WriteLine("\t3. Search By SIN/Business Number");
                 Console.WriteLine("\t4. ----------");
                 Console.WriteLine("\t5. ----------");
@@ -546,17 +536,17 @@ namespace Presentation
                 switch (userInput.KeyChar)
                 {
                     case '1':
-                        theObj = SearchByFirstName("Search By First Name To Modify:");
+                        theObj = SearchByFirstName("SEARCH BY FIRST NAME TO MODIFY:");
                         ModifyEmployeeTypeDeterminer(theObj);
                         break;
 
                     case '2':
-                        theObj = SearchByLastName("Search By Last Name To Modify:");
+                        theObj = SearchByLastName("SEARCH BY LAST NAME/BUSINESS NAME TO MODIFY:");
                         ModifyEmployeeTypeDeterminer(theObj);
                         break;
 
                     case '3':
-                        theObj = SearchBySIN("Search By SIN/BN To Modify:");
+                        theObj = SearchBySIN("SEARCH BY SIN/BN TO MODIFY:");
                         ModifyEmployeeTypeDeterminer(theObj);
                         break;
 
@@ -574,15 +564,15 @@ namespace Presentation
             ParttimeEmployee PtEmployee = new ParttimeEmployee();
             ContractEmployee CtEmployee = new ContractEmployee();
             SeasonalEmployee SnEmployee = new SeasonalEmployee();
-            ConsoleKeyInfo userInput;
-            if (theObj == null)
-            {
-                Console.WriteLine("NO MATCHING EMPLOYEE FOUND");
-                Console.WriteLine("");
-                Console.WriteLine("Press any key to continue...");
-                userInput = Console.ReadKey();
-            }
-            else
+            //ConsoleKeyInfo userInput;
+            //if (theObj == null)
+            //{
+            //    Console.WriteLine("NO MATCHING EMPLOYEE FOUND");
+            //    Console.WriteLine("");
+            //    Console.WriteLine("Press any key to continue...");
+            //    userInput = Console.ReadKey();
+            //}
+            if (theObj != null)
             {
                 if (theObj.GetType() == FtEmployee.GetType())
                 {
@@ -641,7 +631,6 @@ namespace Presentation
         private bool ModifyFulltimeEmployee(FulltimeEmployee theObj, bool isNew)
         {
             ConsoleKeyInfo userInput;
-            //            DateTime defaultDateTime = new DateTime();
             string userInputSentence = "";
             string errorMessage = "";
             bool back = false;
@@ -681,40 +670,6 @@ namespace Presentation
                 Console.WriteLine("CURRENT INFO:");
                 Console.WriteLine("");
                 Console.WriteLine("{0}", theObj.Details());
-                //                Console.WriteLine("First Name: {0}", theObj.GetFirstName());
-                //                Console.WriteLine("Last Name: {0}", theObj.GetLastName());
-                //                Console.WriteLine("SIN: {0}", theObj.GetSocialInsuranceNumber());
-                ////                Console.WriteLine("SIN: {0}", displaySIN(theObj.GetSocialInsuranceNumber()));
-
-                //                if (DateTime.Compare(theObj.GetDateOfBirth(), defaultDateTime) == 0)
-                //                {
-                //                    Console.WriteLine("Date of Birth: ");
-                //                }
-                //                else
-                //                {
-                //                    Console.WriteLine("Date of Birth: {0}", theObj.GetDateOfBirth());
-                //                }
-
-                //                if (DateTime.Compare(theObj.GetDateOfHire(), defaultDateTime) == 0)
-                //                {
-                //                    Console.WriteLine("Date of Hire: ");
-                //                }
-                //                else
-                //                {
-                //                    Console.WriteLine("Date of Hire: {0}", theObj.GetDateOfHire());
-                //                }
-
-                //                if (DateTime.Compare(theObj.GetDateOfTermination(), defaultDateTime) == 0)
-                //                {
-                //                    Console.WriteLine("Date of Termination: ");
-                //                }
-                //                else
-                //                {
-                //                    Console.WriteLine("Date of Termination: {0}", theObj.GetDateOfTermination());
-                //                }
-
-
-                //                Console.WriteLine("Salary: ${0}", theObj.GetSalary());
 
                 userInput = Console.ReadKey();
 
@@ -802,7 +757,6 @@ namespace Presentation
 
                     case '8':
                         {
-                            // uh don't know what to call to push the object into the container.
                             if (isNew == true)
                             {
                                 saveSuccess = companyContainer.AddEmployee(theObj, ref errorMessage);
@@ -907,39 +861,6 @@ namespace Presentation
                 Console.WriteLine("CURRENT INFO:");
                 Console.WriteLine("");
                 Console.WriteLine("{0}", theObj.Details());
-                //                Console.WriteLine("First Name: {0}", theObj.GetFirstName());
-                //                Console.WriteLine("Last Name: {0}", theObj.GetLastName());
-                //                Console.WriteLine("SIN: {0}", theObj.GetSocialInsuranceNumber());
-                ////                Console.WriteLine("SIN: {0}", displaySIN(theObj.GetSocialInsuranceNumber()));
-                //                if (DateTime.Compare(theObj.GetDateOfBirth(), defaultDateTime) == 0)
-                //                {
-                //                    Console.WriteLine("Date of Birth: ");
-                //                }
-                //                else
-                //                {
-                //                    Console.WriteLine("Date of Birth: {0}", theObj.GetDateOfBirth());
-                //                }
-
-                //                if (DateTime.Compare(theObj.GetDateOfHire(), defaultDateTime) == 0)
-                //                {
-                //                    Console.WriteLine("Date of Hire: ");
-                //                }
-                //                else
-                //                {
-                //                    Console.WriteLine("Date of Hire: {0}", theObj.GetDateOfHire());
-                //                }
-
-                //                if (DateTime.Compare(theObj.GetDateOfTermination(), defaultDateTime) == 0)
-                //                {
-                //                    Console.WriteLine("Date of Termination: ");
-                //                }
-                //                else
-                //                {
-                //                    Console.WriteLine("Date of Termination: {0}", theObj.GetDateOfTermination());
-                //                }
-
-
-                //                Console.WriteLine("Hourly Rate: ${0}", theObj.GetHourlyRate());
 
                 userInput = Console.ReadKey();
 
@@ -1027,7 +948,6 @@ namespace Presentation
 
                     case '8':
                         {
-                            // uh don't know what to call to push the object into the container.
 
                             if (isNew == true)
                             {
@@ -1135,40 +1055,6 @@ namespace Presentation
                 Console.WriteLine("");
                 Console.WriteLine("{0}", theObj.Details());
 
-                //                Console.WriteLine("Business Name: {0}", theObj.GetLastName());
-                //                Console.WriteLine("Business Number: {0}", theObj.GetSocialInsuranceNumber());
-                ////                Console.WriteLine("Business Number: {0}", displayBN(theObj.GetSocialInsuranceNumber()));
-                //
-                //                if (DateTime.Compare(theObj.GetDateOfBirth(), defaultDateTime) == 0)
-                //                {
-                //                    Console.WriteLine("Date of Incorporation: ");
-                //                }
-                //                else
-                //                {
-                //                    Console.WriteLine("Date of Incorporation: {0}", theObj.GetDateOfBirth());
-                //                }
-
-                //                if (DateTime.Compare(theObj.GetContractStartDate(), defaultDateTime) == 0)
-                //                {
-                //                    Console.WriteLine("Contract Start Date: ");
-                //                }
-                //                else
-                //                {
-                //                    Console.WriteLine("Contract Start Date: {0}", theObj.GetContractStartDate());
-                //                }
-
-                //                if (DateTime.Compare(theObj.GetContractStopDate(), defaultDateTime) == 0)
-                //                {
-                //                    Console.WriteLine("Contract Stop Date: ");
-                //                }
-                //                else
-                //                {
-                //                    Console.WriteLine("Contract Stop Date: {0}", theObj.GetContractStopDate());
-                //                }
-
-
-                //                Console.WriteLine("Fixed Contract Amount: ${0}", theObj.GetFixedContractAmount());
-
                 userInput = Console.ReadKey();
 
                 switch (userInput.KeyChar)
@@ -1244,7 +1130,6 @@ namespace Presentation
 
                     case '8':
                         {
-                            // uh don't know what to call to push the object into the container.
                             if (isNew == true)
                             {
                                 saveSuccess = companyContainer.AddEmployee(theObj, ref errorMessage);
@@ -1348,21 +1233,6 @@ namespace Presentation
                 Console.WriteLine("CURRENT INFO:");
                 Console.WriteLine("");
                 Console.WriteLine("{0}", theObj.Details());
-                //                Console.WriteLine("First Name: {0}", theObj.GetFirstName());
-                //                Console.WriteLine("Last Name: {0}", theObj.GetLastName());
-                //                Console.WriteLine("SIN: {0}", theObj.GetSocialInsuranceNumber());
-                ////                Console.WriteLine("SIN: {0}", displaySIN(theObj.GetSocialInsuranceNumber()));
-                //
-                //                if (DateTime.Compare(theObj.GetDateOfBirth(), defaultDateTime) == 0)
-                //                {
-                //                    Console.WriteLine("Date of Birth: ");
-                //                }
-                //                else
-                //                {
-                //                    Console.WriteLine("Date of Birth: {0}", theObj.GetDateOfBirth());
-                //                }
-                //                Console.WriteLine("Season: {0}", theObj.GetSeason());
-                //                Console.WriteLine("Piece Pay: ${0}", theObj.GetPiecePay());
 
                 userInput = Console.ReadKey();
 
@@ -1439,7 +1309,6 @@ namespace Presentation
 
                     case '8':
                         {
-                            // uh don't know what to call to push the object into the container.
                             if (isNew == true)
                             {
                                 saveSuccess = companyContainer.AddEmployee(theObj, ref errorMessage);
@@ -1505,7 +1374,7 @@ namespace Presentation
                 Console.WriteLine("REMOVE AN EMPLOYEE:");
                 Console.WriteLine("");
                 Console.WriteLine("\t1. Search By First Name");
-                Console.WriteLine("\t2. Search By Last Name");
+                Console.WriteLine("\t2. Search By Last Name/Business Name");
                 Console.WriteLine("\t3. Search By SIN/Business Number");
                 Console.WriteLine("\t4. ----------");
                 Console.WriteLine("\t5. ----------");
@@ -1519,17 +1388,17 @@ namespace Presentation
                 switch (userInput.KeyChar)
                 {
                     case '1':
-                        theObj = SearchByFirstName("Search By First Name To Remove:");
+                        theObj = SearchByFirstName("SEACH BY FIRST NAME TO REMOVE:");
                         RemoveEmployeeTypeDeterminer(theObj);
                         break;
 
                     case '2':
-                        theObj = SearchByLastName("Search By Last Name To Remove:");
+                        theObj = SearchByLastName("SEARCH BY LAST NAME/BUSINESS NAME TO REMOVE:");
                         RemoveEmployeeTypeDeterminer(theObj);
                         break;
 
                     case '3':
-                        theObj = SearchBySIN("Search By SIN/BN To Remove:");
+                        theObj = SearchBySIN("SEARCH BY SIN/BN TO REMOVE:");
                         RemoveEmployeeTypeDeterminer(theObj);
                         break;
 
@@ -1551,12 +1420,12 @@ namespace Presentation
 
             Console.Clear();
 
-            if (theObj == null)
-            {
-                Console.WriteLine("NO MATCHING EMPLOYEE FOUND");
-                Console.WriteLine("");
-            }
-            else
+            //if (theObj == null)
+            //{
+            //    Console.WriteLine("NO MATCHING EMPLOYEE FOUND");
+            //    Console.WriteLine("");
+            //}
+            if (theObj != null)
             {
                 if (RemovalConfirmationUI(theObj) == true)
                 {
@@ -1624,7 +1493,7 @@ namespace Presentation
                 Console.WriteLine("DISPLAY AN EMPLOYEE:");
                 Console.WriteLine("");
                 Console.WriteLine("\t1. Search By First Name");
-                Console.WriteLine("\t2. Search By Last Name");
+                Console.WriteLine("\t2. Search By Last Name/Business Name");
                 Console.WriteLine("\t3. Search By SIN/Business Number");
                 Console.WriteLine("\t4. ----------");
                 Console.WriteLine("\t5. ----------");
@@ -1638,18 +1507,18 @@ namespace Presentation
                 switch (userInput.KeyChar)
                 {
                     case '1':
-                        theObj = SearchByFirstName("Search By First Name To Display:");
+                        theObj = SearchByFirstName("SEARCH BY FIRST NAME TO DISPLAY:");
                         DisplaySingleEmployeTypeDeterminer(theObj);
 
                         break;
 
                     case '2':
-                        theObj = SearchByLastName("Search By Last Name To Display:");
+                        theObj = SearchByLastName("SEARCH BY LAST NAME/BUSINESS NAME TO DISPLAY:");
                         DisplaySingleEmployeTypeDeterminer(theObj);
                         break;
 
                     case '3':
-                        theObj = SearchBySIN("Search By SIN/BN To Display:");
+                        theObj = SearchBySIN("SEARCH BY SIN/BN TO DISPLAY:");
                         DisplaySingleEmployeTypeDeterminer(theObj);
                         break;
 
@@ -1668,18 +1537,18 @@ namespace Presentation
             ConsoleKeyInfo userInput;
             Console.Clear();
 
-            if (theObj == null)
-            {
-                Console.WriteLine("NO MATCHING EMPLOYEE FOUND");
-                Console.WriteLine("");
-            }
-            else
+            //if (theObj == null)
+            //{
+            //    Console.WriteLine("NO MATCHING EMPLOYEE FOUND");
+            //    Console.WriteLine("");
+            //}
+            if (theObj != null)
             {
                 DisplayEmployeeUnknownType(theObj);
+                Console.WriteLine("Press any key to continue...");
+                userInput = Console.ReadKey();
             }
 
-            Console.WriteLine("Press any key to continue...");
-            userInput = Console.ReadKey();
         }
 
         private void DisplayEmployeeUnknownType(Employee theObj)
@@ -1782,24 +1651,23 @@ namespace Presentation
             }
         }
 
-        //private void DisplaySingleEmployee(Employee theObj)
-        //{
-        //    FulltimeEmployee FtEmployee = new FulltimeEmployee();
-        //    ParttimeEmployee PtEmployee = new ParttimeEmployee();
-        //    ContractEmployee CtEmployee = new ContractEmployee();
-        //    SeasonalEmployee SnEmployee = new SeasonalEmployee();
-
-        //            if (theObj.GetType() == FtEmployee.GetType())
-        //            { }
-
-        //        }
-
-        private void ModifySingleEmployee(Employee theObj)
-        {
-
-        }
-
-
+        /**
+         * \brief UI for search employee by name
+         *
+         * \details <b>Details</b>
+         *
+         * This method will take an user input, then match the input with objects within 
+         * the companyContainer. It will compare the first name by defult, but is also 
+         * capable to compare with the last name. It will display each of the matching 
+         * object one by one, until user choose one of them.
+         * 
+         * \param string displayOrModifyOrRemove: the sentense to display at the top of 
+         *                                        the UI
+         *        bool lastName: if this is true, method will compare with last name instead.
+         * 
+         * \return Employee: The matching object that the user choose
+         * 
+         */
         private Employee SearchByFirstName(string displayOrModifyOrRemove, bool lastName = false)
         {
             string searchParameter = "";
@@ -1810,11 +1678,11 @@ namespace Presentation
             ConsoleKeyInfo userInput;
             bool compareResult = false;
 
-            if (displayOrModifyOrRemove.Contains("Display"))
+            if (displayOrModifyOrRemove.Contains("DISPLAY"))
             {
                 dmr = "DISPLAY";
             }
-            else if (displayOrModifyOrRemove.Contains("Modify"))
+            else if (displayOrModifyOrRemove.Contains("MODIFY"))
             {
                 dmr = "MODIFY";
             }
@@ -1860,7 +1728,7 @@ namespace Presentation
                     while (back == false)
                     {
                         Console.Clear();
-                        Console.WriteLine("{0} THIS EMPLOYEE?:", dmr);
+                        Console.WriteLine("{0} THIS EMPLOYEE?", dmr);
                         Console.WriteLine("");
                         Console.WriteLine("\t1. Yes");
                         Console.WriteLine("\t2. No");
@@ -1885,8 +1753,16 @@ namespace Presentation
                                 break;
 
                             case '2':
+                                theObj = (Employee)companyContainer.NextEmployee();
                                 back = true;
                                 break;
+
+                            case '9':
+                                found = true;
+                                theObj = null;
+                                back = true;
+                                break;
+
                         }
                     }
                 }
@@ -1896,8 +1772,18 @@ namespace Presentation
                 }
             }
 
+            if (found != true && theObj == null)
+            {
+                Console.Clear();
+                Console.WriteLine("NO MATCHING EMPLOYEE FOUND");
+                Console.WriteLine("");
+                Console.WriteLine("Press any key to continue...");
+                userInput = Console.ReadKey();
+            }
+
             return theObj;
         }
+
 
         private Employee SearchByLastName(string displayOrModifyOrRemove)
         {
@@ -1923,6 +1809,7 @@ namespace Presentation
         {
             string searchParameter = "";
             Employee theObj = new Employee();
+            ConsoleKeyInfo userInput;
 
             searchParameter = TakeUserInputSIN(displayOrModifyOrRemove);
 
@@ -1940,17 +1827,48 @@ namespace Presentation
                 }
             }
 
+            if (theObj == null)
+            {
+                Console.Clear();
+                Console.WriteLine("NO MATCHING EMPLOYEE FOUND");
+                Console.WriteLine("");
+                userInput = Console.ReadKey();
+            }
+
             return theObj;
         }
 
-        private void LoadFromFileUI()
+        private void LoadFromFile()
         {
+            string errorMessage = "";
+            ConsoleKeyInfo userInput;
 
+            companyContainer = new Container(FileIO.OpenDBase("EMS_DB_FILE.txt", ref errorMessage));
+            Console.Clear();
+            Console.WriteLine("FILE HAS BEEN LOADED");
+            Console.WriteLine("");
+            Console.WriteLine("Press any key to continue...");
+            userInput = Console.ReadKey();
         }
 
-        private void SaveToFileUI()
+        private void SaveToFile()
         {
+            string errorMessage = "";
+            ConsoleKeyInfo userInput;
 
+            companyContainer.SaveDataBase(ref errorMessage);
+                        if (errorMessage != "")
+                        {
+                            PrintErrorMessage(errorMessage);
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("FILE SAVED SUCCESSFULLY");
+                            Console.WriteLine("");
+                            Console.WriteLine("Press any key to contineu...");
+                            userInput = Console.ReadKey();
+                        }
         }
 
         private void SpecifyEmployeeDetailsUI()
@@ -2095,9 +2013,51 @@ namespace Presentation
 
         }
 
-        private void SaveAndExitProgram()
+        private bool SaveAndExitProgram()
         {
-            Console.Clear();
+            ConsoleKeyInfo userInput;
+            bool exit = false;
+
+            bool back = false;
+
+            while (back == false)
+            {
+                Console.Clear();
+                Console.WriteLine("ARE YOU SURE YOU WANT TO EXIT EMS?");
+                Console.WriteLine("");
+                Console.WriteLine("\t1. Save And Exit");
+                Console.WriteLine("\t2. Exit Without Saving");
+                Console.WriteLine("\t3. ----------");
+                Console.WriteLine("\t4. ----------");
+                Console.WriteLine("\t5. ----------");
+                Console.WriteLine("\t6. ----------");
+                Console.WriteLine("\t7. ----------");
+                Console.WriteLine("\t8. ----------");
+                Console.WriteLine("\t9. Return To Main Menu");
+
+                userInput = Console.ReadKey();
+
+                switch (userInput.KeyChar)
+                {
+                    case '1':
+                        SaveToFile();
+                        exit = true;
+                        back = true;
+                        break;
+
+                    case '2':
+                        exit = true;
+                        back = true;
+                        break;
+
+                    case '9':
+                        back = true;
+                        break;
+                }
+
+            }
+            return exit;
+
         }
 
         /**
