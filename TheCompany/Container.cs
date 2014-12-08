@@ -497,8 +497,8 @@ namespace TheCompany
             ParttimeEmployee PTemployee = new ParttimeEmployee();
             ContractEmployee CTemployee = new ContractEmployee();
             SeasonalEmployee SNemployee = new SeasonalEmployee();
-            string originalValues = "";
-            string newValues = "";
+            //string originalValues = "";
+            //string newValues = "";
             int i = 0;
 
 
@@ -506,9 +506,12 @@ namespace TheCompany
             {
                 if (virtualDB[i].GetSocialInsuranceNumber() == employeeToModify.GetSocialInsuranceNumber())
                 {
+                    Logging.LogEvent("[Container.ModifyEmployee] Employee modified. Original Values: " + virtualDB[i].Details() + "\nNew Values: " + employeeToModify.Details());
                     virtualDB[i] = employeeToModify;
                     modifySuccessful = true;
 
+                    
+                    /*
                     if (FTemployee.GetType() == virtualDB[i].GetType())
                     {
                         FTemployee = (FulltimeEmployee)employeeToModify;                
@@ -540,9 +543,9 @@ namespace TheCompany
 
                         SNemployee = (SeasonalEmployee)virtualDB[i];
                         newValues = SNemployee.Details();                  
-                    }
+                    }*/
 
-                    Logging.LogEvent("[Container.ModifyEmployee] Employee modified. Original Values: " + originalValues + "\nNew Values: " + newValues);
+                    
                     break;
 
                 }// end 'if' statement
