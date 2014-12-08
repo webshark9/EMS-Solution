@@ -109,14 +109,14 @@ namespace AllEmployees
             }
         }
 
-        abstract virtual public string Details()
+        virtual public string Details()
         {
             string empDetails = "";
 
             return empDetails;
         }
 
-        abstract virtual public string ToString()
+        virtual public string ToString()
         {
             string empDetailsStr = "";
 
