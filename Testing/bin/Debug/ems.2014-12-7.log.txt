@@ -76,3 +76,19 @@
 2014-12-7 20:48:28 [Employee.SetBusinessNumber] Attempted To Set socialInsuranceNumber Attribute With Invalid Value: 123234345
 2014-12-7 20:48:28 [Employee.SetBusinessNumber] Attempted To Set socialInsuranceNumber Attribute With Invalid Value: 003333334
 2014-12-7 20:52:40 [Employee.SetDateOfCreation] Attempted To Set dateOfBirth Attribute With Invalid Value: 2000/08/01
+2014-12-7 23:18:5 [Employee.SetFirstName] Attempted To Set firstName Attribute With Invalid Value: (123)/+Billy-.-
+2014-12-7 23:18:5 [Employee.SetFirstName] Attempted To Set firstName Attribute With Invalid Value: \\\456/////
+2014-12-7 23:18:5 [Employee.SetSocialInsuranceNumber] Attempted To Set socialInsuranceNumber Attribute With Invalid Value: 111111111
+2014-12-7 23:18:5 [Employee.SetDateOfBirth] Attempted To Set dateOfBirth Attribute With Invalid Value: 1234567890
+2014-12-7 23:18:5 [FulltimeEmployee.SetDateOfHire] Attempted To Set dateOfHire Attribute With Invalid Value: -98-980-
+2014-12-7 23:18:5 [FulltimeEmployee.SetDateOfTermination] Attempted To Set dateOfTermination Attribute With Invalid Value: ////////
+2014-12-7 23:18:5 [FulltimeEmployee.SetSalary] Attempted To Set salary Attribute With Invalid Value: -12.12
+2014-12-7 23:18:5 [ParttimeEmployee.SetHourlyRate] Attempted To Set hourlyRate Attribute With Invalid Value: 0.00
+2014-12-7 23:18:5 [SeasonalEmployee.SetSeason] Attempted To Set season Attribute With Invalid Value: november
+2014-12-7 23:18:5 [SeasonalEmployee.SetPiecePay] Attempted To Set piecePay Attribute With Invalid Value: -45.80
+2014-12-7 23:18:5 [ContractEmployee.SetContractStartDate] Attempted To Set contractStartDate Attribute With Invalid Value: Matthew Is The BEST Project Manager
+2014-12-7 23:18:5 [ContractEmployee.SetContractStopDate] Attempted To Set contractStopDate Attribute With Invalid Value:         
+2014-12-7 23:18:5 [ContractEmployee.SetFixedContractAmount] Attempted To Set fixedContractAmount Attribute With Invalid Value: -12.123123
+2014-12-7 23:18:5 [Employee.SetBusinessNumber] Attempted To Set socialInsuranceNumber Attribute With Invalid Value: 123234345
+2014-12-7 23:18:5 [Employee.SetDateOfCreation] Attempted To Set dateOfBirth Attribute With Invalid Value: 2000/08/01
+2014-12-7 23:18:5 [Employee.SetBusinessNumber] Attempted To Set socialInsuranceNumber Attribute With Invalid Value: 003333334

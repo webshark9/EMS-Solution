@@ -20,14 +20,14 @@ namespace Testing
     {
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
+         * ID: 1.1.1\n
+         * Name: Invalid_FirstName_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: (123)/+Billy-.-\n
          * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * Actual outcome: 'false' return
          */
         [TestMethod]
         public void Invalid_FirstName_Test()
@@ -43,14 +43,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
-         * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * ID: 1.1.2\n
+         * Name: Valid_FirstName_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: Matthew\n
+         * Expected outcome: 'true' return \n
+         * Actual outcome: 'true' return
          */
         [TestMethod]
         public void Valid_FirstName_Test()
@@ -66,14 +66,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
+         * ID: 1.2.1\n
+         * Name: Invalid_LastName_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: \\\\\\456/////\n
          * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * Actual outcome: 'false' return
          */
         [TestMethod]
         public void Invalid_LastName_Test()
@@ -89,14 +89,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
-         * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * ID: 1.2.2\n
+         * Name: Valid_LastName_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: Smith\n
+         * Expected outcome: 'true' return \n
+         * Actual outcome: 'true' return
          */
         [TestMethod]
         public void Valid_LastName_Test()
@@ -112,14 +112,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
+         * ID: 1.3.1\n
+         * Name: Invalid_SIN_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: 111111111\n
          * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * Actual outcome: 'false' return
          */
         [TestMethod]
         public void Invalid_SIN_Test()
@@ -135,14 +135,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
-         * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * ID: 1.3.2\n
+         * Name: Valid_SIN_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: 333333334\n
+         * Expected outcome: 'true' return \n
+         * Actual outcome: 'true' return
          */
         [TestMethod]
         public void Valid_SIN_Test()
@@ -158,14 +158,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
+         * ID: 1.4.1\n
+         * Name: Invalid_DateOfBirth_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: 1234567890\n
          * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * Actual outcome: 'false' return
          */
         [TestMethod]
         public void Invalid_DateOfBirth_Test()
@@ -181,14 +181,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
-         * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * ID: 1.4.2\n
+         * Name: Valid_DateOfBirth_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: 6/15/1994\n
+         * Expected outcome: 'true' return \n
+         * Actual outcome: 'true' return
          */
         [TestMethod]
         public void Valid_DateOfBirth_Test()
@@ -204,14 +204,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
+         * ID: 2.1.1\n
+         * Name: Invalid_DateOfHire_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: -98-980-\n
          * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * Actual outcome: 'false' return
          */
         [TestMethod]
         public void Invalid_DateOfHire_Test()
@@ -227,14 +227,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
-         * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * ID: 2.1.2\n
+         * Name: Valid_DateOfHire_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: 2011/06/11\n
+         * Expected outcome: 'true' return \n
+         * Actual outcome: 'true' return
          */
         [TestMethod]
         public void Valid_DateOfHire_Test()
@@ -250,14 +250,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
+         * ID: 2.2.1\n
+         * Name: Invalid_DateOfTermination_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: ////////\n
          * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * Actual outcome: 'false' return
          */
         [TestMethod]
         public void Invalid_DateOfTermination_Test()
@@ -273,14 +273,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
-         * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * ID: 2.2.2\n
+         * Name: Valid_DateOfTermination_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: 2011/06/30\n
+         * Expected outcome: 'true' return \n
+         * Actual outcome: 'true' return
          */
         [TestMethod]
         public void Valid_DateOfTermination_Test()
@@ -296,14 +296,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
+         * ID: 2.3.1\n
+         * Name: Invalid_Salary_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: -12.12\n
          * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * Actual outcome: 'false' return
          */
         [TestMethod]
         public void Invalid_Salary_Test()
@@ -319,14 +319,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
-         * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * ID: 2.3.2\n
+         * Name: Valid_Salary_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: 53000.78\n
+         * Expected outcome: 'true' return \n
+         * Actual outcome: 'true' return
          */
         [TestMethod]
         public void Valid_Salary_Test()
@@ -342,14 +342,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
+         * ID: 3.1.1\n
+         * Name: Invalid_HourlyRate_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: 0.00\n
          * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * Actual outcome: 'false' return
          */
         [TestMethod]
         public void Invalid_HourlyRate_Test()
@@ -365,14 +365,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
-         * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * ID: 3.1.2\n
+         * Name: Valid_HourlyRate_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: 12.45\n
+         * Expected outcome: 'true' return \n
+         * Actual outcome: 'true' return
          */
         [TestMethod]
         public void Valid_HourlyRate_Test()
@@ -388,14 +388,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
+         * ID: 4.1.1\n
+         * Name: Invalid_Season_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: november\n
          * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * Actual outcome: 'false' return
          */
         [TestMethod]
         public void Invalid_Season_Test()
@@ -411,14 +411,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
-         * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * ID: 4.1.2\n
+         * Name: Valid_Season_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: summer\n
+         * Expected outcome: 'true' return \n
+         * Actual outcome: 'true' return
          */
         [TestMethod]
         public void Valid_Season_Test()
@@ -434,14 +434,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
+         * ID: 4.2.1\n
+         * Name: Invalid_PiecePay_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: -45.80\n
          * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * Actual outcome: 'false' return
          */
         [TestMethod]
         public void Invalid_PiecePay_Test()
@@ -457,14 +457,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
-         * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * ID: 4.2.2\n
+         * Name: Valid_PiecePay_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: 123.54\n
+         * Expected outcome: 'true' return \n
+         * Actual outcome: 'true' return
          */
         [TestMethod]
         public void Valid_PiecePay_Test()
@@ -480,14 +480,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
+         * ID: 5.1.1\n
+         * Name: Invalid_ContractStartDate_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: Matthew Is The BEST Project Manager\n
          * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * Actual outcome: 'false' return
          */
         [TestMethod]
         public void Invalid_ContractStartDate_Test()
@@ -503,14 +503,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
-         * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * ID: 5.1.2\n
+         * Name: Valid_ContractStartDate_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: 2012/12/12\n
+         * Expected outcome: 'true' return \n
+         * Actual outcome: 'true' return
          */
         [TestMethod]
         public void Valid_ContractStartDate_Test()
@@ -526,14 +526,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
+         * ID: 5.2.1\n
+         * Name: Invalid_ContractStopDate_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: '        '\n
          * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * Actual outcome: 'false' return
          */
         [TestMethod]
         public void Invalid_ContractStopDate_Test()
@@ -549,14 +549,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
-         * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * ID: 5.2.2\n
+         * Name: Valid_ContractStopDate_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: 2012/12/13\n
+         * Expected outcome: 'true' return \n
+         * Actual outcome: 'true' return
          */
         [TestMethod]
         public void Valid_ContractStopDate_Test()
@@ -572,14 +572,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
+         * ID: 5.3.1\n
+         * Name: Invalid_FixedContractAmount_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: -12.123123\n
          * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * Actual outcome: 'false' return
          */
         [TestMethod]
         public void Invalid_FixedContractAmount_Test()
@@ -595,14 +595,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
-         * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * ID: 5.3.2\n
+         * Name: Valid_FixedContractAmount_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: 12.12\n
+         * Expected outcome: 'true' return \n
+         * Actual outcome: 'true' return
          */
         [TestMethod]
         public void Valid_FixedContractAmount_Test()
@@ -618,14 +618,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
+         * ID: 5.4.1\n
+         * Name: Invalid_BusinessNumber_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: 123234345\n
          * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * Actual outcome: 'false' return
          */
         [TestMethod]
         public void Invalid_BusinessNumber_Test()
@@ -644,14 +644,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
-         * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * ID: 5.4.2\n
+         * Name: Valid_BusinessNumber_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: 333333334\n
+         * Expected outcome: 'true' return \n
+         * Actual outcome: 'true' return
          */
         [TestMethod]
         public void Valid_BusinessNumber_Test()
@@ -670,14 +670,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
+         * ID: 5.5.1\n
+         * Name: Invalid_DateOfCreation_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: 2000/08/01\n
          * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * Actual outcome: 'false' return
          */
         [TestMethod]
         public void Invalid_DateOfCreation_Test()
@@ -696,14 +696,14 @@ namespace Testing
 
         /**
          * \test
-         * ID: \n
-         * Name: \n
-         * Description: \n
-         * How is it conducted: \n
-         * Type of test: \n
-         * Data Used: \n
-         * Expected outcome: 'false' return \n
-         * Actual outcome: 
+         * ID: 5.5.2\n
+         * Name: Valid_DateOfCreation_Test\n
+         * Description: Validate the passed attribute\n
+         * How is it conducted: Automatic\n
+         * Type of test: Functional\n
+         * Data Used: 2000/08/01\n
+         * Expected outcome: 'true' return \n
+         * Actual outcome: 'true' return
          */
         [TestMethod]
         public void Valid_DateOfCreation_Test()
