@@ -86,7 +86,7 @@ namespace Presentation
     /// \authors Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
     public class UIMenu
     {
-        private Container companyContainer;
+        private Container companyContainer = new Container();
 
         /**
         * \brief Displays the Main Menu
@@ -203,7 +203,11 @@ namespace Presentation
                         break;
 
                     case '2':
-
+                        companyContainer.SaveDataBase(ref errorMessage);
+                        if (errorMessage != "")
+                        {
+                            PrintErrorMessage(errorMessage);
+                        }
                         break;
 
                     case '9':
