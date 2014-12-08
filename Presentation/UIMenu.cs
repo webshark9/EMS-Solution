@@ -195,7 +195,7 @@ namespace Presentation
                 switch (userInput.KeyChar)
                 {
                     case '1':
-                        LoadFromFile();
+                        LoadFromFileMenu();
                         break;
 
                     case '2':
@@ -206,6 +206,47 @@ namespace Presentation
                         back = true;
                         break;
                 }
+            }
+        }
+
+        private void LoadFromFileMenu()
+        {
+            ConsoleKeyInfo userInput;
+            bool back = false;
+
+            while (back == false)
+            {
+            Console.Clear();
+            Console.WriteLine("LOAD FILE FROM DEFAULT LOCATION OR CUSTOM PATH?");
+            Console.WriteLine("");
+            Console.WriteLine("\t1. Default Location");
+            Console.WriteLine("\t2. Custom Path");
+            Console.WriteLine("\t3. ----------");
+            Console.WriteLine("\t4. ----------");
+            Console.WriteLine("\t5. ----------");
+            Console.WriteLine("\t6. ----------");
+            Console.WriteLine("\t7. ----------");
+            Console.WriteLine("\t8. ----------");
+            Console.WriteLine("\t9. Return to File Management Menu");
+
+
+            userInput = Console.ReadKey();
+
+            switch (userInput.KeyChar)
+            {
+                case '1':
+                    LoadFromFileDefault();
+                    break;
+
+                case '2':
+                    LoadFromFileCustom();
+                    break;
+
+                case '9':
+                    back = true;
+                    break;
+
+            }
             }
         }
 
@@ -1838,12 +1879,31 @@ namespace Presentation
             return theObj;
         }
 
-        private void LoadFromFile()
+        private void LoadFromFileDefault()
         {
             string errorMessage = "";
             ConsoleKeyInfo userInput;
 
             companyContainer = new Container(FileIO.OpenDBase("EMS_DB_FILE.txt", ref errorMessage));
+            Console.Clear();
+            Console.WriteLine("FILE HAS BEEN LOADED");
+            Console.WriteLine("");
+            Console.WriteLine("Press any key to continue...");
+            userInput = Console.ReadKey();
+        }
+
+        private void LoadFromFileCustom()
+        {
+            string errorMessage = "";
+            string customPath = "";
+            ConsoleKeyInfo userInput;
+
+            Console.Clear();
+            Console.WriteLine("ENTER THE CUSTOM FILE PATH");
+            Console.WriteLine("");
+            customPath = Console.ReadLine();
+
+            companyContainer = new Container(FileIO.OpenDBase(customPath, ref errorMessage));
             Console.Clear();
             Console.WriteLine("FILE HAS BEEN LOADED");
             Console.WriteLine("");
@@ -1869,36 +1929,6 @@ namespace Presentation
                             Console.WriteLine("Press any key to contineu...");
                             userInput = Console.ReadKey();
                         }
-        }
-
-        private void SpecifyEmployeeDetailsUI()
-        {
-
-        }
-
-        private void SpecifyFirstNameUI()
-        {
-
-        }
-
-        private void SpecifyLastNameUI()
-        {
-
-        }
-
-        private void SpecifySINUI()
-        {
-
-        }
-
-        private void SaveEmployeeUI()
-        {
-
-        }
-
-        private void ModifyEmployeeUI()
-        {
-
         }
 
         /**
