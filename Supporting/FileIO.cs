@@ -64,7 +64,6 @@ namespace Supporting
 
             databaseName = dbName;// save the name of the database file in the 'databaseName' data member so we can close the file later
 
-            //File.Open(databaseName, FileMode.OpenOrCreate, FileAccess.ReadWrite);// open/create the database file for read/write access
             try
             {
                 dbReader = new StreamReader(databaseName);
@@ -101,12 +100,11 @@ namespace Supporting
                 nextPipeIndex = 0;// used to hold the index of the current pipe character found
                 string[] stringsInRecord = new string[8];// used to hold all of the separate words in a record
                 int stringsInRecordIndex = 0;// used to index the 'stringsInRecord' variable
-
                 DateTime dateOfBirth = new DateTime();
                 DateTime dateOfHire = new DateTime();
                 DateTime dateOfTermination = new DateTime();
 
-                returnedErrorMessage = "";
+                returnedErrorMessage = "";// reset the error message in case it was set the last iteration
 
                 nextPipeIndex = record.IndexOf('|');
                 if (nextPipeIndex == -1)// check if there are no pipe characters in the string (which would make it invalid)
@@ -136,7 +134,7 @@ namespace Supporting
                     }
                     else// first string has the right number of characters
                     {
-                        if (stringsInRecord[0] == "FT" || stringsInRecord[0] == "PT")// the only different between FT and PT employees is the last string, so we can check for both at the same time
+                        if (stringsInRecord[0] == "FT" || stringsInRecord[0] == "PT")// the only difference between FT and PT employees is the last string, so we can validate both at the same time
                         {
                             float salary = 0;// salary is unique to FT employees so we declare it here
                             float hourlyRate = 0;// the hourly rate is unique to PT employees so we declare it here
@@ -512,10 +510,7 @@ namespace Supporting
             bool noErrors = true;
             int numRecordsWritten = 0;// the total number of records written
             int numValidRecords = 0;// the number of valid records read
-            int numInvalidRecords = 0;// the number of invalid records read
-            int pipeIndex = 0;// used to hold the index of the first pipe character found
-            int numPipes = 0;// used to count the number of pipe characters found
-            string employeeType = "";
+            int numInvalidRecords = 0;// the number of invalid records read                     
 
             try
             {
@@ -524,6 +519,10 @@ namespace Supporting
 
                 foreach (string record in stringsToWrite)
                 {
+                    int pipeIndex = 0;// used to hold the index of the first pipe character found
+                    int numPipes = 0;// used to count the number of pipe characters found
+                    string employeeType = "";
+
                     pipeIndex = record.IndexOf('|');
                     ++numPipes;
                     if (pipeIndex == -1)// check if there are no pipe characters in the string (which would make it invalid)
@@ -668,7 +667,7 @@ namespace Supporting
                 isValid = false;
             }
 
-            errorMessage = returnedErrorMessage;
+            errorMessage = returnedErrorMessage;// pass the errors back to 
 
             return isValid;
         }
