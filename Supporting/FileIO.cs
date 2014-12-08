@@ -151,7 +151,7 @@ namespace Supporting
                                 if(!Validation.ValidateDateOfBirth(dateOfBirth, ref returnedErrorMessage))
                                 {
                                     ++numInvalidRecords;
-                                    Logging.LogEvent("[FileIO.OpenDBase] Invalid date of birth found reading record: " + record +".\n\tError: " + returnedErrorMessage);
+                                    Logging.LogEvent("[FileIO.OpenDBase] Invalid date of birth found reading record: " + record +".\r\n\tError: " + returnedErrorMessage);
                                     continue;
                                 }
                             }
@@ -160,11 +160,9 @@ namespace Supporting
                                 if (stringsInRecord[4] != "N/A")
                                 {
                                     ++numInvalidRecords;
-                                    //Console.WriteLine("[FileIO.OpenDBase] Invalid date of birth FORMAT found reading record: " + record);
                                     Logging.LogEvent("[FileIO.OpenDBase] Invalid date of birth FORMAT found reading record: " + record);
                                     continue;
                                 }
-
                             }
 
                             if (DateTime.TryParse(stringsInRecord[5], out dateOfHire))// convert string to a dateTime variable
@@ -172,8 +170,7 @@ namespace Supporting
                                 if (!Validation.ValidateDateOfHire(dateOfBirth, dateOfHire, DateTime.MinValue, ref returnedErrorMessage))
                                 {
                                     ++numInvalidRecords;
-                                    //Console.WriteLine("[FileIO.OpenDBase] Invalid date of hire found reading record: " + record);
-                                    Logging.LogEvent("[FileIO.OpenDBase] Invalid date of hire found reading record: " + record +".\n\tError: " + returnedErrorMessage);
+                                    Logging.LogEvent("[FileIO.OpenDBase] Invalid date of hire found reading record: " + record +".\r\n\tError: " + returnedErrorMessage);
                                     continue;
                                 }
                             }
@@ -182,7 +179,6 @@ namespace Supporting
                                 if (stringsInRecord[5] != "N/A")
                                 {
                                     ++numInvalidRecords;
-                                    //Console.WriteLine("[FileIO.OpenDBase] Invalid date of hire FORMAT found reading record: " + record);
                                     Logging.LogEvent("[FileIO.OpenDBase] Invalid date of hire FORMAT found reading record: " + record);
                                     continue;
                                 }
@@ -194,8 +190,7 @@ namespace Supporting
                                 if(!Validation.ValidateDateOfTermination(dateOfBirth, dateOfHire, dateOfTermination, ref returnedErrorMessage))
                                 {
                                     ++numInvalidRecords;
-                                    //Console.WriteLine("[FileIO.OpenDBase] Invalid date of termination found reading record: " + record);
-                                    Logging.LogEvent("[FileIO.OpenDBase] Invalid date of termination found reading record: " + record +".\n\tError: " + returnedErrorMessage);
+                                    Logging.LogEvent("[FileIO.OpenDBase] Invalid date of termination found reading record: " + record +".\r\n\tError: " + returnedErrorMessage);
                                     continue;
                                 }                            
                             }
@@ -204,7 +199,6 @@ namespace Supporting
                                 if(stringsInRecord[6] != "N/A")
                                 {
                                     ++numInvalidRecords;
-                                    //Console.WriteLine("[FileIO.OpenDBase] Invalid date of termination FORMAT found reading record: " + record);
                                     Logging.LogEvent("[FileIO.OpenDBase] Invalid date of termination FORMAT found reading record: " + record);
                                     continue;
                                 }
@@ -213,13 +207,12 @@ namespace Supporting
 
                             if(stringsInRecord[0] == "FT")// if true then the last field will be the salary
                             {
-                                if (float.TryParse(stringsInRecord[7], out salary))
+                                if (float.TryParse(stringsInRecord[7], out salary))// convert string to a float variable
                                 {
                                     if (!Validation.ValidateSalary(salary, ref returnedErrorMessage))
                                     {
                                         ++numInvalidRecords;
-                                        //Console.WriteLine("[FileIO.OpenDBase] Invalid salary found reading record: " + record);
-                                        Logging.LogEvent("[FileIO.OpenDBase] Invalid salary found reading record: " + record +".\n\tError: " + returnedErrorMessage);
+                                        Logging.LogEvent("[FileIO.OpenDBase] Invalid salary found reading record: " + record +".\r\n\tError: " + returnedErrorMessage);
                                         continue;
                                     }
                                 }
@@ -228,24 +221,21 @@ namespace Supporting
                                     if (stringsInRecord[7] != "N/A")
                                     {
                                         ++numInvalidRecords;
-                                        //Console.WriteLine("[FileIO.OpenDBase] Invalid salary FORMAT found reading record: " + record);
                                         Logging.LogEvent("[FileIO.OpenDBase] Invalid salary FORMAT found reading record: " + record);
                                         continue;
                                     }
 
                                 }
-
                                 
                             }
                             else// it is a PT employee, last field will be the hourlyRate
                             {
-                                if (float.TryParse(stringsInRecord[7], out hourlyRate))
+                                if (float.TryParse(stringsInRecord[7], out hourlyRate))// convert string to a float variable
                                 {
                                     if (!Validation.ValidateSalary(hourlyRate, ref returnedErrorMessage))
                                     {
                                         ++numInvalidRecords;
-                                        //Console.WriteLine("[FileIO.OpenDBase] Invalid hourly rate found reading record: " + record);
-                                        Logging.LogEvent("[FileIO.OpenDBase] Invalid hourly rate found reading record: " + record +".\n\tError: " + returnedErrorMessage);
+                                        Logging.LogEvent("[FileIO.OpenDBase] Invalid hourly rate found reading record: " + record +".\r\n\tError: " + returnedErrorMessage);
                                         continue;
                                     }
                                 }
@@ -254,33 +244,30 @@ namespace Supporting
                                     if (stringsInRecord[7] != "N/A")
                                     {
                                         ++numInvalidRecords;
-                                        //Console.WriteLine("[FileIO.OpenDBase] Invalid hourly rate FORMAT found reading record: " + record);
                                         Logging.LogEvent("[FileIO.OpenDBase] Invalid hourly rate FORMAT found reading record: " + record);
                                         continue;
                                     }
-
                                 }
+
                             }                        
 
                         }// end 'if' that validates both FT and PT employees                       
                         else if (stringsInRecord[0] == "CT")
                         {
-                            float contractAmount = 0;
-                            DateTime contractStartDate = new DateTime();// specific to CT employees so we declare it here
-                            DateTime contractStopDate = new DateTime();// specific to CT employees so we declare it here
+                            float contractAmount = 0;// unique to CT employees so we declare it here
+                            DateTime contractStartDate = new DateTime();// unique to CT employees so we declare it here
+                            DateTime contractStopDate = new DateTime();// unique to CT employees so we declare it here
 
                             if (!Validation.ValidateName(stringsInRecord[1], ref returnedErrorMessage))
                             {
                                 ++numInvalidRecords;
-                                //Console.WriteLine("[FileIO.OpenDBase] Invalid business name found reading record: " + record);
-                                Logging.LogEvent("[FileIO.OpenDBase] Invalid business name found reading record: " + record +".\n\tError: " + returnedErrorMessage);
+                                Logging.LogEvent("[FileIO.OpenDBase] Invalid business name found reading record: " + record +".\r\n\tError: " + returnedErrorMessage);
                                 continue;
                             }
 
                             if(stringsInRecord[2] != "")// the CT employee doesn't use the firstName field so it should be empty
                             {
                                 ++numInvalidRecords;
-                                //Console.WriteLine("[FileIO.OpenDBase] Non empty entry for CT employee first name found reading record: " + record);
                                 Logging.LogEvent("[FileIO.OpenDBase] Non empty entry for CT employee first name found reading record: " + record);
                                 continue;
                             }
@@ -288,8 +275,7 @@ namespace Supporting
                             if (!Validation.ValidateBusinessNumber(stringsInRecord[3], DateTime.MinValue, ref returnedErrorMessage))
                             {
                                 ++numInvalidRecords;
-                                //Console.WriteLine("[FileIO.OpenDBase] Invalid business number found reading record: " + record);
-                                Logging.LogEvent("[FileIO.OpenDBase] Invalid business number found reading record: " + record +".\n\tError: " + returnedErrorMessage);
+                                Logging.LogEvent("[FileIO.OpenDBase] Invalid business number found reading record: " + record +".\r\n\tError: " + returnedErrorMessage);
                                 continue;
                             }
 
@@ -298,8 +284,7 @@ namespace Supporting
                                 if (!Validation.ValidateDateOfCreation(stringsInRecord[3], dateOfBirth, ref returnedErrorMessage))
                                 {
                                     ++numInvalidRecords;
-                                    //Console.WriteLine("[FileIO.OpenDBase] Invalid date of incorporation found reading record: " + record);
-                                    Logging.LogEvent("[FileIO.OpenDBase] Invalid date of incorporation found reading record: " + record +".\n\tError: " + returnedErrorMessage);
+                                    Logging.LogEvent("[FileIO.OpenDBase] Invalid date of incorporation found reading record: " + record +".\r\n\tError: " + returnedErrorMessage);
                                     continue;
                                 }
                             }
@@ -308,11 +293,9 @@ namespace Supporting
                                 if (stringsInRecord[4] != "N/A")
                                 {
                                     ++numInvalidRecords;
-                                    //Console.WriteLine("[FileIO.OpenDBase] Invalid date of incorporation FORMAT found reading record: " + record);
                                     Logging.LogEvent("[FileIO.OpenDBase] Invalid date of incorporation FORMAT found reading record: " + record);
                                     continue;
                                 }
-
                             }
 
                             if (DateTime.TryParse(stringsInRecord[5], out contractStartDate))// convert string to a dateTime variable
@@ -320,8 +303,7 @@ namespace Supporting
                                 if (!Validation.ValidateContractStartDate(dateOfBirth, contractStartDate, DateTime.MinValue, ref returnedErrorMessage))
                                 {
                                     ++numInvalidRecords;
-                                    //Console.WriteLine("[FileIO.OpenDBase] Invalid contract start date found reading record: " + record);
-                                    Logging.LogEvent("[FileIO.OpenDBase] Invalid contract start date found reading record: " + record +".\n\tError: " + returnedErrorMessage);
+                                    Logging.LogEvent("[FileIO.OpenDBase] Invalid contract start date found reading record: " + record +".\r\n\tError: " + returnedErrorMessage);
                                     continue;
                                 }
                             }
@@ -330,11 +312,9 @@ namespace Supporting
                                 if (stringsInRecord[5] != "N/A")
                                 {
                                     ++numInvalidRecords;
-                                    //Console.WriteLine("[FileIO.OpenDBase] Invalid contract start date FORMAT found reading record: " + record);
                                     Logging.LogEvent("[FileIO.OpenDBase] Invalid contract start date FORMAT found reading record: " + record);
                                     continue;
                                 }
-
                             }
 
                             if (DateTime.TryParse(stringsInRecord[6], out contractStopDate))// convert string to a dateTime variable
@@ -342,8 +322,7 @@ namespace Supporting
                                 if (!Validation.ValidateContractStopDate(dateOfBirth, contractStartDate, contractStopDate, ref returnedErrorMessage))
                                 {
                                     ++numInvalidRecords;
-                                    //Console.WriteLine("[FileIO.OpenDBase] Invalid contract stop date found reading record: " + record);
-                                    Logging.LogEvent("[FileIO.OpenDBase] Invalid contract stop date found reading record: " + record +".\n\tError: " + returnedErrorMessage);
+                                    Logging.LogEvent("[FileIO.OpenDBase] Invalid contract stop date found reading record: " + record +".\r\n\tError: " + returnedErrorMessage);
                                     continue;
                                 }
                             }
@@ -352,20 +331,17 @@ namespace Supporting
                                 if (stringsInRecord[6] != "N/A")
                                 {
                                     ++numInvalidRecords;
-                                    //Console.WriteLine("[FileIO.OpenDBase] Invalid contract stop date FORMAT found reading record: " + record);
                                     Logging.LogEvent("[FileIO.OpenDBase] Invalid contract stop date FORMAT found reading record: " + record);
                                     continue;
                                 }
-
                             }
 
-                            if (float.TryParse(stringsInRecord[7], out contractAmount))
+                            if (float.TryParse(stringsInRecord[7], out contractAmount))// covert the string a float variable
                             {
                                 if (!Validation.ValidateFixedContractAmount(contractAmount, ref returnedErrorMessage))
                                 {
                                     ++numInvalidRecords;
-                                    //Console.WriteLine("[FileIO.OpenDBase] Invalid contract amount found reading record: " + record);
-                                    Logging.LogEvent("[FileIO.OpenDBase] Invalid contract amount found reading record: " + record +".\n\tError: " + returnedErrorMessage);
+                                    Logging.LogEvent("[FileIO.OpenDBase] Invalid contract amount found reading record: " + record +".\r\n\tError: " + returnedErrorMessage);
                                     continue;
                                 }
                             }
@@ -374,32 +350,29 @@ namespace Supporting
                                 if (stringsInRecord[7] != "N/A")
                                 {
                                     ++numInvalidRecords;
-                                    //Console.WriteLine("[FileIO.OpenDBase] Invalid contract amount FORMAT found reading record: " + record);
                                     Logging.LogEvent("[FileIO.OpenDBase] Invalid contract amount FORMAT found reading record: " + record);
                                     continue;
                                 }
-
                             }
 
                         }// end 'if' that validates a CT employee
-                        else// invalid employee type
+                        else// invalid employee type (for 8 strings)
                         {
                             ++numInvalidRecords;
-                            //Console.WriteLine("[FileIO.OpenDBase] Invalid employee type found reading record: " + record);
                             Logging.LogEvent("[FileIO.OpenDBase] Invalid employee type found reading record: " + record);
                             continue;
                         }
 
-                    }// end 'else' statement
+                    }// end 'else' statement (that validates the correct number of strings for the employee type)
 
                 }
                 else if (stringsInRecordIndex == 7)// the SN employee type will have 7 strings in a record (the type of employee plus 6 data members)
                 {
-                    if ((stringsInRecord[0].Length == 2) && (stringsInRecord[0] == "SN"))// check to make sure the first string has the 2 character code of a seasonal employee (SN)
+                    if (stringsInRecord[0] == "SN")// check to make sure it is a seasonal employee (SN)
                     {
                         float piecePay = 0;// unique to SN employees so we declare it here
 
-                        if (!ValidateFirstThree(stringsInRecord[1], stringsInRecord[2], stringsInRecord[3], ref returnedErrorMessage))
+                        if (!ValidateFirstThree(stringsInRecord[1], stringsInRecord[2], stringsInRecord[3], ref returnedErrorMessage))// check if the first 3 data members are valid (starting at the 2nd string in record because the first one is the employee type)
                         {
                             ++numInvalidRecords;
                             Logging.LogEvent("[FileIO.OpenDBase] Error was found reading record: " + record +" Error: " + returnedErrorMessage);
@@ -411,7 +384,7 @@ namespace Supporting
                             if (!Validation.ValidateDateOfBirth(dateOfBirth, ref returnedErrorMessage))
                             {
                                 ++numInvalidRecords;
-                                Logging.LogEvent("[FileIO.OpenDBase] Invalid date of birth found reading record: " + record +".\n\tError: " + returnedErrorMessage);
+                                Logging.LogEvent("[FileIO.OpenDBase] Invalid date of birth found reading record: " + record +".\r\n\tError: " + returnedErrorMessage);
                                 continue;
                             }
                         }
@@ -423,22 +396,21 @@ namespace Supporting
                                 Logging.LogEvent("[FileIO.OpenDBase] Invalid date of birth FORMAT found reading record: " + record);
                                 continue;
                             }
-
                         } 
 
                         if (!Validation.ValidateSeason(stringsInRecord[5], ref returnedErrorMessage))
                         {
                             ++numInvalidRecords;
-                            Logging.LogEvent("[FileIO.OpenDBase] Invalid season found reading record: " + record +".\n\tError: " + returnedErrorMessage);
+                            Logging.LogEvent("[FileIO.OpenDBase] Invalid season found reading record: " + record +".\r\n\tError: " + returnedErrorMessage);
                             continue;
                         }
 
-                        if (float.TryParse(stringsInRecord[6], out piecePay))
+                        if (float.TryParse(stringsInRecord[6], out piecePay))// convert the string to a float variable
                         {
                             if (!Validation.ValidatePiecePay(piecePay, ref returnedErrorMessage))
                             {
                                 ++numInvalidRecords;
-                                Logging.LogEvent("[FileIO.OpenDBase] Invalid piece pay amount found reading record: " + record +".\n\tError: " + returnedErrorMessage);
+                                Logging.LogEvent("[FileIO.OpenDBase] Invalid piece pay amount found reading record: " + record +".\r\n\tError: " + returnedErrorMessage);
                                 continue;
                             }
                         }
@@ -450,10 +422,9 @@ namespace Supporting
                                 Logging.LogEvent("[FileIO.OpenDBase] Invalid piece pay amount FORMAT found reading record: " + record);
                                 continue;
                             }
-
                         }
 
-                    }
+                    }// end 'if' that validate SN employee
                     else// invalid employee type
                     {
                         ++numInvalidRecords;
@@ -462,7 +433,7 @@ namespace Supporting
                     }
 
                 }
-                else// wrong number of strings
+                else// wrong number of strings in record
                 {
                     ++numInvalidRecords;
                     Logging.LogEvent("[FileIO.OpenDBase] Invalid number of strings found reading record: " + record);
@@ -477,9 +448,6 @@ namespace Supporting
             }// end 'foreach'
 
             Logging.LogEvent("[FileIO.OpenDBase] Total Records read: " + numRecordsRead.ToString() + ". Valid records read: " + numValidRecords.ToString() + ". Invalid records read: " + numInvalidRecords.ToString());
-            //Console.WriteLine("Records Read: {0}", numRecordsRead);
-            //Console.WriteLine("Valid Records: {0}", numValidRecords);
-            //Console.WriteLine("Invalid Records: {0}", numInvalidRecords);
 
             if (dbReader != null)
             {
@@ -490,16 +458,16 @@ namespace Supporting
         }
 
         /**
-        * \brief To close the database file by writing an array of strings to the database file
+        * \brief To close the database file by writing a List of strings to the database file
         * \details <b>Details</b>
         *
-        * This method will take in an array of strings and write them to the database file that was specified when 
+        * This method will take in a List of strings and writing them to the database file that was specified when 
         * a database file was opened (and the name was stored in the <i>databaseName</i> data member). The number 
         * of records written as well as the number of valid and invalid records written will be logged.
         * 
-        * \param stringsToWrite - string[] - a string array that holds the strings to write to the database file
+        * \param stringsToWrite - List<string> - a string List that holds the strings to write to the database file
         * \param errorMessage - string - a string that is passed as a reference and is used to hold an error message if 
-        *        an error occurs
+        *                                an error occurs
         * 
         * \return A bool <i>noErrors</i> that is used to tell if there was a problem. If it is false then the string 
         *         <i>errorMessage</i> can be checked to see what went wrong.
@@ -512,7 +480,7 @@ namespace Supporting
             int numValidRecords = 0;// the number of valid records read
             int numInvalidRecords = 0;// the number of invalid records read                     
 
-            try
+            try// opening the streamWriter could throw exception
             {
                 dbWriter = new StreamWriter(databaseName);
                 Logging.LogEvent("[FileIO.CloseDBase] The file: " + databaseName + " was opened for writing.");
@@ -546,10 +514,12 @@ namespace Supporting
                             WriteRecord(record);
                             ++numRecordsWritten;
                             ++numValidRecords;
+                            continue;
                         }
-                        else
+                        else// it is an invalid employee type
                         {
                             ++numInvalidRecords;
+                            continue;
                         }
 
                     }
@@ -559,28 +529,22 @@ namespace Supporting
                         {
                             WriteRecord(record);
                             ++numRecordsWritten;
+                            continue;
                         }
                         else
                         {
                             ++numInvalidRecords;
+                            continue;
                         }
                     }
                     else
                     {
                         ++numInvalidRecords;
+                        continue;
                     }
                     
-
                 }// end 'foreach'
 
-                /*
-                foreach (string record in invalidStringsToWrite)// don't do any validation with the invalidStringsToWrite, just count how many and write them to the file
-                {
-                    WriteRecord(record);
-                    ++numRecordsWritten;
-                    ++numInvalidRecords;
-                }
-                */
                 dbWriter.Close();
             }
             catch (DirectoryNotFoundException)

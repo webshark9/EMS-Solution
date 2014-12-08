@@ -67,8 +67,6 @@ namespace TheCompany
         */
         public Container(List<string[]> employeesList)
         {
-            lastIndex = 0;// initialize the data member
-            virtualDB = new List<Employee>();
             FulltimeEmployee FTemployee = new FulltimeEmployee();
             ParttimeEmployee PTemployee = new ParttimeEmployee();
             ContractEmployee CTemployee = new ContractEmployee();
@@ -78,10 +76,11 @@ namespace TheCompany
             int numInvalidEmployees = 0;// the number of employees that were invalid and not added
             bool invalidSIN = false;// used to tell if employees have identical SIN/BN numbers
 
+            lastIndex = 0;// initialize the data member
+            virtualDB = new List<Employee>();// initialize the data member
+
             foreach(string[] employeeString in employeesList)
             {
-                Logging.LogEvent("[Container.Constructor] String: " + employeeString[0] + "    " + employeeString[1]);
-
                 if (employeeString[0] == "FT")
                 {
                     DateTime dateOfBirth = new DateTime();
