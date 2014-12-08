@@ -483,6 +483,10 @@ namespace Supporting
             //Console.WriteLine("Valid Records: {0}", numValidRecords);
             //Console.WriteLine("Invalid Records: {0}", numInvalidRecords);
 
+            if (dbReader != null)
+            {
+                dbReader.Close();
+            }
 
             return validRecords;            
         }
@@ -503,7 +507,7 @@ namespace Supporting
         *         <i>errorMessage</i> can be checked to see what went wrong.
         *
         */
-        public static bool CloseDBase(string[] stringsToWrite, ref string errorMessage)
+        public static bool CloseDBase(List<string> stringsToWrite, ref string errorMessage)
         {
             bool noErrors = true;
             int numRecordsWritten = 0;// the total number of records written

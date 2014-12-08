@@ -509,42 +509,6 @@ namespace TheCompany
                     Logging.LogEvent("[Container.ModifyEmployee] Employee modified. Original Values: " + virtualDB[i].ToString() + "\nNew Values: " + employeeToModify.ToString());
                     virtualDB[i] = employeeToModify;
                     modifySuccessful = true;
-
-                    
-                    /*
-                    if (FTemployee.GetType() == virtualDB[i].GetType())
-                    {
-                        FTemployee = (FulltimeEmployee)employeeToModify;                
-                        originalValues = FTemployee.Details();
-
-                        FTemployee = (FulltimeEmployee)virtualDB[i];
-                        newValues = FTemployee.Details();
-                    }
-                    else if (PTemployee.GetType() == virtualDB[i].GetType())
-                    {
-                        PTemployee = (ParttimeEmployee)virtualDB[i];                
-                        originalValues = PTemployee.Details();
-
-                        PTemployee = (ParttimeEmployee)virtualDB[i];
-                        newValues = PTemployee.Details();                  
-                    }
-                    else if (CTemployee.GetType() == virtualDB[i].GetType())
-                    {
-                        CTemployee = (ContractEmployee)virtualDB[i];                                         
-                        originalValues = CTemployee.Details();
-
-                        CTemployee = (ContractEmployee)virtualDB[i];
-                        newValues = CTemployee.Details();                    
-                    }
-                    else if (SNemployee.GetType() == virtualDB[i].GetType())
-                    {
-                        SNemployee = (SeasonalEmployee)virtualDB[i];                
-                        originalValues = SNemployee.Details();
-
-                        SNemployee = (SeasonalEmployee)virtualDB[i];
-                        newValues = SNemployee.Details();                  
-                    }*/
-
                     
                     break;
 
@@ -557,72 +521,6 @@ namespace TheCompany
                 errorMessage = "The Employee SIN could not be found, therefore the Employee was not modified.";
                 Logging.LogEvent("[Container.ModifyEmployee] Employee FAILED to be modified. SIN: " + employeeToModify.GetSocialInsuranceNumber());
             }
-
-            /*
-            foreach (Employee storedEmployee in virtualDB)
-            {
-                if (storedEmployee.GetSocialInsuranceNumber() == employeeToModify.GetSocialInsuranceNumber())
-                {
-                    storedEmployee.SetFirstName
-                    
-                    virtualDB.Remove(storedEmployee);// remove the old employee
-
-                    if(AddEmployee(newEmployee, ref unusedString) == false)// check if the new employee is valid
-                    {
-                        modifySuccessful = false;
-                        // errorMessage = "";
-                    }
-                    else// the add was successful
-                    {
-                        
-
-                        if (FTemployee.GetType() == newEmployee.GetType())
-                        {
-                            FTemployee = (FulltimeEmployee)employeeToModify;                
-                            originalValues = FTemployee.Details();
-
-                            FTemployee = (FulltimeEmployee)newEmployee;
-                            newValues = FTemployee.Details();
-                        }
-                        else if (PTemployee.GetType() == newEmployee.GetType())
-                        {
-                            PTemployee = (ParttimeEmployee)newEmployee;                
-                            originalValues = FTemployee.Details();
-
-                            PTemployee = (ParttimeEmployee)newEmployee;
-                            newValues = FTemployee.Details();                  
-                        }
-                        else if (CTemployee.GetType() == newEmployee.GetType())
-                        {
-                            CTemployee = (ContractEmployee)newEmployee;                                         
-                            originalValues = FTemployee.Details();
-
-                            CTemployee = (ContractEmployee)newEmployee;
-                            newValues = FTemployee.Details();                    
-                        }
-                        else if (SNemployee.GetType() == newEmployee.GetType())
-                        {
-                            SNemployee = (SeasonalEmployee)newEmployee;                
-                            originalValues = SNemployee.Details();
-
-                            SNemployee = (SeasonalEmployee)newEmployee;
-                            newValues = SNemployee.Details();                  
-                        }
-
-                        Logging.LogEvent("[Container.ModifyEmployee] Employee modified. Original Values: " + originalValues + "\nNew Values: " + newValues);
-                    }                
-
-                    break;// we don't allow duplicate SIN's in our database so as soon as we find a match we can exit
-                }
-             
-
-            }*/
-            /*
-            if((modifySuccessful == false) && (errorMessage == ""))// if both conditions are true then the employee could not be found
-            {
-                errorMessage = "The employee to modify could not be found.";
-            }
-            */
 
             return modifySuccessful;
         }
@@ -683,7 +581,6 @@ namespace TheCompany
                     return null;
                 }
 
-
             }
 
         }
@@ -736,6 +633,35 @@ namespace TheCompany
             }
             
             return null;
+        }
+
+
+        public bool SaveDataBase(ref string errorMessage)
+        {
+            bool saveSuccessful = true;// set to false if there was a problem
+            List<string> allRecords = new List<string>();
+
+
+            foreach(Employee emp in virtualDB)
+            {
+                allRecords.Add(emp.ToString());
+            }
+
+            if(allRecords.Count == 0)
+            {
+                errorMessage = "The database was empty";
+                saveSuccessful = false;
+            }
+            else
+            {
+                if(FileIO.CloseDBase(allRecords, ref errorMessage) == false)
+                {
+                    saveSuccessful = false;
+                }
+
+            }
+
+            return saveSuccessful;
         }
 
 
