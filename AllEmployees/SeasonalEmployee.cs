@@ -121,6 +121,19 @@ namespace AllEmployees
 
         }
 
+        /**
+        * \brief Compiles a list of the SeasonalEmployee's information
+        *
+        * \details <b>Details</b>
+        *
+        * This Method will take all of the SeasonalEmployee information
+        * and add it to a string in a list format. The method will then
+        * return the string to the calling method.
+        * 
+        * \param void
+        * 
+        * \return string - A list of all the SeasonalEmployee information
+        */
         override public string Details()
         {
             string empDetails = "";
@@ -152,6 +165,19 @@ namespace AllEmployees
             return empDetails;
         }
 
+        /**
+        * \brief Compiles a list of the SeasonalEmployee's information into database format
+        *
+        * \details <b>Details</b>
+        *
+        * This Method will take all of the SeasonalEmployee information
+        * and add it to a string in a list format to be added to the ems 
+        * database. The method will then return the string to the calling method.
+        * 
+        * \param void
+        * 
+        * \return string - A list of all the SeasonalEmployee information
+        */
         override public string ToString()
         {
             string empDetails = "SN|";

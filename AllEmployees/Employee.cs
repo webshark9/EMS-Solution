@@ -117,7 +117,6 @@ namespace AllEmployees
             this.socialInsuranceNumber = oldEmployee.socialInsuranceNumber;
             this.dateOfBirth = oldEmployee.dateOfBirth;
         }
-        
 
         virtual public string Details()
         {
@@ -312,13 +311,34 @@ namespace AllEmployees
             return setStatus;
         }
 
+        /**
+        * \brief Sets the <i>socialInsuranceNumber</i> attribute within the Employee class
+        *        as the company's business number
+        *
+        * \details <b>Details</b>
+        *
+        * This method will take in a string of user input and call on
+        * a separate method to validate it. If the user input string is 
+        * valid, then the method will set the <i>socialInsuranceNumber</i> attribute 
+        * within the Employee class to the user input string. Returns a true 
+        * or false depending on whether or not the attribute was set successfully.
+        * 
+        * \param userInput - string - The company's business
+        * number given by the user.
+        * 
+        * \param errorMessage - string - The error message container 
+        * which is passed as a reference from the calling method
+        * 
+        * \return bool - Returns true if the attribute was set successfully.
+        * Returns false if the attribute was not set successfully.
+        */
         public bool SetBusinessNumber(string userInput, ref string errorMessage)
         {
             bool setStatus = false;
             int bnLength = 9;
             int bnLengthSpaces = 10;
 
-            if (userInput.Length == bnLengthSpaces || bnLength == bnLength)
+            if (userInput.Length == bnLengthSpaces || userInput.Length == bnLength)
             {
                 if (userInput[5] == ' ')
                 {
@@ -356,6 +376,28 @@ namespace AllEmployees
             return setStatus;
         }
 
+        /**
+        * \brief Sets the <i>dateOfBirth</i> attribute within the Employee class
+        *        as the company's date of creation
+        *
+        * \details <b>Details</b>
+        *
+        * This method will take in a string of user input, convert it
+        * to a DateTime variable, making sure it is valid format, and call on
+        * a separate method to validate it. If the DateTime Variable is 
+        * valid, then the method will set the <i>dateOfBirth</i> attribute within
+        * the ParttimeEmployee class to the user input DateTime. Returns a true 
+        * or false depending on whether or not the attribute was set successfully.
+        * 
+        * \param userInput - string - The company's date of creation given 
+        * by the user.
+        * 
+        * \param errorMessage - string - The error message container 
+        * which is passed as a reference from the calling method
+        * 
+        * \return bool - Returns true if the attribute was set successfully.
+        * Returns false if the attribute was not set successfully.
+        */
         public bool SetDateOfCreation(string userInput, ref string errorMessage)
         {
             bool setStatus = false;
@@ -447,8 +489,6 @@ namespace AllEmployees
 
             return setStatus;
         }
-
-        
 
         /**
         * \brief Retrieves the <i>dateOfBirth</i> attribute from the Employee class

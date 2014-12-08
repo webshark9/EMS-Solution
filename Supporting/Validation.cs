@@ -202,6 +202,12 @@ namespace Supporting
         * \param dateOfBirth - DateTime - The employee's date of birth 
         * given by the user.
         * 
+        * \param dateOfHire - DateTime - The employee's date of hire 
+        * given by the user.
+        * 
+        * \param dateOfTermination - DateTime - The employee's date of termination 
+        * given by the user.
+        * 
         * \param errorMessage - string - The error message container 
         * which is passed as a reference from the calling method
         * 
@@ -293,7 +299,13 @@ namespace Supporting
         * valid entry. Returns a true or false depending on whether or not the 
         * attribute is valid.
         * 
-        * \param dateOfHire - DateTime - The date the employee was hired 
+        * \param dateOfBirth - DateTime - The employee's date of birth 
+        * given by the user.
+        * 
+        * \param dateOfHire - DateTime - The employee's date of hire 
+        * given by the user.
+        * 
+        * \param dateOfTermination - DateTime - The employee's date of termination 
         * given by the user.
         * 
         * \param errorMessage - string - The error message container 
@@ -353,7 +365,13 @@ namespace Supporting
         * valid entry. Returns a true or false depending on whether or not the 
         * attribute is valid.
         * 
-        * \param dateOfTermination - DateTime - The date the employee was terminated/fired 
+        * \param dateOfBirth - DateTime - The employee's date of birth 
+        * given by the user.
+        * 
+        * \param dateOfHire - DateTime - The employee's date of hire 
+        * given by the user.
+        * 
+        * \param dateOfTermination - DateTime - The employee's date of termination 
         * given by the user.
         * 
         * \param errorMessage - string - The error message container 
@@ -453,7 +471,13 @@ namespace Supporting
         * valid entry. Returns a true or false depending on whether or not the 
         * attribute is valid.
         * 
-        * \param contractStartDate - DateTime - The employee's contract starting date 
+        * \param dateOfBirth - DateTime - The employee's date of birth 
+        * given by the user.
+        * 
+        * \param contractStartDate - DateTime - The employee's date of contract start date
+        * given by the user.
+        * 
+        * \param contractStopDate - DateTime - The employee's contract stop date 
         * given by the user.
         * 
         * \param errorMessage - string - The error message container 
@@ -512,7 +536,13 @@ namespace Supporting
         * valid entry. Returns a true or false depending on whether or not the 
         * attribute is valid.
         * 
-        * \param contractStopDate - DateTime - The employee's contract ending date 
+        * \param dateOfBirth - DateTime - The employee's date of birth 
+        * given by the user.
+        * 
+        * \param contractStartDate - DateTime - The employee's date of contract start date
+        * given by the user.
+        * 
+        * \param contractStopDate - DateTime - The employee's contract stop date 
         * given by the user.
         * 
         * \param errorMessage - string - The error message container 
@@ -708,6 +738,9 @@ namespace Supporting
         * \param businessNumber - string - The company's's business
         * number given by the user.
         * 
+        * \param dateOfCreation - DateTime - The company's date of creation 
+        * given by the user.
+        * 
         * \param errorMessage - string - The error message container 
         * which is passed as a reference from the calling method
         * 
@@ -754,7 +787,10 @@ namespace Supporting
         * attribute is valid. NOTE: dateOfBirth in the employee class represents
         * the dateOfCreation attribute for the ContractEmployee class.
         * 
-        * \param dateOfBirth - DateTime - The employee's date of birth 
+        * \param businessNumber - string - The company's's business
+        * number given by the user.
+        * 
+        * \param dateOfCreation - DateTime - The company's date of creation 
         * given by the user.
         * 
         * \param errorMessage - string - The error message container 

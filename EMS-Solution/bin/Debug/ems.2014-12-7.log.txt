@@ -134,3 +134,59 @@ Date Of Hire: 1975-05-05
 Date Of Termination: 1979-05-05
 Hourly Rate: $1.23
 
+2014-12-7 21:5:18 [FulltimeEmployee.Details]
+First Name: 
+Last Name: 
+SIN: 
+Date Of Birth: 
+Date Of Hire: 
+Date Of Termination: 
+Salary: $0
+
+2014-12-7 21:5:23 [FulltimeEmployee.Details]
+First Name: 
+Last Name: 
+SIN: 333 333 334
+Date Of Birth: 
+Date Of Hire: 
+Date Of Termination: 
+Salary: $0
+
+2014-12-7 21:5:28 [Employee.SetSocialInsuranceNumber] Attempted To Set socialInsuranceNumber Attribute With Invalid Value: 123123123
+2014-12-7 21:5:32 [FulltimeEmployee.Details]
+First Name: 
+Last Name: 
+SIN: 333 333 334
+Date Of Birth: 
+Date Of Hire: 
+Date Of Termination: 
+Salary: $0
+
+2014-12-7 21:17:29 [FulltimeEmployee.Details]
+First Name: 
+Last Name: 
+SIN: 
+Date Of Birth: 
+Date Of Hire: 
+Date Of Termination: 
+Salary: $0
+
+2014-12-7 21:17:42 [FulltimeEmployee.Details]
+First Name: 
+Last Name: 
+SIN: 
+Date Of Birth: 
+Date Of Hire: 
+Date Of Termination: 1298-12-12
+Salary: $0
+
+2014-12-7 21:17:55 [FulltimeEmployee.SetDateOfHire] Attempted To Set dateOfHire Attribute With Invalid Value: 2000-12-12
+2014-12-7 21:19:5 [FulltimeEmployee.Details]
+First Name: 
+Last Name: 
+SIN: 
+Date Of Birth: 
+Date Of Hire: 
+Date Of Termination: 1298-12-12
+Salary: $0
+
