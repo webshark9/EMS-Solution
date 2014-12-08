@@ -8,13 +8,6 @@
 /// 
 /// \authors Matthew Thiessen, Willi Boldt, Ping Chang Ueng, and Tylor McLaughlin
 
-// Self Note:
-// - Give user the feedback for anything that happened.
-// - ANYTHING displayed on the screen is done by presentation. Need more classes.
-// - Make testing harness reuseable
-// - Create a static method(?) for printing error messages
-// - Test plan document will be part of the test harness
-
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -209,6 +202,19 @@ namespace Presentation
             }
         }
 
+        /**
+        * \brief Displays the load from file UI
+        *
+        * \details <b>Details</b>
+        *
+        * This menu offers user the options to either load file from default path 
+         * or custom path
+        * 
+        * \param None
+        * 
+        * \return Nothing is returned
+        * 
+        */
         private void LoadFromFileMenu()
         {
             ConsoleKeyInfo userInput;
@@ -216,37 +222,37 @@ namespace Presentation
 
             while (back == false)
             {
-            Console.Clear();
-            Console.WriteLine("LOAD FILE FROM DEFAULT LOCATION OR CUSTOM PATH?");
-            Console.WriteLine("");
-            Console.WriteLine("\t1. Default Location");
-            Console.WriteLine("\t2. Custom Path");
-            Console.WriteLine("\t3. ----------");
-            Console.WriteLine("\t4. ----------");
-            Console.WriteLine("\t5. ----------");
-            Console.WriteLine("\t6. ----------");
-            Console.WriteLine("\t7. ----------");
-            Console.WriteLine("\t8. ----------");
-            Console.WriteLine("\t9. Return to File Management Menu");
+                Console.Clear();
+                Console.WriteLine("LOAD FILE FROM DEFAULT LOCATION OR CUSTOM PATH?");
+                Console.WriteLine("");
+                Console.WriteLine("\t1. Default Location");
+                Console.WriteLine("\t2. Custom Path");
+                Console.WriteLine("\t3. ----------");
+                Console.WriteLine("\t4. ----------");
+                Console.WriteLine("\t5. ----------");
+                Console.WriteLine("\t6. ----------");
+                Console.WriteLine("\t7. ----------");
+                Console.WriteLine("\t8. ----------");
+                Console.WriteLine("\t9. Return to File Management Menu");
 
 
-            userInput = Console.ReadKey();
+                userInput = Console.ReadKey();
 
-            switch (userInput.KeyChar)
-            {
-                case '1':
-                    LoadFromFileDefault();
-                    break;
+                switch (userInput.KeyChar)
+                {
+                    case '1':
+                        LoadFromFileDefault();
+                        break;
 
-                case '2':
-                    LoadFromFileCustom();
-                    break;
+                    case '2':
+                        LoadFromFileCustom();
+                        break;
 
-                case '9':
-                    back = true;
-                    break;
+                    case '9':
+                        back = true;
+                        break;
 
-            }
+                }
             }
         }
 
@@ -598,6 +604,19 @@ namespace Presentation
             }
         }
 
+        /**
+        * \brief choose the proper employee type to modify
+        *
+        * \details <b>Details</b>
+        *
+        * This method takes a generic employee object, determines which employee 
+         * type it actually is, then call the proper modify method for the object.
+        * 
+        * \param Employee theObj: the object with unknown employee type
+        * 
+        * \return Nothing is returned
+        * 
+        */
         private void ModifyEmployeeTypeDeterminer(Employee theObj)
         {
 
@@ -605,14 +624,7 @@ namespace Presentation
             ParttimeEmployee PtEmployee = new ParttimeEmployee();
             ContractEmployee CtEmployee = new ContractEmployee();
             SeasonalEmployee SnEmployee = new SeasonalEmployee();
-            //ConsoleKeyInfo userInput;
-            //if (theObj == null)
-            //{
-            //    Console.WriteLine("NO MATCHING EMPLOYEE FOUND");
-            //    Console.WriteLine("");
-            //    Console.WriteLine("Press any key to continue...");
-            //    userInput = Console.ReadKey();
-            //}
+
             if (theObj != null)
             {
                 if (theObj.GetType() == FtEmployee.GetType())
@@ -665,17 +677,15 @@ namespace Presentation
          *                          attributes.
          * isNew: whether the object is a new one (empty) or an existing one (not empty).
         * 
-        * \return bool: whether the base object should be deleted (only apply to existing 
-         *              object).
+        * \return Nothing is returned
         * 
         */
-        private bool ModifyFulltimeEmployee(FulltimeEmployee theObj, bool isNew)
+        private void ModifyFulltimeEmployee(FulltimeEmployee theObj, bool isNew)
         {
             ConsoleKeyInfo userInput;
             string userInputSentence = "";
             string errorMessage = "";
             bool back = false;
-            bool removeOld = false;
             bool saveSuccess = false;
 
             while (back == false)
@@ -718,7 +728,7 @@ namespace Presentation
                 {
                     case '1':
                         {
-                            userInputSentence = TakeUserInputSentence("Enter First Name: ");
+                            userInputSentence = TakeUserInputSentence("ENTER FIRST NAME: ");
                             theObj.SetFirstName(userInputSentence, ref errorMessage);
                             if (errorMessage != "")
                             {
@@ -729,7 +739,7 @@ namespace Presentation
 
                     case '2':
                         {
-                            userInputSentence = TakeUserInputSentence("Enter Last Name: ");
+                            userInputSentence = TakeUserInputSentence("ENTER LAST NAME: ");
                             theObj.SetLastName(userInputSentence, ref errorMessage);
                             if (errorMessage != "")
                             {
@@ -742,7 +752,7 @@ namespace Presentation
                         {
                             if (isNew == true)
                             {
-                                userInputSentence = TakeUserInputSIN("Enter Social Insurance Number: ");
+                                userInputSentence = TakeUserInputSIN("ENTER SOCIAL INSURANCE NUMBER: ");
                                 theObj.SetSocialInsuranceNumber(userInputSentence, ref errorMessage);
                                 if (errorMessage != "")
                                 {
@@ -754,7 +764,7 @@ namespace Presentation
 
                     case '4':
                         {
-                            userInputSentence = TakeUserInputDate("Enter Date of Birth (yyyy/mm/dd): ");
+                            userInputSentence = TakeUserInputDate("ENTER DATE OF BIRTH (yyyy/mm/dd): ");
                             theObj.SetDateOfBirth(userInputSentence, ref errorMessage);
                             if (errorMessage != "")
                             {
@@ -765,7 +775,7 @@ namespace Presentation
 
                     case '5':
                         {
-                            userInputSentence = TakeUserInputDate("Enter Date of Hire (yyyy/mm/dd): ");
+                            userInputSentence = TakeUserInputDate("ENTER DATE OF HIRE (YYYY-MM-DD): ");
                             theObj.SetDateOfHire(userInputSentence, ref errorMessage);
                             if (errorMessage != "")
                             {
@@ -776,7 +786,7 @@ namespace Presentation
 
                     case '6':
                         {
-                            userInputSentence = TakeUserInputDate("Enter Date of Termination (yyyy/mm/dd): ");
+                            userInputSentence = TakeUserInputDate("ENTER DATE OF TERMINATION (YYYY-MM-DD): ");
                             theObj.SetDateOfTermination(userInputSentence, ref errorMessage);
                             if (errorMessage != "")
                             {
@@ -787,7 +797,7 @@ namespace Presentation
 
                     case '7':
                         {
-                            userInputSentence = TakeUserInputMoney("Enter Salary (2 decimal degits required): ");
+                            userInputSentence = TakeUserInputMoney("ENTER SALARY (2 DECIMAL DIGITS REQUIRED): ");
                             theObj.SetSalary(userInputSentence, ref errorMessage);
                             if (errorMessage != "")
                             {
@@ -810,8 +820,9 @@ namespace Presentation
                             if (saveSuccess == true)
                             {
                                 Console.Clear();
-                                Console.WriteLine("Save Successful!");
+                                Console.WriteLine("SAVE SUCCESSFUL!");
                                 userInput = Console.ReadKey();
+                                back = true;
 
                             }
                             else
@@ -827,7 +838,6 @@ namespace Presentation
                         break;
                 }
             }
-            return removeOld;
         }
 
         /**
@@ -856,17 +866,15 @@ namespace Presentation
          *                          attributes.
          * isNew: whether the object is a new one (empty) or an existing one (not empty).
         * 
-        * \return bool: whether the base object should be deleted (only apply to existing 
-         *              object).
+        * \return Nothing is returned
         * 
         */
-        private bool ModifyParttimeEmployee(ParttimeEmployee theObj, bool isNew)
+        private void ModifyParttimeEmployee(ParttimeEmployee theObj, bool isNew)
         {
             ConsoleKeyInfo userInput;
             string userInputSentence = "";
             string errorMessage = "";
             bool back = false;
-            bool removeOld = false;
             bool saveSuccess = false;
 
             while (back == false)
@@ -909,7 +917,7 @@ namespace Presentation
                 {
                     case '1':
                         {
-                            userInputSentence = TakeUserInputSentence("Enter First Name: ");
+                            userInputSentence = TakeUserInputSentence("ENTER FIRST NAME: ");
                             theObj.SetFirstName(userInputSentence, ref errorMessage);
                             if (errorMessage != "")
                             {
@@ -920,7 +928,7 @@ namespace Presentation
 
                     case '2':
                         {
-                            userInputSentence = TakeUserInputSentence("Enter Last Name: ");
+                            userInputSentence = TakeUserInputSentence("ENTER LAST NAME: ");
                             theObj.SetLastName(userInputSentence, ref errorMessage);
                             if (errorMessage != "")
                             {
@@ -933,7 +941,7 @@ namespace Presentation
                         {
                             if (isNew == true)
                             {
-                                userInputSentence = TakeUserInputSIN("Enter Social Insurance Number: ");
+                                userInputSentence = TakeUserInputSIN("ENTER SOCIAL INSURANCE NUMBER: ");
                                 theObj.SetSocialInsuranceNumber(userInputSentence, ref errorMessage);
                                 if (errorMessage != "")
                                 {
@@ -945,7 +953,7 @@ namespace Presentation
 
                     case '4':
                         {
-                            userInputSentence = TakeUserInputDate("Enter Date of Birth (yyyy/mm/dd): ");
+                            userInputSentence = TakeUserInputDate("ENTER DATE OF BIRTH (YYYY-MM-DD): ");
                             theObj.SetDateOfBirth(userInputSentence, ref errorMessage);
                             if (errorMessage != "")
                             {
@@ -956,7 +964,7 @@ namespace Presentation
 
                     case '5':
                         {
-                            userInputSentence = TakeUserInputDate("Enter Date of Hire (yyyy/mm/dd): ");
+                            userInputSentence = TakeUserInputDate("ENTER DATE OF HIRE (YYYY-MM-DD): ");
                             theObj.SetDateOfHire(userInputSentence, ref errorMessage);
                             if (errorMessage != "")
                             {
@@ -967,7 +975,7 @@ namespace Presentation
 
                     case '6':
                         {
-                            userInputSentence = TakeUserInputDate("Enter Date of Termination (yyyy/mm/dd): ");
+                            userInputSentence = TakeUserInputDate("ENTER DATE OF TERMINATION (YYYY-MM-DD): ");
                             theObj.SetDateOfTermination(userInputSentence, ref errorMessage);
                             if (errorMessage != "")
                             {
@@ -978,7 +986,7 @@ namespace Presentation
 
                     case '7':
                         {
-                            userInputSentence = TakeUserInputMoney("Enter Hourly Rate (2 decimal degits required): ");
+                            userInputSentence = TakeUserInputMoney("ENTER HOURLY RATE (2 DECIMAL DIGITS REQUIRED): ");
                             theObj.SetHourlyRate(userInputSentence, ref errorMessage);
                             if (errorMessage != "")
                             {
@@ -1002,12 +1010,9 @@ namespace Presentation
                             if (saveSuccess == true)
                             {
                                 Console.Clear();
-                                Console.WriteLine("Save Successful!");
+                                Console.WriteLine("SAVE SUCCESSFUL!");
                                 userInput = Console.ReadKey();
-                                if (isNew == false)
-                                {
-                                    removeOld = true;
-                                }
+                                back = true;
                             }
                             else
                             {
@@ -1021,7 +1026,6 @@ namespace Presentation
                         break;
                 }
             }
-            return removeOld;
         }
 
         /**
@@ -1049,17 +1053,15 @@ namespace Presentation
          *                          attributes.
          * isNew: whether the object is a new one (empty) or an existing one (not empty).
         * 
-        * \return bool: whether the base object should be deleted (only apply to existing 
-         *              object).
+        * \return Nothing is returned
         * 
         */
-        private bool ModifyContractEmployee(ContractEmployee theObj, bool isNew)
+        private void ModifyContractEmployee(ContractEmployee theObj, bool isNew)
         {
             ConsoleKeyInfo userInput;
             string userInputSentence = "";
             string errorMessage = "";
             bool back = false;
-            bool removeOld = false;
             bool saveSuccess = false;
 
             while (back == false)
@@ -1102,7 +1104,7 @@ namespace Presentation
                 {
                     case '1':
                         {
-                            userInputSentence = TakeUserInputSentence("Enter Business Name: ");
+                            userInputSentence = TakeUserInputSentence("ENTER BUSINESS NAME: ");
                             theObj.SetLastName(userInputSentence, ref errorMessage);
                             if (errorMessage != "")
                             {
@@ -1115,8 +1117,8 @@ namespace Presentation
                         {
                             if (isNew == true)
                             {
-                                userInputSentence = TakeUserInputSIN("Enter Business Number: ");
-                                theObj.SetSocialInsuranceNumber(userInputSentence, ref errorMessage);
+                                userInputSentence = TakeUserInputSIN("ENTER BUSINESS NUMBER: ");
+                                theObj.SetBusinessNumber(userInputSentence, ref errorMessage);
                                 if (errorMessage != "")
                                 {
                                     PrintErrorMessage(errorMessage);
@@ -1127,8 +1129,8 @@ namespace Presentation
 
                     case '3':
                         {
-                            userInputSentence = TakeUserInputDate("Enter Date of Incorporation (yyyy/mm/dd): ");
-                            theObj.SetDateOfBirth(userInputSentence, ref errorMessage);
+                            userInputSentence = TakeUserInputDate("ENTER DATE OF INCORPORATION (YYYY-MM-DD): ");
+                            theObj.SetDateOfCreation(userInputSentence, ref errorMessage);
                             if (errorMessage != "")
                             {
                                 PrintErrorMessage(errorMessage);
@@ -1138,7 +1140,7 @@ namespace Presentation
 
                     case '4':
                         {
-                            userInputSentence = TakeUserInputDate("Enter Contract Start Date (yyyy/mm/dd): ");
+                            userInputSentence = TakeUserInputDate("ENTER CONTRACT START DATE (YYYY-MM-DD): ");
                             theObj.SetContractStartDate(userInputSentence, ref errorMessage);
                             if (errorMessage != "")
                             {
@@ -1149,7 +1151,7 @@ namespace Presentation
 
                     case '5':
                         {
-                            userInputSentence = TakeUserInputDate("Enter Contract Stop Date (yyyy/mm/dd): ");
+                            userInputSentence = TakeUserInputDate("ENTER CONTRACT STOP DATE (YYYY-MM-DD): ");
                             theObj.SetContractStopDate(userInputSentence, ref errorMessage);
                             if (errorMessage != "")
                             {
@@ -1160,7 +1162,7 @@ namespace Presentation
 
                     case '6':
                         {
-                            userInputSentence = TakeUserInputMoney("Enter Fixed Contract Amount (2 decimal degits required): ");
+                            userInputSentence = TakeUserInputMoney("ENTER FIXED CONTRACT AMOUNT (2 DECIMAL DIGITS REQUIRED): ");
                             theObj.SetFixedContractAmount(userInputSentence, ref errorMessage);
                             if (errorMessage != "")
                             {
@@ -1182,12 +1184,9 @@ namespace Presentation
                             if (saveSuccess == true)
                             {
                                 Console.Clear();
-                                Console.WriteLine("Save Successful!");
+                                Console.WriteLine("SAVE SUCCESSFUL!");
                                 userInput = Console.ReadKey();
-                                if (isNew == false)
-                                {
-                                    removeOld = true;
-                                }
+                                back = true;
                             }
                             else
                             {
@@ -1201,7 +1200,6 @@ namespace Presentation
                         break;
                 }
             }
-            return removeOld;
         }
 
         /**
@@ -1228,17 +1226,15 @@ namespace Presentation
          *                          attributes.
          * isNew: whether the object is a new one (empty) or an existing one (not empty).
         * 
-        * \return bool: whether the base object should be deleted (only apply to existing 
-         *              object).
+        * \return Nothing is returned
         * 
         */
-        private bool ModifySeasonalEmployee(SeasonalEmployee theObj, bool isNew)
+        private void ModifySeasonalEmployee(SeasonalEmployee theObj, bool isNew)
         {
             ConsoleKeyInfo userInput;
             string userInputSentence = "";
             string errorMessage = "";
             bool back = false;
-            bool removeOld = false;
             bool saveSuccess = false;
 
             while (back == false)
@@ -1281,7 +1277,7 @@ namespace Presentation
                 {
                     case '1':
                         {
-                            userInputSentence = TakeUserInputSentence("Enter First Name: ");
+                            userInputSentence = TakeUserInputSentence("ENTER FIRST NAME: ");
                             theObj.SetFirstName(userInputSentence, ref errorMessage);
                             if (errorMessage != "")
                             {
@@ -1292,7 +1288,7 @@ namespace Presentation
 
                     case '2':
                         {
-                            userInputSentence = TakeUserInputSentence("Enter Last Name: ");
+                            userInputSentence = TakeUserInputSentence("ENTER LAST NAME: ");
                             theObj.SetLastName(userInputSentence, ref errorMessage);
                             if (errorMessage != "")
                             {
@@ -1305,7 +1301,7 @@ namespace Presentation
                         {
                             if (isNew == true)
                             {
-                                userInputSentence = TakeUserInputSIN("Enter Social Insurance Number: ");
+                                userInputSentence = TakeUserInputSIN("ENTER SOCIAL INSURANCE NUMBER: ");
                                 theObj.SetSocialInsuranceNumber(userInputSentence, ref errorMessage);
                                 if (errorMessage != "")
                                 {
@@ -1317,7 +1313,7 @@ namespace Presentation
 
                     case '4':
                         {
-                            userInputSentence = TakeUserInputDate("Enter Date of Birth (yyyy/mm/dd): ");
+                            userInputSentence = TakeUserInputDate("ENTER DATE OF BIRTH (YYYY-MM-DD): ");
                             theObj.SetDateOfBirth(userInputSentence, ref errorMessage);
                             if (errorMessage != "")
                             {
@@ -1339,7 +1335,7 @@ namespace Presentation
 
                     case '6':
                         {
-                            userInputSentence = TakeUserInputMoney("Enter Piece Pay (2 decimal degits required): ");
+                            userInputSentence = TakeUserInputMoney("ENTER PIECE PAY (2 DECIMAL DIGITS REQUIRED): ");
                             theObj.SetPiecePay(userInputSentence, ref errorMessage);
                             if (errorMessage != "")
                             {
@@ -1361,12 +1357,9 @@ namespace Presentation
                             if (saveSuccess == true)
                             {
                                 Console.Clear();
-                                Console.WriteLine("Save Successful!");
+                                Console.WriteLine("SAVE SUCCESSFUL!");
                                 userInput = Console.ReadKey();
-                                if (isNew == false)
-                                {
-                                    removeOld = true;
-                                }
+                                back = true;
                             }
                             else
                             {
@@ -1380,7 +1373,6 @@ namespace Presentation
                         break;
                 }
             }
-            return removeOld;
         }
         /**
         * \brief Displays the Remove an Existing Employee Menu
@@ -1450,6 +1442,19 @@ namespace Presentation
             }
         }
 
+        /**
+        * \brief choose the proper employee type to remove
+        *
+        * \details <b>Details</b>
+        *
+        * This method takes a generic employee object, determines which employee 
+         * type it actually is, then call the proper removal method for the object.
+        * 
+        * \param Employee theObj: the object with unknown employee type
+        * 
+        * \return Nothing is returned
+        * 
+        */
         private void RemoveEmployeeTypeDeterminer(Employee theObj)
         {
             ConsoleKeyInfo userInput;
@@ -1461,11 +1466,6 @@ namespace Presentation
 
             Console.Clear();
 
-            //if (theObj == null)
-            //{
-            //    Console.WriteLine("NO MATCHING EMPLOYEE FOUND");
-            //    Console.WriteLine("");
-            //}
             if (theObj != null)
             {
                 if (RemovalConfirmationUI(theObj) == true)
@@ -1572,17 +1572,26 @@ namespace Presentation
             }
         }
 
+        /**
+        * \brief choose the proper employee type to display
+        *
+        * \details <b>Details</b>
+        *
+        * A gateway to the actually method that displays generic employee 
+         * details. Added little bit of UI elements (have the details stay
+         * on the screen).
+        * 
+        * \param Employee theObj: the object with unknown employee type
+        * 
+        * \return Nothing is returned
+        * 
+        */
         private void DisplaySingleEmployeTypeDeterminer(Employee theObj)
         {
 
             ConsoleKeyInfo userInput;
             Console.Clear();
 
-            //if (theObj == null)
-            //{
-            //    Console.WriteLine("NO MATCHING EMPLOYEE FOUND");
-            //    Console.WriteLine("");
-            //}
             if (theObj != null)
             {
                 DisplayEmployeeUnknownType(theObj);
@@ -1592,6 +1601,19 @@ namespace Presentation
 
         }
 
+        /**
+        * \brief capable to display a generic employee type
+        *
+        * \details <b>Details</b>
+        *
+        * This method takes a generic employee object, determines which employee 
+         * type it actually is, then call the proper display method for the object.
+        * 
+        * \param Employee theObj: the object with unknown employee type
+        * 
+        * \return Nothing is returned
+        * 
+        */
         private void DisplayEmployeeUnknownType(Employee theObj)
         {
 
@@ -1782,8 +1804,8 @@ namespace Presentation
                         Console.WriteLine("\t9. Return to {0} Menu", dmr);
                         Console.WriteLine("");
                         DisplayEmployeeUnknownType(theObj);
-                        
-                        
+
+
                         userInput = Console.ReadKey();
 
                         switch (userInput.KeyChar)
@@ -1825,7 +1847,22 @@ namespace Presentation
             return theObj;
         }
 
-
+        /**
+        * \brief searches container by last name
+        *
+        * \details <b>Details</b>
+        *
+        * This method passes an extra parameter to SearchByFirstName() to 
+         * let the method knows the user wants to search by last name instead 
+         * of first name
+        * 
+        * \param string displayOrModifyOrRemove: The instruction to be 
+         *                                       displayed on the top of the 
+         *                                       screen.
+        * 
+        * \return Employee: the search result(employee object) chosen by the user.
+        * 
+        */
         private Employee SearchByLastName(string displayOrModifyOrRemove)
         {
             return SearchByFirstName(displayOrModifyOrRemove, true);
@@ -1879,6 +1916,19 @@ namespace Presentation
             return theObj;
         }
 
+        /**
+        * \brief loads file from default location
+        *
+        * \details <b>Details</b>
+        *
+        * This method will load file from a default file path (EMS_DB_FILE.txt) and 
+         * put the data into companyContainer.
+        * 
+        * \param 
+        * 
+        * \return Nothing is returned
+        * 
+        */
         private void LoadFromFileDefault()
         {
             string errorMessage = "";
@@ -1892,6 +1942,19 @@ namespace Presentation
             userInput = Console.ReadKey();
         }
 
+        /**
+        * \brief loads file from a custom location
+        *
+        * \details <b>Details</b>
+        *
+        * This method ask user for a custom file path, then load file from a custom 
+         * file path and put the data into companyContainer.
+        * 
+        * \param 
+        * 
+        * \return Nothing is returned
+        * 
+        */
         private void LoadFromFileCustom()
         {
             string errorMessage = "";
@@ -1911,24 +1974,38 @@ namespace Presentation
             userInput = Console.ReadKey();
         }
 
+        /**
+        * \brief save companyContainer into opened file
+        *
+        * \details <b>Details</b>
+        *
+        * This method will save whatever is in companyContainer into either the 
+         * default location, or the custom file path specified by user in th
+         * LoadFromFileCustom() (where ever the file was opened).
+        * 
+        * \param 
+        * 
+        * \return Nothing is returned
+        * 
+        */
         private void SaveToFile()
         {
             string errorMessage = "";
             ConsoleKeyInfo userInput;
 
             companyContainer.SaveDataBase(ref errorMessage);
-                        if (errorMessage != "")
-                        {
-                            PrintErrorMessage(errorMessage);
-                        }
-                        else
-                        {
-                            Console.Clear();
-                            Console.WriteLine("FILE SAVED SUCCESSFULLY");
-                            Console.WriteLine("");
-                            Console.WriteLine("Press any key to contineu...");
-                            userInput = Console.ReadKey();
-                        }
+            if (errorMessage != "")
+            {
+                PrintErrorMessage(errorMessage);
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("FILE SAVED SUCCESSFULLY");
+                Console.WriteLine("");
+                Console.WriteLine("Press any key to contineu...");
+                userInput = Console.ReadKey();
+            }
         }
 
         /**
@@ -2043,6 +2120,19 @@ namespace Presentation
 
         }
 
+        /**
+        * \brief confirmation menu for exiting EMS
+        *
+        * \details <b>Details</b>
+        *
+        * This method confirm whether the user actually wants to exit EMS. 
+         * It will also prompt user to save but it is optional.
+        * 
+        * \param 
+        * 
+        * \return bool: whether the user actually wants to quit EMS.
+        * 
+        */
         private bool SaveAndExitProgram()
         {
             ConsoleKeyInfo userInput;
@@ -2086,6 +2176,7 @@ namespace Presentation
                 }
 
             }
+            Console.Clear();
             return exit;
 
         }
@@ -2167,6 +2258,19 @@ namespace Presentation
             return userInputNumber;
         }
 
+        /**
+        * \brief UI to take user's input for first and last name
+        *
+        * \details <b>Details</b>
+        *
+        * This method will display entry prompt at the top of the UI and 
+         * accept user's textual input.
+        * 
+        * \param string nameType: the message displayed at the top of the UI.
+        * 
+        * \return string: what the user typed.
+        * 
+        */
         private string TakeUserInputSentence(string nameType)
         {
             string currentInput = "";
@@ -2204,7 +2308,7 @@ namespace Presentation
             int userInputNumber = 0;
             int counter = 0;
 
-            if (sinOrBN.Contains("Search"))
+            if (sinOrBN.Contains("SEARCH"))
             {
                 while (counter < 9)
                 {
@@ -2226,7 +2330,7 @@ namespace Presentation
 
                 }
             }
-            else if (sinOrBN.Contains("Social"))
+            else if (sinOrBN.Contains("SOCIAL"))
             {
                 while (counter < 11)
                 {
@@ -2430,6 +2534,18 @@ namespace Presentation
             return currentInput;
         }
 
+        /**
+        * \brief Adds spaces behind 3rd and 6th digit of SIN
+        *
+        * \details <b>Details</b>
+        *
+        * This method is now part of the AllEmployee. Obsolete.
+        * 
+        * \param string unparsed: the original 9 digits number
+        * 
+        * \return string: 9 digits number with spaces
+        * 
+        */
         private string displaySIN(string unparsed)
         {
             string parsed = "";
@@ -2444,6 +2560,18 @@ namespace Presentation
             return parsed;
         }
 
+        /**
+        * \brief Adds spaces behind 5th digit of SIN
+        *
+        * \details <b>Details</b>
+        *
+        * This method is now part of the AllEmployee. Obsolete.
+        * 
+        * \param string unparsed: the original 9 digits number
+        * 
+        * \return string: 9 digits number with spaces
+        * 
+        */
         private string displayBN(string unparsed)
         {
             string parsed = "";
