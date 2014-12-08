@@ -717,13 +717,14 @@ namespace Supporting
         public static bool ValidateBusinessNumber(string businessNumber, DateTime dateOfCreation, ref string errorMessage)
         {
             bool validateStatus = true;
+            string doc = dateOfCreation.ToString();
             errorMessage = "";
 
             if (dateOfCreation != DateTime.MinValue)
             {
                 for (int i = 0; i < 2; i++)
                 {
-                    if (businessNumber[i] != dateOfCreation.ToString()[i])
+                    if (businessNumber[i] != doc[(i + 2)])
                     {
                         validateStatus = false;
                         errorMessage = "Please Be Sure The Business Number's First Two Digits\nMatch The Business' Date Of Creation's Year.\nex. Year: 1982\n  Business#: 82xxx xxxx";

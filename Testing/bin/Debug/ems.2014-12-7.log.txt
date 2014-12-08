@@ -28,3 +28,4 @@
 2014-12-7 20:2:55 [ContractEmployee.SetFixedContractAmount] Attempted To Set fixedContractAmount Attribute With Invalid Value: -12.123123
 2014-12-7 20:2:55 [Employee.SetBusinessNumber] Attempted To Set socialInsuranceNumber Attribute With Invalid Value: 123234345
 2014-12-7 20:2:55 [Employee.SetBusinessNumber] Attempted To Set socialInsuranceNumber Attribute With Invalid Value: 333333334
+2014-12-7 20:6:41 [Employee.SetBusinessNumber] Attempted To Set socialInsuranceNumber Attribute With Invalid Value: 333333334

@@ -132,6 +132,17 @@ namespace AllEmployees
             }
         }
 
+        public ContractEmployee(ContractEmployee oldEmployee) : base("", oldEmployee.GetLastName(), oldEmployee.GetSocialInsuranceNumber())
+        {
+            string unused = "";
+
+            this.contractStartDate = oldEmployee.contractStartDate;
+            this.contractStopDate = oldEmployee.contractStopDate;
+            this.fixedContractAmount = oldEmployee.fixedContractAmount;
+            this.SetDateOfCreation(oldEmployee.GetDateOfBirth().ToString(), ref unused);
+
+        }
+
         override public string Details()
         {
             string empDetails = "";

@@ -1,0 +1,136 @@
+2014-12-7 20:35:33 [FileIO.OpenDBase] The file: EMS_DB_FILE.txt has been opened for reading.
+2014-12-7 20:35:33 [FileIO.OpenDBase] Error was found reading record: FT|Clarke|Sean|333333333|1950-05-05|1960-05-05|N/A|15000.00| Error: Invalid Checksum. Please Be Sure To Enter A Valid SIN.
+
+2014-12-7 20:35:33 [FileIO.OpenDBase] Error was found reading record: PT|Clarke|Sean|333333333|1950-05-05|1955-05-05|1959-05-05|1.23| Error: Invalid Checksum. Please Be Sure To Enter A Valid SIN.
+
+2014-12-7 20:35:33 [FileIO.OpenDBase] Invalid date of incorporation found reading record: CT|Sean-Inc||700123888|1970-01-01|1980-01-01|1985-12-31|1000000.00|.
+	Error: Please Be Sure The Business' Date Of Creation's Year
+Matches The Business Number's First Two Digits.
+ex. Year: 1982
+  Business#: 82xxx xxxx
+Please Be Sure The Business' Date Of Creation's Year
+Matches The Business Number's First Two Digits.
+ex. Year: 1982
+  Business#: 82xxx xxxx
+
+2014-12-7 20:35:33 [FileIO.OpenDBase] Error was found reading record: SN|Clarke|Sean|333333333|1950-05-05|WINTER|0.15| Error: Invalid Checksum. Please Be Sure To Enter A Valid SIN.
+
+2014-12-7 20:35:33 [FileIO.OpenDBase] Valid employee read. Record: FT|Clarke|Sean|333333334|1950-05-05|1970-05-05|N/A|15000.00|
+2014-12-7 20:35:33 [FileIO.OpenDBase] Valid employee read. Record: PT|Clarke|Sean|333333334|1950-05-05|1975-05-05|1979-05-05|1.23|
+2014-12-7 20:35:33 [FileIO.OpenDBase] Invalid date of incorporation found reading record: CT|Sean-Inc||700123888|1970-01-01|1980-01-01|1985-12-31|1000000.00|.
+	Error: Please Be Sure The Business' Date Of Creation's Year
+Matches The Business Number's First Two Digits.
+ex. Year: 1982
+  Business#: 82xxx xxxx
+Please Be Sure The Business' Date Of Creation's Year
+Matches The Business Number's First Two Digits.
+ex. Year: 1982
+  Business#: 82xxx xxxx
+
+2014-12-7 20:35:33 [FileIO.OpenDBase] Valid employee read. Record: SN|Clarke|Sean|333333334|1950-05-05|WINTER|0.15|
+2014-12-7 20:35:33 [FileIO.OpenDBase] Total Records read: 8. Valid records read: 3. Invalid records read: 5
+2014-12-7 20:35:33 [Container.Constructor] String: FT    Clarke
+2014-12-7 20:35:33 [Container.Constructor] String: PT    Clarke
+2014-12-7 20:35:33 [ParttimeEmployee.Validate] Employee Clarke, Sean SIN(333333334) Was Found To Be Valid
+
+2014-12-7 20:35:33 [Container.Constructor] String: SN    Clarke
+2014-12-7 20:35:33 [SeasonalEmployee.Validate] Employee Clarke, Sean SIN(333333334) Was Found To Be Valid
+
+2014-12-7 20:35:33 [Container.Constructor] Duplicate SIN/BN found. SIN/BN: 333333334
+2014-12-7 20:35:33 [Container.Constructor] Total Employees: 3. Employees Added: 1
+	Invalid Employees Found: 2
+2014-12-7 20:35:40 [ParttimeEmployee.Details]
+First Name: Sean
+Last Name: Clarke
+SIN: 333 333 334
+Date Of Birth: 1950-05-05
+Date Of Hire: 1975-05-05
+Date Of Termination: 1979-05-05
+Hourly Rate: $1.23
+
+2014-12-7 20:35:50 [ParttimeEmployee.Details]
+First Name: Sean
+Last Name: Clarke
+SIN: 333 333 334
+Date Of Birth: 1950-05-05
+Date Of Hire: 1975-05-05
+Date Of Termination: 1979-05-05
+Hourly Rate: $1.23
+
+2014-12-7 20:35:55 [ParttimeEmployee.Details]
+First Name: Willi
+Last Name: Clarke
+SIN: 333 333 334
+Date Of Birth: 1950-05-05
+Date Of Hire: 1975-05-05
+Date Of Termination: 1979-05-05
+Hourly Rate: $1.23
+
+2014-12-7 20:36:42 [FileIO.OpenDBase] The file: EMS_DB_FILE.txt has been opened for reading.
+2014-12-7 20:36:42 [FileIO.OpenDBase] Error was found reading record: FT|Clarke|Sean|333333333|1950-05-05|1960-05-05|N/A|15000.00| Error: Invalid Checksum. Please Be Sure To Enter A Valid SIN.
+
+2014-12-7 20:36:42 [FileIO.OpenDBase] Error was found reading record: PT|Clarke|Sean|333333333|1950-05-05|1955-05-05|1959-05-05|1.23| Error: Invalid Checksum. Please Be Sure To Enter A Valid SIN.
+
+2014-12-7 20:36:42 [FileIO.OpenDBase] Invalid date of incorporation found reading record: CT|Sean-Inc||700123888|1970-01-01|1980-01-01|1985-12-31|1000000.00|.
+	Error: Please Be Sure The Business' Date Of Creation's Year
+Matches The Business Number's First Two Digits.
+ex. Year: 1982
+  Business#: 82xxx xxxx
+Please Be Sure The Business' Date Of Creation's Year
+Matches The Business Number's First Two Digits.
+ex. Year: 1982
+  Business#: 82xxx xxxx
+
+2014-12-7 20:36:42 [FileIO.OpenDBase] Error was found reading record: SN|Clarke|Sean|333333333|1950-05-05|WINTER|0.15| Error: Invalid Checksum. Please Be Sure To Enter A Valid SIN.
+
+2014-12-7 20:36:42 [FileIO.OpenDBase] Valid employee read. Record: FT|Clarke|Sean|333333334|1950-05-05|1970-05-05|N/A|15000.00|
+2014-12-7 20:36:42 [FileIO.OpenDBase] Valid employee read. Record: PT|Clarke|Sean|333333334|1950-05-05|1975-05-05|1979-05-05|1.23|
+2014-12-7 20:36:42 [FileIO.OpenDBase] Invalid date of incorporation found reading record: CT|Sean-Inc||700123888|1970-01-01|1980-01-01|1985-12-31|1000000.00|.
+	Error: Please Be Sure The Business' Date Of Creation's Year
+Matches The Business Number's First Two Digits.
+ex. Year: 1982
+  Business#: 82xxx xxxx
+Please Be Sure The Business' Date Of Creation's Year
+Matches The Business Number's First Two Digits.
+ex. Year: 1982
+  Business#: 82xxx xxxx
+
+2014-12-7 20:36:42 [FileIO.OpenDBase] Valid employee read. Record: SN|Clarke|Sean|333333334|1950-05-05|WINTER|0.15|
+2014-12-7 20:36:42 [FileIO.OpenDBase] Total Records read: 8. Valid records read: 3. Invalid records read: 5
+2014-12-7 20:36:42 [Container.Constructor] String: FT    Clarke
+2014-12-7 20:36:42 [Container.Constructor] String: PT    Clarke
+2014-12-7 20:36:42 [ParttimeEmployee.Validate] Employee Clarke, Sean SIN(333333334) Was Found To Be Valid
+
+2014-12-7 20:36:42 [Container.Constructor] String: SN    Clarke
+2014-12-7 20:36:42 [SeasonalEmployee.Validate] Employee Clarke, Sean SIN(333333334) Was Found To Be Valid
+
+2014-12-7 20:36:42 [Container.Constructor] Duplicate SIN/BN found. SIN/BN: 333333334
+2014-12-7 20:36:42 [Container.Constructor] Total Employees: 3. Employees Added: 1
+	Invalid Employees Found: 2
+2014-12-7 20:36:46 [ParttimeEmployee.Details]
+First Name: Sean
+Last Name: Clarke
+SIN: 333 333 334
+Date Of Birth: 1950-05-05
+Date Of Hire: 1975-05-05
+Date Of Termination: 1979-05-05
+Hourly Rate: $1.23
+
+2014-12-7 20:36:56 [ParttimeEmployee.Details]
+First Name: Sean
+Last Name: Clarke
+SIN: 333 333 334
+Date Of Birth: 1950-05-05
+Date Of Hire: 1975-05-05
+Date Of Termination: 1979-05-05
+Hourly Rate: $1.23
+
+2014-12-7 20:37:2 [ParttimeEmployee.Details]
+First Name: Willi
+Last Name: Clarke
+SIN: 333 333 334
+Date Of Birth: 1950-05-05
+Date Of Hire: 1975-05-05
+Date Of Termination: 1979-05-05
+Hourly Rate: $1.23
+

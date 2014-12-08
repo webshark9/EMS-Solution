@@ -659,7 +659,7 @@ namespace Testing
             bool expected = true;
             bool actual = false;
 
-            employeeObj.SetDateOfBirth("1933/12/12");
+            employeeObj.SetDateOfBirth("1933/12/12", ref unusedString);
             actual = employeeObj.SetBusinessNumber(testInput, ref unusedString);
 
             Assert.AreEqual(expected, actual, "Valid business number amount was found invalid");

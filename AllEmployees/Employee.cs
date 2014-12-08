@@ -109,6 +109,16 @@ namespace AllEmployees
             }
         }
 
+        
+        public Employee(Employee oldEmployee)
+        {
+            this.firstName = oldEmployee.firstName;
+            this.lastName = oldEmployee.lastName;
+            this.socialInsuranceNumber = oldEmployee.socialInsuranceNumber;
+            this.dateOfBirth = oldEmployee.dateOfBirth;
+        }
+        
+
         virtual public string Details()
         {
             string empDetails = "";
@@ -305,23 +315,32 @@ namespace AllEmployees
         public bool SetBusinessNumber(string userInput, ref string errorMessage)
         {
             bool setStatus = false;
-            int bnLength = 10;
+            int bnLength = 9;
+            int bnLengthSpaces = 10;
 
-            if (userInput.Length == bnLength)
+            if (userInput.Length == bnLengthSpaces || bnLength == bnLength)
             {
                 if (userInput[5] == ' ')
                 {
                     userInput = userInput.Remove(5, 1);
+
+                    if (Supporting.Validation.ValidateBusinessNumber(userInput, GetDateOfBirth(), ref errorMessage))
+                    {
+                        setStatus = true;
+                        socialInsuranceNumber = userInput;
+                    }
+                }
+                else if(!userInput.Contains(" "))
+                {
+                    if (Supporting.Validation.ValidateBusinessNumber(userInput, GetDateOfBirth(), ref errorMessage))
+                    {
+                        setStatus = true;
+                        socialInsuranceNumber = userInput;
+                    }
                 }
                 else
                 {
                     errorMessage = "Please Be Sure The BN Is In The Proper Format\nex. xxx xxx xxx\n";
-                }
-
-                if (Supporting.Validation.ValidateBusinessNumber(userInput, GetDateOfBirth(), ref errorMessage))
-                {
-                    setStatus = true;
-                    socialInsuranceNumber = userInput;
                 }
             }
             else

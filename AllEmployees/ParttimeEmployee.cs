@@ -122,6 +122,16 @@ namespace AllEmployees
             }
         }
 
+        public ParttimeEmployee(ParttimeEmployee oldEmployee) : base(oldEmployee.GetFirstName(), oldEmployee.GetLastName(), oldEmployee.GetSocialInsuranceNumber())
+        {
+            string unused = "";
+
+            this.dateOfHire = oldEmployee.dateOfHire;
+            this.dateOfTermination = oldEmployee.dateOfTermination;
+            this.hourlyRate = oldEmployee.hourlyRate;
+            SetDateOfBirth(oldEmployee.GetDateOfBirth().ToString(), ref unused);
+        }
+
         override public string Details()
         {
             string empDetails = "";

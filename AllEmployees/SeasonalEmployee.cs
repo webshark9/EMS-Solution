@@ -111,6 +111,16 @@ namespace AllEmployees
             }
         }
 
+        public SeasonalEmployee(SeasonalEmployee oldEmployee) : base(oldEmployee.GetFirstName(), oldEmployee.GetLastName(), oldEmployee.GetSocialInsuranceNumber())
+        {
+            string unused = "";
+
+            this.season = oldEmployee.season;
+            this.piecePay = oldEmployee.piecePay;
+            SetDateOfBirth(oldEmployee.GetDateOfBirth().ToString(), ref unused);
+
+        }
+
         override public string Details()
         {
             string empDetails = "";
