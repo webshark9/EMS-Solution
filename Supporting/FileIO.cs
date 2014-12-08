@@ -66,7 +66,7 @@ namespace Supporting
                 dbReader = new StreamReader(dbName);
                 databaseName = dbName;// save the name of the database file in the 'databaseName' data member so we can close the file later
 
-                Logging.LogEvent("[FileIO.OpenDBase] The file: " + databaseName + " has been opened for reading.");
+                Logging.LogEvent("[FileIO.OpenDBase] The file: " + dbName + " has been opened for reading.");
 
                 /* this loop reads the entire database file and stores each line separately into 'stringsRead' */
                 while (dbReader.Peek() >= 0)
@@ -77,18 +77,18 @@ namespace Supporting
             }
             catch(FileNotFoundException)
             {
-                errorMessage = "The Database file: " + databaseName + " could not be found.";
-                Logging.LogEvent("[FileIO.OpenDBase] The file: " + databaseName + " could not be found for reading.");
+                errorMessage = "The Database file: " + dbName + " could not be found.";
+                Logging.LogEvent("[FileIO.OpenDBase] The file: " + dbName + " could not be found for reading.");
             }
             catch (DirectoryNotFoundException)
             {
                 errorMessage = "The Directory for the database file could not be found.";
-                Logging.LogEvent("[FileIO.OpenDBase] The directory for the file: " + databaseName + " could not be found for reading.");
+                Logging.LogEvent("[FileIO.OpenDBase] The directory for the file: " + dbName + " could not be found for reading.");
             }
             catch(Exception e)
             {
                 errorMessage = "Error opening the database file. Message: " + e.Message;
-                Logging.LogEvent("[FileIO.OpenDBase] The file: " + databaseName + " could not be opened for reading. Message: " + e.Message);
+                Logging.LogEvent("[FileIO.OpenDBase] The file: " + dbName + " could not be opened for reading. Message: " + e.Message);
             }           
 
             /* this foreach find the valid records in 'stringsRead' and stores them into 'validRecords' */

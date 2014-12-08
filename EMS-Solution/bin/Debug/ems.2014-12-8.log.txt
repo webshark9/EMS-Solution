@@ -547,3 +547,12 @@ Piece Pay: $12.12
 2014-12-8 10:27:41 [SeasonalEmployee.Validate] Employee qwe, qweqweqw SIN(333333334) Was Found To Be Valid
 
 2014-12-8 10:27:41 [Container.AddEmployee] Employee Added. Employee Information: SN|qwe|qweqweqw|333333334|1212-12-12|Spring|12.12|
+2014-12-8 10:29:27 [FileIO.OpenDBase] The file: EMS_DB_FILE.txt could not be found for reading.
+2014-12-8 10:29:27 [FileIO.OpenDBase] Reading file: gdgse. Total Records read: 0. Valid records read: 0. Invalid records read: 0
+2014-12-8 10:29:27 [Container.Constructor] Total Employees: 0. Employees Added: 0. Invalid Employees Found: 0
+2014-12-8 10:31:1 [FileIO.OpenDBase] The file: dfhdffd could not be found for reading.
+2014-12-8 10:31:1 [FileIO.OpenDBase] Reading file: dfhdffd. Total Records read: 0. Valid records read: 0. Invalid records read: 0
+2014-12-8 10:31:1 [Container.Constructor] Total Employees: 0. Employees Added: 0. Invalid Employees Found: 0
+2014-12-8 10:31:12 [FileIO.OpenDBase] The file: dgdgr.txt could not be found for reading.
+2014-12-8 10:31:12 [FileIO.OpenDBase] Reading file: dgdgr.txt. Total Records read: 0. Valid records read: 0. Invalid records read: 0
+2014-12-8 10:31:12 [Container.Constructor] Total Employees: 0. Employees Added: 0. Invalid Employees Found: 0
