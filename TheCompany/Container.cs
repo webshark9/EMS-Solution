@@ -112,17 +112,16 @@ namespace TheCompany
                         continue;// invalid float and we don't store invalid objects in the database so continue (don't add)
                     }
 
-                    FTemployee = new FulltimeEmployee(dateOfHire, dateOfTermination, salary, employeeString[2], employeeString[1], employeeString[3], dateOfBirth);
+                    FTemployee = new FulltimeEmployee(dateOfHire, dateOfTermination, salary, employeeString[2], employeeString[1], employeeString[3], dateOfBirth);// construct a new FulltimeEmployee
 
-                    if (FTemployee.Validate())// check if the employee was valid
+                    if (FTemployee.Validate())// check if the employee is valid
                     {
-
-                        foreach( Employee emp in virtualDB)
+                        foreach( Employee emp in virtualDB)// make sure there are no duplicate SIN/BN numbers
                         {
                             if(emp.GetSocialInsuranceNumber() == FTemployee.GetSocialInsuranceNumber())
                             {
                                 invalidSIN = true;
-                                Logging.LogEvent("[Container.Constructor] Duplicate SIN/BN found. SIN/BN: " + emp.GetSocialInsuranceNumber());
+                                Logging.LogEvent("[Container.Constructor] Duplicate SIN/BN found. The SIN/BN is: " + emp.GetSocialInsuranceNumber());
                                 ++numInvalidEmployees;
                                 break;
                             }
@@ -131,17 +130,20 @@ namespace TheCompany
                         if(invalidSIN == true)
                         {
                             invalidSIN = false;
+                            continue;
                         }
-                        else
+                        else// the employee passed all validation tests
                         {
-                            virtualDB.Add(FTemployee);
+                            virtualDB.Add(FTemployee);// add the employee to the database
                             ++numEmpoyeesAdded;
+                            continue;
                         }
                         
                     }
-                    else
+                    else// employee didn't pass Validate() test
                     {
                         ++numInvalidEmployees;
+                        continue;
                     }
 
                 }
@@ -180,7 +182,7 @@ namespace TheCompany
 
                     if (PTemployee.Validate())// check if the employee was valid
                     {
-                        foreach (Employee emp in virtualDB)
+                        foreach (Employee emp in virtualDB)// make sure there are no duplicate SIN/BN numbers
                         {
                             if (emp.GetSocialInsuranceNumber() == PTemployee.GetSocialInsuranceNumber())
                             {
@@ -194,17 +196,20 @@ namespace TheCompany
                         if (invalidSIN == true)
                         {
                             invalidSIN = false;
+                            continue;
                         }
-                        else
+                        else// the employee passed all validation tests
                         {
-                            virtualDB.Add(PTemployee);
+                            virtualDB.Add(PTemployee);// add the employee to the database
                             ++numEmpoyeesAdded;
+                            continue;
                         }
 
                     }
-                    else
+                    else// employee didn't pass Validate() test
                     {
                         ++numInvalidEmployees;
+                        continue;
                     }
 
                 }
@@ -242,7 +247,7 @@ namespace TheCompany
 
                     if (CTemployee.Validate())// check if the employee was valid
                     {
-                        foreach (Employee emp in virtualDB)
+                        foreach (Employee emp in virtualDB)// make sure there are no duplicate SIN/BN numbers
                         {
                             if (emp.GetSocialInsuranceNumber() == CTemployee.GetSocialInsuranceNumber())
                             {
@@ -256,17 +261,20 @@ namespace TheCompany
                         if (invalidSIN == true)
                         {
                             invalidSIN = false;
+                            continue;
                         }
-                        else
+                        else// the employee passed all validation tests
                         {
-                            virtualDB.Add(CTemployee);
+                            virtualDB.Add(CTemployee);// add the employee to the database
                             ++numEmpoyeesAdded;
+                            continue;
                         }
 
                     }
-                    else
+                    else// employee didn't pass Validate() test
                     {
                         ++numInvalidEmployees;
+                        continue;
                     }
 
                 }
@@ -291,7 +299,7 @@ namespace TheCompany
 
                     if (SNemployee.Validate())// check if the employee was valid
                     {
-                        foreach (Employee emp in virtualDB)
+                        foreach (Employee emp in virtualDB)// make sure there are no duplicate SIN/BN numbers
                         {
                             if (emp.GetSocialInsuranceNumber() == SNemployee.GetSocialInsuranceNumber())
                             {
@@ -305,26 +313,32 @@ namespace TheCompany
                         if (invalidSIN == true)
                         {
                             invalidSIN = false;
+                            continue;
                         }
-                        else
+                        else// the employee passed all validation tests
                         {
-                            virtualDB.Add(SNemployee);
+                            virtualDB.Add(SNemployee);// add the employee to the database
                             ++numEmpoyeesAdded;
+                            continue;
                         }
 
                     }
-                    else
+                    else// employee didn't pass Validate() test
                     {
                         ++numInvalidEmployees;
+                        continue;
                     }
 
                 }
-
-                // do nothing if the employee type is invalid 
+                else// the employee type is invalid
+                {
+                    ++numInvalidEmployees;
+                    continue;
+                }
 
             }// end 'foreach'
 
-            Logging.LogEvent("[Container.Constructor] Total Employees: " + totalEmployees + ". Employees Added: " + numEmpoyeesAdded.ToString() + "\n\tInvalid Employees Found: " + numInvalidEmployees);
+            Logging.LogEvent("[Container.Constructor] Total Employees: " + totalEmployees + ". Employees Added: " + numEmpoyeesAdded.ToString() + ". Invalid Employees Found: " + numInvalidEmployees);
 
         }
 
