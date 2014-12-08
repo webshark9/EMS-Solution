@@ -634,7 +634,10 @@ namespace Testing
             string unusedString = "";
             ContractEmployee employeeObj = new ContractEmployee();
             bool expected = false;
-            bool actual = employeeObj.SetBusinessNumber(testInput, ref unusedString);
+            bool actual = false;
+
+            employeeObj.SetDateOfBirth("1933/12/12", ref unusedString);
+            actual = employeeObj.SetBusinessNumber(testInput, ref unusedString);
 
             Assert.AreEqual(expected, actual, "Invalid business number contract amount was found valid");
         }
@@ -663,6 +666,58 @@ namespace Testing
             actual = employeeObj.SetBusinessNumber(testInput, ref unusedString);
 
             Assert.AreEqual(expected, actual, "Valid business number amount was found invalid");
+        }
+
+        /**
+         * \test
+         * ID: \n
+         * Name: \n
+         * Description: \n
+         * How is it conducted: \n
+         * Type of test: \n
+         * Data Used: \n
+         * Expected outcome: 'false' return \n
+         * Actual outcome: 
+         */
+        [TestMethod]
+        public void Invalid_DateOfCreation_Test()
+        {
+            string testInput = "2000/08/01";
+            string unusedString = "";
+            ContractEmployee employeeObj = new ContractEmployee();
+            bool expected = false;
+            bool actual = false;
+
+            employeeObj.SetBusinessNumber("333333334", ref unusedString);
+            actual = employeeObj.SetDateOfCreation(testInput, ref unusedString);
+
+            Assert.AreEqual(expected, actual, "Invalid business number contract amount was found valid");
+        }
+
+        /**
+         * \test
+         * ID: \n
+         * Name: \n
+         * Description: \n
+         * How is it conducted: \n
+         * Type of test: \n
+         * Data Used: \n
+         * Expected outcome: 'false' return \n
+         * Actual outcome: 
+         */
+        [TestMethod]
+        public void Valid_DateOfCreation_Test()
+        {
+            string testInput = "2000/08/01";
+            string unusedString = "";
+            ContractEmployee employeeObj = new ContractEmployee();
+            bool expected = true;
+            bool actual = false;
+
+            employeeObj.SetBusinessNumber("003333334", ref unusedString);
+            actual = employeeObj.SetDateOfCreation(testInput, ref unusedString);
+
+            Assert.AreEqual(expected, actual, "Invalid business number contract amount was found valid");
         }
     }
 }

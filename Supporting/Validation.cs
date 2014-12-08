@@ -766,6 +766,7 @@ namespace Supporting
         public static bool ValidateDateOfCreation(string businessNumber, DateTime dateOfCreation, ref string errorMessage)
         {
             bool validateStatus = true;
+            string doc = dateOfCreation.ToString();
             errorMessage = "";
 
             if (dateOfCreation != DateTime.MinValue)
@@ -778,7 +779,7 @@ namespace Supporting
                 {
                     for (int i = 0; i < 2; i++)
                     {
-                        if (businessNumber[i] != dateOfCreation.ToString()[i])
+                        if (businessNumber[i] != doc[(i + 2)])
                         {
                             validateStatus = false;
                             errorMessage += "Please Be Sure The Business' Date Of Creation's Year\nMatches The Business Number's First Two Digits.\nex. Year: 1982\n  Business#: 82xxx xxxx\n";
