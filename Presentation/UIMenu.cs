@@ -2198,6 +2198,19 @@ namespace Presentation
         }
 
 
+        /**
+         * \brief UI for displaying error message
+         *
+         * \details <b>Details</b>
+         *
+         * This method will clear the screen and display the error message. 
+         * It will prompt for an user input before ending.
+         * 
+         * \param string errorMessage: The error message to display
+         * 
+         * \return Nothing is returned
+         * 
+         */
         private void PrintErrorMessage(string errorMessage)
         {
             ConsoleKeyInfo userInput;
