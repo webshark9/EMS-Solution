@@ -52,3 +52,6 @@ C:\Users\Matthew\Desktop\EMS-Solution\EMS-Solution\bin\Debug\TheCompany.dll
 C:\Users\Matthew\Desktop\EMS-Solution\EMS-Solution\bin\Debug\TheCompany.pdb
 C:\Users\Willi\Documents\GitHub\EMS-Solution\EMS-Solution\bin\Debug\TheCompany.dll
 C:\Users\Willi\Documents\GitHub\EMS-Solution\EMS-Solution\bin\Debug\TheCompany.pdb
+C:\Users\mjthiessen-cc\Desktop\EMS-Solution\EMS-Solution\bin\Debug\EMS-Solution.exe.config
+C:\Users\mjthiessen-cc\Desktop\EMS-Solution\EMS-Solution\obj\Debug\EMS-Solution.exe
+C:\Users\mjthiessen-cc\Desktop\EMS-Solution\EMS-Solution\obj\Debug\EMS-Solution.pdb
